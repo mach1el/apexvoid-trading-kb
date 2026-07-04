@@ -72,6 +72,12 @@ const HowFrameworksRelate = () => <MdxPage loader={() => import('./content/toget
 const HtfLtfWorkflow = () => <MdxPage loader={() => import('./content/together/htf-ltf-workflow.mdx')} />;
 const GlossaryPage = () => <MdxPage loader={() => import('./content/together/glossary.mdx')} />;
 
+// Risk Management
+const PositionSizing = () => <MdxPage loader={() => import('./content/risk-management/position-sizing.mdx')} />;
+const BreakevenMath = () => <MdxPage loader={() => import('./content/risk-management/breakeven-math.mdx')} />;
+const DrawdownRecovery = () => <MdxPage loader={() => import('./content/risk-management/drawdown-recovery.mdx')} />;
+const Expectancy = () => <MdxPage loader={() => import('./content/risk-management/expectancy.mdx')} />;
+
 export function App() {
   return (
     <AppShell>
@@ -130,6 +136,12 @@ export function App() {
         <Route path="/together/how-frameworks-relate" element={<HowFrameworksRelate />} />
         <Route path="/together/htf-ltf-workflow" element={<HtfLtfWorkflow />} />
         <Route path="/together/glossary" element={<GlossaryPage />} />
+
+        {/* Risk Management */}
+        <Route path="/risk-management/position-sizing" element={<PositionSizing />} />
+        <Route path="/risk-management/breakeven-math" element={<BreakevenMath />} />
+        <Route path="/risk-management/drawdown-recovery" element={<DrawdownRecovery />} />
+        <Route path="/risk-management/expectancy" element={<Expectancy />} />
 
         {/* 404 */}
         <Route path="*" element={
