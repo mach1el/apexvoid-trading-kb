@@ -27,20 +27,19 @@ export function PageNavigation() {
       {prevItem ? (
         <Link 
           to={prevItem.path} 
-          className="flex-1 group flex flex-col items-start gap-1 p-4 rounded-xl border border-border bg-bg-base hover:bg-bg-elevated hover:border-accent/40 transition-colors no-underline"
+          className="flex-1 group flex flex-row items-center gap-3 p-3 rounded-lg border border-border bg-bg-base hover:bg-bg-elevated hover:border-accent/40 transition-colors no-underline"
         >
-          <span className="text-xs text-text-muted font-medium uppercase tracking-wider flex items-center gap-1">
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+          <div className="flex items-center justify-center w-8 h-8 shrink-0 rounded-full bg-bg-elevated group-hover:bg-accent/10 text-text-muted group-hover:text-accent transition-colors">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Previous
-          </span>
-          <span className="text-base text-accent font-semibold group-hover:text-accent-light transition-colors">
-            {prevItem.label}
-          </span>
-          <span className="text-xs text-text-muted hidden sm:block">
-            {getSectionLabel(prevItem.path)}
-          </span>
+          </div>
+          <div className="flex flex-col items-start text-left truncate">
+            <span className="text-[10px] text-text-muted font-medium uppercase tracking-wider">Previous</span>
+            <span className="text-sm text-text font-semibold group-hover:text-accent transition-colors truncate w-full">
+              {prevItem.label}
+            </span>
+          </div>
         </Link>
       ) : (
         <div className="flex-1" />
@@ -49,20 +48,19 @@ export function PageNavigation() {
       {nextItem ? (
         <Link 
           to={nextItem.path} 
-          className="flex-1 group flex flex-col items-end gap-1 p-4 rounded-xl border border-border bg-bg-base hover:bg-bg-elevated hover:border-accent/40 transition-colors no-underline text-right"
+          className="flex-1 group flex flex-row items-center justify-end gap-3 p-3 rounded-lg border border-border bg-bg-base hover:bg-bg-elevated hover:border-accent/40 transition-colors no-underline text-right"
         >
-          <span className="text-xs text-text-muted font-medium uppercase tracking-wider flex items-center gap-1">
-            Next
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+          <div className="flex flex-col items-end text-right truncate">
+            <span className="text-[10px] text-text-muted font-medium uppercase tracking-wider">Next</span>
+            <span className="text-sm text-text font-semibold group-hover:text-accent transition-colors truncate w-full">
+              {nextItem.label}
+            </span>
+          </div>
+          <div className="flex items-center justify-center w-8 h-8 shrink-0 rounded-full bg-bg-elevated group-hover:bg-accent/10 text-text-muted group-hover:text-accent transition-colors">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </span>
-          <span className="text-base text-accent font-semibold group-hover:text-accent-light transition-colors">
-            {nextItem.label}
-          </span>
-          <span className="text-xs text-text-muted hidden sm:block">
-            {getSectionLabel(nextItem.path)}
-          </span>
+          </div>
         </Link>
       ) : (
         <div className="flex-1" />
