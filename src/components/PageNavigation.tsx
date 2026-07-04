@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { flattenNav, navigation } from '../content/nav';
+import { flattenNav } from '../content/nav';
 
 export function PageNavigation() {
   const location = useLocation();
