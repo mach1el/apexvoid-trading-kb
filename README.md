@@ -1,18 +1,26 @@
-# ApexVoid Trading Knowledge Base
+# 📈 ApexVoid Trading Knowledge Base
 
-A trading knowledge documentation site built with React, TypeScript, and Tailwind CSS. Covers market structure, price action, order blocks, SMC, ICT concepts, and confluence analysis.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-> **Disclaimer**: This is educational material only — not financial advice.
+A comprehensive trading knowledge documentation site built with React, TypeScript, and Tailwind CSS. The curriculum covers foundational Dow Theory, market structure, price action, order blocks, SMC, ICT concepts, and advanced confluence analysis.
 
-## Tech Stack
+> ⚠️ **Disclaimer**: This is educational material only — not financial advice.
 
-- **Vite** + **React 18** + **TypeScript** (strict mode)
-- **Tailwind CSS** v4 for styling
-- **React Router v6** for client-side routing
-- **MDX** for content authoring with embedded React components
-- **Fuse.js** for client-side search (⌘K)
+---
 
-## Local Development
+## 🛠️ Tech Stack
+
+- ⚡ **Vite** + ⚛️ **React 18** + 📘 **TypeScript** (strict mode)
+- 🎨 **Tailwind CSS** v4 for styling
+- 🛣️ **React Router v6** for client-side routing
+- 📝 **MDX** for content authoring with embedded React components
+- 🔍 **Fuse.js** for fast client-side search (⌘K)
+
+## 💻 Local Development
 
 ```bash
 # Install dependencies
@@ -28,7 +36,7 @@ npm run build
 npm run preview
 ```
 
-## Docker
+## 🐳 Docker
 
 ### Standalone
 
@@ -52,23 +60,23 @@ docker compose up -d --build
 ```
 
 The container:
-- Exposes port `80` internally (no host port mapping)
-- Joins the external `routing` Docker network
-- Serves the static `dist/` bundle via `nginx:alpine`
-- Includes `/_health` endpoint returning 200
-- SPA fallback via `try_files $uri $uri/ /index.html`
+- 🔒 Exposes port `80` internally (no host port mapping)
+- 🌐 Joins the external `routing` Docker network
+- 🚀 Serves the static `dist/` bundle via `nginx:alpine`
+- 🩺 Includes `/_health` endpoint returning 200
+- 🔄 SPA fallback via `try_files $uri $uri/ /index.html`
 
-### Environment Variables
+### ⚙️ Environment Variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `TRADING_HOST` | `trading.apexvoid.net` | Target hostname for the site |
 
-## Routing Integration
+## 🔗 Routing Integration
 
 See [routing-snippet.md](./routing-snippet.md) for the Nginx config block and instructions to add to the `mach1el/routing` repo.
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 src/
@@ -79,6 +87,6 @@ src/
 └── types/          # TypeScript declarations
 ```
 
-## License
+## 📜 License
 
 MIT
