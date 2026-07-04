@@ -1,102 +1,131 @@
 export const frontmatter = {
   title: 'Killzones & Session Timing',
-  description: 'Understanding ICT killzones — the London, New York, and Asian session windows where institutional activity concentrates and high-probability setups tend to form.',
+  description: 'Understanding the algorithmic time cycles of the Forex market and why when you trade is just as important as what you trade.'
 };
 
-import { ConceptCard } from '../../components/ConceptCard';
-import { AnnotatedChart } from '../../components/AnnotatedChart';
 import { Callout } from '../../components/Callout';
 import { KeyTakeaways } from '../../components/KeyTakeaways';
-import { CompareTable } from '../../components/CompareTable';
-import { ConfluenceMeter } from '../../components/ConfluenceMeter';
-import { StepFlow, Step } from '../../components/StepFlow';
-import { Term, Glossary } from '../../components/Term';
+import { KillzoneClock } from '../../components/KillzoneClock';
 
-# Killzones & Session Timing
+{/* 1. Hook */}
+Imagine setting up the perfect trade. Your structure is bullish, you have a beautiful Fair Value Gap, and an Order Block resting perfectly in the Optimal Trade Entry zone. You execute your trade at 6:00 PM EST. The market barely ticks. Over the next four hours, price chops sideways, eventually drifting into your stop loss by a single pip before the real move happens the next morning. Your setup was flawless, but your timing was terrible. 
 
-A **killzone** is a specific window of time within a trading session where price is more likely to make its significant directional move for that session. The term comes from ICT methodology, but the underlying observation — that volatility and volume cluster around certain hours — is well-documented across all markets.
+In institutional trading, time is the dominant variable. If you are not trading when the algorithms are actively injecting volume, your setups have zero edge.
 
----
+{/* 2. Definition */}
+The Forex and Crypto markets are open 24 hours a day, but volume is not distributed evenly. Volume is highly concentrated around the opening hours of the major global financial centers.
+- **Sessions:** The macro blocks of time when a financial center is open (Asia, London, New York).
+- **Killzones:** A specific, 2-to-3 hour window at the *beginning* of a session where algorithmic volatility is at its absolute highest. This is when institutional order flow is initiated.
 
-## Why Sessions Matter
+{/* 3. Deep Explanation */}
+## The Three Macro Sessions
 
-Markets don't move uniformly throughout the day. Liquidity, volume, and participation vary dramatically depending on which financial centers are active. The three major sessions correspond to the world's largest trading hubs:
+The market moves in a highly predictable daily cycle known as the **AMD Cycle** (Accumulation, Manipulation, Distribution). This cycle aligns perfectly with the three major global trading sessions.
 
-<CompareTable title="Major Forex Sessions (UTC)">
+### 1. The Asian Session (Accumulation)
+*Roughly 18:00 to 02:00 EST*
+The Asian session (Tokyo/Sydney) is typically characterized by low volume and tight consolidation. Major banks use this quiet time to slowly accumulate positions without disturbing the price. 
+- **The Result:** This sideways chop builds massive pools of [Buy-Side and Sell-Side Liquidity](/smc/buyside-sellside-liquidity) above and below the Asian range.
 
-| Session | Approximate Window (UTC) | Key Characteristics |
-|---|---|---|
-| **Asian (Tokyo)** | 00:00 – 08:00 | Lowest volatility, range-building, sets up liquidity pools |
-| **London** | 07:00 – 16:00 | Highest volume session, often establishes the day's high or low |
-| **New York** | 12:00 – 21:00 | Overlaps with London (12:00–16:00), second-highest volume, often reverses or continues London's move |
+### 2. The London Session (Manipulation)
+*Roughly 03:00 to 11:00 EST*
+London is the financial capital of the Forex world. When London opens, massive volume enters the market. 
+- **The Result:** The algorithms almost always use this initial burst of volume to trigger a [Judas Swing](/ict/judas-swing)—a violent, fake move designed to sweep the liquidity resting outside the Asian range. This manipulation traps breakout traders before reversing into the true trend of the day.
 
-</CompareTable>
+### 3. The New York Session (Distribution/Continuation)
+*Roughly 08:00 to 17:00 EST*
+New York volume overlaps with the second half of the London session. This overlap (08:00 to 11:00 EST) is the most liquid and volatile time of the day.
+- **The Result:** NY typically distributes the positions accumulated in Asia and manipulated in London. If London set the high of the day, NY will continue the trend downward. Occasionally, NY will generate its own reversal if major news (like CPI or NFP) is released at 08:30 EST.
 
-The **London-New York overlap** (roughly 12:00–16:00 UTC) is typically the most volatile period of the day. Many of the day's largest moves originate or complete within this window.
+{/* 4. Visuals */}
+## Interactive: The Killzone Clock
 
----
+Use the interactive timeline below to visualize how the sessions overlap and where the highly volatile Killzones are located. Notice that Killzones are just the *opening window* of the broader session.
 
-## The Killzones
+<KillzoneClock />
 
-ICT defines specific sub-windows within each session as killzones — narrower bands where the setup-to-noise ratio tends to be highest.
+{/* 5. How to see it on a chart */}
+## Trading the Killzones
 
-<ConceptCard title="Asian Killzone" icon="🌏">
-  <p><strong>Window:</strong> ~20:00 – 00:00 UTC (New York evening into Tokyo open)</p>
-  <p>The Asian killzone often establishes a <strong>range</strong> — a high and low that London will later target. Price tends to consolidate, building equal highs/lows that serve as liquidity pools for the more volatile sessions ahead.</p>
-  <p><strong>Role in the daily narrative:</strong> Range creation. Sets the bait.</p>
-</ConceptCard>
+A "Killzone" is not a strategy; it is a time filter. You should only be looking for your A-grade setups (like an OB or FVG mitigation) *during* a Killzone window.
 
-<ConceptCard title="London Killzone" icon="🇬🇧">
-  <p><strong>Window:</strong> ~07:00 – 10:00 UTC (London open)</p>
-  <p>London open is where the day's directional bias often reveals itself. Price frequently <strong>sweeps</strong> the Asian session high or low (a Judas swing) before committing to the real move. The London killzone is widely considered the most reliable window for setups.</p>
-  <p><strong>Role in the daily narrative:</strong> Displacement. Sets the direction.</p>
-</ConceptCard>
+Here are the standard Killzones (All times in EST - New York Local Time):
 
-<ConceptCard title="New York Killzone" icon="🇺🇸">
-  <p><strong>Window:</strong> ~12:00 – 15:00 UTC (New York open, London overlap)</p>
-  <p>The New York killzone is the second opportunity for high-probability setups. It may <strong>continue</strong> London's established direction, or in some cases, <strong>reverse</strong> it — especially if London's move was a liquidity grab that reached into a higher-timeframe level.</p>
-  <p><strong>Role in the daily narrative:</strong> Continuation or reversal. Completes the story.</p>
-</ConceptCard>
+1. **Asian Killzone (20:00 - 00:00 EST):**
+   - Best for AUD, NZD, and JPY pairs. 
+   - Expect tight, consolidating ranges. If a setup occurs here, target smaller profits, as macro daily trends rarely originate here.
 
----
+2. **London Open Killzone (02:00 - 05:00 EST):**
+   - Best for EUR and GBP pairs.
+   - Look for the Judas Swing. Wait for the Asian High or Asian Low to be swept, then look for a reversal pattern (CHoCH) to catch the true daily trend. The high or low of the entire day is often formed between 02:00 and 04:00 EST.
 
-## Killzone Logic on a Chart
+3. **New York AM Killzone (07:00 - 10:00 EST):**
+   - Best for USD pairs, Indices (SPX, NAS100), and Commodities (Gold, Oil).
+   - Highly explosive due to the 08:30 EST macro news embargoes. Often provides an Optimal Trade Entry (OTE) pullback to continue the trend established by London.
 
-<AnnotatedChart
-  title="Session structure — Asian range → London displacement → NY continuation"
-  showSwingHL={true}
-  showBOS={true}
-  keyLevelLabel="Asian Session High"
-  keyLevelY={60}
-/>
+4. **London Close Killzone (10:00 - 12:00 EST):**
+   - The final burst of volume as European traders close their books for the day. Often results in a retracement against the daily trend.
 
-In this simplified illustration:
+{/* 6. Worked Examples */}
+## Worked Examples
 
-- The **Asian session** builds a range (the swing high and swing low).
-- **London open** sweeps the Asian high (or low), then displaces in the true direction — confirmed by a BOS.
-- **New York** continues the move or provides a retracement entry in the direction London established.
+### Example 1: The London Manipulation (Idealized)
 
-<Callout type="note">
-  Content expanding soon. Future updates will include detailed session-by-session case studies, DST adjustments, and instrument-specific killzone behavior (forex, indices, crypto).
+**Scenario:** GBP/USD consolidates tightly during the Asian session, establishing a high at 1.2550 and a low at 1.2500.
+1. The macro daily trend is bearish.
+2. At 02:30 EST (inside the London Killzone), price suddenly rockets upward to 1.2560.
+3. Retail breakout traders buy this "strong momentum."
+4. This is the Judas Swing. The algorithms are sweeping the Buy-Side Liquidity above the Asian High to establish short positions at a premium.
+5. At 03:15 EST, price violently rejects, breaks structure downward, and bleeds for the next 6 hours, dropping to 1.2400.
+
+**Walkthrough:**
+If you were trading this at 01:00 EST, you would have been chopped up. By waiting for the London Killzone, you allowed the manipulation to play out. The sweep of the Asian High during the Killzone was the trigger to enter short.
+
+### Example 2: The Dead Zone Trap (Grounded)
+
+**Scenario:** EUR/USD is trending beautifully all morning.
+1. You finish your lunch and sit down at your charts at 13:00 EST (1:00 PM).
+2. You see a perfect 5-Minute Fair Value Gap forming. You place a buy limit order.
+3. Your order triggers. Price moves into profit by 3 pips, then drops into drawdown by 4 pips. 
+4. It does this for the next three hours. 
+5. The spread widens at 17:00 EST, stopping you out.
+
+**Walkthrough:**
+13:00 to 17:00 EST is the "Dead Zone." London has gone home, and New York algorithms have finished their daily distribution. There is zero institutional volume to push your trade to target. The setup was perfect, but the timing invalidated it.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Daylight Savings Trap">
+  Killzones are fundamentally tied to the local time of the human bankers and exchange opening bells in London and New York. Therefore, when Daylight Savings Time shifts (which happens on different weeks in the US vs Europe), the EST time of the Killzones will temporarily shift. Always ensure you are tracking the actual local opening bells of those markets.
 </Callout>
 
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC / ICT:** The concept of Killzones and the AMD cycle was heavily popularized by Inner Circle Trader (ICT). It forms the absolute bedrock of his time-based trading models.
+- **Classic TA:** Classic day trading literature often refers to the "Morning Session" (9:30 AM to 11:30 AM EST) and the "Afternoon Session" (1:30 PM to 3:30 PM EST) in equities, which perfectly mirrors the concept of NY volume windows, though it ignores the global Forex cycle.
+- **Wyckoff:** The AMD cycle (Asia = Accumulation, London = Manipulation, NY = Distribution) is a fractal, intraday manifestation of the macro Wyckoff Market Cycle.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: Do I have to wake up at 2:00 AM EST to trade London?**
+A: No! You only need to pick *one* Killzone to specialize in. If you live in the Americas, trade the NY Killzone (07:00-10:00 EST). If you live in Europe, trade the London Killzone. Do not destroy your sleep schedule trying to trade them all.
+
+**Q: What about Crypto? It's 24/7.**
+A: While Crypto is theoretically 24/7, Bitcoin and Ethereum have become heavily institutionalized. They now adhere very closely to the New York AM Killzone (specifically the 09:30 EST equities open), as this is when the Bitcoin ETFs and institutional desks are most active.
+
+**Q: Can I leave a trade open through the 17:00 EST daily close?**
+A: You can, but beware: at 17:00 EST, broker liquidity drops to near zero as servers reset for the new daily candle. Spreads can widen massively, often triggering stop losses that are 10-20 pips away.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Time is the dominant variable. A perfect setup outside of a Killzone is a low-probability trade.",
+  "Killzones are 2-3 hour windows of extreme algorithmic volatility at the start of major sessions.",
+  "The Asian Session accumulates liquidity. London manipulates it. New York distributes it.",
+  "The London Killzone (02:00 - 05:00 EST) frequently creates the high or low of the day.",
+  "The New York Killzone (07:00 - 10:00 EST) is the most volatile due to overlapping London volume and US macro news releases."
+]} />
+
 ---
-
-## Practical Considerations
-
-- **DST shifts** change the UTC times by one hour for London (GMT → BST) and New York (EST → EDT). Always verify current local times.
-- **Not every session produces a clean killzone move.** Some days are ranging or news-driven — killzones are a filter, not a guarantee.
-- **Crypto markets** run 24/7 but still show volume clustering around traditional session opens, particularly New York.
-- **Indices** (ES, NQ) have their own session structure — the RTH (Regular Trading Hours) open at 13:30 UTC is a separate high-volume event.
-
----
-
-<KeyTakeaways>
-  <ul>
-    <li><strong>Killzones</strong> are specific time windows within each session where high-probability moves are more likely to occur.</li>
-    <li><strong>Asian session</strong> builds the range. <strong>London</strong> displaces. <strong>New York</strong> continues or reverses.</li>
-    <li>The <strong>London-New York overlap</strong> is the highest-volume period of the day.</li>
-    <li>Killzones are a <strong>filter for timing</strong>, not a signal by themselves — combine with structure and levels.</li>
-    <li>Always account for <strong>DST</strong> when mapping killzone times.</li>
-  </ul>
-</KeyTakeaways>
+*References:*
+Algorithmic time-based volatility models. The AMD (Accumulation, Manipulation, Distribution) cycle and Killzone terminology popularized by Inner Circle Trader.

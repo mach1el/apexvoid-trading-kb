@@ -1,112 +1,122 @@
 export const frontmatter = {
   title: 'Judas Swing & Liquidity Run',
-  description: 'Understanding the Judas swing — the deceptive price move at session open that sweeps liquidity in one direction before price reverses and commits to the true directional move.',
+  description: 'The algorithmic false breakout. How to identify and trade the engineered manipulation that traps retail traders at the start of a session.'
 };
 
-import { ConceptCard } from '../../components/ConceptCard';
-import { AnnotatedChart } from '../../components/AnnotatedChart';
 import { Callout } from '../../components/Callout';
 import { KeyTakeaways } from '../../components/KeyTakeaways';
-import { CompareTable } from '../../components/CompareTable';
-import { ConfluenceMeter } from '../../components/ConfluenceMeter';
-import { StepFlow, Step } from '../../components/StepFlow';
-import { Term, Glossary } from '../../components/Term';
+import { AnnotatedChart } from '../../components/AnnotatedChart';
 
-# Judas Swing & Liquidity Run
+{/* 1. Hook */}
+It happens every single morning at 03:00 AM EST, right as London opens. The market, which has been sleeping quietly for hours, suddenly erupts. A massive green candle breaks out of the overnight range. Retail traders across the globe see the breakout, hit the "Buy" button, and high-five each other. Ten minutes later, the market halts, turns around, and violently drops 50 pips, stopping out every single buyer. The market didn't change its mind; it was executing a Judas Swing.
 
-The **Judas swing** is a deceptive price move that occurs at or near a session open. Price initially moves in one direction — triggering breakout traders and sweeping resting liquidity — before sharply reversing to move in the opposite, "true" direction for the session. The name references the biblical betrayal: the initial move *appears* to be the real move, but it is a trap.
+{/* 2. Definition */}
+The **Judas Swing** is an engineered, false directional move that occurs at the opening of a specific trading session (most notably the London Open or NY Open). 
+Its sole purpose is to trigger breakout traders and hit the stop losses of existing traders, thereby generating the massive liquidity required for institutions to enter their true, opposite positions. 
 
----
+{/* 3. Deep Explanation */}
+## Anatomy of the Judas Swing
 
-## The Anatomy of a Judas Swing
+The Judas Swing is the "Manipulation" phase of the AMD cycle (Accumulation, Manipulation, Distribution). It relies entirely on the retail psychology of trading breakouts.
 
-<ConceptCard title="How It Works" icon="🔄">
-  <p>At the open of a killzone (typically London or New York), price makes an <strong>initial thrust</strong> in one direction. This thrust does three things:</p>
-  <ol>
-    <li><strong>Sweeps resting liquidity</strong> — stop losses above a prior high or below a prior low are triggered, filling institutional orders.</li>
-    <li><strong>Induces breakout entries</strong> — retail traders see the move and enter in the direction of the thrust, providing counter-liquidity.</li>
-    <li><strong>Engineers the reversal</strong> — once liquidity is absorbed, price reverses and those freshly entered positions become fuel for the real move.</li>
-  </ol>
-</ConceptCard>
+Here is the mechanical sequence of a Bearish Judas Swing (which results in a massive down day):
 
----
+1. **The Setup (Asian Range):** The market chops sideways for 6-8 hours. It establishes a clear Asian High and a clear Asian Low. Traders have placed their stop losses just outside this range.
+2. **The Open (London Killzone):** At 02:00 EST, London volume enters the market. The algorithm initiates rapid buying.
+3. **The Trap (The Judas Swing):** Price spikes aggressively above the Asian High. 
+   - Early short sellers are stopped out (creating Buy orders).
+   - Retail breakout traders enter long (creating Buy orders).
+4. **The Absorption:** The banks need to sell. They use this massive flood of artificial retail Buy orders as counter-party liquidity to fill their massive Short positions.
+5. **The Reversal:** Once the institutional short orders are filled, the artificial buying stops. The market instantly collapses, trapping the retail longs underwater and initiating the true downtrend of the day.
 
-## Judas Swing on the Chart
+### Why "Judas"?
+It is named the Judas Swing because it betrays the retail trader. It presents a beautiful, convincing breakout, only to immediately stab them in the back.
 
-<AnnotatedChart
-  title="Judas swing — false break above Asian high, then reversal"
-  showSwingHL={true}
+{/* 4. Visuals */}
+## Visualizing the Trap
+
+<AnnotatedChart 
+  title="The London Judas Swing"
   showSweep={true}
-  showCHoCH={true}
   keyLevelLabel="Asian Session High"
-  keyLevelY={60}
+  keyLevelY={30}
 />
 
-In this diagram:
+*Notice how the Asian Session builds a quiet range. As soon as London opens, price violently spikes above the Asian High. This is the Judas Swing. It immediately reverses, leaving a long wick (a Liquidity Sweep), and delivers the true trend downward.*
 
-- The **Asian session high** is established (horizontal level).
-- At London open, price **sweeps above** the Asian high — this is the Judas swing. Stop losses above the high are triggered.
-- Price then **reverses sharply**, creating a CHoCH (Change of Character).
-- The true direction for the London session is **bearish** — the initial move up was the deception.
+{/* 5. How to see it on a chart */}
+## How to Trade the Judas Swing
 
----
+To trade the Judas Swing, you must wait for the trap to be sprung before you enter. You are the hunter waiting for the trap to snap shut on the prey.
 
-## When Judas Swings Occur
+1. **Establish Bias:** Determine the Higher Timeframe (Daily/4H) directional bias. If the HTF is Bearish, you are looking for a *bullish* Judas Swing to short into.
+2. **Mark the Asian Range:** Draw horizontal lines at the highest high and lowest low that occurred between 18:00 and 00:00 EST.
+3. **Wait for the Killzone:** Do not do anything until the London Open (02:00 EST) or NY Open (07:00 EST).
+4. **Identify the Swing:** Watch for price to violently spike through the Asian boundary *against* your HTF bias. (e.g., if you want to short, wait for a spike above the Asian High).
+5. **Wait for Rejection:** Do not front-run the swing. Wait for the candle to close. If it closes back inside the Asian range, leaving a massive wick (a [Liquidity Sweep](/smc/liquidity-sweep)), the trap is set.
+6. **Enter on Confirmation:** Drop to a lower timeframe (1M or 5M). Wait for a [CHoCH](/price-action/choch) and an [OTE pullback](/ict/ote) to execute your trade in the direction of the true trend.
 
-<CompareTable title="Typical Judas Swing Scenarios">
+{/* 6. Worked Examples */}
+## Worked Examples
 
-| Session | Common Pattern | What Gets Swept |
-|---|---|---|
-| **London open** | Price sweeps the Asian high or low, then reverses. | Asian session liquidity (equal highs/lows formed overnight). |
-| **New York open** | Price sweeps London's session high or low, then reverses. | London session liquidity, especially if London's move was over-extended. |
-| **Sunday open** | Price gaps into Friday's range, sweeps a level, then reverses. | Weekend gap liquidity — less reliable, wider spreads. |
+### Example 1: The Classic London Short (Idealized)
 
-</CompareTable>
+**Scenario:** The Daily chart of GBP/USD is in a downtrend.
+1. The Asian session creates a tight 20-pip range. The high is 1.2750.
+2. At 02:30 EST, price explodes to 1.2765. Retail traders start buying heavily.
+3. You check your HTF charts. At 1.2765, there is a massive unmitigated 4-Hour Bearish Order Block.
+4. The 15-Minute candle closes at 1.2745, leaving a massive 20-pip wick that pierced the Asian High and tapped the 4-Hour OB.
+5. The Judas Swing is complete. You enter short.
+6. Price collapses through the London session, dropping 100 pips to sweep the Asian Low and continue the macro downtrend.
 
----
+**Walkthrough:**
+This is the textbook setup. The Judas Swing was not random; it specifically targeted the Asian High liquidity to pull price into a Premium HTF Order Block. Once the algorithm acquired the liquidity and mitigated the OB, it delivered the true trend.
 
-## Identifying a Judas Swing in Real Time
+### Example 2: The Double Judas (Grounded)
 
-<StepFlow>
-  <Step>
-    <strong>Note the prior session's range.</strong> Mark the Asian session high and low (for London) or the London session high and low (for New York). These are the liquidity targets.
-  </Step>
-  <Step>
-    <strong>Watch the initial move at session open.</strong> Does price thrust toward one of these levels? If it sweeps the high or low with momentum, this is a potential Judas swing in progress.
-  </Step>
-  <Step>
-    <strong>Wait for the reversal signal.</strong> Do not pre-empt. Look for a <strong>displacement candle</strong> in the opposite direction, a CHoCH on the lower timeframe, or a break back into the prior range.
-  </Step>
-  <Step>
-    <strong>Confirm with structure.</strong> The reversal should align with the higher-timeframe bias. A Judas swing that sweeps the Asian high and reverses bearish is strongest when the daily or 4H trend is also bearish.
-  </Step>
-</StepFlow>
+**Scenario:** EUR/USD is ranging on the Daily chart.
+1. London opens and spikes above the Asian High. It rejects, and you enter short.
+2. Price drops 20 pips, but then stalls heading into the NY Open (07:00 EST).
+3. At 08:30 EST, CPI inflation data is released. 
+4. Price violently spikes down, sweeping the Asian Low, hitting your take-profit (if you were lucky) or instantly reversing.
+5. It then rockets back up, stopping out your breakeven stop, and takes out the London High.
 
-<Callout type="trap" title="Common Trap">
-  <p>Not every session-open move is a Judas swing. Sometimes the initial thrust <strong>is</strong> the real move, and the "expected reversal" never comes. This is why <strong>confirmation</strong> (CHoCH, displacement, structural shift) is essential before entering against the initial move.</p>
+**Walkthrough:**
+When the macro trend is unclear (ranging), both London and NY can perform their own independent Judas Swings on opposite sides of the range. NY will often use high-impact news to sweep the liquidity that London left behind. If you are trading a London Judas Swing, always take partial profits before the NY Open to protect yourself from the "Double Judas."
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The False Judas Trap">
+  The Judas Swing only works if it is moving *against* the Higher Timeframe trend. If the Daily chart is massively Bullish, and London opens with a massive green candle breaking the Asian High... that might not be a Judas Swing. It might just be a genuine Break of Structure continuing the uptrend. Never short a strong uptrend just because it broke the Asian High. You need HTF alignment.
 </Callout>
 
-<Callout type="note">
-  Content expanding soon. Future updates will include London vs. New York Judas swing comparison studies, instrument-specific behavior (pairs with GBP tend to show stronger London Judas patterns), and integration with the OTE framework for timing the reversal entry.
-</Callout>
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC / ICT:** "Judas Swing" is a proprietary term coined by Inner Circle Trader (ICT). It is the central mechanic of his London Open entry model.
+- **Classic TA:** Classic charting refers to this as a "Bull Trap" or "Bear Trap" occurring at the market open.
+- **Volume Spread Analysis (VSA):** VSA traders look for an "Upthrust" on high volume at resistance. An Upthrust is mechanically identical to a Judas Swing—it shows effort (volume) failing to produce a result (closing above the level), indicating institutional distribution.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: Does the Judas Swing happen every day?**
+A: No. It happens roughly 60-70% of the time. On days with massive, one-sided momentum (trend days), price will simply open and run in one direction without ever looking back to manipulate the Asian range.
+
+**Q: How big is the Judas Swing usually?**
+A: In Forex (EUR/USD, GBP/USD), the Judas Swing is typically 15 to 30 pips above/below the Asian range. In Gold or Indices, it can be significantly larger due to higher baseline volatility.
+
+**Q: Can the NY session have a Judas Swing?**
+A: Yes! The NY Judas Swing typically occurs at 08:30 EST (due to news) or 09:30 EST (the equities open). It will often sweep the low or high established by the London session before reversing.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "The Judas Swing is an engineered false breakout at the start of a session.",
+  "Its purpose is to trigger retail stop losses and breakout orders to generate liquidity for institutions.",
+  "It is the 'Manipulation' phase of the Accumulation-Manipulation-Distribution (AMD) cycle.",
+  "Never buy the initial breakout of the Asian session. Wait to see if it rejects and closes back inside the range.",
+  "The Judas Swing should move opposite to the Higher Timeframe bias (e.g., spike up to trap longs, then dump)."
+]} />
 
 ---
-
-## Judas Swing vs. Liquidity Sweep
-
-The Judas swing is a *specific type* of liquidity sweep — one that occurs at a session open and is followed by a directional commitment for the session. Not all liquidity sweeps are Judas swings:
-
-- **Liquidity sweep** — Any move that takes out resting orders at a key level. Can happen at any time.
-- **Judas swing** — A liquidity sweep that occurs *at the open of a killzone*, is *deceptive* (against the true session direction), and is followed by *reversal and displacement*.
-
----
-
-<KeyTakeaways>
-  <ul>
-    <li>A <strong>Judas swing</strong> is a false move at session open that sweeps liquidity before price reverses to the true direction.</li>
-    <li>Most common at <strong>London open</strong> (sweeping Asian range) and <strong>New York open</strong> (sweeping London range).</li>
-    <li>The sweep triggers stops and induces breakout entries — providing <strong>counter-liquidity</strong> for institutional positioning.</li>
-    <li><strong>Never trade the Judas direction.</strong> Wait for the reversal confirmation: CHoCH, displacement, or a structural shift.</li>
-    <li>Judas swings are most reliable when they align with the <strong>higher-timeframe directional bias</strong>.</li>
-  </ul>
-</KeyTakeaways>
+*References:*
+Algorithmic manipulation of open prices. Formalized as the "Judas Swing" by Inner Circle Trader.
