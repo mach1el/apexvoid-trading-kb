@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 type CalloutType = 'tip' | 'warn' | 'trap' | 'note';
 
 interface CalloutProps {
-  type?: CalloutType;
+  type?: CalloutType | string;
   title?: string;
   children: ReactNode;
 }
@@ -16,7 +16,8 @@ const config: Record<CalloutType, { icon: string; color: string; defaultTitle: s
 };
 
 export function Callout({ type = 'note', title, children }: CalloutProps) {
-  const c = config[type];
+  // Fallback to 'note' if an invalid type is provided
+  const c = config[type as CalloutType] || config.note;
   return (
     <div className={`border border-border border-l-4 ${c.color} bg-bg-elevated rounded-md p-4 my-6`}>
       <div className="flex items-center gap-2 mb-2 font-semibold text-text">
