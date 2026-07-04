@@ -19,8 +19,14 @@ function MdxPage({ loader }: { loader: () => Promise<{ default: React.ComponentT
 // Start Here
 const Introduction = () => <MdxPage loader={() => import('./content/start-here/introduction.mdx')} />;
 
+// Dow Theory
+const OriginsHistory = () => <MdxPage loader={() => import('./content/dow-theory/origins-history.mdx')} />;
+const TheSixTenets = () => <MdxPage loader={() => import('./content/dow-theory/the-six-tenets.mdx')} />;
+const TrendMechanics = () => <MdxPage loader={() => import('./content/dow-theory/trend-mechanics.mdx')} />;
+const CriticismsLimitations = () => <MdxPage loader={() => import('./content/dow-theory/criticisms-limitations.mdx')} />;
+const ConnectionToModernFrameworks = () => <MdxPage loader={() => import('./content/dow-theory/connection-to-modern-frameworks.mdx')} />;
+
 // 1. Foundations
-const DowTheory = () => <MdxPage loader={() => import('./content/foundations/dow-theory.mdx')} />;
 const MarketStructure = () => <MdxPage loader={() => import('./content/foundations/market-structure.mdx')} />;
 const CandlesVolume = () => <MdxPage loader={() => import('./content/foundations/candles-volume.mdx')} />;
 const TimeframesMtf = () => <MdxPage loader={() => import('./content/foundations/timeframes-mtf.mdx')} />;
@@ -72,8 +78,14 @@ export function App() {
       <Routes>
         <Route path="/" element={<Introduction />} />
 
+        {/* Dow Theory */}
+        <Route path="/dow-theory/origins-history" element={<OriginsHistory />} />
+        <Route path="/dow-theory/the-six-tenets" element={<TheSixTenets />} />
+        <Route path="/dow-theory/trend-mechanics" element={<TrendMechanics />} />
+        <Route path="/dow-theory/criticisms-limitations" element={<CriticismsLimitations />} />
+        <Route path="/dow-theory/connection-to-modern-frameworks" element={<ConnectionToModernFrameworks />} />
+
         {/* 1. Foundations */}
-        <Route path="/foundations/dow-theory" element={<DowTheory />} />
         <Route path="/foundations/market-structure" element={<MarketStructure />} />
         <Route path="/foundations/candles-volume" element={<CandlesVolume />} />
         <Route path="/foundations/timeframes-mtf" element={<TimeframesMtf />} />

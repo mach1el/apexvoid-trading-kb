@@ -1,0 +1,68 @@
+export const frontmatter = {
+  title: 'Trend Mechanics',
+  description: 'How Dow defined uptrends, downtrends, lines, and reversals.'
+};
+
+import { ConceptCard } from '../../components/ConceptCard';
+import { AnnotatedChart } from '../../components/AnnotatedChart';
+import { Callout } from '../../components/Callout';
+import { KeyTakeaways } from '../../components/KeyTakeaways';
+
+# Trend Mechanics
+
+<ConceptCard title="Defining the Trend" icon="📈">
+Before Dow Theory, the concept of a "trend" was abstract. Dow provided the first mechanical, objective definitions for uptrends, downtrends, consolidations (lines), and reversals. 
+</ConceptCard>
+
+If you have ever looked for Higher Highs (HH) and Higher Lows (HL) to determine market structure, you are using the mechanical rules Charles Dow laid out over a century ago.
+
+---
+
+## 1. Uptrends & Downtrends
+
+Dow defined primary trends by the successive peaks and troughs printed on the chart.
+
+- **Uptrend (Bull Market):** A situation where each successive rally peaks higher than the previous one, and each successive pullback bottoms higher than the previous one. (Successive Higher Highs and Higher Lows).
+- **Downtrend (Bear Market):** A situation where each successive decline bottoms lower than the previous one, and each successive rally peaks lower than the previous one. (Successive Lower Lows and Lower Highs).
+
+<AnnotatedChart 
+  title="The Mechanical Uptrend" 
+  showSwingHL={true} 
+/>
+
+---
+
+## 2. "Lines" (Consolidations)
+
+Dow used the term "Line" to describe a horizontal line on a chart where price fluctuates within a tight, defined range over a period of weeks. 
+
+In modern terms, this is a **consolidation**, a **range**, or an **accumulation/distribution block**.
+
+- A Line indicates a balance between buying and selling pressure.
+- According to Dow, you cannot predict which way a Line will break. You must wait for the breakout.
+- A breakout above the Line is a bullish signal (Accumulation is complete).
+- A breakdown below the Line is a bearish signal (Distribution is complete).
+
+---
+
+## 3. Secondary Reaction vs. True Reversal
+
+The most difficult mechanical task in Dow Theory is distinguishing a normal Secondary Reaction (a healthy pullback) from a True Reversal (the end of the primary trend).
+
+Dow's rule (Tenet 6) states a trend is in force until a definite reversal is signaled. How is it signaled?
+
+### Anatomy of a Bullish Reversal (Bear to Bull)
+1. **The Final Low:** The market makes a Lower Low (LL).
+2. **The Secondary Rally:** Price rallies, but fails to break the previous Lower High (LH).
+3. **The Higher Low:** Price pulls back again, but *fails* to make a new Lower Low. Instead, it forms a Higher Low (HL).
+4. **The Breakout (Confirmation):** Price rallies past the peak of the Secondary Rally. The moment that prior high is breached, a True Reversal is confirmed.
+
+<Callout type="trap" title="The False Breakout">
+A mere break of the previous high is not enough if it isn't preceded by a higher low. Likewise, a failure to make a new high is not a reversal until price subsequently breaks below the previous higher low. Modern traders call this a Change of Character (CHoCH) followed by a Break of Structure (BOS).
+</Callout>
+
+<KeyTakeaways>
+- An uptrend is mechanically defined by successive Higher Highs and Higher Lows.
+- "Lines" are sideways consolidations; wait for the breakout, do not anticipate it.
+- A true reversal requires structural failure: a failure to make a new extreme, followed by a break of the previous swing point.
+</KeyTakeaways>

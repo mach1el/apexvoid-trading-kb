@@ -22,11 +22,22 @@ export const navigation: NavSection[] = [
     ],
   },
   {
+    label: 'Dow Theory',
+    prefix: '/dow-theory',
+    icon: '🏛️',
+    items: [
+      { label: 'Origins & History', slug: 'origins-history', path: '/dow-theory/origins-history' },
+      { label: 'The Six Tenets', slug: 'the-six-tenets', path: '/dow-theory/the-six-tenets' },
+      { label: 'Trend Mechanics', slug: 'trend-mechanics', path: '/dow-theory/trend-mechanics' },
+      { label: 'Criticisms & Limitations', slug: 'criticisms-limitations', path: '/dow-theory/criticisms-limitations' },
+      { label: 'Connection to Modern Frameworks', slug: 'connection-to-modern-frameworks', path: '/dow-theory/connection-to-modern-frameworks' },
+    ],
+  },
+  {
     label: '1. Foundations',
     prefix: '/foundations',
     icon: '🏗️',
     items: [
-      { label: 'Dow Theory', slug: 'dow-theory', path: '/foundations/dow-theory' },
       { label: 'Market Structure', slug: 'market-structure', path: '/foundations/market-structure' },
       { label: 'Candles & Volume', slug: 'candles-volume', path: '/foundations/candles-volume' },
       { label: 'Timeframes & MTF', slug: 'timeframes-mtf', path: '/foundations/timeframes-mtf' },

@@ -1,0 +1,100 @@
+export const frontmatter = {
+  title: 'The Six Tenets',
+  description: 'The six foundational principles of Dow Theory codified by Robert Rhea.'
+};
+
+import { ConceptCard } from '../../components/ConceptCard';
+import { TideWaveRipple } from '../../components/TideWaveRipple';
+import { MarketCycleChart } from '../../components/MarketCycleChart';
+import { AnnotatedChart } from '../../components/AnnotatedChart';
+import { Callout } from '../../components/Callout';
+import { KeyTakeaways } from '../../components/KeyTakeaways';
+
+# The Six Tenets
+
+<ConceptCard title="The Core Rules" icon="⚖️">
+Codified by Robert Rhea in 1932 based on the writings of Dow and Hamilton, these six tenets form the absolute foundation of technical analysis. They dictate how price, trends, averages, and volume interact.
+</ConceptCard>
+
+---
+
+## 1. The Averages Discount Everything
+
+This is the bedrock of the Efficient Market Hypothesis. Dow Theory posits that the closing prices of the market averages reflect all available information—past, present, and even future expectations.
+
+Every earnings report, interest rate cut, natural disaster, and shift in mass psychology is already "priced in" by the collective actions of market participants. Therefore, studying price action is superior to studying fundamental news, because the news is already embedded in the price.
+
+---
+
+## 2. The Market Has Three Trends
+
+Dow famously compared the stock market to the ocean, noting three simultaneous movements occurring at all times.
+
+<TideWaveRipple />
+
+1. **The Primary Trend (The Tide):** The long-term macroeconomic trend lasting from several months to years (a macro bull or bear market).
+2. **The Secondary Trend (The Wave):** Intermediate corrections or pullbacks *against* the primary trend, typically lasting three weeks to three months. 
+3. **The Minor Trend (The Ripple):** Short-term daily fluctuations lasting days to a few weeks. Dow considered these largely unpredictable "noise," though modern day traders thrive here.
+
+---
+
+## 3. Primary Trends Have Three Phases
+
+Dow noted that major market cycles are driven by the shifting psychology of different market participants. 
+
+### The Bull Market Phases
+<MarketCycleChart variant="bull" />
+
+1. **Accumulation:** "Smart Money" (institutional investors) quietly buy when prices are rock-bottom and general news is overwhelmingly negative. 
+2. **Public Participation:** Trend-following systems and astute retail traders catch on. Prices rise rapidly with increasing volume. This is the longest phase.
+3. **Distribution (Excess):** Rampant speculation and euphoria take over. The general public buys aggressively on hype, providing the exit liquidity Smart Money needs to quietly sell off their positions.
+
+### The Bear Market Phases
+<MarketCycleChart variant="bear" />
+
+1. **Distribution:** Smart money sells at the peak while the public is still euphoric.
+2. **Public Participation:** The trend breaks down. Fear sets in as prices fall rapidly.
+3. **Panic/Despair:** The final capitulation. Retail traders liquidate at massive losses, bringing prices down to the point where Smart Money begins Accumulation again.
+
+---
+
+## 4. The Averages Must Confirm Each Other
+
+In an industrial economy, Charles Dow reasoned that if manufacturing companies (The Industrial Average) were thriving and producing goods, then the companies shipping those goods (The Rail/Transportation Average) must also be thriving.
+
+- **Confirmation:** If the Industrials break to a new all-time high, the Transports must also break to a new high to confirm the primary bull trend is valid.
+- **Divergence (Non-Confirmation):** If one average hits a new high but the other fails to follow, it is a massive warning sign that the trend is weak and a reversal may be imminent.
+
+<Callout type="note" title="Modern Relevance">
+The strict Industrials/Transports rule is hotly debated today, given the U.S. transition to a service and technology-driven economy. However, the *principle* of confirmation survives powerfully in modern trading via correlation analysis (e.g., verifying Bitcoin breakouts with Ethereum, or S&P 500 breakouts with the Nasdaq).
+</Callout>
+
+---
+
+## 5. Volume Must Confirm the Trend
+
+Volume is the conviction behind the price. Dow Theory states that volume should expand in the direction of the primary trend and contract during secondary reactions (pullbacks).
+
+- **In a Bull Market:** Volume should increase when prices rise (impulses) and decrease when prices fall (pullbacks).
+- **In a Bear Market:** Volume should increase when prices fall (impulses) and decrease when prices bounce (pullbacks).
+
+If price reaches a new high but volume is significantly lower than the previous high, it indicates a lack of institutional participation. 
+
+---
+
+## 6. A Trend Persists Until a Definite Reversal is Signaled
+
+A trend is assumed to be in effect until there is absolute, definitive proof that it has reversed. 
+
+<Callout type="trap" title="The Premature Reversal Trap">
+Traders constantly lose money trying to pick tops and bottoms. Dow Theory mandates patience: you do not assume a primary bull market has ended just because of a sharp secondary correction. You must wait for the market to print a lower high *and* a lower low (a structural failure).
+</Callout>
+
+<KeyTakeaways>
+- Price discounts all news; trust the chart over the headlines.
+- Identify whether you are trading the Tide, the Wave, or the Ripple.
+- Market cycles are driven by Smart Money accumulation and distribution.
+- Require correlated assets (averages) to confirm major breakouts.
+- Volume must expand in the direction of the primary trend.
+- Assume the trend will continue until structural failure is explicitly proven.
+</KeyTakeaways>
