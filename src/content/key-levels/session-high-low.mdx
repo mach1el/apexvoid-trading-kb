@@ -1,67 +1,126 @@
 export const frontmatter = {
   title: 'Session Highs & Lows',
-  description: 'Learn how the Asian, London, and New York session ranges define intraday key levels — and why the next session often targets the previous session\'s extremes.',
+  description: 'How the global transition of capital from Asia to London to New York creates predictable intraday cycles and liquidity traps.'
 };
 
-import { ConceptCard } from '../../components/ConceptCard';
-import { AnnotatedChart } from '../../components/AnnotatedChart';
 import { Callout } from '../../components/Callout';
 import { KeyTakeaways } from '../../components/KeyTakeaways';
+import { AnnotatedChart } from '../../components/AnnotatedChart';
+import { ConceptCard } from '../../components/ConceptCard';
 
-# Session Highs & Lows
+{/* 1. Hook */}
+If you try to trade the exact same breakout strategy at 8:00 PM in Tokyo and 8:30 AM in New York, you will fail. The market has distinct "seasons" every 24 hours, driven by the opening and closing of the world's major financial centers.
 
-<ConceptCard title="Session Ranges as Key Levels" icon="🕐">
-  The forex and futures markets operate across three major trading sessions: **Asian** (Tokyo), **London**, and **New York**. Each session prints its own high and low. These session extremes become critical intraday levels because the next session frequently targets the prior session's liquidity sitting above its high or below its low.
-</ConceptCard>
+{/* 2. Definition */}
+**Session Highs and Lows** refer to the extreme price points established during the three major global trading windows: the Asian Session, the London Session, and the New York Session. These extremes act as intraday liquidity pools that subsequent sessions actively hunt.
 
-## Visualising the Asian Session High
+{/* 3. Deep Explanation */}
+## The Intraday Cycle of Capital
 
-<AnnotatedChart
-  title="Asian Session High as Intraday Key Level"
+Forex and crypto markets are open 24 hours a day, but volatility is not evenly distributed. True price movement only occurs when major institutional capital is active. By tracking the highs and lows of these specific windows, you can map the daily "accumulation, manipulation, and distribution" cycle.
+
+### 1. The Asian Session (Accumulation)
+- **Characteristics:** Low volume, tight ranges, algorithmically driven. Major western banks are asleep. 
+- **The Setup:** The Asian session typically establishes a narrow consolidation box. 
+- **The Liquidity:** Because the range is tight, retail traders place their stop-losses just above the Asian High and just below the Asian Low. This builds a massive pool of liquidity on both sides of the market while the world sleeps.
+
+### 2. The London Session (Manipulation)
+- **Characteristics:** High volume, extreme volatility. This is the financial hub of the world waking up.
+- **The Setup:** When London opens, institutions need liquidity to position themselves for the true daily trend. They cannot enter massive orders inside the tight Asian range.
+- **The Action:** London will frequently engineer a fake breakout, sweeping the Asian High or the Asian Low. This is the classic "London Fake-out" or Judas Swing. Once the retail stops are triggered, London initiates the *true* directional move of the day.
+
+### 3. The New York Session (Distribution/Continuation)
+- **Characteristics:** Massive volume, news-driven. Overlaps with London for the first 4 hours (the most liquid time in the world).
+- **The Setup:** New York typically reacts to what London did. 
+- **The Action:** If London set the low of the day and trended higher, New York will often provide a pullback (creating the NY Open Low) and continue the distribution phase in the direction of the London trend. Alternatively, if major economic news hits, New York can violently reverse the London trend.
+
+### Why Session Extremes Matter
+The high and low of a specific session are micro-versions of the [Previous Daily High/Low](/key-levels/pdh-pdl-pwh-pwl). If you know the Asian High is resting at 1.1050, and London opens and drives up to 1.1055 before forming a massive rejection wick, you have a high-probability read that the manipulation is over and the true trend is down.
+
+{/* 4. Visuals */}
+## The Classic Intraday Profile
+
+<AnnotatedChart 
+  title="Asia Accumulation → London Sweep → NY Trend"
+  isBull={false}
+  keyLevelY={90}
   keyLevelLabel="Asian Session High"
-  keyLevelY={60}
+  showSweep={true}
+  showSwingHL={true}
 />
 
-The marked level represents the highest price printed during the Asian session. When London opens, price often sweeps this level before establishing the true directional move of the day.
+*In this classic profile, Asia consolidates. London opens, sweeps the Asian High to trap early buyers, and establishes the High of the Day (HOD). New York then joins the sell-off, distributing price lower.*
 
-## The Three Sessions Explained
+{/* 5. How to see it on a chart */}
+## How to Trade Session Transitions (Step-by-Step)
 
-Understanding each session's character is essential:
+To trade this cycle, you must synchronize your charts with the time zones.
 
-- **Asian Session (approx. 00:00–08:00 GMT).** Typically the quietest session with the tightest range. It establishes a consolidation zone that London will either continue or reverse. The Asian range high and low become the first liquidity targets of the day.
-- **London Session (approx. 08:00–16:00 GMT).** The most volatile session, responsible for the largest percentage of daily volume in forex. London often sets the high or low of the entire day. It frequently sweeps the Asian session range before committing to a direction.
-- **New York Session (approx. 13:00–21:00 GMT).** Overlaps with London for several hours (the "London-New York overlap"), creating peak volatility. New York either continues London's move or reverses it, often targeting London's session high or low.
+1. **Set the Indicator:** Use a session box indicator to highlight the Asian Session (usually 8:00 PM to midnight EST for FX). 
+2. **Mark the Box:** Draw a horizontal line at the absolute highest and lowest wicks of the Asian session.
+3. **Wait for London Open:** Do not take a position *inside* the Asian box. Wait for the Frankfurt/London open (2:00 AM - 3:00 AM EST).
+4. **Hunt the Sweep:** Watch for price to push outside the Asian box. If price pushes above the Asian High, look for a rapid rejection and a structural shift (CHoCH) on the 5-minute chart.
+5. **Execute the Reversal:** If the sweep is confirmed, enter short. Your target is the *other* side of the Asian box (the Asian Low), as London will now distribute price to hunt the liquidity on the opposite side.
+6. **The New York Continuation:** If you miss the London move, wait for the NY open (8:00 AM EST). Look for a pullback into an Order Block or FVG created during the London run, and enter in the direction of the London trend.
 
-## Step-by-Step: Using Session Levels
+{/* 6. Worked Examples */}
+## Worked Examples
 
-1. **Mark the Asian range.** Once the Asian session closes (around London open), draw horizontal lines at the session high and session low. This creates a box that frames the pre-London consolidation.
-2. **Wait for the London open.** Observe whether London sweeps the Asian high, the Asian low, or both. A sweep of one extreme followed by a displacement candle in the opposite direction is a powerful intraday signal.
-3. **Note the London high and low.** As the London session progresses, continuously track its developing high and low. Once London closes, these levels become targets for the New York session.
-4. **Apply the "Judas Swing" concept.** The opening of a new session often begins with a deceptive move — a fake breakout in one direction designed to sweep liquidity before reversing. The Asian session high and low are the most common targets for this manoeuvre at the London open.
-5. **Track which sessions have been swept.** If London already swept the Asian low and reversed, the Asian high may not be relevant anymore. Focus shifts to the London session extremes as the new reference levels.
+### Example 1: The London Sweep (Idealized)
 
-## Real-World Example
+**Scenario:** EUR/USD ranges tightly between 1.0500 and 1.0520 for 8 hours during the Asian session. 
+1. Frankfurt opens. Price violently spikes up to 1.0525, breaking the Asian High. 
+2. Retail breakout algorithms buy the breakout. 
+3. London officially opens 1 hour later. The 1.0525 level is immediately rejected. A massive bearish engulfing candle prints on the 15-minute chart, closing back inside the Asian range at 1.0515.
+4. Price then cascades downward for the next 4 hours, effortlessly slicing through the Asian Low (1.0500) and trending down to 1.0450.
 
-On USD/JPY, the Asian session prints a range from 149.50 (low) to 149.80 (high) — a tight 30-pip range. At the London open, price drops sharply to 149.45, sweeping the Asian low by 5 pips. Within 15 minutes, a large bullish engulfing candle forms, and price rallies through the Asian range, breaking the Asian high at 149.80 and continuing to 150.30 over the next four hours.
+**Walkthrough:**
+This is the textbook "Accumulation, Manipulation, Distribution" cycle. The spike to 1.0525 was pure manipulation engineered to trigger the buy stops above the Asian High. Once the smart money was short, they distributed the asset lower. Trading the London sweep of the Asian range is one of the most statistically robust setups in day trading.
 
-The Asian low sweep at 149.45 served as the "Judas Swing" — the fake move designed to grab sell-side liquidity (stop-losses from Asian session longs) before the real bullish move began. Traders who recognised the sweep and waited for the displacement candle had a clear entry near 149.55 with a stop below 149.40.
+### Example 2: The New York Reversal (Grounded)
 
-<Callout type="trap" title="Common Trap: Trading Inside the Asian Range">
-  <p>The Asian session is a consolidation period. Trading breakouts within the Asian range itself is low-probability because the range is being _built_, not _targeted_. Wait for the London open before committing to a direction. The Asian range exists to provide context and liquidity targets — not to generate trade signals by itself.</p>
+**Scenario:** GBP/USD has a bearish London session, driving from 1.2500 down to 1.2450.
+1. New York opens at 8:00 AM EST. Price is currently at the low of the day.
+2. At 8:30 AM EST, major CPI news is released. 
+3. Price spikes down to 1.2440, sweeping the London Low, and then instantly rockets upward in a massive V-shaped recovery.
+4. Over the next 3 hours, New York completely erases the London trend, eventually sweeping the London High at 1.2500.
+
+**Walkthrough:**
+While New York often continues the London trend, high-impact news will override it. In this scenario, the New York session used the liquidity resting below the London Low to fuel a massive reversal. If you were short from London, this is why you must protect profits before the NY Open, especially on news days.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Asian Breakout Trap">
+  A very old, very broken retail strategy is the "Asian Box Breakout." Books from the early 2000s tell traders to place buy stops above the Asian High and sell stops below the Asian Low, assuming whichever way it breaks will be the trend. In modern algorithmic markets, doing this guarantees you will be caught in the London Judas Swing. Never trade the initial breakout of the Asian range; trade the failure (the sweep) of that breakout.
 </Callout>
 
-## Session Level Hierarchy
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
 
-Not all session levels carry equal weight:
+- **ICT:** This entire cycle is codified as AMD (Accumulation, Manipulation, Distribution) or PO3 (Power of 3). ICT emphasizes that the daily candle opens, manipulates one direction (creating the wick), and then distributes the other way (creating the body).
+- **Wyckoff:** The intraday cycle often mimics Wyckoff schematics on a micro-scale. Asia is the trading range (Phase A/B), London provides the Spring/Upthrust (Phase C), and NY provides the markup/markdown (Phase D/E).
+- **Volume Profile:** The Asian session builds a high-volume node (Point of Control). London rejects value away from that node, searching for new liquidity.
 
-- **Asian range** — Primary liquidity target for the London session. Tight ranges produce the cleanest sweeps.
-- **London range** — Often defines the high or low of the day. London session extremes are the most significant intraday levels.
-- **New York range** — Targets London's extremes. The NY session close often establishes the daily close, influencing the next day's PDH/PDL.
+{/* 9. FAQ */}
+## Frequently Asked Questions
 
-<KeyTakeaways>
-  - Mark the **Asian session high and low** before the London open — these are your first intraday liquidity targets.
-  - London frequently **sweeps** the Asian range extremes before committing to the daily trend direction.
-  - The **London-New York overlap** is the highest-volume period — expect the largest moves here.
-  - Watch for the **"Judas Swing"** — a deceptive move at session open that sweeps one extreme before reversing.
-  - Session levels are **intraday tools** — combine them with higher-timeframe structure (PDH/PDL, swing points) for best results.
-</KeyTakeaways>
+**Q: Do session times change with Daylight Savings?**
+A: Yes. It is critical to adjust your session boxes when the US or Europe shifts their clocks. The market operates on biological time for the humans working at the banks. Always base your times around the local time of London (8 AM GMT/BST) and New York (8 AM EST/EDT).
+
+**Q: Does this cycle work on stocks or just Forex?**
+A: The specific Asia-London-NY cycle is specific to 24-hour markets (Forex, Crypto, Commodities). However, the US equity market (stocks) has its own micro-cycle: the Morning Session (high volatility, sweeps), the Lunch Doldrums (consolidation), and the Power Hour (distribution/trend into the close).
+
+**Q: What if London never sweeps the Asian range?**
+A: If London opens and immediately trends away from the Asian range without sweeping it, it implies the market is in an extremely strong directional trend. In this case, you look for pullbacks into fair value gaps or order blocks, rather than waiting for a sweep that isn't coming.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "The 24-hour market is divided into three distinct phases: Asian Accumulation, London Manipulation, and NY Distribution.",
+  "The Asian Session High and Low create massive, tight liquidity pools that are prime targets for manipulation.",
+  "The 'London Fake-out' occurs when London opens, sweeps the Asian extreme, and reverses to create the true daily trend.",
+  "Never blindly trade the initial breakout of the Asian range; assume it is a trap until proven otherwise.",
+  "New York will typically continue the London trend, unless high-impact news triggers a reversal."
+]} />
+
+---
+*References:*
+Inner Circle Trader (ICT). Various lectures detailing the AMD (Accumulation, Manipulation, Distribution) cycle and the Killzone timings.

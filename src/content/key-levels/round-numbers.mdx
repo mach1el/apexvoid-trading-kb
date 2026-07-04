@@ -1,59 +1,131 @@
 export const frontmatter = {
-  title: 'Round Numbers & Psychological Levels',
-  description: 'Discover why price repeatedly reacts at round numbers like 1.3000 and 1.2500 — the psychology behind these levels and how to use them in your trading.',
+  title: 'Round Numbers (Psychological Levels)',
+  description: 'How human psychology and institutional option barriers create massive supply and demand at whole numbers.'
 };
 
-import { ConceptCard } from '../../components/ConceptCard';
-import { AnnotatedChart } from '../../components/AnnotatedChart';
 import { Callout } from '../../components/Callout';
 import { KeyTakeaways } from '../../components/KeyTakeaways';
+import { AnnotatedChart } from '../../components/AnnotatedChart';
+import { ConceptCard } from '../../components/ConceptCard';
 
-# Round Numbers & Psychological Levels
+{/* 1. Hook */}
+Human beings are wired to seek simplicity. When an amateur trader places a limit order on EUR/USD, they don't place it at 1.09873; they place it at 1.1000. This psychological quirk creates massive walls of capital that dictate where trends die and reverse.
 
-<ConceptCard title="What Are Psychological Levels?" icon="🧠">
-  **Psychological levels** are price points ending in round numbers — typically **.000** (major) and **.500** (minor) in forex, or **$10, $50, $100** increments in equities and crypto. They attract disproportionate order flow because humans naturally anchor decisions to clean, memorable numbers.
-</ConceptCard>
+{/* 2. Definition */}
+**Round Numbers** (also known as Psychological Levels, Big Figures, or Whole Numbers) are price levels ending in multiple zeros (e.g., 1.1000 in Forex, or $4,000 on the S&P 500). They act as natural support and resistance because they are universally identifiable and heavily traded by both retail and institutional participants.
 
-## Visualising a Round Number Level
+{/* 3. Deep Explanation */}
+## The Psychology of Big Figures
 
-<AnnotatedChart
-  title="Price Reacting at the 1.3000 Psychological Level"
-  keyLevelLabel="1.3000"
-  keyLevelY={100}
+The power of round numbers stems from the way human brains process information. It is cognitively easier to anchor value to a clean, even number. This phenomenon is known as "digit preference" in behavioral economics. 
+
+In trading, this manifests in order flow:
+- **Retail Take Profits:** A trader buying Bitcoin at $43,000 is highly likely to set their Take Profit target at exactly $50,000, not $49,612. 
+- **Retail Stop Losses:** A trader buying a stock at $105 will often place their Stop Loss just below the psychological $100 barrier, assuming it will act as a floor.
+
+This concentration of orders creates intense volatility around these levels.
+
+### The Institutional Mechanism (Option Barriers)
+
+It is a misconception that round numbers only work because "dumb retail money" trades them. Institutions are actually the primary defenders of round numbers, particularly in the FX and Options markets.
+
+Major banks write (sell) massive exotic option contracts (like barrier options) that expire worthless if the underlying asset breaches a specific price level. These barriers are almost exclusively placed at major Big Figures (e.g., 1.1000, 1.2000). 
+
+If price approaches 1.1000, the bank that wrote the option stands to lose millions if the level breaks. To defend their position, the bank will aggressively sell the asset just *before* it hits 1.1000, creating massive institutional resistance. This is why you often see price approach a major round number, stall out 5-10 pips away, and violently reverse.
+
+### The Hierarchy of Round Numbers
+
+Not all round numbers are created equal. They follow a strict hierarchy of importance:
+1. **The Double Century (000):** The most powerful. Examples: 1.1000, $5,000. These are macro inflection points.
+2. **The Mid-Figure (50):** The secondary level. Examples: 1.0550, $4,050. These often act as intermediate support/resistance within a daily range.
+3. **The Quarter-Figures (25 / 75):** Minor psychological levels. Useful for scalping, but rarely turn a macro trend. 
+
+{/* 4. Visuals */}
+## The Barrier Effect
+
+<AnnotatedChart 
+  title="The 1.1000 Institutional Barrier"
+  isBull={false}
+  keyLevelY={20}
+  keyLevelLabel="1.1000 (Big Figure)"
+  showSwingHL={true}
 />
 
-The annotated level at 1.3000 acts as a magnet. Price approaches, reacts, and either bounces or breaks through — but rarely ignores it entirely.
+*Notice how price repeatedly spikes into the zone just below 1.1000 but fails to close above it. The long upper wicks indicate aggressive institutional selling (defense) ahead of the barrier.*
 
-## Why Round Numbers Work
+{/* 5. How to see it on a chart */}
+## How to Trade Round Numbers (Step-by-Step)
 
-This isn't mystical. It's a self-fulfilling prophecy driven by human behaviour and order placement:
+Trading round numbers blindly is dangerous. You must use them as *confluence* areas, not standalone signals.
 
-1. **Cognitive anchoring.** When a trader thinks "I'll take profit at 1.3000" or "I'll set my stop at 1.2500," they choose round numbers because they're easy to remember and feel like natural targets. Multiply this across thousands of market participants, and you get massive order clustering.
-2. **Institutional order placement.** Banks and fund managers frequently place large orders at round numbers. Central bank interventions, options strikes, and barrier options are often set at these levels.
-3. **Options market influence.** In forex, large option expiries often sit at major round numbers. When a significant options contract expires at 1.3000, the market maker hedging that position can pin price near the strike — creating gravitational pull toward the round number.
+1. **Draw the Grid:** On your charting platform, enable a price grid or draw horizontal lines manually at the major "00" and "50" levels for your asset.
+2. **Identify the Trend:** Determine the prevailing macro trend. If the trend is bullish, you are looking for price to pull back and find *support* at a round number.
+3. **Wait for the Approach:** Watch how price behaves as it gets within 10-20 pips/points of the big figure. Does momentum accelerate (a potential breakout) or decelerate (a potential rejection)?
+4. **The Sweep or The Squeeze:** 
+   - *The Sweep:* Price spikes through the round number by 10-15 pips, triggers retail stop-losses, and immediately rejects back below/above it. This is a high-probability reversal setup.
+   - *The Squeeze:* Price consolidates extremely tightly just *under* resistance (e.g., at 1.0990) refusing to drop. This implies buyers are absorbing the institutional defense. A violent breakout is imminent.
+5. **Execution:** Enter the market only after the rejection is confirmed by a candle close, or the breakout is confirmed by a clean close above the level.
 
-## Step-by-Step: Using Round Numbers in Your Analysis
+{/* 6. Worked Examples */}
+## Worked Examples
 
-1. **Identify the nearest major (.000) levels.** On any instrument, find the two major round numbers that bracket the current price. For EUR/USD trading at 1.2870, those levels are 1.2500 and 1.3000.
-2. **Mark intermediate (.500) levels.** Between the two majors, mark the .500 level — in this case, 1.2500 is already a major, so 1.2750 is the next .250 level. Some traders also watch .200 and .800 levels, but .000 and .500 carry the most weight.
-3. **Observe price behaviour at these levels.** Does price stall, consolidate, or reverse? Does it wick through and reject? The reaction type tells you whether the level is acting as support, resistance, or a liquidity target.
-4. **Combine with structure.** A round number that coincides with a swing high, an order block, or a PDH/PDL becomes a high-confluence zone. Round numbers alone are context — they become actionable when combined with other concepts.
-5. **Watch for false breaks.** Price often spikes through a round number to grab liquidity above or below it, then reverses. A sweep of the .000 level followed by a bearish engulfing candle, for example, is a classic setup.
+Let's look at the two most common ways round numbers dictate price action.
 
-## Real-World Example
+### Example 1: The Figure Sweep (Grounded)
 
-Gold (XAU/USD) is trading at $1,995. The $2,000 level is a major psychological barrier. As price approaches, buying pressure increases — traders front-run the breakout. Price hits $2,003, but the move stalls immediately. The candle prints a long upper wick, and the next three candles are bearish, pushing price back to $1,985.
+**Scenario:** USD/JPY is in a downtrend and approaches the massive 150.00 level. 
+1. The media is hyping up 150.00 as a "historic floor." Retail traders place thousands of buy limit orders exactly at 150.00, with stops at 149.80.
+2. Price drops to 150.10, stalls, and then violently drops to 149.75.
+3. The retail stops are triggered. The media claims the floor is broken.
+4. Immediately, massive institutional buy volume steps in. The 4-Hour candle closes at 150.30, leaving a massive 55-pip rejection wick below the figure. 
+5. Price rallies 300 pips over the next week.
 
-What happened? The $2,000 level had massive sell orders resting above it (both take-profits from existing longs and new limit shorts). Retail traders buying the "breakout" provided the liquidity for these larger orders to fill. The round number acted as a trap for late breakout buyers.
+**Walkthrough:** 
+The 150.00 level was too obvious. The institutions knew the retail liquidity rested just below it. By driving price through the psychological floor, they acquired the liquidity necessary to reverse the macro trend. You never place a limit order exactly *on* the figure; you wait for the sweep and buy the rejection.
 
-<Callout type="trap" title="Common Trap: Placing Stops Exactly at Round Numbers">
-  <p>If you place your stop-loss at exactly 1.3000, you're placing it where everyone else does. Institutional traders know this. They will sweep that level, trigger your stop, and then continue in the direction you originally expected. Instead, give your stops **breathing room** beyond the round number — at least 10–20 pips in forex, or an equivalent buffer for other instruments. Better yet, base your stop placement on the nearest structural level beyond the round number.</p>
+### Example 2: The Vacuum Effect (Idealized)
+
+**Scenario:** GBP/USD breaks through heavy resistance at 1.2930. 
+1. There are no major structural levels (old highs) between 1.2930 and 1.3000. 
+2. As price clears 1.2950, momentum suddenly accelerates drastically.
+3. Price rockets in a straight line for 50 pips, hitting 1.3000 in minutes, where it immediately stops and pulls back.
+
+**Walkthrough:**
+This is known as the "Vacuum Effect" or magnetic draw. When price clears minor resistance and a major Big Figure is near, it acts like a magnet. Large algorithms recognize the lack of resistance and aggressively buy to push price into the liquidity pool resting at the round number. Traders use this to hold winning positions longer, knowing 1.3000 is the ultimate draw on liquidity.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Limit Order Trap">
+  The absolute worst way to trade a round number is to place a blind limit order exactly at the level (e.g., a Buy Limit at 1.1000). Institutional algorithms are specifically programmed to sweep these exact levels by 10-20 pips to trigger stops before reversing. If you must use a limit order, place it slightly past the level (e.g., 1.0985) to catch the sweep, or wait for confirmation.
 </Callout>
 
-<KeyTakeaways>
-  - **.000** levels are major psychological levels; **.500** levels are secondary — both attract significant order flow.
-  - Round numbers work because of **cognitive anchoring**, institutional order placement, and options market dynamics.
-  - Never trade round numbers in isolation — combine them with **swing structure, order blocks, or session levels** for confluence.
-  - Price often **sweeps** round numbers to grab liquidity before reversing — treat false breaks as potential trade setups.
-  - Avoid placing stops at exact round numbers; give your position **room to breathe** beyond the level.
-</KeyTakeaways>
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **ICT:** Round numbers are referred to as "Institutional Pricing." ICT teaches that algorithmic price delivery specifically targets these levels (00, 20, 50, 80) as part of the Interbank Price Delivery Algorithm (IPDA).
+- **Order Flow:** Heatmap software (like Bookmap) visually confirms this phenomenon. You will routinely see massive, bright red bands of resting limit orders clustered precisely on the "00" levels.
+- **Price Action:** Classic support and resistance theory often uses round numbers as the backbone for drawing horizontal zones, acknowledging the psychological impact of whole numbers on crowd behavior.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: Do round numbers work on cryptocurrencies?**
+A: Yes, incredibly well. Because crypto is heavily retail-driven, the psychological impact of big numbers is magnified. Bitcoin struggling to break $50,000, $60,000, or $100,000 is a perfect example of round number resistance.
+
+**Q: How wide is the "zone" around a round number?**
+A: A round number is not a razor-thin line; it is a zone. In Forex, the zone is typically 10 to 20 pips on either side (e.g., 1.0980 to 1.1020). Price will often interact within this buffer before reversing or breaking out.
+
+**Q: What happens if a major round number is broken?**
+A: If a massive level (like EUR/USD 1.1000) is broken and price *accepts* trading above it (closing multiple daily candles above), the psychology flips. The former massive resistance becomes massive support, and price often "vacuums" toward the next mid-figure (1.1050) or big figure (1.1100).
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Human psychology and institutional option barriers create massive liquidity pools at round numbers.",
+  "The most important levels are the '00' (Big Figures) and the '50' (Mid-Figures).",
+  "Institutions actively defend these levels or manipulate price through them to trigger retail stops.",
+  "Never place blind limit orders exactly on a round number. Wait for the sweep or the confirmation of a breakout.",
+  "When no other structural resistance exists, round numbers act as a magnetic draw on price."
+]} />
+
+---
+*References:*
+Mitchell, J. (2001). *Clustering and Psychological Barriers: The Importance of Numbers*. Academic paper detailing the statistical clustering of orders at round numbers in financial markets.
