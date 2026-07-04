@@ -9,7 +9,11 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const location = useLocation();
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
+    const init: Record<string, boolean> = {};
+    navigation.forEach(sec => init[sec.prefix] = true);
+    return init;
+  });
 
   const toggleSection = useCallback((prefix: string) => {
     setCollapsed((prev) => ({ ...prev, [prefix]: !prev[prefix] }));
