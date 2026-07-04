@@ -1,62 +1,117 @@
 export const frontmatter = {
-  title: 'Liquidity Sweep / Stop Hunt',
-  description: 'How smart money engineers liquidity grabs before reversals.'
+  title: 'Liquidity Sweep (Stop Hunt)',
+  description: 'How to spot when smart money is trapping breakout traders and triggering stop losses to fuel their true directional bias.'
 };
 
-import { ConceptCard } from '../../components/ConceptCard';
-import { AnnotatedChart } from '../../components/AnnotatedChart';
 import { Callout } from '../../components/Callout';
 import { KeyTakeaways } from '../../components/KeyTakeaways';
-import { CompareTable } from '../../components/CompareTable';
-import { ConfluenceMeter } from '../../components/ConfluenceMeter';
+import { AnnotatedChart } from '../../components/AnnotatedChart';
 
-# Liquidity Sweep / Stop Hunt
+{/* 1. Hook */}
+Every trader has experienced this nightmare: You identify a strong support level. You buy the bounce. You place your stop loss exactly where every textbook tells you to—just below the support line. Price drops, hits your stop loss by two pips, and then immediately rockets to your profit target without you. You didn't get unlucky; you were the victim of a calculated Liquidity Sweep.
 
-<ConceptCard title="Liquidity Sweep" icon="🎯">
-  A **liquidity sweep** (also called a stop hunt or liquidity grab) occurs when price trades beyond a key swing high or swing low — triggering the clustered stop-loss orders resting there — and then **quickly reverses** back through the level. The sweep is the mechanism by which institutional participants obtain the counterparty fills they need to build or unload positions.
+{/* 2. Definition */}
+A **Liquidity Sweep** (often called a Stop Hunt) occurs when price aggressively pokes through a major pool of resting liquidity (an old high or low), triggers the orders resting there, and then rapidly reverses back into the range. It is the physical manifestation of institutions harvesting liquidity to execute massive orders.
 
-  On a candlestick chart, a sweep often appears as a **long wick** (shadow) that pierces a prior high or low while the candle body closes back inside the prior range. The wick represents the moment liquidity was taken; the close back inside confirms rejection.
-</ConceptCard>
+{/* 3. Deep Explanation */}
+## The Mechanics of a Sweep
 
-## Anatomy of a Sweep
+As established in [Buy-Side & Sell-Side Liquidity](/smc/buyside-sellside-liquidity), pools of orders rest above old highs and below old lows. 
 
-<AnnotatedChart title="Liquidity Sweep in Action" showSweep={true} />
+When a central bank wants to initiate a massive long position, they must find willing sellers. They do this by driving price *below* a major support level. 
+1. **Triggering Stops:** Long traders hiding their stops below support are triggered (sell orders).
+2. **Inducing Breakouts:** Breakout traders see the support breaking and initiate new short positions (sell orders).
+3. **The Trap:** The bank now has an immense pool of sell orders to absorb. They buy heavily against these sellers. Once the bank's long orders are filled, they stop suppressing the price. The selling pressure vanishes, and price violently snaps back above the support level.
 
-The chart above highlights a classic sweep pattern. Price pushes past a prior swing level, triggering resting stops, then reverses sharply. The key elements to observe:
+The defining characteristic of a sweep is the **failure to close** beyond the level. The price will *wick* through the liquidity pool, but the body of the candle will close back inside the range.
 
-1. **The target level** — a well-defined swing high or low with visible stop-loss clustering.
-2. **The pierce** — price trades through the level, often on a single aggressive candle.
-3. **The rejection** — price closes back below (for a BSL sweep) or above (for an SSL sweep) the level, forming a prominent wick.
-4. **The displacement** — the reversal move is typically impulsive, showing institutional commitment to the new direction.
+### Sweep vs. Break of Structure (BOS)
+It is critical to distinguish between a Liquidity Sweep and a genuine [Break of Structure](/price-action/bos). 
+- A **BOS** signals continuation. It is validated when the candle *closes* decisively beyond the old high/low.
+- A **Sweep** signals reversal. It is validated when the candle *wicks* beyond the old high/low but *closes* back inside the range.
 
-## Why Sweeps Happen
+{/* 4. Visuals */}
+## Visualizing the Trap
 
-Institutional order flow operates under constraints that retail traders do not face. A fund manager looking to buy 2,000 contracts of ES futures cannot place a single market order without moving the price against themselves. Instead, they need **resting sell orders** to buy against.
+<AnnotatedChart 
+  title="The Liquidity Sweep (Stop Hunt)"
+  showSweep={true}
+  showSwingHL={true}
+/>
 
-The largest concentration of sell orders sits just below obvious swing lows — in the form of long-position stop-losses and breakout sell-stops. By allowing (or engineering) a move into those stops, institutions effectively convert retail panic into their own entry liquidity.
+*Notice how price drops below the Swing Low, but fails to close there. The wick represents the raid on Sell-Side Liquidity. The immediate reversal confirms it was a trap, not a true downtrend continuation.*
 
-This is not conspiracy — it is a natural consequence of order book mechanics and the need for counterparty volume at scale.
+{/* 5. How to see it on a chart */}
+## How to Trade a Liquidity Sweep
 
-<Callout type="note">Content expanding soon.</Callout>
+Trading a sweep requires patience and discipline, as you are trading against the immediate momentum.
 
-## Spotting a Sweep in Real-Time
+1. **Identify the Pool:** Locate a major pool of resting liquidity (e.g., Previous Daily High, Equal Lows, Asian Session High). Mark it with a horizontal line.
+2. **Wait for the Raid:** Wait for price to aggressively push through the level. Do not enter as it breaks. 
+3. **Wait for the Close:** Observe the candle close on your timeframe of choice (e.g., 15-Minute or 1-Hour). If it closes *back inside* the range, leaving a wick through the level, the sweep is confirmed.
+4. **Enter the Reversal:** You can enter at market when the candle closes back inside, or drop to a lower timeframe and wait for a [CHoCH](/price-action/choch) to confirm the reversal before entering.
+5. **Target Internal Liquidity:** If price sweeps Sell-Side Liquidity at the bottom of a range, target the Buy-Side Liquidity resting at the top of the range.
 
-Identifying a sweep as it happens requires attention to three factors:
+{/* 6. Worked Examples */}
+## Worked Examples
 
-- **Context:** Is price approaching a level where stops are likely to rest? Look for obvious swing highs/lows, equal highs/lows, or trendline touches.
-- **Aggression of the move into the level:** A sharp, impulsive drive into the stops (especially during high-impact news) often signals an engineered grab rather than genuine breakout momentum.
-- **Post-sweep behaviour:** The most critical confirmation. A candle that sweeps a high and closes *below* it — especially with displacement — is a strong signal that the move was a grab, not a breakout.
+### Example 1: The Asian High Sweep (Idealized)
 
-<Callout type="note">Content expanding soon.</Callout>
+**Scenario:** USD/JPY consolidates tightly during the Asian session, leaving a clear high at 140.50 and a low at 140.00.
+1. As the London session opens, price spikes aggressively to 140.60.
+2. Breakout traders buy the momentum, thinking a massive uptrend is starting. Early short sellers are stopped out.
+3. The 15-Minute candle closes at 140.45. It leaves a massive wick poking above the Asian High, but the body closes back inside the range.
+4. An order flow trader recognizes the BSL sweep. They enter a short position at 140.45, with a stop loss above the wick at 140.65.
+5. Price immediately collapses, dropping 80 pips to sweep the Asian Low at 140.00.
 
-<Callout type="trap" title="Common Mistake: Fading Every Wick">
-  Not every wick beyond a swing level is an institutional sweep. In trending markets, price legitimately breaks and holds beyond prior structure. The difference lies in **what happens after the pierce**. A sweep is only confirmed when price reverses with conviction — ideally producing a CHoCH (Change of Character) on a lower timeframe. Blindly fading every wick leads to counter-trend losses in strong moves.
+**Walkthrough:**
+This is the classic "Judas Swing" (false breakout). London volume was used to sweep Asian liquidity to fuel the true move of the day. Waiting for the candle close is what separated the trapped retail trader from the profitable institutional trader.
+
+### Example 2: The Double Bottom Trap (Grounded)
+
+**Scenario:** TSLA forms a Double Bottom at $200. It bounces twice, confirming it as "strong support" for retail traders.
+1. A week later, TSLA approaches $200 again.
+2. It breaks through, dropping rapidly to $195. 
+3. A trader attempts to trade the sweep. They buy at $195 before the candle closes, assuming it's a stop hunt.
+4. The 1-Hour candle closes at $195. The 4-Hour candle closes at $192.
+5. TSLA continues to bleed for the next week, dropping to $170.
+
+**Walkthrough:**
+Why did it fail? Because the trader front-ran the close. A sweep is *only* a sweep if price is rejected and closes back inside the range. If the candle closes heavily outside the level, it is a genuine Break of Structure. The trader bought a falling knife instead of waiting for confirmation.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Premature Entry Trap">
+  Do not try to guess exactly how far a sweep will go. Institutional algorithms can push price 5 pips past a level, or 50 pips past a level, depending on how deep they need to dig to fill their orders. If you place a blind limit order just beyond an old high, you will often get run over. Always wait for the candle to close back inside the range, or wait for lower timeframe structural confirmation.
 </Callout>
 
-<KeyTakeaways>
-  - A liquidity sweep is a **wick beyond a key level** that triggers stops before reversing.
-  - Institutions use sweeps to obtain counterparty fills for large positions.
-  - Confirmation requires price to **close back through** the swept level with displacement.
-  - Always combine sweep identification with structural confirmation (BOS or CHoCH) on a lower timeframe.
-  - Sweeps are highest-probability when they occur at higher-timeframe points of interest, not random intraday swings.
-</KeyTakeaways>
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC / ICT:** ICT refers to this concept extensively. A sweep of a major high/low followed by a reversal is the core of the "Turtle Soup" strategy. It is also the defining feature of a "Judas Swing" during killzones.
+- **Wyckoff:** In Wyckoff accumulation, a sweep of the trading range low is called a "Spring." In distribution, a sweep of the trading range high is called an "Upthrust." Both serve the exact same liquidity-harvesting purpose.
+- **Classic TA:** Classic charting refers to this as a "False Breakout" or a "Fakeout."
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: What timeframe should I use to look for sweeps?**
+A: Sweeps happen on all timeframes because the market is fractal. However, sweeps of 4-Hour or Daily highs/lows provide the most reliable and explosive reversals. A sweep of a 1-Minute high is mostly noise.
+
+**Q: How do I know if the wick is long enough to be a sweep?**
+A: It is less about the absolute length of the wick, and more about the *reaction*. If price pokes through a level and is immediately and violently rejected back into the range, it is a sweep.
+
+**Q: If price sweeps a high, does that mean the trend is over?**
+A: Not necessarily. A sweep of a minor internal high might just be a pullback in a macro uptrend. However, if price sweeps a major Weekly or Monthly high and rejects violently, it can signal a macro trend reversal.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "A Liquidity Sweep is an intentional move by smart money to trigger stop losses and trap breakout traders.",
+  "Sweeps are characterized by price wicking through a major liquidity pool, but closing back inside the range.",
+  "A close beyond the level signals continuation (BOS). A close back inside the level signals reversal (Sweep).",
+  "Never front-run a sweep. Always wait for the candle to close or wait for LTF structural confirmation.",
+  "When external liquidity (old highs/lows) is swept, target internal liquidity (FVGs or the opposite end of the range)."
+]} />
+
+---
+*References:*
+Stop run mechanics and false breakouts. Formalized as "Turtle Soup" by Linda Raschke and Larry Connors, later adapted into SMC/ICT methodologies.

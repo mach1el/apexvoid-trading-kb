@@ -9,3 +9,5 @@ Key rules to remember:
 4. **Visuals:** Minimum 2 visuals per page (3-4 for core pages). Use the standard semantic colors (Bull=blue, Bear=orange, etc).
 5. **Interactive Widgets:** Each major topic module MUST include at least one custom interactive React widget (Explorer, Quiz, Calculator, or Walkthrough) that degrades gracefully to a static SVG.
 6. **Tone:** Authoritative, educational-only. No hype.
+
+7. **Git Workflow:** When making updates, DO NOT commit directly to master. Always branch out a new branch from master, make your commits there, and then merge the branch back into master.
