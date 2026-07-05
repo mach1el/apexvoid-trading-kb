@@ -331,6 +331,27 @@ const CH: ChartData[] = [
   ]
  },
  {
+  id:"SRB", title:"Support & Resistance (the basics)", sub:"classical · range edges",
+  def:"Support is a floor where demand halts a decline; resistance is a ceiling where supply halts an advance. Until one breaks, price oscillates between them — each touch that holds reinforces the level in traders' memory, drawing the same buyers and sellers back to the edge.",
+  read:[
+    "<b>Resistance</b> is the ceiling: price rallies into it and sellers step in, rejecting the move.",
+    "<b>Support</b> is the floor: price falls into it and buyers step in, bouncing it back up.",
+    "While the range holds, <b>trade the edges</b> — buy support, sell resistance — not the middle.",
+    "Each hold reinforces the level; a decisive <b>close beyond</b> either edge ends the range."
+  ],
+  trap:"The range doesn't last forever. Every touch consumes the resting orders defending the level — heavy testing eventually <b>weakens</b> it, and the break often runs hard once that liquidity is gone.",
+  pMin:2302,pMax:2323,
+  c:[[2310,2313,2309,2312],[2312,2318,2311,2317],[2317,2320,2316,2319],[2319,2320,2313,2314],[2314,2315,2308,2309],[2309,2310,2305,2306],[2306,2312,2305,2311],[2311,2317,2310,2316],[2316,2320,2315,2318],[2318,2319,2312,2313],[2313,2314,2307,2308],[2308,2309,2305,2307],[2307,2313,2306,2312]],
+  a:[
+    {t:"level",p:2320,color:"bear",label:"resistance (ceiling)"},
+    {t:"level",p:2305,color:"bull",label:"support (floor)"},
+    {t:"swing",i:2,p:2320,dir:"up",label:"reject"},
+    {t:"swing",i:5,p:2305,dir:"down",label:"bounce"},
+    {t:"swing",i:8,p:2320,dir:"up",label:"reject"},
+    {t:"swing",i:11,p:2305,dir:"down",label:"bounce"}
+  ]
+ },
+ {
   id:"SR", title:"Support / Resistance Flip", sub:"classical · role reversal",
   def:"Price remembers levels. A level tested repeatedly is significant; when it finally breaks, it flips role — old resistance becomes support (and vice versa). This is the classical, pre-SMC framing of what order blocks and flip zones formalise.",
   read:[
@@ -367,6 +388,61 @@ const CH: ChartData[] = [
     {t:"arrow",i:5,p1:2307,p2:2315,color:"bull",label:"departure (rally)"},
     {t:"swing",i:10,p:2306,dir:"down",label:"retest"},
     {t:"arrow",i:11,p1:2308,p2:2314,color:"bull",label:"bounce"}
+  ]
+ },
+ {
+  id:"VOL", title:"What Volatility Is (dispersion)", sub:"volatility · dispersion",
+  def:"Volatility measures the dispersion of price — the size of the swings, independent of direction. A market alternates between calm (small ranges) and wild (large ranges). More volatility means a wider expected range: elevated risk, but also the raw material of opportunity.",
+  read:[
+    "Volatility is <b>how much price disperses</b>, not which way it goes.",
+    "Left half: <b>tight, quiet</b> candles — low volatility. The ATR (lower panel) sits low.",
+    "Right half: <b>wide, wild</b> candles — high volatility. ATR expands sharply.",
+    "Higher volatility = bigger expected range → <b>wider stops, smaller size</b>, but more room to profit."
+  ],
+  trap:"High volatility is not the same as 'trend'. Price can be extremely volatile while going <b>nowhere net</b> — big two-sided ranges churn accounts just as fast as a clean trend rewards them.",
+  pMin:2312,pMax:2341,
+  osc:[2,2,2,2,2,3,7,9,11,10,12,11], oscMin:0, oscMax:15, oscLabel:"ATR",
+  c:[[2320,2321,2319,2320],[2320,2321,2319,2321],[2321,2322,2320,2320],[2320,2321,2319,2320],[2320,2321,2319,2320],[2320,2322,2319,2321],[2321,2328,2318,2326],[2326,2330,2316,2318],[2318,2332,2315,2330],[2330,2333,2320,2322],[2322,2336,2319,2334],[2334,2338,2324,2327]],
+  a:[
+    {t:"bracket",i1:0,i2:5,label:"low volatility (calm)"},
+    {t:"bracket",i1:6,i2:11,label:"high volatility (wild)"}
+  ]
+ },
+ {
+  id:"ATRX", title:"Average True Range — how it measures", sub:"volatility · ATR indicator",
+  def:"The Average True Range measures volatility by averaging the True Range — a range that includes gaps by referencing the previous close, not just the current bar's high−low. Higher ATR = larger expected movement per bar. It is absolute (price-scaled) and says nothing about direction.",
+  read:[
+    "<b>True Range</b> = the greatest of: high−low, |high−prev close|, |low−prev close|.",
+    "At the <b>gap</b>, a plain high−low understates the move — TR uses the prior close to capture it.",
+    "<b>ATR</b> (lower panel) is a smoothed average of TR: it <b>expands</b> when ranges widen, contracts when they calm.",
+    "ATR is <b>absolute and direction-agnostic</b> — it rises on sharp drops and sharp rallies alike."
+  ],
+  trap:"ATR tells you <b>how much</b>, never <b>which way</b>. A rising ATR is neither bullish nor bearish — reading direction into it is a classic misuse.",
+  pMin:2310,pMax:2329,
+  osc:[4,4,3,3,10,9,8,6,5,5], oscMin:0, oscMax:14, oscLabel:"ATR (14)",
+  c:[[2320,2323,2319,2322],[2322,2325,2321,2324],[2324,2326,2322,2325],[2325,2327,2323,2326],[2320,2321,2314,2316],[2316,2318,2312,2314],[2314,2320,2313,2319],[2319,2324,2318,2323],[2323,2325,2320,2321],[2321,2323,2318,2320]],
+  a:[
+    {t:"level",p:2326,dash:1,color:"muted",label:"prev close"},
+    {t:"swing",i:4,p:2314,dir:"down",label:"gap → large TR"}
+  ]
+ },
+ {
+  id:"VREG", title:"Volatility Regimes (contraction → expansion)", sub:"volatility · expansion / contraction",
+  def:"Volatility is cyclical: markets alternate between contraction (tight, quiet ranges) and expansion (violent, directional moves). Extended low-volatility squeezes build the energy for the next expansion. Reading the current regime — ATR at a low vs expanding — decides whether mean-reversion or breakout tactics fit.",
+  read:[
+    "Left: a <b>contraction</b> — narrow ranges, flat structure, ATR grinding to a multi-bar low.",
+    "Low volatility <b>builds energy</b>: leverage stacks and stops cluster around the tight range.",
+    "The <b>expansion</b> fires when a catalyst hits — ATR spikes and price runs one-sided.",
+    "Trade the regime: <b>fade</b> the range in contraction, <b>ride the break</b> as it expands."
+  ],
+  trap:"Fading the edge of a coiling range works — right up until the expansion. An ATR multi-bar low is a <b>warning to switch to breakout mode</b>, not an invitation to keep selling the highs.",
+  pMin:2316,pMax:2350,
+  osc:[3,2,2,1,1,1,1,6,8,9,8,7], oscMin:0, oscMax:12, oscLabel:"ATR",
+  c:[[2320,2322,2319,2321],[2321,2322,2320,2320],[2320,2321,2319,2320],[2320,2321,2320,2321],[2321,2322,2320,2320],[2320,2321,2319,2320],[2320,2321,2320,2321],[2321,2328,2320,2327],[2327,2334,2326,2333],[2333,2340,2332,2339],[2339,2344,2337,2343],[2343,2347,2340,2345]],
+  a:[
+    {t:"bracket",i1:0,i2:6,label:"contraction (squeeze)"},
+    {t:"level",p:2322,dash:1,color:"muted",label:"range cap"},
+    {t:"arrow",i:7,p1:2321,p2:2328,color:"bull",label:"expansion"}
   ]
  },
  {
