@@ -40,12 +40,14 @@ export function EMAPlayground() {
 
   const svgWidth = 600;
   const svgHeight = 300;
-  const padding = 30;
-  const drawW = svgWidth - padding * 2;
-  const drawH = svgHeight - padding * 2;
+  const paddingL = 20;
+  const paddingR = 70;
+  const paddingY = 30;
+  const drawW = svgWidth - paddingL - paddingR;
+  const drawH = svgHeight - paddingY * 2;
   
-  const x = (i: number) => padding + (i / 39) * drawW;
-  const y = (val: number) => svgHeight - padding - ((val - pMin) / (pMax - pMin)) * drawH;
+  const x = (i: number) => paddingL + (i / 39) * drawW;
+  const y = (val: number) => svgHeight - paddingY - ((val - pMin) / (pMax - pMin)) * drawH;
 
   const linePath = (key: 'p' | 'ema50' | 'ema200') => {
     return data.map((d, idx) => `${idx === 0 ? 'M' : 'L'} ${x(d.i)} ${y(d[key])}`).join(' ');
@@ -75,9 +77,9 @@ export function EMAPlayground() {
           
           {data.map((d, i) => <circle key={i} cx={x(d.i)} cy={y(d.p)} r="2" fill="var(--color-text)" />)}
 
-          {show200 && <text x={x(39) - 10} y={y(last.ema200) + 15} fill="var(--color-ema)" fontSize="12" fontFamily="var(--font-mono)">EMA 200</text>}
-          {show50 && <text x={x(39) - 10} y={y(last.ema50) - 10} fill="#8B5CF6" fontSize="12" fontFamily="var(--font-mono)">EMA 50</text>}
-          <text x={x(39) - 20} y={y(last.p) - 10} fill="var(--color-text)" fontSize="12" fontFamily="var(--font-mono)">Price</text>
+          {show200 && <text x={x(39) + 8} y={y(last.ema200) + 4} fill="var(--color-ema)" fontSize="12" fontFamily="var(--font-mono)">EMA 200</text>}
+          {show50 && <text x={x(39) + 8} y={y(last.ema50) + 4} fill="#8B5CF6" fontSize="12" fontFamily="var(--font-mono)">EMA 50</text>}
+          <text x={x(39) + 8} y={y(last.p) + 4} fill="var(--color-text)" fontSize="12" fontFamily="var(--font-mono)">Price</text>
         </svg>
       </div>
 
