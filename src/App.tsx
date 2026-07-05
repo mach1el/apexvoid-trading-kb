@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { AppShell } from './layouts/AppShell';
-import { MdxLayout } from './layouts/MdxLayout';
+import { AppShell } from './features/kb/layouts/AppShell';
+import { MdxLayout } from './features/kb/layouts/MdxLayout';
 
 // A wrapper for MDX page lazy imports
 function MdxPage({ loader }: { loader: () => Promise<{ default: React.ComponentType }> }) {
@@ -17,79 +17,79 @@ function MdxPage({ loader }: { loader: () => Promise<{ default: React.ComponentT
 
 // --- Lazy page loaders ---
 // Start Here
-const Introduction = () => <MdxPage loader={() => import('./content/start-here/introduction.mdx')} />;
+const Introduction = () => <MdxPage loader={() => import('./features/kb/content/start-here/introduction.mdx')} />;
 
 // Dow Theory
-const OriginsHistory = () => <MdxPage loader={() => import('./content/dow-theory/origins-history.mdx')} />;
-const TheSixTenets = () => <MdxPage loader={() => import('./content/dow-theory/the-six-tenets.mdx')} />;
-const TrendMechanics = () => <MdxPage loader={() => import('./content/dow-theory/trend-mechanics.mdx')} />;
-const CriticismsLimitations = () => <MdxPage loader={() => import('./content/dow-theory/criticisms-limitations.mdx')} />;
-const ConnectionToModernFrameworks = () => <MdxPage loader={() => import('./content/dow-theory/connection-to-modern-frameworks.mdx')} />;
+const OriginsHistory = () => <MdxPage loader={() => import('./features/kb/content/dow-theory/origins-history.mdx')} />;
+const TheSixTenets = () => <MdxPage loader={() => import('./features/kb/content/dow-theory/the-six-tenets.mdx')} />;
+const TrendMechanics = () => <MdxPage loader={() => import('./features/kb/content/dow-theory/trend-mechanics.mdx')} />;
+const CriticismsLimitations = () => <MdxPage loader={() => import('./features/kb/content/dow-theory/criticisms-limitations.mdx')} />;
+const ConnectionToModernFrameworks = () => <MdxPage loader={() => import('./features/kb/content/dow-theory/connection-to-modern-frameworks.mdx')} />;
 
 // 1. Foundations
-const MarketStructure = () => <MdxPage loader={() => import('./content/foundations/market-structure.mdx')} />;
-const CandlesVolume = () => <MdxPage loader={() => import('./content/foundations/candles-volume.mdx')} />;
-const TimeframesMtf = () => <MdxPage loader={() => import('./content/foundations/timeframes-mtf.mdx')} />;
-const LiquidityIntuition = () => <MdxPage loader={() => import('./content/foundations/liquidity-intuition.mdx')} />;
+const MarketStructure = () => <MdxPage loader={() => import('./features/kb/content/foundations/market-structure.mdx')} />;
+const CandlesVolume = () => <MdxPage loader={() => import('./features/kb/content/foundations/candles-volume.mdx')} />;
+const TimeframesMtf = () => <MdxPage loader={() => import('./features/kb/content/foundations/timeframes-mtf.mdx')} />;
+const LiquidityIntuition = () => <MdxPage loader={() => import('./features/kb/content/foundations/liquidity-intuition.mdx')} />;
 
 // 2. Key Levels
-const SwingHighLow = () => <MdxPage loader={() => import('./content/key-levels/swing-high-low.mdx')} />;
-const PdhPdl = () => <MdxPage loader={() => import('./content/key-levels/pdh-pdl-pwh-pwl.mdx')} />;
-const RoundNumbers = () => <MdxPage loader={() => import('./content/key-levels/round-numbers.mdx')} />;
-const SessionHighLow = () => <MdxPage loader={() => import('./content/key-levels/session-high-low.mdx')} />;
+const SwingHighLow = () => <MdxPage loader={() => import('./features/kb/content/key-levels/swing-high-low.mdx')} />;
+const PdhPdl = () => <MdxPage loader={() => import('./features/kb/content/key-levels/pdh-pdl-pwh-pwl.mdx')} />;
+const RoundNumbers = () => <MdxPage loader={() => import('./features/kb/content/key-levels/round-numbers.mdx')} />;
+const SessionHighLow = () => <MdxPage loader={() => import('./features/kb/content/key-levels/session-high-low.mdx')} />;
 
 // 3. Price Action
-const Bos = () => <MdxPage loader={() => import('./content/price-action/bos.mdx')} />;
-const Choch = () => <MdxPage loader={() => import('./content/price-action/choch.mdx')} />;
-const DisplacementImbalance = () => <MdxPage loader={() => import('./content/price-action/displacement-imbalance.mdx')} />;
-const ReadingWithoutIndicators = () => <MdxPage loader={() => import('./content/price-action/reading-without-indicators.mdx')} />;
+const Bos = () => <MdxPage loader={() => import('./features/kb/content/price-action/bos.mdx')} />;
+const Choch = () => <MdxPage loader={() => import('./features/kb/content/price-action/choch.mdx')} />;
+const DisplacementImbalance = () => <MdxPage loader={() => import('./features/kb/content/price-action/displacement-imbalance.mdx')} />;
+const ReadingWithoutIndicators = () => <MdxPage loader={() => import('./features/kb/content/price-action/reading-without-indicators.mdx')} />;
 
 // 4. Order Block
-const WhatIsOb = () => <MdxPage loader={() => import('./content/order-block/what-is-ob.mdx')} />;
-const IdentifyManually = () => <MdxPage loader={() => import('./content/order-block/identify-manually.mdx')} />;
-const MitigationRetest = () => <MdxPage loader={() => import('./content/order-block/mitigation-retest.mdx')} />;
-const RealVsFake = () => <MdxPage loader={() => import('./content/order-block/real-vs-fake.mdx')} />;
+const WhatIsOb = () => <MdxPage loader={() => import('./features/kb/content/order-block/what-is-ob.mdx')} />;
+const IdentifyManually = () => <MdxPage loader={() => import('./features/kb/content/order-block/identify-manually.mdx')} />;
+const MitigationRetest = () => <MdxPage loader={() => import('./features/kb/content/order-block/mitigation-retest.mdx')} />;
+const RealVsFake = () => <MdxPage loader={() => import('./features/kb/content/order-block/real-vs-fake.mdx')} />;
 
 // 5. SMC
-const BuysideSellside = () => <MdxPage loader={() => import('./content/smc/buyside-sellside-liquidity.mdx')} />;
-const LiquiditySweep = () => <MdxPage loader={() => import('./content/smc/liquidity-sweep.mdx')} />;
-const Fvg = () => <MdxPage loader={() => import('./content/smc/fvg.mdx')} />;
-const PremiumDiscountEq = () => <MdxPage loader={() => import('./content/smc/premium-discount-eq.mdx')} />;
+const BuysideSellside = () => <MdxPage loader={() => import('./features/kb/content/smc/buyside-sellside-liquidity.mdx')} />;
+const LiquiditySweep = () => <MdxPage loader={() => import('./features/kb/content/smc/liquidity-sweep.mdx')} />;
+const Fvg = () => <MdxPage loader={() => import('./features/kb/content/smc/fvg.mdx')} />;
+const PremiumDiscountEq = () => <MdxPage loader={() => import('./features/kb/content/smc/premium-discount-eq.mdx')} />;
 
 // 6. ICT
-const KillzonesSessions = () => <MdxPage loader={() => import('./content/ict/killzones-sessions.mdx')} />;
-const PdArrays = () => <MdxPage loader={() => import('./content/ict/pd-arrays.mdx')} />;
-const Ote = () => <MdxPage loader={() => import('./content/ict/ote.mdx')} />;
-const JudasSwing = () => <MdxPage loader={() => import('./content/ict/judas-swing.mdx')} />;
+const KillzonesSessions = () => <MdxPage loader={() => import('./features/kb/content/ict/killzones-sessions.mdx')} />;
+const PdArrays = () => <MdxPage loader={() => import('./features/kb/content/ict/pd-arrays.mdx')} />;
+const Ote = () => <MdxPage loader={() => import('./features/kb/content/ict/ote.mdx')} />;
+const JudasSwing = () => <MdxPage loader={() => import('./features/kb/content/ict/judas-swing.mdx')} />;
 
 // 7. Confluence
-const WhatIsConfluence = () => <MdxPage loader={() => import('./content/confluence/what-is-confluence.mdx')} />;
-const StackingFactors = () => <MdxPage loader={() => import('./content/confluence/stacking-factors.mdx')} />;
-const GradingLevels = () => <MdxPage loader={() => import('./content/confluence/grading-levels.mdx')} />;
+const WhatIsConfluence = () => <MdxPage loader={() => import('./features/kb/content/confluence/what-is-confluence.mdx')} />;
+const StackingFactors = () => <MdxPage loader={() => import('./features/kb/content/confluence/stacking-factors.mdx')} />;
+const GradingLevels = () => <MdxPage loader={() => import('./features/kb/content/confluence/grading-levels.mdx')} />;
 
 // Putting It Together
-const HowFrameworksRelate = () => <MdxPage loader={() => import('./content/together/how-frameworks-relate.mdx')} />;
-const HtfLtfWorkflow = () => <MdxPage loader={() => import('./content/together/htf-ltf-workflow.mdx')} />;
-const GlossaryPage = () => <MdxPage loader={() => import('./content/together/glossary.mdx')} />;
+const HowFrameworksRelate = () => <MdxPage loader={() => import('./features/kb/content/together/how-frameworks-relate.mdx')} />;
+const HtfLtfWorkflow = () => <MdxPage loader={() => import('./features/kb/content/together/htf-ltf-workflow.mdx')} />;
+const GlossaryPage = () => <MdxPage loader={() => import('./features/kb/content/together/glossary.mdx')} />;
 
 // Risk Management
-const WhyRiskIsEverything = () => <MdxPage loader={() => import('./content/risk-management/why-risk-is-everything.mdx')} />;
-const PositionSizing = () => <MdxPage loader={() => import('./content/risk-management/position-sizing.mdx')} />;
-const ScalingIntoAZone = () => <MdxPage loader={() => import('./content/risk-management/scaling-into-a-zone.mdx')} />;
-const BreakevenMath = () => <MdxPage loader={() => import('./content/risk-management/breakeven-math.mdx')} />;
-const DrawdownRecovery = () => <MdxPage loader={() => import('./content/risk-management/drawdown-recovery.mdx')} />;
-const Expectancy = () => <MdxPage loader={() => import('./content/risk-management/expectancy.mdx')} />;
-const RiskOfRuinAndStreaks = () => <MdxPage loader={() => import('./content/risk-management/risk-of-ruin-and-streaks.mdx')} />;
-const TradeManagementAndStops = () => <MdxPage loader={() => import('./content/risk-management/trade-management-and-stops.mdx')} />;
-const TheRiskChecklist = () => <MdxPage loader={() => import('./content/risk-management/the-risk-checklist.mdx')} />;
+const WhyRiskIsEverything = () => <MdxPage loader={() => import('./features/kb/content/risk-management/why-risk-is-everything.mdx')} />;
+const PositionSizing = () => <MdxPage loader={() => import('./features/kb/content/risk-management/position-sizing.mdx')} />;
+const ScalingIntoAZone = () => <MdxPage loader={() => import('./features/kb/content/risk-management/scaling-into-a-zone.mdx')} />;
+const BreakevenMath = () => <MdxPage loader={() => import('./features/kb/content/risk-management/breakeven-math.mdx')} />;
+const DrawdownRecovery = () => <MdxPage loader={() => import('./features/kb/content/risk-management/drawdown-recovery.mdx')} />;
+const Expectancy = () => <MdxPage loader={() => import('./features/kb/content/risk-management/expectancy.mdx')} />;
+const RiskOfRuinAndStreaks = () => <MdxPage loader={() => import('./features/kb/content/risk-management/risk-of-ruin-and-streaks.mdx')} />;
+const TradeManagementAndStops = () => <MdxPage loader={() => import('./features/kb/content/risk-management/trade-management-and-stops.mdx')} />;
+const TheRiskChecklist = () => <MdxPage loader={() => import('./features/kb/content/risk-management/the-risk-checklist.mdx')} />;
 
 // Strategies
-const OverviewNoUniversalBest = () => <MdxPage loader={() => import('./content/strategies/overview-no-universal-best.mdx')} />;
-const TrendFollowingPullback = () => <MdxPage loader={() => import('./content/strategies/trend-following-pullback.mdx')} />;
-const BreakoutRetest = () => <MdxPage loader={() => import('./content/strategies/breakout-retest.mdx')} />;
-const MomentumContinuation = () => <MdxPage loader={() => import('./content/strategies/momentum-continuation.mdx')} />;
-const MeanReversion = () => <MdxPage loader={() => import('./content/strategies/mean-reversion.mdx')} />;
-const TheWaitProtocol = () => <MdxPage loader={() => import('./content/strategies/the-wait-protocol.mdx')} />;
+const OverviewNoUniversalBest = () => <MdxPage loader={() => import('./features/kb/content/strategies/overview-no-universal-best.mdx')} />;
+const TrendFollowingPullback = () => <MdxPage loader={() => import('./features/kb/content/strategies/trend-following-pullback.mdx')} />;
+const BreakoutRetest = () => <MdxPage loader={() => import('./features/kb/content/strategies/breakout-retest.mdx')} />;
+const MomentumContinuation = () => <MdxPage loader={() => import('./features/kb/content/strategies/momentum-continuation.mdx')} />;
+const MeanReversion = () => <MdxPage loader={() => import('./features/kb/content/strategies/mean-reversion.mdx')} />;
+const TheWaitProtocol = () => <MdxPage loader={() => import('./features/kb/content/strategies/the-wait-protocol.mdx')} />;
 
 export function App() {
   return (

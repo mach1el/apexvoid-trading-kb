@@ -1,0 +1,109 @@
+export const frontmatter = {
+  title: 'Drawdown Asymmetry (The Mathematics of Ruin)',
+  description: 'Why a 50% loss requires a 100% gain just to break even. Understanding the exponential mathematics of capital preservation.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { DrawdownAsymmetry } from '../../components/DrawdownAsymmetry';
+
+{/* 1. Hook */}
+If you lose $10, you only have to make $10 to get it back, right? Yes, in nominal dollars. But trading is a game of percentages. If you start with $10,000 and lose 50% of your account, you now have $5,000. To get back to $10,000, you don't need a 50% gain on that $5,000. You need a 100% gain. The hole you dug is twice as steep to climb out of. This mathematical asymmetry destroys more careers than bad technical analysis ever will.
+
+{/* 2. Definition */}
+A **Drawdown** is the peak-to-trough decline in your trading account equity. It measures how much money you have lost from your all-time high balance.
+**Drawdown Asymmetry** is the mathematical law that states: as your drawdown increases, the percentage gain required to recover from that drawdown increases at an *exponential* rate.
+
+{/* 3. Deep Explanation */}
+## The Asymmetric Curve
+
+The math of drawdown recovery is brutal and unforgiving. 
+The formula to calculate the required gain to recover from a drawdown is:
+`Required Gain = Drawdown / (1 - Drawdown)`
+
+Let's look at how this plays out in reality:
+- **A 10% Drawdown:** You drop from $10,000 to $9,000. To get back to $10k, you need to make $1,000 on a $9,000 balance. That is an **11% gain**. A 10% loss requires an 11% gain. Barely noticeable.
+- **A 20% Drawdown:** You drop to $8,000. You need to make $2,000 on an $8,000 balance. That is a **25% gain**. The gap is widening.
+- **A 50% Drawdown:** You drop to $5,000. You need to make $5,000 on a $5,000 balance. That is a **100% gain**. You have to double your remaining money just to break even.
+- **A 90% Drawdown:** You drop to $1,000. You need to make $9,000 on a $1,000 balance. That is a **900% gain**. Your account is functionally dead.
+
+### The Survival Imperative
+This asymmetry is the single reason why professional traders obsess over capital preservation. If you can keep your drawdowns under 15%, your required recovery is virtually 1-to-1. But if you tilt, revenge trade, and allow your account to slide into a 40%+ drawdown, the math essentially guarantees you will never recover without injecting new capital.
+
+{/* 4. Visuals */}
+## Interactive: The Asymmetry Curve
+
+Study the curve below. Notice how the line stays relatively flat for the first 20%, and then goes completely vertical. Your job as a trader is to never let your account reach the vertical part of the curve.
+
+<DrawdownAsymmetry />
+
+{/* 5. How to see it on a chart */}
+## How to Cap Your Drawdown
+
+You cannot control when losing streaks happen. But you *can* control how deep the hole gets when they do happen.
+
+1. **Use Strict Position Sizing:** Never risk more than 1-2% of your account per trade (see [Position Sizing](/risk-management/position-sizing)). If you risk 1% per trade, you must lose 10 trades in a row to hit a 10% drawdown.
+2. **Implement a Daily Loss Limit:** Set a hard rule: if you lose 3% of your account in a single day, you shut the screens off and walk away. This prevents revenge trading and tilting.
+3. **Scale Down During Streaks:** If you enter a drawdown (e.g., you are down 5%), cut your risk in half. If you normally risk 1%, start risking 0.5%. Your goal in a drawdown is not to make the money back immediately; it is to stop the bleeding until market conditions align with your strategy again.
+
+{/* 6. Worked Examples */}
+## Worked Examples
+
+### Example 1: The Professional (Controlled Descent)
+
+**Scenario:** A trader hits a massive losing streak. They lose 7 trades in a row. 
+1. They were strictly risking 1% per trade.
+2. They are now in a **7% drawdown**.
+3. According to the formula `0.07 / (1 - 0.07)`, they need a **7.5% gain** to recover.
+4. Because they trade with a 2:1 [Reward:Risk](/risk-management/breakeven-math), they only need 4 winning trades to completely erase the 7-trade losing streak and hit new all-time highs.
+
+**Walkthrough:**
+The trader took a heavy statistical beating, but because they controlled their risk, they never entered the exponential part of the drawdown curve. Recovery was mathematical, calm, and inevitable.
+
+### Example 2: The Gambler (The Death Spiral)
+
+**Scenario:** A trader hits the same losing streak. They lose 3 trades in a row risking 2%. They are down 6%.
+1. They get angry and decide to "make it back" on the next trade.
+2. They risk 10% of their account on trade #4. It loses. They are down 16%.
+3. They full-port margin into trade #5, risking 34% of their account. It loses.
+4. They are now in a **50% drawdown**.
+5. The market finally aligns. They take a trade and win. But because they only have half their money left, a "normal" win barely moves the needle. They realize they need a 100% return just to get back to where they started yesterday.
+
+**Walkthrough:**
+By abandoning fixed risk, the trader fell into the vertical slope of the asymmetry curve. Even when their technical edge returned, the mathematical damage was too severe to overcome.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Prop Firm Drawdown Trap">
+  Proprietary trading firms (funded accounts) often enforce a 10% Maximum Drawdown rule. If you hit -10%, you lose the account. Many traders fail to realize that this fundamentally changes the math. If you have a "$100,000 account" with a $10,000 max drawdown, you do not have $100k. You have a $10,000 account with 10:1 leverage. If you risk 1% of $100k ($1,000), you are actually risking **10%** of your true capital per trade. You will blow the account in 10 losses. Adjust your sizing to reflect your *drawdown limit*, not your nominal balance.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **Hedge Funds:** Institutional funds have strict risk desks. If a portfolio manager enters a 5% drawdown, their capital allocation is often halved. If they hit 10%, they are fired. Institutions respect the asymmetry curve.
+- **Retail Trading Culture:** Social media glorifies "diamond handing" massive drawdowns. Mathematically, holding a -80% position in the hopes it bounces is statistically suicidal.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: If I'm in a deep drawdown, shouldn't I increase my risk to get out faster?**
+A: This is the Martingale fallacy, and it is how accounts go from -50% to -100%. If your strategy is currently out of sync with the market (causing the drawdown), betting *more* money on an out-of-sync strategy guarantees ruin. You must decrease risk, not increase it.
+
+**Q: How do I emotionally handle a drawdown?**
+A: By accepting the math before the trade is placed. If you truly accept that you have a 40% win rate, you must mathematically accept that a 5-trade losing streak is a statistical certainty. If you sized your position so that a 5-trade losing streak only costs you 5%, there is no emotional pain.
+
+**Q: What is a "Max Drawdown" (MDD) in backtesting?**
+A: It is the largest peak-to-trough drop your strategy ever experienced in history. If your backtest shows a historical MDD of 20%, you should assume it will hit 30% in live trading (due to slippage and psychology). If you cannot stomach a 30% drop, the strategy is unplayable for you.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Losses and gains are not symmetrical. A 50% loss requires a 100% gain to recover.",
+  "Drawdown recovery is exponential. The deeper the hole, the steeper the climb.",
+  "The primary goal of risk management is to keep drawdowns below 15%, where recovery is still linear.",
+  "Never increase your risk during a losing streak. Cut your risk in half.",
+  "Capital preservation is more important than capital appreciation. You cannot play the game if you have no chips."
+]} />
+
+---
+*References:*
+The mathematics of ruin. Asymmetric return profiles in portfolio management.

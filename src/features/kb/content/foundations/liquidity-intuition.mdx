@@ -1,0 +1,120 @@
+export const frontmatter = {
+  title: 'Liquidity Intuition',
+  description: 'Understanding the true engine of the market: why price moves and where it is drawn.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+
+{/* 1. Hook */}
+Retail traders think in terms of "support and resistance." Institutional algorithms think in terms of "liquidity." If you do not understand where liquidity rests, you will consistently find yourself trapped on the wrong side of the market.
+
+{/* 2. Definition */}
+**Liquidity** refers to the availability of resting orders (stop-losses, buy stops, and sell stops) in the market. Price is drawn to high-liquidity areas like a magnet to facilitate large institutional order execution.
+
+{/* 3. Deep Explanation */}
+## The Mechanics of Order Matching
+
+To understand liquidity, you must understand a fundamental law of trading: for every buyer, there must be a seller. 
+
+If a retail trader wants to buy 1 lot of EUR/USD, they click "Buy" and are filled instantly because the market is highly liquid. However, if a major bank needs to buy 10,000 lots of EUR/USD, they cannot simply click "Buy" at the current market price. Doing so would instantly absorb all available sell limit orders on the order book, causing the price to skyrocket (slippage). The bank would end up buying at progressively worse prices.
+
+To execute a massive buy order without causing massive slippage, the institution must find a massive amount of *sell* orders. Where do massive amounts of sell orders reside?
+
+Below major support levels. 
+
+When retail traders buy at a support level, they place their stop-loss (a sell-to-close order) just below it. Additionally, breakout traders place sell-stop orders below support, hoping to short the breakdown. Therefore, the area just below a major support level is a massive pool of *sell liquidity*.
+
+If an institution wants to buy 10,000 lots, they will intentionally push the price down through the support level to trigger all of those retail sell orders. The institution then buys those 10,000 lots from the panicking retail traders at a discount. Once their order is filled, they stop suppressing the price, and the market violently reverses upward. This is known as a "liquidity sweep" or a "stop hunt."
+
+## Mapping Liquidity
+
+Liquidity pools form anywhere that retail traders are taught to place their stops:
+1. **Old Highs and Old Lows:** The most obvious liquidity pools. Above previous day highs (PDH), below previous day lows (PDL), and at major swing points.
+2. **Equal Highs (EQH) / Equal Lows (EQL):** When price bounces perfectly off a level multiple times, retail traders perceive it as "strong support." In reality, it is just building an enormous pool of liquidity beneath it, making it a prime target for institutions to sweep.
+3. **Trendlines:** Retail traders place stops trailing below an ascending trendline. When the trendline breaks, a cascade of stop-losses is triggered, fueling liquidity.
+
+{/* 4. Visuals */}
+## The Engineering of Liquidity
+
+<AnnotatedChart 
+  title="Equal Lows: The Liquidity Pool"
+  isBull={true}
+  keyLevelY={100}
+  keyLevelLabel="Retail Support (Equal Lows)"
+/>
+
+*Notice how the "strong support" level fails exactly when the most participants trust it. The sweep below the level fills institutional buy orders before the real move begins.*
+
+{/* 5. How to see it on a chart */}
+## How to Track Liquidity (Step-by-Step)
+
+1. **Locate the Resting Orders:** Zoom out and ask yourself, "If I were a retail trader heavily long or short right now, where is my stop loss?"
+2. **Mark the Pools:** Draw horizontal lines at major previous swing highs and lows. Pay special attention to "clean" levels like Equal Highs/Lows. 
+3. **Wait for the Raid:** Do not trade *at* the liquidity pool. Wait for price to push through it. 
+4. **Observe the Reaction:** When price pushes through the liquidity pool, does it continue (a true breakout), or does it violently reject back into the range (a sweep)? If it sweeps and closes back inside, the liquidity has been engineered and absorbed. A reversal is highly probable.
+
+{/* 6. Worked Examples */}
+## Worked Examples
+
+### Example 1: The Trendline Liquidity Trap (Grounded)
+
+**Scenario:** US30 is climbing steadily, bouncing perfectly off an ascending trendline three times over two days.
+1. Retail traders identify the "strong trend" and begin buying the fourth touch, placing their stops just below the trendline.
+2. On the fourth touch, price violently crashes through the trendline, dropping 150 points in 10 minutes. 
+3. All retail stop-losses (sell orders) are triggered. Institutions step in to buy this massive influx of sell orders.
+4. Price immediately reverses, printing a massive bullish engulfing candle, and rockets 300 points higher, leaving the retail traders stopped out.
+
+**Walkthrough:**
+The trendline was not "support"; it was engineered liquidity. The institutions needed liquidity to accumulate a massive long position, so they induced the trendline break to trigger retail panic. Identifying where the stops rested allowed astute traders to wait for the sweep and buy the reversal alongside the institutions.
+
+### Example 2: The Double Top Sweep (Idealized)
+
+**Scenario:** Price hits $100 and rejects. A week later, price hits $100 again and rejects. 
+1. Retail sees a "Double Top" and goes short, placing stops at $101.
+2. Price approaches $100 a third time. It surges through, hitting $101.50. 
+3. Retail shorts are stopped out (which executes as a *buy* order). Breakout traders go long (executing *buy* orders). 
+4. This massive pool of buy orders provides the exact liquidity required for institutions to execute their massive *sell* orders.
+5. Price collapses to $90.
+
+**Walkthrough:**
+The Equal Highs created an irresistible pool of Buy-Side Liquidity (BSL). The institutions used the retail buy stops as counterparties for their short positions. If you recognize this, you do not short the $100 level blindly; you wait for the $101.50 sweep and short the rejection.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The 'Strong Support' Trap">
+  The more times a level is tested and "holds," the weaker it actually becomes. Retail books teach that a level touched 4 times is "very strong." Institutional logic dictates that a level touched 4 times has an immense, irresistible pool of liquidity resting just past it. Expect it to be swept.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC/ICT:** This entire concept forms the bedrock of Smart Money Concepts. Liquidity resting above highs is termed [Buy-Side Liquidity (BSL)](/smc/buyside-sellside-liquidity), and below lows is Sell-Side Liquidity (SSL). A sweep of this liquidity is often followed by a [Displacement](/price-action/displacement-imbalance) in the opposite direction.
+- **Wyckoff:** The concept of sweeping liquidity aligns perfectly with the Wyckoff "Spring" (sweeping lows in accumulation) and "Upthrust" (sweeping highs in distribution).
+- **Order Flow:** Volume Profile traders look for these sweeps as "excess" or "tail" creation at the extremes of value areas.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: Does liquidity only exist on higher timeframes?**
+A: No, liquidity is fractal. There is liquidity above a 1-minute swing high, just as there is above a Weekly swing high. However, higher timeframe liquidity pools (like a Previous Daily High) contain significantly more orders, resulting in more violent sweeps and higher-probability reversals.
+
+**Q: How do I know if it's a liquidity sweep or a real breakout?**
+A: You never know for sure until the candle closes. A breakout will push through the level on high volume and *sustain* that pricing, printing continuous structure in that direction. A sweep will pierce the level and then immediately violently reject, closing back inside the range, often leaving a long wick.
+
+**Q: Should I trade breakouts at all?**
+A: Professional breakout trading is very difficult because you are constantly battling liquidity sweeps. The highest probability breakouts occur when price has *already* swept liquidity on the opposite side of the range to fuel the breakout.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Institutions cannot enter massive positions without massive counterparties. They use retail stop-losses for this liquidity.",
+  "Liquidity rests where retail traders put their stops: above old highs, below old lows, and behind trendlines.",
+  "Equal Highs (EQH) and Equal Lows (EQL) are not strong support/resistance; they are engineered liquidity pools waiting to be swept.",
+  "Wait for price to raid liquidity pools before taking a trade. Trade the reaction, not the anticipation.",
+  "Understanding liquidity shifts your mindset from 'Where is support?' to 'Where are the trapped traders?'"
+]} />
+
+---
+*References:*
+Williams, L. (1999). *Long-Term Secrets to Short-Term Trading*. Discusses the concept of stop-running and market traps.

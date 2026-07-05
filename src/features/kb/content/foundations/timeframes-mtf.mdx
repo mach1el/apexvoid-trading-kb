@@ -1,0 +1,119 @@
+export const frontmatter = {
+  title: 'Timeframes & MTF Alignment',
+  description: 'How to synthesize multiple timeframes to build a high-probability directional bias.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { MTFSync } from '../../components/MTFSync';
+import { StepFlow } from '../../../../shared/components/StepFlow';
+
+{/* 1. Hook */}
+A trend on a 5-minute chart might look incredibly bullish, but if that 5-minute trend is just a minor pullback within a massive Daily downtrend, you are buying right into a wall. The secret to high-probability trading is aligning multiple timeframes.
+
+{/* 2. Definition */}
+**Multiple Timeframe (MTF) Alignment** is the analytical process of observing an asset across different time compressions (e.g., Daily, 1-Hour, 15-Minute) to ensure your short-term entry is synchronized with the long-term institutional momentum.
+
+{/* 3. Deep Explanation */}
+## The Fractal Nature of Markets
+
+Financial markets are fractals. This means that the exact same patterns, structures, and behaviors occur on a 1-minute chart as they do on a monthly chart. A large push upward on a 4-Hour chart is actually composed of hundreds of smaller zig-zags on a 1-Minute chart.
+
+When a trader only looks at a single timeframe, they suffer from "timeframe myopia." They might spot what looks like a perfect bullish setup on a 15-minute chart, totally unaware that the Daily chart is at a major resistance level ready to reverse. 
+
+To solve this, professional traders use a **Top-Down Approach**:
+1. **Macro (Higher Timeframe - HTF):** This dictates the overall bias and direction. (e.g., Daily chart).
+2. **Intermediate:** This dictates the current swing cycle. (e.g., 1-Hour or 4-Hour chart).
+3. **Micro (Lower Timeframe - LTF):** This provides the precise entry point with minimal risk. (e.g., 5-Minute or 15-Minute chart).
+
+When all three timeframes agree (e.g., Daily is bullish, 1-Hour just finished a pullback and is turning bullish, 5-Minute prints a bullish breakout), you have true MTF alignment. This is where the highest probability trades reside.
+
+{/* 4. Visuals */}
+## Interactive: Timeframe Synchronization
+
+Hover over the charts below. Notice how a single candlestick on the Macro timeframe encapsulates multiple swings on the Micro timeframes. 
+
+<MTFSync />
+
+Understanding that a Micro "trend" is often just a Macro "pullback" is the key to unlocking MTF analysis.
+
+{/* 5. How to see it on a chart */}
+## How to Perform MTF Analysis (Step-by-Step)
+
+Do not try to align 10 different timeframes; you will suffer from analysis paralysis. Stick to a combination of 2 or 3 timeframes separated by a factor of 4x to 6x.
+
+<StepFlow steps={[
+  "Open your Higher Timeframe (e.g., Daily) and map the macro Market Structure (HHs/HLs). Determine if the macro trend is Bullish, Bearish, or Ranging.",
+  "Identify the major HTF Key Levels (support/resistance, Order Blocks, FVGs) where price is likely to react.",
+  "Drop down to your Intermediate Timeframe (e.g., 4-Hour). Wait for price to approach the HTF Key Level.",
+  "Drop down to your Lower Timeframe (e.g., 15-Minute). You are looking for a structural shift (CHoCH) on this timeframe that aligns with the HTF bias. Once the LTF shifts, execute the trade."
+]} />
+
+{/* 6. Worked Examples */}
+## Worked Examples
+
+Let's look at how MTF alignment saves you from bad trades and sets you up for great ones.
+
+### Example 1: The Ideal MTF Setup (Grounded)
+
+**Scenario:** You are trading the S&P 500 (ES futures).
+- **Daily Chart:** The trend is strongly bullish, making HHs and HLs. Price has just pulled back into a Daily demand zone (Order Block).
+- **1-Hour Chart:** Price is falling rapidly into the Daily zone. The 1H structure is bearish (LLs and LHs). 
+- **15-Minute Chart:** Price taps the Daily zone, consolidates, and aggressively breaks its 15M Lower High, printing a 15M Higher High (a CHoCH).
+
+**Walkthrough:** 
+This is the textbook MTF entry. You used the Daily chart to know *where* to look (the demand zone) and *what direction* to trade (long). You didn't buy blindly when it hit the zone, because the 1H was still bearish. Instead, you zoomed into the 15M chart and waited for the exact moment the micro-trend aligned with the macro-trend (the 15M CHoCH). 
+
+### Example 2: The Counter-Trend Trap
+
+<AnnotatedChart 
+  title="Micro Trend vs Macro Wall"
+  isBull={true}
+  keyLevelY={60}
+  keyLevelLabel="Daily Resistance Level"
+/>
+
+**Walkthrough:**
+In this idealized view, the 15-minute chart is printing beautiful Higher Highs and Higher Lows. A novice trader sees this and buys the breakout. However, just slightly above current price is a massive Daily Resistance level. The macro trend is bearish. The 15M "uptrend" is merely a retracement pulling price back into premium pricing for HTF sellers to short. As soon as price hits the HTF level, the 15M trend is violently crushed.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Timeframe Correlation Trap">
+  A common mistake is using timeframes that are too close together (e.g., 1-Hour and 45-Minute). Because they are so similar, they will almost always show the exact same information, defeating the purpose of MTF analysis. Always use a multiplier of at least 4x to 6x between your timeframes (e.g., 1H to 4H to Daily).
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+MTF analysis is universally applied across all methodologies:
+- **ICT:** The concept of HTF POIs (Higher Timeframe Points of Interest) paired with LTF executions (like the 2022 Mentorship model using a 15M shift).
+- **SMC:** Finding a 4H [Order Block](/order-block/what-is-ob) and dropping to a 5M chart to look for a [Change of Character (CHoCH)](/price-action/choch) inside the block.
+- **Wyckoff:** Waiting for a macro accumulation schematic, and executing on a micro spring test.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: Which timeframe combination should I use?**
+A: It depends on your trading style. 
+- *Swing Traders:* Weekly (Bias) → Daily (Setup) → 4-Hour (Entry).
+- *Day Traders:* Daily (Bias) → 1-Hour (Setup) → 15-Min or 5-Min (Entry).
+- *Scalpers:* 4-Hour (Bias) → 15-Min (Setup) → 1-Min (Entry).
+
+**Q: What do I do if the timeframes conflict?**
+A: If the Daily is bullish but the 4-Hour is bearish, you are in a macro pullback. You have two choices: sit on your hands and wait for the 4-Hour to turn bullish again (safest), or take a short-term counter-trend trade on the 4-Hour, knowing your profit targets must be small (advanced).
+
+**Q: Do I need to check all timeframes before every trade?**
+A: Yes, absolutely. Checking the HTF takes literally 5 seconds, but it saves you from 80% of your losing trades by preventing you from trading against the dominant momentum.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "The market is fractal; the same structures exist on all timeframes.",
+  "Never trade a lower timeframe setup without first checking the higher timeframe context.",
+  "The most reliable setups occur when the macro bias, intermediate structure, and micro entry all align in the same direction.",
+  "Use a timeframe multiplier of 4x to 6x (e.g., 1H, 4H, Daily) to avoid redundancy.",
+  "HTF levels act as magnets and brick walls; LTF trends will reverse violently when hitting them."
+]} />
+
+---
+*References:*
+Elder, A. (1993). *Trading for a Living*. Introduces the "Triple Screen" trading system, a foundational text on multiple timeframe alignment.

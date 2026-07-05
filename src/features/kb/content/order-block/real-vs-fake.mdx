@@ -1,0 +1,127 @@
+export const frontmatter = {
+  title: 'Real vs Fake OBs',
+  description: 'How to filter out low-probability Order Blocks and avoid the notorious "Inducement Trap" set by institutional algorithms.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+{/* 1. Hook */}
+If you spend ten minutes looking at a 15-Minute chart, you will find fifty different down-candles preceding up-moves. If you label every single one of them as an "Order Block" and try to trade them all, you will slowly bleed your account to death. The defining skill of an institutional trader is the ability to filter out the noise and identify the one true, high-probability Order Block.
+
+{/* 2. Definition */}
+A **Real Order Block** is the origin point of institutional sponsorship. It exists at a macro extreme, features massive displacement, and has clear, unbroken structure behind it.
+A **Fake Order Block (Inducement)** is a structural trap. It is a minor zone formed mid-trend designed to look like support/resistance, tricking retail traders into entering early so their stop losses can be used as liquidity for the true move.
+
+{/* 3. Deep Explanation */}
+## The Inducement Trap
+
+Institutional algorithms require liquidity to execute massive orders. They generate this liquidity through **Inducement**.
+
+Imagine a scenario where price leaves a massive Daily Bullish Order Block at $100. Price rallies to $110, consolidates slightly (creating a minor 1-Hour order block at $105), and then pushes to $115.
+
+The trend is clearly up, and retail traders want to buy the pullback. Where will they buy? 
+They will look at that obvious 1-Hour pause at $105 and mark it as an Order Block. They place their buy orders at $105 and their stop losses at $104.
+
+This is the trap. The algorithm *wants* retail to buy at $105. 
+When price pulls back, it hits $105, bounces slightly to give retail traders hope (drawing even more buyers in), and then violently smashes down to $100. 
+
+What just happened? The algorithm swept the stop losses at $104, using that massive pool of sell orders to perfectly fill their buy orders at the *true* Daily Order Block resting at $100. Once mitigated, price rockets to $120. 
+The minor block at $105 was a **Fake Order Block**. It was merely Inducement.
+
+### How to Identify the True Extreme
+
+The golden rule for avoiding Inducement is to ask yourself: **"Is there a larger, unmitigated pool of liquidity resting directly below this level?"**
+
+If you are looking at a 15-Minute Bullish OB, and you notice a massive, untested 4-Hour Bullish OB resting just 20 pips beneath it, that 15-Minute OB is highly suspect. It is incredibly likely that the market will use the 15-Minute block as Inducement to fuel a dive into the 4-Hour block.
+
+You must always prioritize the **Extreme OB**—the block resting at the absolute origin of the macro impulsive leg.
+
+{/* 4. Visuals */}
+## Visualizing the Trap
+
+<AnnotatedChart 
+  title="Fake OB (Inducement) vs True Extreme OB"
+  isBull={true}
+  showOB={true}
+  showSweep={true}
+/>
+
+*In this conceptual chart, notice how the first visible consolidation/block is swept (Liquidity Sweep). Retail traders bought that early block, and their stops fueled the true mitigation of the Extreme Order Block below.*
+
+{/* 5. How to see it on a chart */}
+## The Real vs Fake Filtering Checklist
+
+Before placing a limit order on an Order Block, run it through this checklist. If it fails any of these checks, downgrade your risk or skip the trade entirely.
+
+1. **Context Check:** Is this OB aligning with the Higher Timeframe bias? (Trading a 15m bearish OB in a Daily uptrend is a fake OB setup).
+2. **Displacement Check:** Did the candle moving away from this OB leave a clear, wide [Fair Value Gap](/price-action/displacement-imbalance)?
+3. **Structure Check:** Did the move originating from this OB cause a major [Break of Structure](/price-action/bos) or CHoCH?
+4. **Inducement Check:** Look directly below the Bullish OB (or above the Bearish OB). Is there a much larger, unmitigated HTF block resting there? If yes, your chosen OB is likely the Inducement trap. Target the extreme instead.
+5. **Freshness Check:** Has price already tapped this zone? If yes, it is mitigated and no longer high probability.
+
+{/* 6. Worked Examples */}
+## Worked Examples
+
+### Example 1: The Inducement Sweep (Grounded)
+
+**Scenario:** GBP/USD rallies from 1.2500 to 1.2600. 
+1. The origin of the move is a massive 4-Hour OB at 1.2500.
+2. Halfway up the leg, at 1.2550, price pauses for an hour, creates a small red candle, and continues up.
+3. A trader marks 1.2550 as a 1-Hour OB.
+4. Price pulls back from 1.2600. It hits 1.2550 and bounces 15 pips.
+5. The trader thinks they caught the bottom. Suddenly, a massive red candle prints, blowing through 1.2550 and dropping straight to 1.2500.
+6. The moment price touches the 4-Hour OB at 1.2500, it violently reverses and rallies to 1.2700.
+
+**Walkthrough:**
+The block at 1.2550 was the Inducement trap. It existed solely to trick early buyers, engineer liquidity, and provide the fuel necessary for the algorithms to drive price down to the true origin point at 1.2500. The trader failed the "Inducement Check" by ignoring the massive, unmitigated 4-Hour OB resting below.
+
+### Example 2: The True Extreme (Idealized)
+
+**Scenario:** USD/CAD is in a heavy Daily downtrend. 
+1. A massive Bearish Order Block sits at 1.3500. 
+2. Price is currently at 1.3300, retracing upward.
+3. As price grinds up, it creates several minor 15-Minute supply zones. 
+4. You ignore all of them, knowing the Daily trend is king and the true extreme is at 1.3500.
+5. Price blows right through the 15-Minute zones, stopping out eager short sellers.
+6. Price finally taps 1.3500. You enter short. Price immediately collapses 200 pips.
+
+**Walkthrough:**
+By having the patience to wait for the Extreme OB and ignoring the minor internal structures, you avoided the traps and aligned yourself perfectly with the institutional algorithms.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The 'It Must Hold' Trap">
+  A common psychological trap is believing that just because an Order Block fits all the criteria, it *must* hold. The market is a probability machine. Even a perfect, pristine Extreme OB with massive displacement can fail if fundamental news shifts the global bias. Never trade without a hard stop-loss, no matter how perfect the Order Block looks.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC / ICT:** This concept is directly taught by ICT as the "Inducement" trap or the "Engineering of Liquidity." The true extreme is often referred to as the "Origin Block" or the "Sponsor Candle."
+- **Wyckoff:** In Wyckoff, early fake-outs before the true move are the "Spring" or "Upthrust." They are designed to trap the "weak hands" before the "composite man" initiates the real trend.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: Can I trade the Inducement block if I just want a quick scalp?**
+A: Yes, as seen in Example 1, Inducement blocks often provide a small, temporary bounce. Highly experienced scalpers can trade these for 10-15 pips. However, for a swing trader, holding an Inducement block is incredibly dangerous.
+
+**Q: What if price never reaches the Extreme OB?**
+A: This is the FOMO (Fear Of Missing Out) dilemma. Sometimes price will reverse at the Inducement block and never reach the extreme. This is perfectly fine. Professional trading is about capital preservation and taking only the highest probability setups. Missing a trade is infinitely better than taking a bad trade and losing money.
+
+**Q: How do I know for sure if a block is fake?**
+A: You never know "for sure" until after the fact. You are managing probabilities. If a block sits right above a massive, untested Daily zone, the *probability* of it being a fake Inducement block is extremely high.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Not every opposing candle before an up-move is a valid Order Block. Most are noise.",
+  "Fake Order Blocks (Inducement) are minor zones created mid-trend to trick retail into entering early.",
+  "Institutions sweep Inducement blocks to grab stop-loss liquidity to fuel their true entry.",
+  "Always prioritize the Extreme OB—the unmitigated block at the absolute origin of the macro impulsive leg.",
+  "If a minor OB rests directly above a massive, untested HTF OB, it is almost certainly a trap."
+]} />
+
+---
+*References:*
+Advanced liquidity engineering and order flow concepts popularized heavily by the Smart Money Concepts community.

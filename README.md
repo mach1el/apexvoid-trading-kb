@@ -1,4 +1,4 @@
-# 📈 ApexVoid Trading Knowledge Base
+# 📈 ApexVoid Trading Platform
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)
@@ -6,11 +6,19 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)
 
-A comprehensive trading knowledge documentation site built with React, TypeScript, and Tailwind CSS. The curriculum covers foundational Dow Theory, market structure, price action, order blocks, SMC, ICT concepts, and advanced confluence analysis.
+The frontend application for the ApexVoid Trading ecosystem. Currently, this repository houses the **Trading Knowledge Base (KB)**, a comprehensive documentation site covering foundational Dow Theory, market structure, price action, order blocks, SMC, ICT concepts, and advanced confluence analysis. 
+
+The project has been restructured to accommodate future features beyond the Knowledge Base.
 
 > ⚠️ **Disclaimer**: This is educational material only — not financial advice.
 
 ---
+
+## 🗺️ Roadmap & Future Features
+This platform is actively evolving from a static Knowledge Base into a comprehensive trading suite. Upcoming feature integrations include:
+- **Interactive Dashboards**: Real-time market state monitoring and macro regime tracking.
+- **Trading Simulators**: Gamified modules to practice pattern recognition and backtesting execution.
+- **Alert Systems**: Real-time confluence scoring across multiple assets.
 
 ## 🛠️ Tech Stack
 
@@ -55,7 +63,7 @@ cd /path/to/routing
 docker compose up -d
 
 # 2. Start this app
-cd /path/to/apexvoid-trading-kb
+cd /path/to/apexvoid-trading
 docker compose up -d --build
 ```
 
@@ -78,13 +86,16 @@ See [routing-snippet.md](./routing-snippet.md) for the Nginx config block and in
 
 ## 📂 Project Structure
 
+This project uses a feature-based architecture to isolate domain logic and scale smoothly.
+
 ```
 src/
-├── components/     # Reusable pedagogical components
-├── content/        # MDX pages + nav.ts (source of truth for sidebar & routes)
-├── layouts/        # AppShell, Sidebar, SearchDialog
-├── lib/            # Utilities
-└── types/          # TypeScript declarations
+├── features/
+│   ├── kb/           # The Knowledge Base (content, widgets, nav)
+│   └── (future)/     # Dashboard, simulator, etc.
+├── shared/           # Generic UI components, lib utilities, types
+├── App.tsx           # Root application and routing
+└── main.tsx
 ```
 
 ## 📜 License

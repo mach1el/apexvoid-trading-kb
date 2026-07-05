@@ -1,0 +1,65 @@
+export const frontmatter = { title: 'Breakout & Retest', description: 'Trading the shift in market structure with volume confirmation.' };
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+# Breakout & Retest
+
+<AnnotatedChart chartData={{
+  id:"BRT", title:"Breakout + Retest", sub:"strategy · Break & Retest",
+  def:"Trade only when price closes outside an important range and participation (volume) confirms — then enter on the retest of the broken level as it flips from resistance to support.",
+  read:[
+    "Define the <b>range</b>: repeated highs form resistance, with orders pooled above.",
+    "Require a <b>close outside the range</b> on an expansion candle — ideally rising volume.",
+    "Let price return to <b>retest the broken level</b> (now support).",
+    "Enter on the hold; stop back inside the range. No close / no volume = no trade."
+  ],
+  trap:"Chasing the breakout candle itself. The retest gives defined risk; the naked breakout often traps and reverses.",
+  pMin:2305,pMax:2337,
+  c:[[2308,2316,2307,2315],[2315,2316,2310,2311],[2311,2316,2310,2314],[2314,2316,2311,2312],[2312,2316,2311,2315],[2315,2325,2314,2324],[2324,2326,2320,2321],[2321,2322,2315,2316],[2316,2323,2315,2322],[2322,2329,2321,2328],[2328,2333,2327,2332]],
+  a:[
+    {t:"level",p:2316,dash:1,color:"muted",label:"range high → flip"},
+    {t:"arrow",i:5,p1:2315,p2:2324,color:"bull",label:"breakout"},
+    {t:"swing",i:7,p:2315,dir:"down",label:"retest"}
+  ]
+}} />
+
+Breakouts occur when price aggressively breaches a well-established level of support or resistance. While buying the initial breakout can be lucrative, it is highly susceptible to "fakeouts" (false breakouts). The Breakout & Retest strategy waits for confirmation, offering a safer entry point.
+
+## The Mechanics
+
+When resistance is broken, the market psychology shifts. Traders who sold at resistance are now trapped (underwater). When price returns to that former resistance level, those trapped sellers close their shorts (which requires buying), and new buyers see value. This turns old resistance into new support.
+
+### Volume is the Ultimate Validator
+
+A breakout without volume is a trap. 
+
+<CompareTable 
+  headers={['Metric', 'High-Probability Breakout', 'Likely Fakeout']}
+  rows={[
+    ['Breakout Volume', 'Significantly higher than average', 'Average or decreasing'],
+    ['Price Action', 'Closes strongly near the extreme of the candle', 'Leaves a long wick / rejection tail'],
+    ['Retest Volume', 'Low volume / drying up', 'High volume selling pressure'],
+    ['Consolidation prior', 'Tight build-up just below resistance', 'V-shaped straight up from support']
+  ]}
+/>
+
+## Strategy Blueprint
+
+1. **Identify the Level:** Locate a clear horizontal resistance or support that has been tested multiple times.
+2. **The Breakout:** Watch for a strong candle close through the level accompanied by high relative volume. *Do not enter yet.*
+3. **The Retest:** Wait for price to naturally drift back to the breakout level on lighter volume.
+4. **The Trigger:** Enter when you see a bullish reaction (on a smaller timeframe) at the new support level.
+5. **Stop Loss:** Place the stop just below the breakout candle's low, or below the retest pivot.
+
+<Callout type="tip" title="Patience Pays">
+FOMO (Fear Of Missing Out) will scream at you to buy the initial breakout candle. By waiting for the retest, you accept that you might miss some trades that go straight up, but you will save yourself from countless brutal fakeouts.
+</Callout>
+
+<KeyTakeaways takeaways={[
+  "Never trust a breakout without heavy volume.",
+  "Old resistance becomes new support due to trapped traders.",
+  "Waiting for the retest dramatically improves your win rate."
+]} />

@@ -1,0 +1,68 @@
+export const frontmatter = { title: 'Mean-Reversion', description: 'Fading the extremes when the market is trapped in a range.' };
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { StrategyPicker } from '../../components/StrategyPicker';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+# Mean-Reversion (Fading the Extremes)
+
+<AnnotatedChart chartData={{
+  id:"MR", title:"Mean Reversion", sub:"strategy · Snap-Back / Fade",
+  def:"Fade a stretch to a range extreme back toward the mean. Strong only in clearly range-bound conditions — it degrades fast in trends, so it ranks below the trend strategies for general use.",
+  read:[
+    "Require a <b>range</b> first: a defined high, low, and a middle (mean / EQ).",
+    "Wait for price to <b>overextend to an extreme</b> and show rejection.",
+    "<b>Fade</b> back toward the mean; target the middle, not the opposite extreme.",
+    "Invalidate fast: a decisive break of the range means the range is over — stand down."
+  ],
+  trap:"Fading a trend. In a strong trend the \"extreme\" keeps extending — this only works when range is confirmed.",
+  pMin:2302,pMax:2325,
+  c:[[2312,2314,2308,2309],[2309,2311,2305,2306],[2306,2312,2305,2311],[2311,2317,2310,2316],[2316,2321,2315,2320],[2320,2322,2318,2319],[2319,2320,2313,2314],[2314,2315,2310,2312],[2312,2313,2307,2308]],
+  a:[
+    {t:"zone",p1:2322,p2:2319,color:"warn",label:"overextension"},
+    {t:"level",p:2312,dash:1,color:"ok",label:"mean / EQ"},
+    {t:"level",p:2305,dash:1,color:"muted",label:"range low"},
+    {t:"arrow",i:5,p1:2319,p2:2314,color:"bear",label:"fade"}
+  ]
+}} />
+
+When the market is in a ranging regime, trend-following strategies will bleed your account through a thousand tiny cuts. In a range, breakouts fail, and price repeatedly snaps back to the average (the mean). 
+
+Mean-reversion trading is the art of selling resistance and buying support, anticipating that the boundaries will hold.
+
+## The Anatomy of a Range
+
+Ranges occur when buyers and sellers reach a temporary equilibrium. 
+- **Resistance:** The ceiling where sellers consistently step in.
+- **Support:** The floor where buyers consistently step in.
+- **The Mean:** The middle of the range, often acting as a magnet for price.
+
+<Callout type="info" title="The Rubber Band Effect">
+Think of price in a range like a rubber band. The further it stretches from the mean toward the extremes (support or resistance), the stronger the force snapping it back to the center.
+</Callout>
+
+## Strategy Blueprint
+
+1. **Regime Identification:** Confirm the market is ranging. You need at least two touches of a high and two touches of a low to define a valid range.
+2. **The Setup:** Wait for price to approach the extreme boundaries. Do not trade in the middle of the range (the chop zone).
+3. **The Trigger:** Look for exhaustion at the extremes. This often looks like a long wick piercing the boundary and immediately failing (a deviation or liquidity sweep).
+4. **Execution:** Enter a short at resistance or a long at support *after* the exhaustion candle closes.
+5. **Targets:** 
+   - Target 1 (Aggressive): The mid-point (the mean) of the range.
+   - Target 2 (Runner): The opposite end of the range.
+6. **Stop Loss:** Place the stop just outside the extreme boundary. If the range breaks, you must exit immediately.
+
+<StrategyPicker 
+  scenario="Price has been bouncing between $100 and $120 for three weeks. It just spiked to $121 on news, but immediately slammed back down to close the hour at $119, leaving a massive upper wick. What do you do?"
+  options={[
+    { id: 'a', text: 'Go Long (Breakout)', isCorrect: false, feedback: 'Incorrect. The breakout failed, indicating sellers are defending the range.' },
+    { id: 'b', text: 'Go Short (Mean Reversion)', isCorrect: true, feedback: 'Correct! This is a classic liquidity sweep and failure at range resistance. The probability favors a move back toward the mean.' }
+  ]}
+/>
+
+<KeyTakeaways takeaways={[
+  "Only deploy this in established, sideways markets.",
+  "Never initiate trades in the middle of the range.",
+  "A sweep of the boundary followed by a quick rejection is the strongest entry signal."
+]} />

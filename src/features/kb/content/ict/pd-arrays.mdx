@@ -1,0 +1,131 @@
+export const frontmatter = {
+  title: 'PD Arrays (Premium & Discount Arrays)',
+  description: 'The institutional hierarchy of price structures. Understanding the specific matrix of support and resistance that smart money uses to frame trades.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+{/* 1. Hook */}
+When a retail trader looks at a chart, they see a chaotic web of diagonal trendlines, moving averages, and horizontal support zones drawn arbitrarily. When an algorithmic trader looks at a chart, they see a strict, hierarchical matrix of very specific price signatures. They do not guess where price might reverse; they look for the next logical PD Array in the sequence.
+
+{/* 2. Definition */}
+A **PD Array (Premium/Discount Array)** is a structured hierarchy of institutional price footprints. An array is simply a list of specific technical structures, ordered from highest time-sensitivity to lowest.
+- **Premium Arrays:** Structures located above the Equilibrium (50%) line, used to frame short setups.
+- **Discount Arrays:** Structures located below the Equilibrium (50%) line, used to frame long setups.
+
+{/* 3. Deep Explanation */}
+## The Hierarchy of Arrays
+
+Algorithms deliver price systematically, moving from one array to the next. The ICT methodology defines a strict hierarchy of these arrays, which you scan from the current market price outward.
+
+Here is the standard hierarchy (moving from current price outward to the extremes of the swing leg):
+
+1. **Mitigation Block / Breaker Block:** The closest array. These are failed Order Blocks that price has broken through. Once broken, they act as immediate support/resistance (similar to classical support-turned-resistance).
+2. **Fair Value Gap (FVG):** The most common array. A 3-candle imbalance left behind by rapid displacement.
+3. **Order Block (OB):** The last opposing candle before the displacement. Often found capping the extreme of an FVG.
+4. **Rejection Block:** A long wick at the extreme of a swing, where price aggressively rejected.
+5. **Old High / Old Low (Liquidity Pools):** The absolute extreme of the matrix. This is where external [Buy-Side/Sell-Side Liquidity](/smc/buyside-sellside-liquidity) rests.
+
+### How to Use the Matrix
+When price is in a [Discount](/smc/premium-discount-eq) and you want to buy, you do not just blindly buy the 50% line. You scan the Discount zone for the presence of these arrays.
+- Is there a Bullish Breaker? 
+- Is there a Bullish FVG?
+- Is there a Bullish Order Block at the bottom of the FVG?
+
+If multiple arrays line up at the same price level inside the Discount zone, you have found an extremely high-probability Point of Interest (POI).
+
+{/* 4. Visuals */}
+## The Matrix
+
+<CompareTable 
+  title="Premium vs Discount Arrays"
+  headers={["Premium Arrays (Look to Sell)", "Discount Arrays (Look to Buy)"]}
+  rows={[
+    ["Old High (BSL Pool)", "Old Low (SSL Pool)"],
+    ["Bearish Rejection Block", "Bullish Rejection Block"],
+    ["Bearish Order Block", "Bullish Order Block"],
+    ["Bearish Fair Value Gap (FVG)", "Bullish Fair Value Gap (FVG)"],
+    ["Bearish Breaker / Mitigation Block", "Bullish Breaker / Mitigation Block"]
+  ]}
+/>
+
+*The matrix is fractal. You can map these arrays on a Monthly chart to find your macro bias, and then map them on a 5-Minute chart to find your exact entry trigger.*
+
+{/* 5. How to see it on a chart */}
+## Analyzing the Narrative
+
+Trading PD Arrays is about reading the narrative of price delivery. Price moves between internal liquidity (FVGs, Order Blocks) and external liquidity (Old Highs, Old Lows).
+
+1. **Establish the Range:** Identify the current Dealing Range (the impulsive Swing High to Swing Low).
+2. **Draw Equilibrium:** Draw a 50% line across the range.
+3. **Identify the Draw on Liquidity:** Ask yourself, "Where is price trying to go?" If the macro trend is bullish, the draw on liquidity is the Old High (Premium Array).
+4. **Find the Entry Array:** If price needs to reach the Old High, it will first drop into the Discount zone to accumulate orders. Scan the Discount zone. Find the clearest Bullish FVG or Bullish Order Block.
+5. **Execute:** Wait for price to drop into your Discount Array, then buy. Target the Premium Array (the Old High).
+
+{/* 6. Worked Examples */}
+## Worked Examples
+
+### Example 1: The Matrix Alignment (Idealized)
+
+**Scenario:** The Daily chart of EUR/USD is strongly bullish. Price just made a massive impulse leg up, breaking a daily swing high.
+1. You identify the Dealing Range: from the bottom of the impulse to the top.
+2. Price begins to retrace. You look at the Discount zone (below 50%).
+3. You spot a pristine Bullish Order Block at the 70.5% retracement level.
+4. Just above that Order Block, there is a massive Bullish FVG.
+5. You have alignment: Price is in a Discount -> FVG -> OB. 
+6. Price drops into the FVG, taps the top of the Order Block, and immediately reverses, rocketing up to sweep the Old High (the Premium target).
+
+**Walkthrough:**
+This is the textbook algorithmic delivery. The algorithm offered a Discount, mitigated the inefficiency (FVG), capitalized the pending orders (OB), and then delivered price to external liquidity (Old High).
+
+### Example 2: The Premium Array Trap (Grounded)
+
+**Scenario:** USD/CAD is in a macro downtrend. 
+1. Price makes a sharp impulsive leg down. You want to short it.
+2. Price begins to pull back upward. 
+3. At the 38.2% retracement level, you see a Bearish Order Block. 
+4. You decide to short the OB.
+5. Price reacts for one 15-minute candle, then violently smashes upward through your Order Block, stopping you out.
+6. It continues up to the 79% retracement level, hits a *different* Bearish Order Block, and then collapses for a massive win.
+
+**Walkthrough:**
+You traded the correct array (an Order Block) but in the wrong environment. The first OB was in a **Discount** relative to the swing leg. Smart money does not sell in a discount. That OB was merely an Inducement trap. You must wait for price to reach the Premium Array before executing short.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Over-Complication Trap">
+  The PD Array matrix has many layers (Mitigation blocks, Rejection blocks, etc). Do not paralyze yourself trying to memorize and label every single one on a chart. The vast majority of profitable institutional trading can be executed using only **Order Blocks, FVGs, and Old Highs/Lows**. Master those three before worrying about the esoteric arrays.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC / ICT:** This specific categorization and naming convention (PD Arrays) was created by Inner Circle Trader (ICT). It serves to organize classic price action concepts into a strict, algorithmic hierarchy.
+- **Classic TA:** Classic TA uses "Support and Resistance." The PD Array matrix is simply a highly specific, standardized version of Support and Resistance that filters out subjective diagonal lines in favor of objective, footprint-based zones.
+- **Supply and Demand:** S&D traders look for "Rally-Base-Drop" zones. In the PD Array matrix, this is exactly what a Bearish Order Block is.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: What is a Breaker Block?**
+A: A Breaker is an Order Block that resulted in a failed high/low, and was then broken with momentum. Once broken, it flips polarity. If price breaks up through a Bearish OB, that OB becomes a Bullish Breaker (support). 
+
+**Q: Do I have to use all the arrays?**
+A: No. Think of the arrays as a menu. Different market conditions will present different arrays. Sometimes there is no FVG, only an Order Block. Sometimes there is only a massive wick (Rejection Block). You trade what the market presents in the correct Premium/Discount zone.
+
+**Q: What if a Premium Array and a Discount Array overlap?**
+A: They physically cannot. By definition, Premium Arrays exist above the 50% line of the dealing range, and Discount Arrays exist below it. If you redraw your range and they overlap, you are likely looking at the wrong dealing range.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "A PD Array is a specific institutional price structure (OB, FVG, Old High/Low).",
+  "The hierarchy dictates how price moves: from internal liquidity (FVGs/OBs) to external liquidity (Old Highs/Lows).",
+  "Only trade Premium Arrays when you want to go short.",
+  "Only trade Discount Arrays when you want to go long.",
+  "If multiple arrays stack up in the same zone (e.g., an OB inside an FVG inside a Discount), the probability of the setup increases drastically."
+]} />
+
+---
+*References:*
+The PD Array Matrix, formalized by Inner Circle Trader.

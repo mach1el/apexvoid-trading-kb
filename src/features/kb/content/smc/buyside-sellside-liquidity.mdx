@@ -1,0 +1,118 @@
+export const frontmatter = {
+  title: 'Buy-Side & Sell-Side Liquidity',
+  description: 'The fuel of the market. Understanding where resting orders pool and why smart money is magnetically drawn to them.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+{/* 1. Hook */}
+Imagine you want to buy 10,000 shares of a stock, but there are only 500 shares available for sale at the current price. If you hit "Buy Market," you will instantly consume those 500 shares, and your remaining 9,500 buy orders will chew through the order book, forcing you to buy at worse and worse prices. This is slippage. To avoid this, massive institutions do not buy where price is; they buy where the liquidity is.
+
+{/* 2. Definition */}
+**Liquidity** simply refers to resting orders—specifically, stop-loss orders and breakout entry orders waiting to be triggered.
+- **Buy-Side Liquidity (BSL):** Pools of Buy Stop orders resting *above* resistance levels or old highs.
+- **Sell-Side Liquidity (SSL):** Pools of Sell Stop orders resting *below* support levels or old lows.
+
+{/* 3. Deep Explanation */}
+## The Magnetism of Liquidity
+
+Retail traders are taught to hide their stop losses behind obvious Swing Highs and Swing Lows. 
+If a trader is short, their stop loss is a Buy Stop resting above the high. If a breakout trader is waiting for resistance to break, their entry is a Buy Stop resting above the same high. 
+
+This means that directly above any major Swing High, there is a massive cluster of guaranteed Buy orders. This is **Buy-Side Liquidity (BSL)**.
+
+If a massive institution needs to *sell* a massive amount of asset without slipping the price down, they need willing buyers to take the other side of their trade. Where are the most willing buyers? Resting directly above the old highs. Therefore, the institution will deliberately engineer price upward to trigger those Buy Stops, providing the perfect counter-party liquidity for their massive short position.
+
+### The Institutional Paradigm Shift
+- Retail views a resistance level breaking as a sign of strength (a breakout).
+- Institutions view a resistance level breaking as an unlocking of liquidity—the perfect opportunity to sell into strength.
+
+This is why the market is drawn to old highs and old lows like a magnet. The market is an incredibly efficient machine designed to seek out and consume liquidity to facilitate large transactions.
+
+{/* 4. Visuals */}
+## Visualizing Liquidity Pools
+
+<AnnotatedChart 
+  title="Buy-Side & Sell-Side Liquidity Pools"
+  showSwingHL={true}
+  keyLevelLabel="Old High (BSL Pool)"
+  keyLevelY={40}
+/>
+
+*Notice how price naturally gravitates toward the old high. To the untrained eye, this looks like a breakout. To an order flow trader, this is price seeking Buy-Side Liquidity to facilitate institutional selling.*
+
+{/* 5. How to see it on a chart */}
+## Identifying High-Probability Liquidity Pools
+
+Not all highs and lows contain equal amounts of liquidity. The more obvious the level, the more liquidity rests behind it. Here is how to spot the largest pools:
+
+1. **Equal Highs (EQH) / Equal Lows (EQL):** This is the holy grail of liquidity. When price taps a level twice and reverses (forming a Double Top or Double Bottom), retail traders heavily short/long it, placing their stops just behind it. EQH/EQL are magnets.
+2. **Previous Daily High/Low (PDH/PDL):** Day traders use the previous day's extremes as their ultimate stop-loss locations. These levels are almost always swept during a trading session.
+3. **Session Highs/Lows:** The high or low of the Asian or London session is often targeted by New York volume to generate liquidity.
+4. **Major Swing Points:** Any prominent V-shaped swing on a 4-Hour or Daily chart houses massive liquidity.
+
+{/* 6. Worked Examples */}
+## Worked Examples
+
+### Example 1: The Equal Highs Magnet (Idealized)
+
+**Scenario:** Gold (XAU/USD) forms a perfect Double Top at $2,000 on the 1-Hour chart.
+1. The first tap of $2,000 occurs on Monday. Price drops to $1,980.
+2. The second tap occurs on Wednesday. Retail traders short the "strong resistance" at $2,000 and place their stops at $2,005.
+3. On Thursday, Non-Farm Payroll (NFP) data is released.
+4. Price instantly spikes to $2,008, triggering every single stop loss above the Equal Highs.
+5. This massive pool of Buy-Side Liquidity (triggered buy stops) allows banks to execute massive sell orders.
+6. Price immediately collapses back down to $1,970, leaving retail breakout traders trapped and retail short sellers stopped out.
+
+**Walkthrough:**
+The Double Top was not resistance; it was bait. It was engineered to accumulate retail stops so that institutions could use that liquidity to enter their true short positions at a premium price.
+
+### Example 2: The Trendline Liquidity Trap (Grounded)
+
+**Scenario:** AAPL has been riding a perfect 45-degree ascending trendline for a week. 
+1. Every time price touches the trendline, it bounces. 
+2. Retail traders are aggressively buying the trendline, trailing their stop losses just underneath each successive swing low.
+3. This creates a diagonal "staircase" of Sell-Side Liquidity (SSL).
+4. On Tuesday, price drops through the trendline. Instead of bouncing, it violently cascades downward, taking out four days' worth of swing lows in a single hour.
+
+**Walkthrough:**
+Trendlines are liquidity pools in motion. Because every bounce encourages traders to move their stops up to the newest low, a massive cascade of Sell-Side Liquidity builds up. When smart money is ready to buy heavily, they will smash price through the trendline, triggering a domino effect of sell-stops, allowing them to accumulate long positions effortlessly.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="The Breakout Trap">
+  The defining characteristic of retail trading is buying breakouts and selling breakdowns. When you buy a breakout above an old high, you are providing the exact Buy-Side Liquidity that smart money is looking to sell into. Stop trading breakouts. Start viewing old highs as targets to take profit, not triggers to enter new positions.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Modern Framework Translations
+
+- **SMC / ICT:** ICT popularized the terms BSL and SSL. A core tenet of ICT is that the market moves exclusively from an area of internal liquidity (like an [FVG](/smc/fvg)) to an area of external liquidity (BSL/SSL).
+- **Wyckoff:** In the Wyckoff methodology, the accumulation phase relies on "selling climaxes" and "springs" which are explicitly designed to sweep Sell-Side Liquidity.
+- **Classic TA:** Classic charting refers to BSL/SSL as simply "Resistance/Support" or "Double Tops/Bottoms," often missing the underlying order flow mechanics of *why* those levels are targeted.
+
+{/* 9. FAQ */}
+## Frequently Asked Questions
+
+**Q: If there is liquidity above every high, how do I know which one will be swept?**
+A: Context is everything. In a macro uptrend, Sell-Side Liquidity is swept to fuel moves higher, while Buy-Side Liquidity is targeted for profit taking. You must align your liquidity targets with the Higher Timeframe bias.
+
+**Q: What happens after the liquidity is swept?**
+A: Usually, one of two things: A reversal (as smart money enters their true position), or a retracement. We cover the specific mechanics of this in the next section: [Liquidity Sweeps](/smc/liquidity-sweep).
+
+**Q: Are trendlines useless then?**
+A: Not at all. Trendlines are highly useful for *identifying* where retail liquidity is pooling. You can use them as a roadmap for where price is likely to be drawn to when the trend eventually reverses.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Liquidity refers to resting orders, primarily stop losses and breakout entries.",
+  "Buy-Side Liquidity (BSL) rests above old highs; Sell-Side Liquidity (SSL) rests below old lows.",
+  "Institutions cannot execute massive orders at market price without slippage; they must drive price into liquidity pools to fill their orders.",
+  "Equal Highs, Equal Lows, and Trendlines are the most obvious and targeted pools of liquidity.",
+  "Stop buying breakouts. You are providing the liquidity that smart money is selling into."
+]} />
+
+---
+*References:*
+Smart Money Concepts (SMC) foundation logic. Order flow analysis of limit order books.
