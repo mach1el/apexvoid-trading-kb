@@ -308,6 +308,29 @@ const CH: ChartData[] = [
   ]
  },
  {
+  id:"WYCKD", title:"Wyckoff Distribution", sub:"structure · smart-money range", group:"Classical structure & confirmation",
+  def:"A topping range where large players offload into strength before markdown. The mirror of accumulation — Buying Climax, Automatic Reaction, Secondary Test, Upthrust (UTAD), Sign of Weakness — is the distribution counterpart of Dow's distribution phase and SMC's distribution language.",
+  read:[
+    "<b>BC</b> (buying climax) + <b>AR</b> (automatic reaction) set the range ceiling and floor after an uptrend.",
+    "<b>ST</b> retests the high on lighter buying — demand is drying up.",
+    "The <b>UTAD</b> — a false break above resistance that fails back — is the highest-odds short trigger (it sweeps stops, then reverses).",
+    "<b>SOW</b> (sign of weakness) confirms supply has won; the lower high after it (LPSY) precedes markdown."
+  ],
+  trap:"Not every range at the top is distribution. Without a UTAD + SOW confirming supply, a range can just as easily break up. Wait for the confirmation, don't front-run it.",
+  pMin:2308,pMax:2352,
+  c:[[2315,2320,2314,2319],[2319,2326,2318,2325],[2325,2333,2324,2332],[2332,2344,2331,2343],[2343,2344,2336,2337],[2337,2338,2328,2329],[2329,2330,2321,2322],[2322,2331,2321,2330],[2330,2338,2329,2337],[2337,2341,2336,2339],[2339,2340,2333,2334],[2334,2341,2333,2340],[2340,2348,2339,2341],[2341,2342,2331,2332],[2332,2333,2322,2323],[2323,2324,2313,2314]],
+  a:[
+    {t:"level",p:2344,dash:1,color:"muted",label:"resistance (BC / UTAD)"},
+    {t:"level",p:2322,dash:1,color:"muted",label:"support (AR / ice)"},
+    {t:"swing",i:3,p:2344,dir:"up",label:"BC"},
+    {t:"swing",i:6,p:2321,dir:"down",label:"AR"},
+    {t:"swing",i:9,p:2341,dir:"up",label:"ST"},
+    {t:"swing",i:12,p:2348,dir:"up",label:"UTAD"},
+    {t:"swing",i:13,p:2331,dir:"down",label:"SOW"},
+    {t:"arrow",i:14,p1:2333,p2:2323,color:"bear",label:"markdown"}
+  ]
+ },
+ {
   id:"SR", title:"Support / Resistance Flip", sub:"classical · role reversal",
   def:"Price remembers levels. A level tested repeatedly is significant; when it finally breaks, it flips role — old resistance becomes support (and vice versa). This is the classical, pre-SMC framing of what order blocks and flip zones formalise.",
   read:[
@@ -324,6 +347,26 @@ const CH: ChartData[] = [
     {t:"bracket",i1:1,i2:6,label:"tested ×2"},
     {t:"arrow",i:9,p1:2308,p2:2317,color:"bull",label:"break"},
     {t:"swing",i:11,p:2311,dir:"down",label:"retest holds"}
+  ]
+ },
+ {
+  id:"SD", title:"Supply & Demand Zones", sub:"classical · institutional order flow",
+  def:"A zone is the base (consolidation) a strong move left behind — the footprint of unfilled institutional orders. Unlike a single S/R line, a zone is a price band: when price returns, it reacts to the whole area as remaining orders fill. Demand launches rallies; supply launches drops.",
+  read:[
+    "<b>Demand</b> = a base that launched a rally (drop-base-rally); <b>supply</b> = a base that launched a drop (rally-base-drop).",
+    "Mark the base as a <b>band</b>, not a line — from the body cluster to the wick extreme of the launch.",
+    "The <b>freshest, untested</b> zone is the strongest; each retest consumes the orders resting there.",
+    "Trade the <b>reaction on the first retest</b>, stop just beyond the far edge — not a naked limit into the zone."
+  ],
+  trap:"A zone tapped several times is <b>spent</b>, not stronger. Fresh, untouched bases hold best — the more often price revisits, the weaker the bounce.",
+  pMin:2300,pMax:2327,
+  c:[[2324,2326,2320,2321],[2321,2322,2313,2314],[2314,2315,2306,2307],[2307,2309,2305,2306],[2306,2308,2304,2307],[2307,2316,2306,2315],[2315,2321,2314,2320],[2320,2323,2319,2321],[2321,2322,2315,2316],[2316,2317,2309,2310],[2310,2311,2306,2308],[2308,2315,2307,2314],[2314,2320,2313,2319]],
+  a:[
+    {t:"zone",p1:2309,p2:2305,color:"bull",label:"demand zone (fresh)"},
+    {t:"zone",p1:2323,p2:2320,color:"bear",label:"supply zone"},
+    {t:"arrow",i:5,p1:2307,p2:2315,color:"bull",label:"departure (rally)"},
+    {t:"swing",i:10,p:2306,dir:"down",label:"retest"},
+    {t:"arrow",i:11,p1:2308,p2:2314,color:"bull",label:"bounce"}
   ]
  },
  {
@@ -380,6 +423,45 @@ const CH: ChartData[] = [
     {t:"zone",p1:2341,p2:2336,color:"muted",label:"pre-news coil"},
     {t:"swing",i:4,p:2352,dir:"up",label:"news spike (fakeout)"},
     {t:"arrow",i:7,p1:2329,p2:2335,color:"bull",label:"trade the reaction"}
+  ]
+ },
+ {
+  id:"GYLD", title:"Gold vs Real Yields (opportunity cost)", sub:"gold · macro drivers",
+  def:"Gold pays no yield, so its biggest structural driver is the real interest rate — the opportunity cost of holding it. Here gold rallies on low real yields, then rolls over as real yields climb (lower panel), even while inflation stays high. The dollar and safe-haven demand layer on top.",
+  read:[
+    "Gold rode a <b>weak-dollar / low-yield</b> backdrop higher — the classic tailwind.",
+    "Watch the lower panel: <b>real yields turn up</b>. Every percent of real yield is opportunity cost for a non-yielding asset.",
+    "As yields climb the <b>bid for gold fades</b> — price stalls at the highs even with inflation still elevated.",
+    "The rollover comes not from the chart pattern alone but from the <b>macro tide</b> turning against it."
+  ],
+  trap:"\"Inflation is high, so gold must go up\" is false. If the central bank hikes faster than inflation, <b>real yields rise and gold sells off</b> regardless of the headline CPI print.",
+  pMin:2310,pMax:2358,
+  osc:[0.6,0.7,0.8,0.9,1.1,1.3,1.6,1.9,2.1,2.3,2.5,2.7], oscMin:0, oscMax:3, oscLabel:"Real yield %",
+  c:[[2312,2318,2311,2317],[2317,2325,2316,2324],[2324,2333,2323,2332],[2332,2341,2331,2340],[2340,2348,2339,2347],[2347,2353,2346,2352],[2352,2355,2348,2349],[2349,2350,2342,2343],[2343,2344,2334,2335],[2335,2336,2327,2328],[2328,2329,2320,2321],[2321,2323,2316,2318]],
+  a:[
+    {t:"trend2",panel:"osc",a:{i:1,v:0.7},b:{i:10,v:2.5},color:"warn",label:"real yields rising"},
+    {t:"level",p:2353,dash:1,color:"muted",label:"gold tops as yields climb"},
+    {t:"arrow",i:7,p1:2350,p2:2343,color:"bear",label:"opportunity cost bites"}
+  ]
+ },
+ {
+  id:"RORO", title:"Risk-On / Risk-Off & the Safe-Haven Bid", sub:"gold · sentiment & flows",
+  def:"Markets swing between risk-on (chasing yield, selling safety) and risk-off (fleeing to safety). Gold is the ultimate safe haven: range-bound and unloved in risk-on, then bid aggressively — often parabolically, ignoring resistance — the moment fear (a VIX spike, equity selloff) takes over.",
+  read:[
+    "During <b>risk-on</b>, gold chops in a range — equities absorb the capital, gold has no urgent bid.",
+    "Watch the lower panel: a <b>VIX spike</b> marks the regime flip to risk-off (fear).",
+    "Capital flees to safety and gold catches an <b>aggressive safe-haven bid</b> that runs through technical resistance.",
+    "In genuine panic, fundamentals override the chart — standard resistance levels simply don't hold."
+  ],
+  trap:"Shorting gold at 'resistance' during a real risk-off panic is one of the most dangerous trades there is. A VIX spike + equity selloff means the safe-haven bid can steamroll every level.",
+  pMin:2318,pMax:2374,
+  osc:[14,15,14,16,15,22,28,33,36,34,33,32], oscMin:10, oscMax:40, oscLabel:"VIX",
+  c:[[2326,2329,2323,2324],[2324,2328,2322,2327],[2327,2329,2323,2324],[2324,2327,2321,2322],[2322,2326,2321,2325],[2325,2333,2324,2332],[2332,2342,2331,2341],[2341,2351,2340,2350],[2350,2359,2349,2358],[2358,2366,2357,2365],[2365,2369,2361,2363],[2363,2367,2360,2366]],
+  a:[
+    {t:"level",p:2329,dash:1,color:"muted",label:"resistance (risk-on cap)"},
+    {t:"bracket",i1:0,i2:4,label:"risk-on range"},
+    {t:"arrow",i:5,p1:2324,p2:2333,color:"bull",label:"risk-off trigger"},
+    {t:"swing",i:9,p:2366,dir:"up",label:"parabolic safe-haven bid"}
   ]
  }
 ];
