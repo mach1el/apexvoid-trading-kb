@@ -61,6 +61,19 @@ export const navigation: NavSection[] = [
     ],
   },
   {
+    label: 'Momentum & EMAs',
+    prefix: '/momentum',
+    icon: '🌊',
+    items: [
+      { label: 'What is an EMA?', slug: 'what-an-ema-is', path: '/momentum/what-an-ema-is' },
+      { label: 'EMA 200: The Trend Filter', slug: 'ema-200-the-trend-filter', path: '/momentum/ema-200-the-trend-filter' },
+      { label: 'EMA 50 & The Stack', slug: 'ema-50-and-the-stack', path: '/momentum/ema-50-and-the-stack' },
+      { label: 'Dynamic Support & Resistance', slug: 'dynamic-support-resistance', path: '/momentum/dynamic-support-resistance' },
+      { label: 'Golden & Death Cross', slug: 'golden-and-death-cross', path: '/momentum/golden-and-death-cross' },
+      { label: 'Momentum Shift', slug: 'momentum-shift', path: '/momentum/momentum-shift' },
+    ],
+  },
+  {
     label: '2. Key Levels',
     prefix: '/key-levels',
     icon: '📍',

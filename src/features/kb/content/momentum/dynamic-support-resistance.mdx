@@ -1,0 +1,75 @@
+export const frontmatter = { title: 'Dynamic Support and Resistance', description: 'How to use the 50 EMA as a structural bounce zone during trending markets.' };
+
+import { ConceptCard } from '../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Structure on the Move
+
+Static horizontal support and resistance lines are powerful, but markets are dynamic. During a strong trend, price rarely pulls back to old horizontal levels; instead, it bounces off a dynamic zone that travels with the price.
+
+## 2. Plain-Language Definition
+
+Dynamic support and resistance occurs when a moving average (like the 50 EMA) acts as a flexible floor in an uptrend or a flexible ceiling in a downtrend, providing areas for price to bounce.
+
+## 3. Deep Explanation: The Mean Reversion Zone
+
+Trends don't move in straight lines. They expand (impulse) and contract (pullback). The 50 EMA acts as the "mean" or average value of the current trend. 
+
+When price accelerates far away from the 50 EMA, it becomes "overextended." Eventually, profit-taking and algorithmic mean-reversion programs force the price back toward the average. Because so many market participants—both human and algorithmic—monitor the 50 EMA, it becomes a self-fulfilling prophecy. When price touches this dynamic zone in a confirmed uptrend, buyers step back in, viewing it as a "fair value" reload area.
+
+This is why we treat the EMA not as a hard line, but as a **zone**. Price will often pierce the line slightly before rejecting and continuing the trend.
+
+## 4. Visualizing Dynamic Support
+
+<AnnotatedChart title="50 EMA as Dynamic Support" showSwingHL={true} />
+
+In this chart, notice how the violet 50 EMA slides neatly beneath the price action. Each time price retraces to touch the EMA, buying pressure resumes, creating a higher low.
+
+<AnnotatedChart title="50 EMA as Dynamic Resistance" showSwingHL={true} />
+
+## 5. How to See It on a Chart
+
+1. Identify a strong trend with a fully aligned stack (e.g., Price > 50 EMA > 200 EMA).
+2. Wait for the initial impulse leg to finish and price to begin pulling back.
+3. Watch the area directly around the 50 EMA.
+4. Look for candlestick rejection patterns (wicks, engulfing bars) when price enters the EMA zone, confirming the dynamic support is holding.
+
+## 6. Worked Examples
+
+**Grounded Example: The Bullish Pullback**
+An asset breaks out and rallies sharply, leaving the 50 EMA far behind. Over the next few days, volume dries up, and the price slowly drifts downward in a flag pattern. It finally taps the 50 EMA. On that exact touch, a large bullish hammer candle forms, and the next day price resumes its upward impulse to new highs.
+
+**Idealized Example: Bearish Rejection**
+In a relentless downtrend, price is cascading lower. A piece of minor good news causes a sharp 2-day rally. The rally pushes price exactly into the descending 50 EMA. At the EMA, sellers slam the bid, forming a bearish engulfing candle, treating the EMA as dynamic ceiling resistance. The downtrend resumes.
+
+## 7. The Beginner Trap
+
+<Callout type="trap">
+**Blindly Buying the Touch:** The biggest mistake is placing a limit order exactly on the EMA line without waiting for lower-timeframe confirmation or structural rejection. If the momentum is completely dead, price will knife straight through the EMA. The EMA is a *zone of interest*, not a magic trampoline.
+</Callout>
+
+## 8. Modern Restatements & Cross-Links
+
+This concept heavily overlays with **Mean Reversion in Trend**. The EMA acts as the equilibrium point. When price pulls back to the EMA, it has returned to fair value, making it an optimal entry for trend-followers seeking favorable risk-to-reward.
+
+## 9. Frequently Asked Questions
+
+**Does dynamic support work in a ranging market?**
+No. In a sideways market, the EMA flattens out and price will chop straight through it. Dynamic support/resistance *only* exists in trending environments.
+
+**How much overshoot (piercing the line) is acceptable?**
+A wick through the EMA is completely normal and often just a liquidity sweep. As long as the candle closes near or above the EMA, and the structural higher-low remains intact, the dynamic support holds.
+
+## 10. Key Takeaways
+
+<KeyTakeaways items={[
+  "The 50 EMA acts as a dynamic floor (support) in uptrends and ceiling (resistance) in downtrends.",
+  "It represents a return to mean value after an overextended impulse leg.",
+  "Treat the EMA as a zone, not a single exact price point.",
+  "Always wait for candlestick or structural confirmation that the zone is holding before entering."
+]} />

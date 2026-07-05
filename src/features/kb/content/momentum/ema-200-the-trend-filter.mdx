@@ -1,0 +1,79 @@
+export const frontmatter = { title: 'EMA 200: The Trend Filter', description: 'Using the 200-period EMA as the ultimate market regime and bias filter.' };
+
+import { ConceptCard } from '../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. The Ultimate Line in the Sand
+
+Before executing any trade, a professional must know which side of the market holds the structural advantage. The 200 EMA serves as the definitive boundary separating bullish regimes from bearish environments.
+
+## 2. Plain-Language Definition
+
+The 200 EMA (Exponential Moving Average) is a slow-moving line on your chart that represents the long-term trend; when price is above it, the overall trend is up (bullish), and when price is below it, the trend is down (bearish).
+
+## 3. Deep Explanation: The Regime Filter
+
+Institutions and algorithmic systems heavily monitor the 200-period average to dictate their macro bias. Because it requires 200 candles of data to calculate, it absorbs short-term volatility and news spikes, reflecting only the true underlying macro flow of capital.
+
+- **Above the 200 EMA:** The market is in a markup phase. Pullbacks are generally viewed as buying opportunities. Traders prioritize long setups because the macro momentum acts as a tailwind.
+- **Below the 200 EMA:** The market is in a markdown phase. Rallies are generally viewed as shorting opportunities. Traders prioritize short setups, as the heavy macro momentum provides a headwind to any upward movement.
+
+This concept is often called the "Regime Filter." It doesn't give you the exact entry trigger, but it tells you *which direction* you are allowed to trade.
+
+## 4. Visualizing the Regime Filter
+
+<AnnotatedChart title="Bullish vs Bearish Regimes" showSwingHL={true} />
+
+Notice how price action behaves completely differently depending on its relation to the red `var(--color-ema)` line. Above it, the swings expand upward. Below it, gravity takes over.
+
+<AnnotatedChart title="The Regime Flip" showSwingHL={false} />
+
+## 5. How to See It on a Chart
+
+1. Add a single Exponential Moving Average to your chart.
+2. Set the length to 200. (Make it prominent, like a thick red line).
+3. Look at where the current price is trading relative to the line.
+4. If price is above the 200 EMA, your macro bias is LONG. If below, your macro bias is SHORT.
+
+## 6. Worked Examples
+
+**Grounded Example: Long Trend Riding**
+During a sustained multi-month equity bull run, the daily candles consistently close above the 200 EMA. Even when there are sharp 5% market corrections, the price finds footing before or right at the 200 EMA, and the macro upward structure remains entirely intact.
+
+**Idealized Example: The Flip**
+Price has been ranging below the 200 EMA for weeks. Suddenly, a massive expansion candle breaks and closes above the 200 EMA. The subsequent pullback holds above the EMA, turning former macro resistance into macro support. This signals a total regime shift from bearish to bullish.
+
+## 7. The Beginner Trap
+
+<Callout type="trap">
+**Trading Against the Filter:** The most common mistake is trying to call a bottom in a bear market when price is firmly below the 200 EMA. Fighting the macro regime is low-probability trading. Until the 200 EMA is reclaimed, every bounce is suspect.
+</Callout>
+
+## 8. Modern Restatements & Cross-Links
+
+In many systems, the 200 EMA acts as the **Macro Directional Bias**. It aligns perfectly with Higher Timeframe (HTF) analysis. A 1-Hour chart below the 200 EMA often mirrors a Daily chart in a downward structural trend.
+
+## 9. Frequently Asked Questions
+
+**Does the 200 EMA work on lower timeframes like the 5-minute chart?**
+Yes, it acts as a regime filter for that specific timeframe's intraday trend, though the Daily 200 EMA carries exponentially more weight globally.
+
+**Should I use the 200 SMA or the 200 EMA?**
+While both are widely respected, the 200 EMA responds slightly faster to modern, high-volatility regime shifts.
+
+**Do I look at the close or the wick?**
+Always prioritize the candle close. Wicks that pierce the 200 EMA but close back below it are often just liquidity grabs, not true regime shifts.
+
+## 10. Key Takeaways
+
+<KeyTakeaways items={[
+  "The 200 EMA is a macro regime filter, not an entry trigger.",
+  "Price above the 200 EMA = Bullish bias (look for longs).",
+  "Price below the 200 EMA = Bearish bias (look for shorts).",
+  "Never blindly fight the 200 EMA trend without clear structural reversal confirmation."
+]} />

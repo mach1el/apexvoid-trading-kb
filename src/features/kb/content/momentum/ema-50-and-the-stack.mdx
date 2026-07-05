@@ -1,0 +1,77 @@
+export const frontmatter = { title: 'EMA 50 and the Stack', description: 'Reading trend health and momentum alignment using multiple EMAs.' };
+
+import { ConceptCard } from '../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. The Gap Between Averages
+
+Knowing the macro trend is only half the battle. To time entries effectively, traders must gauge the immediate momentum and health of the trend by looking at how short-term averages interact with long-term averages.
+
+## 2. Plain-Language Definition
+
+"The Stack" occurs when price and multiple EMAs line up in perfect order (e.g., Price > 50 EMA > 200 EMA), confirming that short-term momentum is aligned with the long-term trend.
+
+## 3. Deep Explanation: Trend Health via the Stack
+
+While the 200 EMA defines the macro regime, the 50 EMA defines the medium-term momentum. When you put them together on a chart, their relationship reveals the underlying health of the market.
+
+- **Full Bull Stack:** Price > 50 EMA > 200 EMA. Both the medium-term and long-term capital flows are pushing upward. The distance (or "gap") between the 50 and the 200 shows trend acceleration.
+- **Full Bear Stack:** Price < 50 EMA < 200 EMA. Complete downward alignment. 
+- **Inverted/Messy Stack:** When the 50 EMA is crisscrossing the 200 EMA, or price is wedged between them, the market is in consolidation, transition, or a deep complex pullback.
+
+When the stack is fully aligned, trade probabilities are at their highest. The moving averages fan out, pointing in the same direction, indicating smooth directional flow.
+
+## 4. Visualizing the Stack
+
+<EMAPlayground />
+
+<AnnotatedChart title="Full Bull Stack Alignment" showSwingHL={true} />
+
+Notice the visual fanning effect. The wider the gap between the 50 and 200, the stronger the momentum—but also the closer it might be to an overextended mean reversion event.
+
+## 5. How to See It on a Chart
+
+1. Add both a 50 EMA and a 200 EMA to your chart.
+2. Check the order from top to bottom.
+3. For a healthy uptrend, ensure: Price is on top, 50 EMA is in the middle, 200 EMA is on the bottom.
+4. Ensure both EMAs are sloping upwards.
+
+## 6. Worked Examples
+
+**Grounded Example: Full Bull Stack Acceleration**
+A stock breaks out of a multi-month base. First, price crosses above the 50. Then the 50 crosses the 200. Finally, the EMAs fan out and slope upward. For the next three months, every time price dips near the 50 EMA, it is bought up, and the stack remains completely intact.
+
+**Idealized Example: The Collapsing Stack**
+In a bearish transition, price first slices through the 50 EMA (momentum loss). It rallies but sets a lower high. Then price slices through the 200 EMA. Finally, the 50 crosses below the 200. The stack is now inverted, confirming a total trend reversal.
+
+## 7. The Beginner Trap
+
+<Callout type="trap">
+**The Bear Market Rally:** Sometimes in a deep downtrend, price will aggressively rally above the 50 EMA. Beginners assume the bottom is in. However, the 50 EMA is still below the 200 EMA, and the 200 EMA is sloping down. This is just a counter-trend rally into macro resistance. Wait for the stack to realign.
+</Callout>
+
+## 8. Modern Restatements & Cross-Links
+
+The stack is a visual representation of **Multi-Timeframe Alignment** on a single chart. The 50 EMA approximates a higher timeframe's short-term momentum, saving you from constantly switching between the 15-minute, 1-hour, and 4-hour charts.
+
+## 9. Frequently Asked Questions
+
+**What if the 50 EMA is completely flat?**
+A flat EMA indicates a lack of directional momentum. The market is ranging. Wait for expansion and a renewed slope before trading trend continuation.
+
+**Why use the 50 EMA instead of the 20?**
+The 20 is excellent for hyper-aggressive micro-trends, but the 50 offers a much more stable view of the medium-term swing structure. Many traders use the 20, 50, and 200 together to create a 3-tier stack.
+
+## 10. Key Takeaways
+
+<KeyTakeaways items={[
+  "The Stack visually confirms alignment between different momentum horizons.",
+  "Perfect alignment (Price > 50 > 200) offers the highest probability setups.",
+  "A compressed or tangled stack means the market is ranging or transitioning.",
+  "Avoid taking aggressive trend continuation trades when the stack is inverted."
+]} />

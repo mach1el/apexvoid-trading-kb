@@ -5,7 +5,7 @@ interface Annotation {
   p1?: number;
   p2?: number;
   dir?: 'up' | 'down';
-  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent' | 'ok';
+  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent' | 'ok' | 'ema';
   label?: string;
   dash?: number;
 }
@@ -111,6 +111,7 @@ export function AnnotatedChart({
                     case 'warn': return 'var(--color-warn)';
                     case 'muted': return 'var(--color-text-muted)';
                     case 'ok': return 'var(--color-ok)';
+                    case 'ema': return 'var(--color-ema)';
                     case 'accent': return 'var(--color-accent)';
                     default: return 'var(--color-accent)';
                   }

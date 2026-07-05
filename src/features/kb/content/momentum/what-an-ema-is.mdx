@@ -1,0 +1,81 @@
+export const frontmatter = { title: 'What is an EMA?', description: 'Understanding the Exponential Moving Average and why recent data matters more in trading.' };
+
+import { ConceptCard } from '../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Why the EMA Matters
+
+To trade effectively, you must separate meaningful momentum from random price noise. The Exponential Moving Average (EMA) is the tool professionals use to track the true, real-time pulse of the market, cutting out the lag that plagues older indicators.
+
+## 2. Plain-Language Definition
+
+An Exponential Moving Average (EMA) is a line on your chart that tracks the average price over a set number of periods, but puts much more weight on the most recent candles so it reacts faster to sudden changes.
+
+## 3. Deep Explanation: EMA vs SMA
+
+The classic Simple Moving Average (SMA) treats all data points equally. In a 20-period SMA, the price from 20 days ago has the exact same influence as today's closing price. This creates "drop-off effect" lag—when an old, extreme data point finally falls out of the calculation window, the SMA can suddenly jerk even if today's price did nothing.
+
+The **Exponential Moving Average (EMA)** fixes this by applying a mathematical multiplier that heavily weights the most recent data. The formula decays the weight of older prices exponentially. 
+
+This mechanism is crucial for traders:
+- **Faster Reaction:** When a fundamental news event causes a sudden rally, the EMA catches up quickly, showing you the new momentum state.
+- **Smoother Tracking:** It filters out the "drop-off effect" anomalies, providing a cleaner line that price respects more closely.
+- **Psychological Reflection:** Markets are driven by recent events and current emotions. By weighting recent data, the EMA accurately reflects current market psychology rather than old history.
+
+## 4. Visualizing the EMA
+
+<AnnotatedChart title="EMA vs SMA Reaction Time" showSwingHL={true} />
+
+In a fast moving market, the EMA hugs the price action closely, acting as a dynamic gauge of current momentum, whereas the SMA lags far behind, missing the early phase of the trend.
+
+<AnnotatedChart title="Idealized EMA Smoothing" showSwingHL={false} />
+
+## 5. How to See It on a Chart
+
+1. Open your charting platform and add an "Exponential Moving Average" indicator.
+2. Set the length to your desired period (e.g., 20, 50, or 200).
+3. Observe the slope of the line: pointing up means bullish momentum, pointing down means bearish.
+4. Observe price location: price above the EMA confirms strength, price below confirms weakness.
+
+## 6. Worked Examples
+
+**Grounded Example: Fast Reaction to Earnings Gap**
+Imagine a stock that gapped up 15% on earnings. An SMA might take days to visibly turn upwards. The EMA, because it weights the recent extreme gap heavily, immediately turns upwards, confirming the bullish momentum shift and keeping you on the right side of the tape.
+
+**Idealized Example: Trend Tracking**
+In a perfect textbook uptrend, the price makes higher highs and higher lows. The EMA naturally slides underneath the price action, acting as a continuous trailing reference point. As long as price remains above this smooth line, the momentum is intact.
+
+## 7. The Beginner Trap
+
+<Callout type="trap">
+**The Sideways Trap:** EMAs are trend-following tools. When the market enters a choppy, sideways consolidation range, the EMA will flatten out and price will aggressively criss-cross it. Buying or selling every EMA cross during a range is the fastest way to suffer "death by a thousand cuts" (whipsaws).
+</Callout>
+
+## 8. Modern Restatements & Cross-Links
+
+In many modern trading frameworks, the EMA is simply called a **Dynamic Mean**. Price constantly seeks to revert to this mean, and its slope defines the directional bias. This ties heavily into [Market Structure](./market-structure.mdx)—a strong structure usually aligns with a steeply sloping EMA.
+
+## 9. Frequently Asked Questions
+
+**Why should I use the EMA instead of the SMA?**
+Because markets react to *now*. The EMA reduces the lag that can make you late to a trend or slow to exit a reversal.
+
+**What are the best settings for an EMA?**
+While you can use any number, the industry standards are 9 or 20 (fast momentum), 50 (medium trend), and 200 (macro regime).
+
+**Does the EMA predict future prices?**
+No. It is a derivative of past price. It does not predict; it *confirms* the current state of momentum.
+
+## 10. Key Takeaways
+
+<KeyTakeaways items={[
+  "The EMA is a weighted moving average that prioritizes recent price action.",
+  "It reacts significantly faster to sudden market shifts than an SMA.",
+  "Slope indicates trend direction; price position relative to the EMA indicates strength.",
+  "Never use EMAs for crossover signals during flat, sideways markets."
+]} />
