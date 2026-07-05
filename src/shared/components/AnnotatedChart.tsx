@@ -1,3 +1,5 @@
+import type { ChartData } from '../../features/kb/content/chartRegistry';
+
 interface AnnotatedChartProps {
   title?: string;
   showSwingHL?: boolean;
@@ -95,7 +97,7 @@ export function AnnotatedChart({
               {gridLines}
               
               {/* Annotations UNDER candles (zones, levels) */}
-              {(chartData.a || []).map((an, idx) => {
+              {(chartData.a || []).map((an: any, idx: number) => {
                 if (an.t === 'zone' && an.p1 !== undefined && an.p2 !== undefined) {
                   const cVar = getColorVar(an.color);
                   const yTop = y(Math.max(an.p1, an.p2));
@@ -142,7 +144,7 @@ export function AnnotatedChart({
               {hasOsc && chartData.osc && (
                 <g>
                   <line x1={xL} y1="214" x2={xR} y2="214" stroke="#2A2A2A" strokeWidth="1" />
-                  {[oMax, (oMin + oMax) / 2, oMin].map((v, i) => {
+                  {[oMax, (oMin + oMax) / 2, oMin].map((v: any, i: number) => {
                     const yy = yo(v);
                     return (
                       <g key={`osc-grid-${i}`}>
@@ -152,7 +154,7 @@ export function AnnotatedChart({
                     );
                   })}
                   <polyline
-                    points={chartData.osc.map((v, i) => `${x(i)},${yo(v)}`).join(' ')}
+                    points={chartData.osc.map((v: any, i: number) => `${x(i)},${yo(v)}`).join(' ')}
                     fill="none" stroke="#60A5FA" strokeWidth="1.8"
                   />
                   <text x={xL + 2} y="211" fontFamily="var(--font-mono)" fontSize="9" fill="#5A5A5A">{chartData.oscLabel || 'RSI'}</text>
@@ -160,10 +162,10 @@ export function AnnotatedChart({
               )}
 
               {/* Annotations OVER candles */}
-              {(chartData.a || []).map((an, idx) => {
+              {(chartData.a || []).map((an: any, idx: number) => {
                 const cVar = getColorVar(an.color);
                 if (an.t === 'curve' && an.pts) {
-                  const ptsString = an.pts.map(pt => `${x(pt.i)},${y(pt.p)}`).join(" ");
+                  const ptsString = an.pts.map((pt: any) => `${x(pt.i)},${y(pt.p)}`).join(" ");
                   const firstPt = an.pts[0];
                   return (
                     <g key={`ao-${idx}`}>
@@ -235,12 +237,12 @@ export function AnnotatedChart({
                 }
                 if (an.t === 'entries' && an.pts) {
                   const bear = 'var(--color-bear)';
-                  const topPt = an.pts.reduce((a, b) => y(b.p) < y(a.p) ? b : a);
+                  const topPt = an.pts.reduce((a: any, b: any) => y(b.p) < y(a.p) ? b : a);
                   let lx = x(topPt.i);
                   lx = Math.max(xL + 40, Math.min(lx, xR - 40));
                   return (
                     <g key={`ao-${idx}`}>
-                      {an.pts.map((pt, j) => (
+                      {an.pts.map((pt: any, j: number) => (
                         <circle key={j} cx={x(pt.i)} cy={y(pt.p)} r="3.2" fill={bear} stroke="var(--color-bg-base)" strokeWidth="1.2" />
                       ))}
                       {an.label && <text x={lx} y={y(topPt.p) - 9} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="9.5" fill={bear} fontWeight="700">{an.label}</text>}
@@ -258,7 +260,7 @@ export function AnnotatedChart({
             <div>
               <h4 className="font-mono text-xs text-text-muted mb-3 tracking-wider">HOW TO READ</h4>
               <ul className="text-sm space-y-2">
-                {chartData.read.map((r, i) => (
+                {chartData.read.map((r: any, i: number) => (
                   <li key={i} className="flex gap-2 text-text-muted">
                     <span className="text-accent flex-shrink-0">•</span>
                     <span dangerouslySetInnerHTML={{ __html: r }} />
