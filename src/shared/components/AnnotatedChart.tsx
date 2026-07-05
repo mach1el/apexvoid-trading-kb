@@ -1,13 +1,22 @@
+interface Point {
+  i: number;
+  p: number;
+}
+
 interface Annotation {
-  t: 'swing' | 'zone' | 'level' | 'arrow';
+  t: 'swing' | 'zone' | 'level' | 'arrow' | 'curve' | 'bracket' | 'entries';
   i?: number;
   p?: number;
   p1?: number;
   p2?: number;
   dir?: 'up' | 'down';
-  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent' | 'ok' | 'ema';
+  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent' | 'ok' | 'ema' | 'ema50' | 'accent2';
   label?: string;
   dash?: number;
+  pts?: Point[];
+  i1?: number;
+  i2?: number;
+  w?: number;
 }
 
 interface ChartData {
@@ -112,6 +121,8 @@ export function AnnotatedChart({
                     case 'muted': return 'var(--color-text-muted)';
                     case 'ok': return 'var(--color-ok)';
                     case 'ema': return 'var(--color-ema)';
+                    case 'ema50': return '#A78BFA';
+                    case 'accent2': return '#60A5FA';
                     case 'accent': return 'var(--color-accent)';
                     default: return 'var(--color-accent)';
                   }
@@ -180,6 +191,52 @@ export function AnnotatedChart({
                     </g>
                   );
                 }
+
+                if (ann.t === 'curve' && ann.pts) {
+                  const ptsString = ann.pts.map(pt => `${x(pt.i)},${y(pt.p)}`).join(" ");
+                  const firstPt = ann.pts[0];
+                  return (
+                    <g key={`a-${idx}`}>
+                      <polyline points={ptsString} fill="none" stroke={colorVar} strokeWidth={ann.w || 2} strokeLinejoin="round" strokeLinecap="round" strokeDasharray={ann.dash ? String(ann.dash) : "none"} />
+                      {ann.label && firstPt && (
+                        <text x={x(firstPt.i) + 3} y={y(firstPt.p) - 5} fill={colorVar} fontSize="10.5" fontFamily="var(--font-mono)" fontWeight="600">{ann.label}</text>
+                      )}
+                    </g>
+                  );
+                }
+
+                if (ann.t === 'bracket' && ann.i1 !== undefined && ann.i2 !== undefined) {
+                  const x1 = x(ann.i1) - candleWidth/2 - 2;
+                  const x2 = x(ann.i2) + candleWidth/2 + 2;
+                  const yy = padding / 2 + 8;
+                  const cVar = 'var(--color-warn)';
+                  return (
+                    <g key={`a-${idx}`}>
+                      <path d={`M ${x1},${yy} L ${x1},${yy-5} L ${x2},${yy-5} L ${x2},${yy}`} fill="none" stroke={cVar} strokeWidth="1.2" />
+                      {ann.label && (
+                        <text x={(x1+x2)/2} y={yy-9} fill={cVar} fontSize="10.5" textAnchor="middle" fontFamily="var(--font-mono)">{ann.label}</text>
+                      )}
+                    </g>
+                  );
+                }
+
+                if (ann.t === 'entries' && ann.pts) {
+                  const cVar = 'var(--color-bear)';
+                  const topPt = ann.pts.reduce((a, b) => y(b.p) < y(a.p) ? b : a);
+                  let lx = x(topPt.i);
+                  lx = Math.max(padding + 40, Math.min(lx, svgWidth - padding - 40));
+                  return (
+                    <g key={`a-${idx}`}>
+                      {ann.pts.map((pt, j) => (
+                        <circle key={j} cx={x(pt.i)} cy={y(pt.p)} r="3.2" fill={cVar} stroke="var(--color-bg-base)" strokeWidth="1.2" />
+                      ))}
+                      {ann.label && (
+                        <text x={lx} y={y(topPt.p) - 9} fill={cVar} fontSize="10.5" fontWeight="700" textAnchor="middle" fontFamily="var(--font-mono)">{ann.label}</text>
+                      )}
+                    </g>
+                  );
+                }
+
                 return null;
               })}
 

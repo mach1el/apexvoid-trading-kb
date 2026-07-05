@@ -28,8 +28,25 @@ Because of the lag, the exact moment the cross occurs is often right when the in
 
 ## 4. Visualizing the Cross
 
-<AnnotatedChart title="A Legitimate Golden Cross" showSwingHL={true} />
-
+<AnnotatedChart chartData={{
+  id: "CROSS", title: "Golden / Death Cross + Momentum Shift", sub: "momentum · regime change",
+  def: "When the 50 EMA crosses above the 200 it's a golden cross (bullish regime); below is a death cross (bearish). Price reclaiming the 200 and the EMAs turning up signals the momentum shift earlier — the cross confirms it late.",
+  read: [
+    "Downtrend: price below both EMAs, 50 under 200. Bearish regime.",
+    "<b>Momentum shifts first</b>: price reclaims the EMA 200 and the 50's slope flattens then turns up.",
+    "The <b>golden cross</b> (50 crossing above 200) confirms the new regime — but it lags the actual low.",
+    "Use crosses as <b>bias/context</b>, not entry triggers; combine with a structure shift (CHoCH) for timing."
+  ],
+  trap: "Trading the cross itself. It fires well after the turn and whipsaws badly in ranges — it's a regime label, not a signal.",
+  pMin: 2308, pMax: 2346,
+  c: [[2330,2332,2325,2326],[2326,2328,2320,2321],[2321,2323,2315,2316],[2316,2318,2311,2312],[2312,2316,2310,2315],[2315,2319,2313,2318],[2318,2324,2317,2323],[2323,2329,2322,2328],[2328,2334,2327,2333],[2333,2339,2332,2338],[2338,2343,2337,2342]],
+  a: [
+    { t: "curve", color: "ema", pts: [{i:0,p:2329},{i:5,p:2324},{i:10,p:2327}], label: "EMA 200" },
+    { t: "curve", color: "ema50", pts: [{i:0,p:2326},{i:3,p:2319},{i:6,p:2321},{i:8,p:2327},{i:10,p:2333}], label: "EMA 50" },
+    { t: "arrow", i: 6, p1: 2317, p2: 2323, color: "bull", label: "reclaim 200 · shift" },
+    { t: "swing", i: 8, p: 2327, dir: "up", label: "golden cross" }
+  ]
+}} />
 Notice how price bottomed out long before the actual cross occurred. The cross simply confirms the new regime.
 
 <CompareTable 

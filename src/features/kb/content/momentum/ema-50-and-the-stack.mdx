@@ -30,8 +30,24 @@ When the stack is fully aligned, trade probabilities are at their highest. The m
 
 <EMAPlayground />
 
-<AnnotatedChart title="Full Bull Stack Alignment" showSwingHL={true} />
-
+<AnnotatedChart chartData={{
+  id: "EMA", title: "EMA 50 / 200 — trend filter & dynamic S/R", sub: "momentum · moving averages",
+  def: "The 200 EMA is the regime filter (above = bullish context, below = bearish); the 50 EMA is the intermediate trend and acts as dynamic support/resistance. Price > EMA50 > EMA200 is a clean bullish stack — pullbacks into the 50 are classic continuation spots.",
+  read: [
+    "Check the <b>EMA 200</b> first: price above it → only hunt longs; below → only shorts. It filters the whole session.",
+    "Read the <b>stack</b>: price > EMA50 > EMA200, both sloping up, = healthy uptrend.",
+    "In that trend, a <b>pullback into the EMA 50</b> often holds as dynamic support — a lower-risk continuation entry.",
+    "Enter on the reaction off the EMA, not on the touch alone; stop below the EMA / pullback low."
+  ],
+  trap: "EMAs lag and only shine in trends. In a range price chops back and forth across them — the \"bounce\" fails repeatedly. Confirm trend before trusting the touch.",
+  pMin: 2294, pMax: 2349,
+  c: [[2302,2306,2300,2305],[2305,2310,2304,2309],[2309,2315,2308,2314],[2314,2320,2313,2319],[2319,2324,2318,2323],[2323,2326,2320,2321],[2321,2322,2315,2316],[2316,2318,2313,2317],[2317,2323,2316,2322],[2322,2328,2321,2327],[2327,2333,2326,2332],[2332,2338,2331,2337],[2337,2342,2336,2341],[2341,2346,2340,2345]],
+  a: [
+    { t: "curve", color: "ema", pts: [{i:0,p:2297},{i:5,p:2305},{i:9,p:2312},{i:13,p:2317}], label: "EMA 200" },
+    { t: "curve", color: "ema50", pts: [{i:0,p:2304},{i:4,p:2314},{i:7,p:2316},{i:10,p:2325},{i:13,p:2334}], label: "EMA 50" },
+    { t: "arrow", i: 7, p1: 2313, p2: 2322, color: "bull", label: "bounce off EMA50" }
+  ]
+}} />
 Notice the visual fanning effect. The wider the gap between the 50 and 200, the stronger the momentum—but also the closer it might be to an overextended mean reversion event.
 
 ## 5. How to See It on a Chart
