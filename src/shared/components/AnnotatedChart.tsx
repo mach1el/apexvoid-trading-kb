@@ -58,7 +58,7 @@ export function AnnotatedChart({
   chartData,
 }: AnnotatedChartProps) {
   
-  if (chartData) {
+  if (chartData && !Array.isArray(chartData) && chartData.c && Array.isArray(chartData.c)) {
     const padding = 40;
     const svgWidth = 520;
     const svgHeight = 320;
