@@ -1,5 +1,6 @@
 services:
   apexvoid-trading-frontend:
+    image: apexvoid-trading-frontend:latest
     container_name: apexvoid-trading-frontend
     build:
       context: .
