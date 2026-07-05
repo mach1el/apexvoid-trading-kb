@@ -1,0 +1,56 @@
+export const frontmatter = { title: 'DXY and Real Yields', description: 'Understanding the inverse correlation between Gold, the US Dollar, and Treasury Yields.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { GoldVsDXY } from '../../components/GoldVsDXY';
+
+# DXY and Real Yields
+
+Gold does not exist in a vacuum. Because XAUUSD is priced in US Dollars, analyzing the broader dollar index (DXY) and the US Treasury market is mandatory for contextualizing gold's price action.
+
+## The US Dollar Index (DXY)
+
+The DXY measures the value of the US Dollar relative to a basket of foreign currencies (primarily the Euro, Yen, and Pound). 
+
+When the DXY is in a strong uptrend, gold faces structural headwinds. If the dollar is strengthening, it takes fewer dollars to buy an ounce of gold, putting downward pressure on the XAUUSD chart.
+
+<ConceptCard title="The Inverse Correlation">
+  While the negative correlation between XAUUSD and DXY is strong, it is not 1-to-1. Sometimes both can rise simultaneously if a global shock causes a flight to safety (investors buying both USD cash and physical Gold).
+</ConceptCard>
+
+## Interactive Analysis: Gold vs. DXY
+
+<GoldVsDXY />
+
+## The Role of Real Yields
+
+Real yields are arguably the most powerful long-term driver of gold prices.
+
+*Real Yield = Nominal 10-Year Treasury Yield - Expected Inflation*
+
+When real yields are high or rising, holding gold has a high opportunity cost. Capital rotates out of gold ETFs and into bonds. When real yields are negative or falling (inflation outpaces interest rates), gold becomes the preferred store of value.
+
+<AnnotatedChart 
+  title="Yield Spikes vs Gold Selloffs"
+  chartData={[
+    { time: 'Mon', price: 1950, label: 'Yields Steady' },
+    { time: 'Tue', price: 1945 },
+    { time: 'Wed', price: 1910, label: '10Y Yield Spikes Above 4.5%' },
+    { time: 'Thu', price: 1890 },
+    { time: 'Fri', price: 1885, label: 'Yields Consolidate' }
+  ]}
+/>
+
+<Callout type="info">
+  If Gold is failing to break a resistance level while the DXY is breaking support, Gold is exhibiting relative weakness. This divergence often foreshadows a sharp selloff in Gold once the DXY stabilizes.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "XAUUSD generally moves inversely to the DXY.",
+    "Rising real yields create a hostile environment for gold.",
+    "Divergences between DXY price action and Gold price action offer high-probability trading signals."
+  ]}
+/>

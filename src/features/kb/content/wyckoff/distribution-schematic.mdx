@@ -1,0 +1,60 @@
+export const frontmatter = { 
+  title: 'Wyckoff Distribution', 
+  description: 'Understanding how smart money unloads their positions at market tops.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Wyckoff Distribution
+
+Distribution is the exact opposite of accumulation. It is the process by which the Composite Operator (smart money) carefully unloads their long positions to the retail public at a market top, prior to a markdown phase (downtrend).
+
+## The Events of Distribution
+
+Distribution ranges map the transition from an uptrend to a downtrend, characterized by heavy public buying and quiet institutional selling.
+
+1.  **Preliminary Supply (PSY):** Large operators begin to sell, halting the rapid ascent. Volume expands.
+2.  **Buying Climax (BC):** Extreme FOMO (Fear Of Missing Out) from the public. Exhaustion of the uptrend on huge volume as retail buys the top and smart money fulfills their sell orders.
+3.  **Automatic Reaction (AR):** With buying exhausted, price falls rapidly. This sets the lower boundary of the distribution range.
+4.  **Secondary Test (ST):** Price rallies back to test the area of the BC. Usually, volume is lower, confirming buying power is waning.
+5.  **Upthrust (UT) / Upthrust After Distribution (UTAD):** The bearish equivalent of the Spring. Price breaks above the resistance of the trading range, sweeping liquidity (buy stops) from early shorters and trapping breakout buyers. Smart money uses this liquidity to execute the last of their sell orders, and price quickly reverses back into the range.
+6.  **Sign of Weakness (SOW):** A strong, high-volume move down that breaks the bottom of the trading range (support).
+7.  **Last Point of Supply (LPSY):** A weak rally that tests the broken support as new resistance. This is the optimal entry point for a short position.
+
+<AnnotatedChart 
+  chartData={[
+    { x: 1, y: 50 },
+    { x: 2, y: 80 },
+    { x: 3, y: 70 },
+    { x: 4, y: 110 },
+    { x: 5, y: 75 },
+    { x: 6, y: 105 },
+    { x: 7, y: 85 }, 
+    { x: 8, y: 120 },
+    { x: 9, y: 65 }, 
+    { x: 10, y: 75 },
+    { x: 11, y: 30 } 
+  ]}
+  annotations={[
+    { type: 'point', point: {x:4, y:110}, label: 'BC' },
+    { type: 'point', point: {x:5, y:75}, label: 'AR' },
+    { type: 'point', point: {x:6, y:105}, label: 'ST' },
+    { type: 'point', point: {x:8, y:120}, label: 'UTAD' },
+    { type: 'point', point: {x:9, y:65}, label: 'SOW' },
+    { type: 'point', point: {x:10, y:75}, label: 'LPSY' },
+    { type: 'line', points: [{x:4, y:110}, {x:7, y:110}], label: 'Resistance', dashed: true },
+    { type: 'line', points: [{x:5, y:75}, {x:8, y:75}], label: 'Support', dashed: true }
+  ]}
+  title="Wyckoff Distribution Schematic"
+/>
+
+<KeyTakeaways 
+  items={[
+    "Distribution is the transferring of assets from strong hands to weak hands.",
+    "The Buying Climax (BC) marks extreme retail euphoria.",
+    "The UTAD is a trap for breakout buyers and a liquidity grab for smart money shorts.",
+    "The LPSY is the safest place to enter the subsequent markdown phase."
+  ]}
+/>

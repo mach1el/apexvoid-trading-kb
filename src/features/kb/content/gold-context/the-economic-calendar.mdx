@@ -1,0 +1,57 @@
+export const frontmatter = { title: 'The Economic Calendar', description: 'Navigating macro data releases and their impact on Gold.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# The Economic Calendar
+
+For day traders and swing traders in XAUUSD, the economic calendar is just as important as price action. Major data releases inject massive liquidity and volatility into the market, frequently triggering stop hunts and establishing new directional trends.
+
+## Tier 1 Data for Gold Traders
+
+Not all news is created equal. Gold is primarily sensitive to US data that influences the Federal Reserve's monetary policy trajectory.
+
+<CompareTable 
+  headers={['Data Release', 'Frequency', 'Impact on Gold']}
+  rows={[
+    ['Non-Farm Payrolls (NFP)', 'Monthly (1st Friday)', 'Massive volatility. Strong jobs = lower gold.'],
+    ['Consumer Price Index (CPI)', 'Monthly', 'High volatility. Hot inflation = complex reaction depending on Fed.'],
+    ['FOMC Rate Decision', '8 times/year', 'Trend defining. Hawkish tone = lower gold.'],
+    ['Jerome Powell Speeches', 'Variable', 'High volatility. Forward guidance drives pricing.']
+  ]}
+/>
+
+<ConceptCard title="The Deviation from Consensus">
+  Markets price in the expected (consensus) number prior to the release. The volatility occurs when the actual data *deviates* from the consensus. A "good" NFP number might cause gold to rally if the consensus expectation was for an "excellent" number. Trade the deviation, not the absolute figure.
+</ConceptCard>
+
+## Pre-News Price Action
+
+Markets often exhibit specific behaviors leading up to major Tier 1 events:
+- **Consolidation**: Price compresses into a tight range as institutions sideline their capital, awaiting clarity.
+- **Liquidity Building**: Trendlines and clean levels are established, accumulating stops just above and below the current price action.
+
+<AnnotatedChart 
+  title="NFP Reaction Cycle"
+  chartData={[
+    { time: '08:00', price: 1950, label: 'Pre-News Consolidation' },
+    { time: '08:15', price: 1951 },
+    { time: '08:29', price: 1949 },
+    { time: '08:30', price: 1940, label: 'News Drop (Stop Hunt Low)' },
+    { time: '08:35', price: 1970, label: 'True Directional Move' }
+  ]}
+/>
+
+<Callout type="warning">
+  The initial 1-minute candle of a major news release is rarely the true trend. It is often a liquidity grab to fill institutional orders before the market moves to its intended destination.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Only Tier 1 US data significantly impacts gold structure.",
+    "Volatility is driven by the deviation between actual data and market consensus.",
+    "Pre-news consolidation usually acts as a liquidity trap."
+  ]}
+/>

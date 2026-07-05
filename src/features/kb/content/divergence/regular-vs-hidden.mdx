@@ -1,0 +1,60 @@
+export const frontmatter = { 
+  title: 'Regular vs. Hidden Divergence', 
+  description: 'Distinguish between reversal and continuation divergence patterns.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Regular vs. Hidden Divergence
+
+Divergence comes in two primary forms: Regular and Hidden. While regular divergence indicates a potential trend reversal, hidden divergence suggests the continuation of the existing trend.
+
+## Regular Divergence (Trend Reversal)
+
+Regular divergence is used to identify the end of a trend. It occurs when price makes extreme highs or lows, but the indicator fails to follow suit.
+
+*   **Bullish Regular Divergence:** Price makes a Lower Low (LL), but the indicator makes a Higher Low (HL). Indicates weakening downside momentum and a potential reversal to the upside.
+*   **Bearish Regular Divergence:** Price makes a Higher High (HH), but the indicator makes a Lower High (LH). Indicates weakening upside momentum and a potential reversal to the downside.
+
+<AnnotatedChart 
+  chartData={[
+    { x: 1, y: 20, indicator: 40 },
+    { x: 2, y: 15, indicator: 20 },
+    { x: 3, y: 18, indicator: 30 },
+    { x: 4, y: 12, indicator: 35 },
+    { x: 5, y: 16, indicator: 50 }
+  ]}
+  annotations={[
+    { type: 'line', points: [{x:2, y:15}, {x:4, y:12}], label: 'Lower Low (Price)', color: 'green' },
+    { type: 'line', points: [{x:2, y:20, isIndicator: true}, {x:4, y:35, isIndicator: true}], label: 'Higher Low (Indicator)', color: 'green' }
+  ]}
+  title="Regular Bullish Divergence"
+/>
+
+## Hidden Divergence (Trend Continuation)
+
+Hidden divergence is used to catch pullbacks within an established trend. It signals that the core trend is still strong despite a short-term price retracement.
+
+*   **Bullish Hidden Divergence:** Price makes a Higher Low (HL), but the indicator makes a Lower Low (LL). Found in uptrends, indicating the pullback is exhausted and the uptrend will resume.
+*   **Bearish Hidden Divergence:** Price makes a Lower High (LH), but the indicator makes a Higher High (HH). Found in downtrends, indicating the rally is exhausted and the downtrend will resume.
+
+<CompareTable 
+  headers={['Type', 'Price Action', 'Indicator Action', 'Signal']}
+  rows={[
+    ['Regular Bullish', 'Lower Low', 'Higher Low', 'Reversal (Upside)'],
+    ['Regular Bearish', 'Higher High', 'Lower High', 'Reversal (Downside)'],
+    ['Hidden Bullish', 'Higher Low', 'Lower Low', 'Continuation (Upside)'],
+    ['Hidden Bearish', 'Lower High', 'Higher High', 'Continuation (Downside)']
+  ]}
+/>
+
+<KeyTakeaways 
+  items={[
+    "Regular divergence signals a potential trend reversal.",
+    "Hidden divergence signals a potential trend continuation.",
+    "Hidden divergence is often more reliable because it aligns with the dominant trend."
+  ]}
+/>

@@ -1,0 +1,51 @@
+export const frontmatter = { title: 'Average True Range (ATR) Explained', description: 'A deep dive into the ATR indicator and how it measures market volatility.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Average True Range (ATR) Explained
+
+The Average True Range (ATR) is a technical indicator introduced by J. Welles Wilder Jr. that measures market volatility by decomposing the entire range of an asset price for that period.
+
+## Calculating the True Range
+
+The foundation of ATR is the True Range (TR), which accounts for overnight gaps and limit moves that a simple high-low range might miss. TR is defined as the greatest of the following:
+
+1. Current High minus Current Low
+2. Absolute value of Current High minus Previous Close
+3. Absolute value of Current Low minus Previous Close
+
+<ConceptCard title="ATR Calculation">
+  The ATR is an exponential moving average (or smoothed moving average) of the True Range over a specified number of periods (commonly 14).
+  
+  `ATR_t = ((ATR_{t-1} * 13) + TR_t) / 14`
+</ConceptCard>
+
+## Interpreting ATR Values
+
+ATR is absolute, not relative. A higher ATR indicates higher volatility, while a lower ATR indicates lower volatility. However, ATR is proportional to the asset's price; a $2000 asset will inherently have a larger ATR than a $50 asset, assuming similar percentage volatility.
+
+<AnnotatedChart 
+  title="ATR Tracking Price Action"
+  chartData={[
+    { time: 'Mon', price: 1950, value: 12 },
+    { time: 'Tue', price: 1955, value: 14 },
+    { time: 'Wed', price: 1940, value: 25, label: 'Trend Acceleration' },
+    { time: 'Thu', price: 1920, value: 30 },
+    { time: 'Fri', price: 1925, value: 22 }
+  ]}
+/>
+
+<Callout type="warning">
+  ATR is a measure of volatility, not direction. It will expand during sharp sell-offs just as it will during aggressive rallies.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "ATR accounts for gaps by incorporating the previous close into its True Range calculation.",
+    "It provides a raw, absolute measure of expected price movement per period.",
+    "A 14-period lookback is standard, but intraday traders may adjust this based on the time horizon."
+  ]}
+/>

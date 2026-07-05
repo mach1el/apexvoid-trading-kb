@@ -1,0 +1,56 @@
+export const frontmatter = { title: 'Trading Around News', description: 'Strategies and risk management protocols for high-impact macro events.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { NewsWindowPlanner } from '../../components/NewsWindowPlanner';
+
+# Trading Around News
+
+Trading directly during a Tier 1 news release is analogous to gambling. Slippage, widened spreads, and erratic price action make technical analysis temporarily useless. Professional traders build protocols to trade *around* the news rather than *through* it.
+
+## The Slippage Threat
+
+During events like CPI or NFP, liquidity providers pull their limit orders from the book to protect themselves. This creates a liquidity vacuum. If your stop loss is triggered during this vacuum, your broker will execute your market order at the next available price—which could be 50 to 100 pips past your intended stop.
+
+<ConceptCard title="The Embargo Window">
+  Implement a strict "no-trade" embargo window around major news releases.
+  - **Close or risk-free** all open day trades 15-30 minutes prior to the event.
+  - **Wait** 15-30 minutes after the release before entering new positions to allow spreads to normalize and a clear structure to form.
+</ConceptCard>
+
+## News Window Planner
+
+Use the tool below to visualize the ideal embargo windows for upcoming events.
+
+<NewsWindowPlanner />
+
+## Post-News Strategies
+
+The best opportunities often arise after the dust has settled.
+
+1. **The Liquidity Sweep Fade**: If news spikes price above a major high but immediately closes back below it as an aggressive pin bar on the 15m chart, it often signals a liquidity grab and a reversal.
+2. **The Continuation Pullback**: If news breaks market structure cleanly, wait for a lower-timeframe pullback into a newly formed fair value gap or order block to join the new trend.
+
+<AnnotatedChart 
+  title="Post-News Continuation Entry"
+  chartData={[
+    { time: '08:30', price: 2000, label: 'News Release' },
+    { time: '08:45', price: 2020, label: 'Initial Surge (Wait)' },
+    { time: '09:00', price: 2010, label: 'Pullback to Structure (Entry)' },
+    { time: '09:30', price: 2035, label: 'Trend Continuation' }
+  ]}
+/>
+
+<Callout type="warning">
+  Never try to predict the outcome of a news event by placing limit orders beforehand. The risk of devastating slippage far outweighs the potential reward.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Slippage during news can render standard stop losses entirely ineffective.",
+    "Implement a strict embargo window around Tier 1 releases.",
+    "Wait for the initial volatility to subside and trade the resulting market structure."
+  ]}
+/>
