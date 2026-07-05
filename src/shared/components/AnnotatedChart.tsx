@@ -5,7 +5,7 @@ interface Annotation {
   p1?: number;
   p2?: number;
   dir?: 'up' | 'down';
-  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent';
+  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent' | 'ok';
   label?: string;
   dash?: number;
 }
@@ -104,7 +104,18 @@ export function AnnotatedChart({
 
               {/* Annotations */}
               {a.map((ann, idx) => {
-                const colorVar = ann.color ? `var(--color-${ann.color})` : 'var(--color-accent)';
+                const getColorVar = (c?: string) => {
+                  switch (c) {
+                    case 'bull': return 'var(--color-bull)';
+                    case 'bear': return 'var(--color-bear)';
+                    case 'warn': return 'var(--color-warn)';
+                    case 'muted': return 'var(--color-text-muted)';
+                    case 'ok': return 'var(--color-ok)';
+                    case 'accent': return 'var(--color-accent)';
+                    default: return 'var(--color-accent)';
+                  }
+                };
+                const colorVar = getColorVar(ann.color);
                 
                 if (ann.t === 'swing' && ann.i !== undefined && ann.p !== undefined) {
                   const cx = x(ann.i);
