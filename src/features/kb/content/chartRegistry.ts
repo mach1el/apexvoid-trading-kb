@@ -484,6 +484,46 @@ const CH: ChartData[] = [
   ]
  },
  {
+  id:"DIVH", title:"Hidden Divergence (continuation)", sub:"momentum · continuation",
+  def:"Hidden divergence catches pullbacks inside a trend, not reversals. Bullish hidden divergence: in an uptrend, price prints a higher low while the oscillator prints a lower low — the pullback is exhausted and the trend is likely to resume. It is the continuation mirror of regular divergence.",
+  read:[
+    "Confirm an <b>uptrend</b> first — hidden divergence only makes sense with the trend.",
+    "Price pulls back to a <b>higher low</b>, above the prior swing low.",
+    "The oscillator drops to a <b>lower low</b> at that same point — momentum flushed, sellers spent.",
+    "Price HL + momentum LL = <b>bullish hidden divergence</b> → the uptrend resumes."
+  ],
+  trap:"Hidden divergence still needs the <b>trend intact</b>. If structure has already broken (a CHoCH), a 'higher low' can be the first lower high of a new downtrend — context first, signal second.",
+  pMin:2301,pMax:2332,
+  osc:[40,38,50,62,68,55,45,33,50,62,70,72], oscMin:20, oscMax:80, oscLabel:"RSI",
+  c:[[2310,2311,2305,2306],[2306,2308,2304,2307],[2307,2313,2306,2312],[2312,2318,2311,2317],[2317,2321,2316,2320],[2320,2321,2315,2316],[2316,2317,2312,2313],[2313,2314,2311,2312],[2312,2318,2311,2317],[2317,2323,2316,2322],[2322,2327,2321,2326],[2326,2329,2325,2328]],
+  a:[
+    {t:"trend2",panel:"price",a:{i:1,v:2304},b:{i:7,v:2311},color:"muted",label:"price: higher low"},
+    {t:"trend2",panel:"osc",a:{i:1,v:38},b:{i:7,v:33},color:"warn",label:"RSI: lower low"},
+    {t:"arrow",i:8,p1:2311,p2:2317,color:"bull",label:"trend resumes"}
+  ]
+ },
+ {
+  id:"DIVC", title:"Divergence + CHoCH Confirmation", sub:"momentum · confirmation",
+  def:"Divergence alone is weak — momentum can diverge for a long time before price turns. The safe setup waits for confirmation: spot regular divergence, then require a Change of Character (a break of the last structural point) before acting, and enter on the retest.",
+  read:[
+    "Spot <b>regular divergence</b>: price higher high, oscillator lower high — momentum fading.",
+    "Do <b>not</b> short yet — mark the <b>last higher low</b>; that is the line in the sand.",
+    "A <b>close below</b> it is the <b>CHoCH</b> — structure confirms what divergence only hinted.",
+    "Enter on the <b>retest</b> of the broken level (now supply); stop above the swing high."
+  ],
+  trap:"Front-running the CHoCH. Divergence is a heads-up, not a trigger — in a strong trend price can print divergence repeatedly and keep running until structure actually breaks.",
+  pMin:2295,pMax:2327,
+  osc:[55,68,50,45,58,60,48,40,32,42,35,28,24], oscMin:20, oscMax:80, oscLabel:"RSI",
+  c:[[2306,2312,2305,2311],[2311,2317,2310,2316],[2316,2318,2311,2312],[2312,2314,2308,2310],[2310,2316,2309,2315],[2315,2323,2314,2322],[2322,2323,2317,2318],[2318,2319,2312,2313],[2313,2314,2307,2308],[2308,2313,2307,2312],[2312,2313,2306,2307],[2307,2308,2301,2302],[2302,2304,2298,2299]],
+  a:[
+    {t:"trend2",panel:"price",a:{i:1,v:2317},b:{i:5,v:2323},color:"muted",label:"price: higher high"},
+    {t:"trend2",panel:"osc",a:{i:1,v:68},b:{i:5,v:60},color:"warn",label:"RSI: lower high"},
+    {t:"level",p:2308,dash:1,color:"warn",label:"last HL"},
+    {t:"arrow",i:8,p1:2314,p2:2308,color:"bear",label:"CHoCH confirms"},
+    {t:"swing",i:9,p:2313,dir:"up",label:"retest → entry"}
+  ]
+ },
+ {
   id:"NEWS", title:"XAU News Spike & DXY Context", sub:"gold · events / intermarket",
   def:"High-impact USD data (NFP, CPI, FOMC) detonates gold volatility: spreads widen, both sides' stops get hunted, and the first move often fakes out. Gold also tracks the US dollar inversely — DXY up tends to press gold down — so the dollar's reaction frames the trade.",
   read:[
