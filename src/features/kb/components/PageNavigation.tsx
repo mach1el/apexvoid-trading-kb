@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import { flattenNav } from '../content/nav';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 
 export function PageNavigation() {
   const location = useLocation();
+  const { lang } = useLanguage();
   const flatNav = flattenNav();
   
   const currentIndex = flatNav.findIndex((item) => item.path === location.pathname);
@@ -27,7 +29,7 @@ export function PageNavigation() {
           <div className="flex flex-col items-start text-left truncate">
             <span className="text-[10px] text-text-muted font-medium uppercase tracking-wider">Previous</span>
             <span className="text-sm text-text font-semibold group-hover:text-accent transition-colors truncate w-full">
-              {prevItem.label}
+              {prevItem.label[lang]}
             </span>
           </div>
         </Link>
@@ -43,7 +45,7 @@ export function PageNavigation() {
           <div className="flex flex-col items-end text-right truncate">
             <span className="text-[10px] text-text-muted font-medium uppercase tracking-wider">Next</span>
             <span className="text-sm text-text font-semibold group-hover:text-accent transition-colors truncate w-full">
-              {nextItem.label}
+              {nextItem.label[lang]}
             </span>
           </div>
           <div className="flex items-center justify-center w-8 h-8 shrink-0 rounded-full bg-bg-elevated group-hover:bg-accent/10 text-text-muted group-hover:text-accent transition-colors">

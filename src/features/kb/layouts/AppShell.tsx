@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { SearchDialog } from './SearchDialog';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 
 interface AppShellProps {
   children: ReactNode;
@@ -8,6 +9,7 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { lang, toggleLang } = useLanguage();
 
   return (
     <div className="min-h-screen flex">
@@ -31,6 +33,17 @@ export function AppShell({ children }: AppShellProps) {
             </div>
 
             <div className="flex items-center gap-2">
+              {/* Language Toggle */}
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-text bg-bg-elevated border border-border rounded-lg hover:border-accent/50 hover:bg-accent/10 transition-all cursor-pointer"
+                title="Toggle Language"
+              >
+                <span className={lang === 'en' ? 'text-accent' : 'text-text-muted'}>EN</span>
+                <span className="text-border">/</span>
+                <span className={lang === 'vi' ? 'text-accent' : 'text-text-muted'}>VI</span>
+              </button>
+
               {/* Search trigger */}
               <button
                 onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}

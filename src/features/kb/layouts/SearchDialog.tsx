@@ -2,11 +2,12 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import { flattenNav } from '../content/nav';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 
 const allPages = flattenNav();
 
 const fuse = new Fuse(allPages, {
-  keys: ['label', 'slug', 'path'],
+  keys: ['label.en', 'label.vi', 'slug', 'path'],
   threshold: 0.4,
   includeMatches: true,
 });
@@ -14,6 +15,7 @@ const fuse = new Fuse(allPages, {
 export function SearchDialog() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const { lang } = useLanguage();
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -86,7 +88,7 @@ export function SearchDialog() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 <div>
-                  <span className="text-text font-medium">{r.item.label}</span>
+                  <span className="text-text font-medium">{r.item.label[lang]}</span>
                   <span className="block text-xs text-text-muted font-mono">{r.item.path}</span>
                 </div>
               </button>

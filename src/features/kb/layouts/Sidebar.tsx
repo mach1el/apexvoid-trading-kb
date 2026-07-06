@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { navigation } from '../content/nav';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const location = useLocation();
+  const { lang } = useLanguage();
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     navigation.forEach(sec => init[sec.prefix] = true);
@@ -72,7 +74,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                   onClick={() => toggleSection(section.prefix)}
                 >
                   <span className="text-base">{section.icon}</span>
-                  <span className="flex-1 text-left font-medium">{section.label}</span>
+                  <span className="flex-1 text-left font-medium">{section.label[lang]}</span>
                   <svg
                     className={`w-4 h-4 transition-transform ${isCollapsed ? '' : 'rotate-90'}`}
                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -97,7 +99,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                             }
                           `}
                         >
-                          {item.label}
+                          {item.label[lang]}
                         </Link>
                       );
                     })}
