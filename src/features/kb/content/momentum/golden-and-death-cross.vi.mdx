@@ -1,0 +1,84 @@
+export const frontmatter = { title: 'Golden Cross và Death Cross', description: 'Sự thật về các cú cắt đường trung bình động trễ và cách diễn giải chúng cho đúng.' };
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Tín Hiệu Yêu Thích Của Truyền Thông
+
+Ít sự kiện kỹ thuật nào nhận được nhiều sự chú ý của báo chí tài chính chính thống như một "Death Cross" hay "Golden Cross". Dù chúng nghe kịch tính và dứt khoát, các trader chuyên nghiệp biết những tín hiệu này đi kèm những cảnh báo nghiêm trọng.
+
+## 2. Định Nghĩa Dễ Hiểu
+
+Một **Golden Cross** xảy ra khi một đường trung bình động nhanh (như EMA 50) cắt lên trên một đường trung bình động chậm (như EMA 200), báo hiệu một thị trường bò dài hạn. Một **Death Cross** thì ngược lại: EMA 50 cắt xuống dưới EMA 200, báo hiệu một thị trường gấu dài hạn.
+
+## 3. Giải Thích Sâu: Độ Trễ và Whipsaw
+
+Vì các đường trung bình động được rút ra từ dữ liệu giá quá khứ, chúng vốn dĩ là các chỉ báo trễ. Đến lúc một đường trung bình 50 giai đoạn cắt một đường trung bình 200 giai đoạn, đáy (hay đỉnh) giá thực tế đã xảy ra nhiều tuần hoặc thậm chí nhiều tháng trước.
+
+**Cú Cắt Thực Sự Cho Bạn Biết Điều Gì:**
+Một golden/death cross không có nghĩa là "mua/bán ngay giây này". Nó nghĩa là *cú chuyển đổi momentum vĩ mô giờ đã được xác nhận về mặt toán học*. Toàn bộ dòng hải lưu đã đảo chiều.
+
+**Nguy Hiểm Của Cú Cắt:**
+Do độ trễ, khoảnh khắc chính xác cú cắt xảy ra thường đúng lúc chân đảo chiều ban đầu đã kiệt sức và đến hạn cho một cú hồi. Trader mù quáng mua vào ngày một Golden Cross thường ngay lập tức chịu một cú hồi sâu. Hơn nữa, trong các thị trường đi ngang, lộn xộn, 50 và 200 sẽ cắt chéo lặp đi lặp lại, tạo các tín hiệu giả (whipsaw) hủy hoại vốn.
+
+## 4. Hình Dung Cú Cắt
+
+<AnnotatedChart chartData={chartRegistry.CROSS} />
+Chú ý cách giá tạo đáy từ lâu trước khi cú cắt thực tế xảy ra. Cú cắt đơn giản xác nhận chế độ mới.
+
+<CompareTable 
+  title="Cú Cắt Thật và Cú Cắt Giả" 
+  leftHeader="Cú Cắt Xu Hướng Vĩ Mô" 
+  rightHeader="Cú Cắt Whipsaw Đi Ngang" 
+  leftItems={["Xảy ra sau một cú phá vỡ cấu trúc khổng lồ", "Các EMA ngay lập tức xòe ra và dốc lên", "Giá tôn trọng EMA 50 như hỗ trợ ở cú nhúng tiếp theo"]} 
+  rightItems={["Xảy ra giữa một khối tích lũy đi ngang", "Các EMA vẫn phẳng và rối", "Giá cắt hoàn toàn qua cả hai EMA vài ngày sau"]} 
+/>
+
+## 5. Cách Thấy Nó Trên Biểu Đồ
+
+1. Áp dụng EMA 50 và EMA 200.
+2. Quan sát điểm giao nhau.
+3. Nếu 50 cắt LÊN qua 200: Golden Cross.
+4. Nếu 50 cắt XUỐNG qua 200: Death Cross.
+5. Ngay lập tức kiểm tra độ dốc của EMA 200—nếu nó phẳng, cú cắt có thể là nhiễu vô nghĩa.
+
+## 6. Ví Dụ Thực Hành
+
+**Ví Dụ Thực Tế: Cú Chuyển Đổi Vĩ Mô Hợp Pháp**
+Sau một thị trường gấu tàn khốc kéo dài một năm, giá tạo đáy, hình thành một mẫu vai-đầu-vai ngược, và phá đường viền cổ. Hai tháng sau, EMA 50 cắt lên trên EMA 200. EMA 200 chầm chậm uốn lên. Golden Cross này xác nhận thị trường gấu đã hoàn toàn kết thúc, và một đợt tăng bò nhiều năm có khả năng đang bắt đầu.
+
+**Ví Dụ Lý Tưởng: Whipsaw Trong Range**
+Một tài sản giao dịch trong một hình chữ nhật khổng lồ giữa $100 và $150 trong sáu tháng. Vì nó swing $50 lên xuống lặp đi lặp lại, EMA 50 cắt EMA 200 bốn lần riêng biệt. Mỗi lần một "Death Cross" xảy ra, giá thực tế lại gần hỗ trợ $100, khiến nó là thời điểm tệ nhất có thể để bán.
+
+## 7. Bẫy Người Mới
+
+<Callout type="trap">
+**Giao Dịch Cú Cắt Như Một Điểm Vào:** Người nghiệp dư thấy một Golden Cross trên tin tức và mua ngay ở giá thị trường. Thường thì giá quá mở rộng đúng khoảnh khắc này. Trader thông minh thấy cú cắt, thừa nhận cú chuyển đổi vĩ mô, rồi kiên nhẫn chờ một cú hồi cấu trúc về EMA 50 để thực sự vào lệnh.
+</Callout>
+
+## 8. Diễn Giải Hiện Đại & Liên Kết Chéo
+
+Một Golden Cross rốt cuộc là một xác nhận trễ của một **Cú Đảo Chiều Xu Hướng Vĩ Mô**. Nó là mảnh ghép cuối cùng của trò chơi xảy ra *sau khi* hành động giá đã thể hiện một Change of Character (CHoCH) và thiết lập một cấu trúc xu hướng mới.
+
+## 9. Câu Hỏi Thường Gặp
+
+**Có quá muộn để mua khi một Golden Cross xảy ra không?**
+Thường thì quá muộn cho cú swing *ban đầu*, nhưng không quá muộn cho toàn bộ chu kỳ vĩ mô. Hãy chờ cú hồi đầu tiên sau cú cắt để tìm một điểm vào an toàn.
+
+**Điều này có áp dụng cho mọi khung thời gian không?**
+Có, nhưng thuật ngữ "Golden/Death Cross" cụ thể chỉ biểu đồ Ngày trong tài chính truyền thống. Một cú cắt trên biểu đồ 5 phút chỉ là nhiễu momentum trong ngày tiêu chuẩn.
+
+## 10. Điểm Chính
+
+<KeyTakeaways items={[
+  "Golden/death cross xác nhận các cú chuyển đổi momentum vĩ mô, nhưng chúng trễ hơn giá rất nhiều.",
+  "Chúng không phải là tín hiệu vào lệnh trực tiếp; chúng là công cụ xác nhận chế độ.",
+  "Đừng bao giờ giao dịch một cú cắt nếu EMA 200 phẳng (thị trường đi ngang).",
+  "Các điểm vào tốt nhất xảy ra ở cú hồi cấu trúc đầu tiên SAU một cú cắt hợp pháp."
+]} />

@@ -1,0 +1,107 @@
+export const frontmatter = { title: 'Hỗ Trợ và Kháng Cự Động', description: 'Cách dùng EMA 50 làm vùng bật cấu trúc trong các thị trường có xu hướng.' };
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Cấu Trúc Đang Di Chuyển
+
+Các đường hỗ trợ và kháng cự ngang tĩnh rất mạnh mẽ, nhưng thị trường thì động. Trong một xu hướng mạnh, giá hiếm khi hồi về các mức ngang cũ; thay vào đó, nó bật khỏi một vùng động di chuyển cùng với giá.
+
+## 2. Định Nghĩa Dễ Hiểu
+
+Hỗ trợ và kháng cự động xảy ra khi một đường trung bình động (như EMA 50) đóng vai trò một sàn linh hoạt trong một xu hướng tăng hoặc một trần linh hoạt trong một xu hướng giảm, cung cấp các vùng để giá bật.
+
+## 3. Giải Thích Sâu: Vùng Hồi Quy Về Trung Bình
+
+Xu hướng không di chuyển theo đường thẳng. Chúng giãn nở (cú đẩy) và co lại (cú hồi). EMA 50 đóng vai trò "trung bình" hay giá trị bình quân của xu hướng hiện tại.
+
+Khi giá tăng tốc đi xa khỏi EMA 50, nó trở nên "quá mở rộng". Cuối cùng, việc chốt lời và các chương trình hồi quy về trung bình của thuật toán buộc giá quay về đường trung bình. Vì rất nhiều người tham gia thị trường—cả người lẫn thuật toán—giám sát EMA 50, nó trở thành một lời tiên tri tự ứng nghiệm. Khi giá chạm vùng động này trong một xu hướng tăng đã xác nhận, người mua bước lại vào, xem nó như một vùng nạp lại "giá trị hợp lý".
+
+Đây là lý do ta đối xử với EMA không như một đường cứng, mà như một **vùng**. Giá thường sẽ xuyên qua đường một chút trước khi từ chối và tiếp tục xu hướng.
+
+## 4. Hình Dung Hỗ Trợ Động
+
+<AnnotatedChart chartData={{
+  id: "DYN-SUPPORT", title: "EMA 50 Làm Hỗ Trợ Động", sub: "nạp lại giá trị hợp lý",
+  def: "Trong một xu hướng tăng mạnh, EMA 50 đóng vai trò một sàn động. Giá quay về nó để nạp lại thanh khoản trước khi tiếp tục lên cao hơn.",
+  read: [
+    "Giá trong một xu hướng tăng rõ ràng.",
+    "Các cú hồi chạm chính xác EMA 50 (Tím).",
+    "Người mua bước vào tại trung bình 'giá trị hợp lý', tạo các đáy cao hơn."
+  ],
+  trap: "Vào lệnh trước khi giá chạm EMA mà chưa thấy nến từ chối bullish.",
+  pMin: 85, pMax: 130,
+  c: [[100,105,98,104], [104,112,100,110], [110,112,105,106], [106,108,102,104], [104,118,102,116], [116,122,110,120], [120,122,115,116], [116,118,110,112], [112,126,110,124], [124,128,122,126]],
+  a: [
+    { t: "curve", color: "ema50", pts: [{i:0,p:98}, {i:2,p:100}, {i:4,p:103}, {i:6,p:108}, {i:8,p:112}], label: "EMA 50" },
+    { t: "arrow", i: 3, p1: 104, p2: 110, color: "bull" },
+    { t: "arrow", i: 7, p1: 112, p2: 120, color: "bull" }
+  ]
+}} />
+
+Trong biểu đồ này, chú ý cách EMA 50 tím trượt gọn gàng bên dưới hành động giá. Mỗi lần giá hồi về chạm EMA, áp lực mua tiếp tục, tạo một đáy cao hơn.
+
+<AnnotatedChart chartData={{
+  id: "DYN-RESIST", title: "EMA 50 Làm Kháng Cự Động", sub: "trần bearish",
+  def: "Trong giai đoạn giảm giá, EMA 50 đóng vai trò một trần động. Các cú tăng nhẹ vào EMA mang lại các điểm vào short xác suất cao.",
+  read: [
+    "Giá đang thác xuống.",
+    "Các cú tăng nhẹ chạm EMA 50.",
+    "Người bán quyết liệt bảo vệ trung bình, tạo các đỉnh thấp hơn."
+  ],
+  trap: "Mua cú tăng nhẹ, nhầm nó với một cú đảo chiều thật.",
+  pMin: 85, pMax: 130,
+  c: [[125,128,120,122], [122,124,110,112], [112,118,110,116], [116,120,115,118], [118,120,105,108], [108,110,95,98], [98,105,96,102], [102,106,100,104], [104,106,90,92]],
+  a: [
+    { t: "curve", color: "ema50", pts: [{i:0,p:126}, {i:2,p:122}, {i:4,p:118}, {i:6,p:110}, {i:8,p:102}], label: "EMA 50" },
+    { t: "arrow", i: 3, p1: 118, p2: 112, color: "bear" },
+    { t: "arrow", i: 7, p1: 104, p2: 98, color: "bear" }
+  ]
+}} />
+
+## 5. Cách Thấy Nó Trên Biểu Đồ
+
+1. Xác định một xu hướng mạnh với một bộ xếp chồng đồng bộ hoàn toàn (ví dụ Giá > EMA 50 > EMA 200).
+2. Chờ chân đẩy ban đầu kết thúc và giá bắt đầu hồi lại.
+3. Quan sát vùng ngay quanh EMA 50.
+4. Tìm các mẫu nến từ chối (râu, nến engulfing) khi giá vào vùng EMA, xác nhận hỗ trợ động đang giữ vững.
+
+## 6. Ví Dụ Thực Hành
+
+**Ví Dụ Thực Tế: Cú Hồi Bullish**
+Một tài sản phá vỡ và tăng mạnh, để EMA 50 tụt xa phía sau. Trong vài ngày tiếp theo, khối lượng cạn kiệt, và giá chầm chậm trôi xuống trong một mẫu cờ. Cuối cùng nó chạm EMA 50. Đúng lần chạm đó, một nến búa (hammer) bullish lớn hình thành, và ngày hôm sau giá tiếp tục cú đẩy lên tới các đỉnh mới.
+
+**Ví Dụ Lý Tưởng: Từ Chối Bearish**
+Trong một xu hướng giảm không ngừng, giá đang thác xuống thấp hơn. Một mẩu tin tốt nhỏ gây một cú tăng 2 ngày mạnh. Cú tăng đẩy giá chính xác vào EMA 50 đang giảm. Tại EMA, người bán đè giá, tạo một nến bearish engulfing, đối xử với EMA như kháng cự trần động. Xu hướng giảm tiếp tục.
+
+## 7. Bẫy Người Mới
+
+<Callout type="trap">
+**Mua Mù Khi Chạm:** Lỗi lớn nhất là đặt một lệnh chờ chính xác trên đường EMA mà không chờ xác nhận khung nhỏ hơn hoặc từ chối cấu trúc. Nếu momentum hoàn toàn chết, giá sẽ xuyên thẳng qua EMA. EMA là một *vùng quan tâm*, không phải một tấm bạt nhún thần kỳ.
+</Callout>
+
+## 8. Diễn Giải Hiện Đại & Liên Kết Chéo
+
+Khái niệm này chồng lấp mạnh với **Hồi Quy Về Trung Bình Trong Xu Hướng**. EMA đóng vai trò điểm cân bằng. Khi giá hồi về EMA, nó đã trở về giá trị hợp lý, biến nó thành một điểm vào tối ưu cho các trader theo xu hướng tìm risk-to-reward thuận lợi.
+
+## 9. Câu Hỏi Thường Gặp
+
+**Hỗ trợ động có hoạt động trong một thị trường đi ngang không?**
+Không. Trong một thị trường đi ngang, EMA phẳng ra và giá sẽ cắt thẳng qua nó. Hỗ trợ/kháng cự động *chỉ* tồn tại trong các môi trường có xu hướng.
+
+**Bao nhiêu độ vượt (xuyên qua đường) là chấp nhận được?**
+Một râu xuyên qua EMA hoàn toàn bình thường và thường chỉ là một cú quét thanh khoản. Miễn là nến đóng gần hoặc trên EMA, và đáy cao hơn về cấu trúc vẫn nguyên vẹn, hỗ trợ động vẫn giữ.
+
+## 10. Điểm Chính
+
+<KeyTakeaways items={[
+  "EMA 50 đóng vai trò một sàn (hỗ trợ) trong xu hướng tăng và trần (kháng cự) trong xu hướng giảm.",
+  "Nó đại diện cho một sự trở về giá trị trung bình sau một chân đẩy quá mở rộng.",
+  "Đối xử với EMA như một vùng, không phải một điểm giá chính xác duy nhất.",
+  "Luôn chờ xác nhận nến hoặc cấu trúc rằng vùng đang giữ vững trước khi vào lệnh."
+]} />

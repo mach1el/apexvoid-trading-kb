@@ -1,0 +1,77 @@
+export const frontmatter = { title: 'EMA 50 và Bộ Xếp Chồng (Stack)', description: 'Đọc sức khỏe xu hướng và sự đồng bộ momentum bằng nhiều EMA.' };
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Khoảng Cách Giữa Các Đường Trung Bình
+
+Biết xu hướng vĩ mô mới chỉ là một nửa trận chiến. Để canh điểm vào hiệu quả, trader phải đo momentum tức thời và sức khỏe của xu hướng bằng cách nhìn cách các đường trung bình ngắn hạn tương tác với các đường trung bình dài hạn.
+
+## 2. Định Nghĩa Dễ Hiểu
+
+"Bộ Xếp Chồng" (The Stack) xảy ra khi giá và nhiều EMA xếp thẳng hàng theo thứ tự hoàn hảo (ví dụ Giá > EMA 50 > EMA 200), xác nhận rằng momentum ngắn hạn đồng bộ với xu hướng dài hạn.
+
+## 3. Giải Thích Sâu: Sức Khỏe Xu Hướng Qua Bộ Xếp Chồng
+
+Trong khi EMA 200 xác định chế độ vĩ mô, EMA 50 xác định momentum trung hạn. Khi bạn đặt chúng cùng nhau trên một biểu đồ, mối quan hệ của chúng tiết lộ sức khỏe nền tảng của thị trường.
+
+- **Bộ Xếp Chồng Bull Đầy Đủ:** Giá > EMA 50 > EMA 200. Cả dòng vốn trung hạn và dài hạn đều đang đẩy lên. Khoảng cách (hay "gap") giữa 50 và 200 cho thấy sự tăng tốc của xu hướng.
+- **Bộ Xếp Chồng Bear Đầy Đủ:** Giá < EMA 50 < EMA 200. Sự đồng bộ đi xuống hoàn toàn.
+- **Bộ Xếp Chồng Đảo/Lộn Xộn:** Khi EMA 50 cắt chéo EMA 200, hoặc giá bị kẹt giữa chúng, thị trường đang trong tích lũy, chuyển tiếp, hoặc một cú hồi phức tạp sâu.
+
+Khi bộ xếp chồng đồng bộ hoàn toàn, xác suất giao dịch ở mức cao nhất. Các đường trung bình xòe ra, chỉ cùng một hướng, cho thấy dòng chảy định hướng mượt mà.
+
+## 4. Hình Dung Bộ Xếp Chồng
+
+<EMAPlayground />
+
+<AnnotatedChart chartData={chartRegistry.EMA} />
+Chú ý hiệu ứng xòe quạt trực quan. Khoảng cách giữa 50 và 200 càng rộng, momentum càng mạnh—nhưng cũng có thể càng gần một sự kiện hồi quy về trung bình do quá mở rộng.
+
+## 5. Cách Thấy Nó Trên Biểu Đồ
+
+1. Thêm cả EMA 50 và EMA 200 vào biểu đồ.
+2. Kiểm tra thứ tự từ trên xuống dưới.
+3. Với một xu hướng tăng lành mạnh, đảm bảo: Giá ở trên cùng, EMA 50 ở giữa, EMA 200 ở dưới cùng.
+4. Đảm bảo cả hai EMA đều dốc lên.
+
+## 6. Ví Dụ Thực Hành
+
+**Ví Dụ Thực Tế: Tăng Tốc Bộ Xếp Chồng Bull Đầy Đủ**
+Một cổ phiếu phá vỡ khỏi một nền nhiều tháng. Đầu tiên, giá cắt lên trên 50. Rồi 50 cắt 200. Cuối cùng, các EMA xòe ra và dốc lên. Trong ba tháng tiếp theo, mỗi lần giá nhúng gần EMA 50, nó được mua vào, và bộ xếp chồng vẫn hoàn toàn nguyên vẹn.
+
+**Ví Dụ Lý Tưởng: Bộ Xếp Chồng Sụp Đổ**
+Trong một cú chuyển đổi bearish, giá đầu tiên cắt qua EMA 50 (mất momentum). Nó tăng nhưng đặt một đỉnh thấp hơn. Rồi giá cắt qua EMA 200. Cuối cùng, 50 cắt xuống dưới 200. Bộ xếp chồng giờ bị đảo, xác nhận một cú đảo chiều xu hướng toàn phần.
+
+## 7. Bẫy Người Mới
+
+<Callout type="trap">
+**Cú Tăng Của Thị Trường Gấu:** Đôi khi trong một xu hướng giảm sâu, giá sẽ tăng quyết liệt lên trên EMA 50. Người mới cho rằng đáy đã tới. Tuy nhiên, EMA 50 vẫn dưới EMA 200, và EMA 200 đang dốc xuống. Đây chỉ là một cú tăng ngược xu hướng vào kháng cự vĩ mô. Hãy chờ bộ xếp chồng đồng bộ lại.
+</Callout>
+
+## 8. Diễn Giải Hiện Đại & Liên Kết Chéo
+
+Bộ xếp chồng là một biểu diễn trực quan của **Đồng Bộ Đa Khung Thời Gian** trên một biểu đồ duy nhất. EMA 50 xấp xỉ momentum ngắn hạn của một khung lớn hơn, cứu bạn khỏi việc liên tục chuyển giữa biểu đồ 15 phút, 1 giờ và 4 giờ.
+
+## 9. Câu Hỏi Thường Gặp
+
+**Nếu EMA 50 hoàn toàn phẳng thì sao?**
+Một EMA phẳng cho thấy sự thiếu momentum định hướng. Thị trường đang đi ngang. Hãy chờ sự giãn nở và một độ dốc mới trước khi giao dịch tiếp diễn xu hướng.
+
+**Vì sao dùng EMA 50 thay vì 20?**
+EMA 20 tuyệt vời cho các xu hướng vi mô cực kỳ quyết liệt, nhưng 50 cung cấp một góc nhìn ổn định hơn nhiều về cấu trúc swing trung hạn. Nhiều trader dùng 20, 50 và 200 cùng nhau để tạo một bộ xếp chồng 3 tầng.
+
+## 10. Điểm Chính
+
+<KeyTakeaways items={[
+  "Bộ xếp chồng xác nhận trực quan sự đồng bộ giữa các đường chân trời momentum khác nhau.",
+  "Sự đồng bộ hoàn hảo (Giá > 50 > 200) mang lại các setup xác suất cao nhất.",
+  "Một bộ xếp chồng nén hoặc rối nghĩa là thị trường đang đi ngang hoặc chuyển tiếp.",
+  "Tránh vào các lệnh tiếp diễn xu hướng quyết liệt khi bộ xếp chồng bị đảo."
+]} />

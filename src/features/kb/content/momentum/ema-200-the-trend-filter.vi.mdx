@@ -1,0 +1,108 @@
+export const frontmatter = { title: 'EMA 200: Bộ Lọc Xu Hướng', description: 'Dùng EMA 200 giai đoạn làm bộ lọc chế độ thị trường và thiên hướng tối thượng.' };
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Lằn Ranh Tối Thượng
+
+Trước khi thực thi bất kỳ lệnh nào, một chuyên gia phải biết phía nào của thị trường nắm lợi thế cấu trúc. EMA 200 đóng vai trò là ranh giới dứt khoát phân tách các chế độ bullish khỏi các môi trường bearish.
+
+## 2. Định Nghĩa Dễ Hiểu
+
+EMA 200 (Đường Trung Bình Động Lũy Thừa) là một đường chậm trên biểu đồ đại diện cho xu hướng dài hạn; khi giá trên nó, xu hướng tổng thể là tăng (bullish), và khi giá dưới nó, xu hướng là giảm (bearish).
+
+## 3. Giải Thích Sâu: Bộ Lọc Chế Độ
+
+Các tổ chức và hệ thống thuật toán giám sát chặt trung bình 200 giai đoạn để quyết định thiên hướng vĩ mô của họ. Vì cần 200 nến dữ liệu để tính, nó hấp thụ biến động ngắn hạn và các cú tăng vọt do tin tức, chỉ phản ánh dòng chảy vốn vĩ mô nền tảng thật.
+
+- **Trên EMA 200:** Thị trường ở giai đoạn tăng giá (markup). Các cú hồi nói chung được xem là cơ hội mua. Trader ưu tiên các setup long vì momentum vĩ mô đóng vai trò gió xuôi.
+- **Dưới EMA 200:** Thị trường ở giai đoạn giảm giá (markdown). Các cú tăng nói chung được xem là cơ hội short. Trader ưu tiên các setup short, vì momentum vĩ mô nặng nề tạo gió ngược cho bất kỳ chuyển động đi lên nào.
+
+Khái niệm này thường được gọi là "Bộ Lọc Chế Độ". Nó không cho bạn kích hoạt vào lệnh chính xác, nhưng nó cho bạn biết *hướng nào* bạn được phép giao dịch.
+
+## 4. Hình Dung Bộ Lọc Chế Độ
+
+<AnnotatedChart chartData={{
+  id: "EMA200-REGIMES", title: "Chế Độ Bullish và Bearish", sub: "bộ lọc vĩ mô",
+  def: "EMA 200 đóng vai trò lằn ranh tối thượng. Trên nó, chế độ là bullish và ưu tiên long. Dưới nó, chế độ là bearish và ưu tiên short.",
+  read: [
+    "Bên trái: Giá trên EMA 200 đỏ. Các cú swing giãn nở lên.",
+    "Bên phải: Giá phá xuống dưới, chuyển chế độ sang bearish."
+  ],
+  trap: "Mua đáy khi giá nằm chắc dưới EMA 200.",
+  pMin: 80, pMax: 140,
+  c: [[100,108,98,106], [106,112,102,110], [110,122,108,120], [120,124,115,118], [118,130,116,128], [128,135,125,126], [126,128,110,112], [112,115,100,102], [102,108,98,105], [105,106,90,92], [92,95,85,88]],
+  a: [
+    { t: "curve", color: "ema", pts: [{i:0,p:95}, {i:2,p:100}, {i:4,p:108}, {i:6,p:118}, {i:8,p:120}, {i:10,p:116}], label: "EMA 200" }
+  ]
+}} />
+
+Chú ý cách hành động giá cư xử hoàn toàn khác nhau tùy theo quan hệ của nó với đường `var(--color-ema)` đỏ. Trên nó, các cú swing giãn nở lên. Dưới nó, trọng lực chiếm ưu thế.
+
+<AnnotatedChart chartData={{
+  id: "EMA200-FLIP", title: "Cú Lật Chế Độ", sub: "thay đổi chế độ",
+  def: "Một cú lật chế độ thật xảy ra khi giá quyết liệt giành lại EMA 200 rồi dùng nó làm hỗ trợ vĩ mô.",
+  read: [
+    "Giá đi ngang dưới EMA 200.",
+    "Một nến giãn nở khổng lồ phá lên trên.",
+    "Cú hồi tôn trọng EMA 200 như hỗ trợ."
+  ],
+  trap: "Các râu xuyên qua EMA mà không đóng cửa trên nó.",
+  pMin: 85, pMax: 135,
+  c: [[100,102,95,98], [98,100,92,94], [94,98,90,92], [92,105,90,104], [104,118,102,116], [116,120,110,112], [112,114,106,108], [108,122,106,120], [120,128,118,126]],
+  a: [
+    { t: "curve", color: "ema", pts: [{i:0,p:105}, {i:2,p:102}, {i:4,p:100}, {i:6,p:100}, {i:8,p:102}], label: "EMA 200" },
+    { t: "arrow", i: 4, p1: 104, p2: 116, color: "bull", label: "phá giãn nở" },
+    { t: "arrow", i: 6, p1: 108, p2: 102, color: "ok", label: "giữ làm hỗ trợ" }
+  ]
+}} />
+
+## 5. Cách Thấy Nó Trên Biểu Đồ
+
+1. Thêm một Đường Trung Bình Động Lũy Thừa duy nhất vào biểu đồ.
+2. Đặt độ dài thành 200. (Làm cho nó nổi bật, như một đường đỏ dày).
+3. Nhìn vào nơi giá hiện tại đang giao dịch so với đường.
+4. Nếu giá trên EMA 200, thiên hướng vĩ mô của bạn là LONG. Nếu dưới, thiên hướng vĩ mô là SHORT.
+
+## 6. Ví Dụ Thực Hành
+
+**Ví Dụ Thực Tế: Cưỡi Xu Hướng Long**
+Trong một đợt tăng giá cổ phiếu bò kéo dài nhiều tháng, các nến ngày liên tục đóng trên EMA 200. Ngay cả khi có các điều chỉnh thị trường 5% mạnh, giá tìm được chỗ đứng trước hoặc ngay tại EMA 200, và cấu trúc đi lên vĩ mô vẫn hoàn toàn nguyên vẹn.
+
+**Ví Dụ Lý Tưởng: Cú Lật**
+Giá đã đi ngang dưới EMA 200 trong nhiều tuần. Đột nhiên, một nến giãn nở khổng lồ phá và đóng trên EMA 200. Cú hồi sau đó giữ trên EMA, biến kháng cự vĩ mô cũ thành hỗ trợ vĩ mô. Điều này báo hiệu một sự chuyển đổi chế độ toàn phần từ bearish sang bullish.
+
+## 7. Bẫy Người Mới
+
+<Callout type="trap">
+**Giao Dịch Ngược Bộ Lọc:** Lỗi phổ biến nhất là cố gọi đáy trong một thị trường gấu khi giá nằm chắc dưới EMA 200. Chống lại chế độ vĩ mô là giao dịch xác suất thấp. Cho tới khi EMA 200 được giành lại, mọi cú bật đều đáng ngờ.
+</Callout>
+
+## 8. Diễn Giải Hiện Đại & Liên Kết Chéo
+
+Trong nhiều hệ thống, EMA 200 đóng vai trò **Thiên Hướng Định Hướng Vĩ Mô**. Nó đồng bộ hoàn hảo với phân tích Khung Thời Gian Lớn Hơn (HTF). Một biểu đồ 1 Giờ dưới EMA 200 thường phản chiếu một biểu đồ Ngày trong một xu hướng cấu trúc đi xuống.
+
+## 9. Câu Hỏi Thường Gặp
+
+**EMA 200 có hoạt động trên các khung nhỏ hơn như biểu đồ 5 phút không?**
+Có, nó đóng vai trò bộ lọc chế độ cho xu hướng trong ngày của khung cụ thể đó, dù EMA 200 Ngày mang trọng lượng lớn hơn theo cấp lũy thừa trên toàn cầu.
+
+**Tôi nên dùng SMA 200 hay EMA 200?**
+Dù cả hai đều được tôn trọng rộng rãi, EMA 200 phản ứng nhanh hơn đôi chút với các cú lật chế độ biến động cao hiện đại.
+
+**Tôi nhìn giá đóng hay râu?**
+Luôn ưu tiên giá đóng của nến. Các râu xuyên qua EMA 200 nhưng đóng trở lại dưới nó thường chỉ là các cú vồ thanh khoản, không phải cú lật chế độ thật.
+
+## 10. Điểm Chính
+
+<KeyTakeaways items={[
+  "EMA 200 là một bộ lọc chế độ vĩ mô, không phải một kích hoạt vào lệnh.",
+  "Giá trên EMA 200 = Thiên hướng bullish (tìm long).",
+  "Giá dưới EMA 200 = Thiên hướng bearish (tìm short).",
+  "Đừng bao giờ mù quáng chống lại xu hướng EMA 200 mà không có xác nhận đảo chiều cấu trúc rõ ràng."
+]} />
