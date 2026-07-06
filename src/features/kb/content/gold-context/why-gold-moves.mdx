@@ -1,0 +1,41 @@
+export const frontmatter = { title: 'Why Gold Moves', description: 'The fundamental drivers of XAUUSD pricing and order flow.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Why Gold Moves
+
+Gold (XAUUSD) is a unique asset. Unlike equities, it yields no dividends. Unlike fiat currencies, it is not backed by a central bank or government. Its price is entirely driven by its status as a store of value, a safe-haven asset, and a hedge against systemic risk and inflation.
+
+## The Triad of Gold Drivers
+
+To understand why gold moves, traders must look at three primary macroeconomic drivers that directly influence institutional capital allocation:
+
+1. **The US Dollar (DXY)**: Gold is priced in US Dollars. A stronger dollar makes gold more expensive for foreign buyers, reducing demand and lowering prices. A weaker dollar has the opposite effect.
+2. **Real Interest Rates**: Real yields (nominal yield minus expected inflation) represent the opportunity cost of holding a non-yielding asset like gold. When real yields rise, gold becomes less attractive compared to Treasury bonds.
+3. **Geopolitical Risk & Market Sentiment**: During times of war, financial crises, or extreme uncertainty, capital flees riskier assets (equities) and seeks the safety of gold.
+
+<ConceptCard title="The Opportunity Cost of Gold">
+  Because holding physical gold or gold derivatives pays no interest, institutional investors weigh the cost of capital against potential price appreciation. If 10-Year Treasuries are yielding 5% while inflation is at 2% (Real Yield = 3%), holding gold is "expensive" compared to a risk-free 3% real return.
+</ConceptCard>
+
+## Inflation vs. Real Yields
+
+A common misconception is that gold always rises when inflation rises. This is only true if inflation rises *faster* than interest rates. If a central bank hikes rates aggressively to combat inflation, real yields can actually rise, causing gold to sell off despite high headline inflation.
+
+<AnnotatedChart chartData={chartRegistry.GYLD} />
+
+<Callout type="info">
+  Intraday technical traders don't need to forecast macroeconomics, but understanding *why* a major structural level is breaking helps distinguish a false breakout from a fundamental trend shift.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Gold moves inversely to the US Dollar and Real Interest Rates.",
+    "It acts as a safe-haven asset during times of geopolitical or financial stress.",
+    "Inflation only supports gold if nominal interest rates fail to keep pace."
+  ]}
+/>

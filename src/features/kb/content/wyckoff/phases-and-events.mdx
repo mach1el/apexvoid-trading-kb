@@ -1,0 +1,57 @@
+export const frontmatter = { 
+  title: 'Wyckoff Phases & Events', 
+  description: 'Breaking down the five distinct phases of a Wyckoff cycle.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { WyckoffPhaseLabeler } from '../../components/WyckoffPhaseLabeler';
+
+# Wyckoff Phases A through E
+
+Both Accumulation and Distribution schematics are divided into five distinct phases (A, B, C, D, and E). These phases categorize the progression of the market cycle from stopping the previous trend to initiating the new one.
+
+## The Five Phases
+
+### Phase A: Stopping the Prior Trend
+Phase A marks the exhaustion of the preceding trend. Supply and demand come into balance.
+*   **Accumulation Events:** PS (Preliminary Support), SC (Selling Climax), AR (Automatic Rally), ST (Secondary Test).
+*   **Purpose:** To halt the momentum of the downtrend and establish the boundaries of the trading range.
+
+### Phase B: Building the Cause
+Phase B is usually the longest phase. It is where the institution is actively accumulating (or distributing) their core position.
+*   **Events:** Multiple STs (Secondary Tests) and swings within the range established in Phase A.
+*   **Purpose:** To absorb the floating supply (or demand). Volatility and volume usually contract as Phase B progresses, indicating the absorption is nearing completion.
+
+### Phase C: The Test (The Trap)
+Phase C is the decisive moment of the schematic. It involves a deceptive move to check the remaining supply/demand and trap retail traders.
+*   **Accumulation Event:** The Spring or Shakeout.
+*   **Distribution Event:** The Upthrust (UT) or UTAD.
+*   **Purpose:** To sweep liquidity and ensure the path of least resistance is clear for the upcoming markup/markdown.
+
+### Phase D: Trend Within the Range
+Phase D is the transition from sideways consolidation to the new directional trend. Price begins to show clear directional intent but is still partly within the boundaries of the original range.
+*   **Accumulation Events:** SOS (Sign of Strength), LPS (Last Point of Support).
+*   **Distribution Events:** SOW (Sign of Weakness), LPSY (Last Point of Supply).
+*   **Purpose:** To confirm the outcome of Phase C. The market is now dominated by the Composite Operator in the direction of the new trend.
+
+### Phase E: The Trend Unfolds
+Phase E is the breakout from the trading range and the unfolding of the massive trend (Markup or Markdown).
+*   **Purpose:** The 'Effect' resulting from the 'Cause' built in Phase B. The asset leaves the trading range behind entirely.
+
+### Practice: Labeling Phases
+
+Test your knowledge by identifying the correct Wyckoff phases on the chart below.
+
+<WyckoffPhaseLabeler />
+
+<KeyTakeaways 
+  items={[
+    "Phase A stops the previous trend.",
+    "Phase B builds the 'Cause' through consolidation and absorption.",
+    "Phase C is the deceptive trap (Spring/UTAD) to grab liquidity.",
+    "Phase D confirms the new trend direction within the range boundaries.",
+    "Phase E is the final breakout and sustained trend."
+  ]}
+/>

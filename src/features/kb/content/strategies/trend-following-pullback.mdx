@@ -1,31 +1,14 @@
 export const frontmatter = { title: 'Trend-Following Pullback', description: 'How to enter established trends with minimal risk and high probability.' };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 import { StrategyPicker } from '../../components/StrategyPicker';
 
 # Trend-Following Pullback
 
-<AnnotatedChart chartData={{
-  id:"PB", title:"Trend-Following Pullback", sub:"strategy · Trend Pullback",
-  def:"Buy in the direction of the established trend after a controlled pullback into support — not by chasing the first spike. The strongest long-run evidence base of the common retail strategies.",
-  read:[
-    "Confirm an <b>uptrend</b> (HH/HL structure, or a rising 20/50 EMA stack).",
-    "Wait for a <b>pullback into support</b> — a demand zone, prior level, or the MA band.",
-    "Enter only on a <b>confirmation bounce</b>, never on the falling knife.",
-    "<b>Stop below the pullback low</b>; trail the winner instead of scalping tiny profit."
-  ],
-  trap:"Entering mid-pullback with no confirmation. \"Cheap\" is not a signal — let the bounce prove itself.",
-  pMin:2296,pMax:2337,
-  c:[[2300,2306,2299,2305],[2305,2312,2304,2311],[2311,2319,2310,2318],[2318,2324,2317,2323],[2323,2324,2317,2318],[2318,2319,2312,2313],[2313,2314,2309,2311],[2311,2318,2310,2317],[2317,2323,2316,2322],[2322,2329,2321,2328],[2328,2334,2327,2333]],
-  a:[
-    {t:"swing",i:3,p:2324,dir:"up",label:"SH"},
-    {t:"zone",p1:2314,p2:2309,color:"bull",label:"pullback support"},
-    {t:"level",p:2308,dash:1,color:"warn",label:"stop"},
-    {t:"arrow",i:7,p1:2311,p2:2317,color:"bull",label:"entry"}
-  ]
-}} />
+<AnnotatedChart chartData={chartRegistry.PB} />
 The trend-following pullback strategy is the bread and butter of directional trading. It relies on a simple premise: in a strongly trending market, counter-trend moves (pullbacks) are usually temporary exhaustion or profit-taking, providing a low-risk entry to join the dominant trend.
 
 ## Strategy Blueprint

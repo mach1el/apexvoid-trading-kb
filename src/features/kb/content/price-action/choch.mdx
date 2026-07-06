@@ -4,6 +4,7 @@ export const frontmatter = {
 };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 import { BosChochClassifier } from '../../components/BosChochClassifier';
@@ -70,13 +71,7 @@ This is the textbook CHoCH setup. It had HTF context (the $2000 supply zone), it
 
 ### Example 2: The Minor Structure Trap (Grounded)
 
-<AnnotatedChart 
-  title="Fake CHoCH (Internal Structure Shift)"
-  isBull={true}
-  keyLevelY={60}
-  showCHoCH={true}
-  showSwingHL={true}
-/>
+<AnnotatedChart chartData={chartRegistry.CHoCH} />
 
 **Walkthrough:**
 In this scenario, the market is in a massive daily uptrend. On the 1-Hour chart, price makes a huge push up, then begins a complex, choppy pullback. Inside that pullback, a minor structural peak is broken to the downside. 

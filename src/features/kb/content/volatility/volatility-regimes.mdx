@@ -1,0 +1,50 @@
+export const frontmatter = { title: 'Volatility Regimes', description: 'Identifying and adapting to cycles of volatility expansion and contraction.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Volatility Regimes
+
+Financial markets do not exist in a steady state; they cycle systematically between periods of low volatility (contraction) and high volatility (expansion). Understanding which regime the market is currently in is crucial for selecting the appropriate trading strategy.
+
+## Contraction to Expansion
+
+Volatility is cyclical. Extended periods of low volatility almost inevitably lead to violent expansions. This occurs because low volatility environments encourage leverage buildup and tight stop placement. When a catalyst arrives, forced liquidations trigger aggressive directional moves.
+
+<ConceptCard title="Characteristics of Contraction">
+  - Narrow trading ranges
+  - Mean-reverting price action
+  - Low trading volume
+  - Moving averages flattening
+  - Bollinger Bands tightening (the "Squeeze")
+</ConceptCard>
+
+## Adapting Strategy to Regime
+
+A breakout strategy that performs exceptionally well during a transition from contraction to expansion will incur heavy losses during a pure contraction phase (due to false breakouts). Conversely, a mean-reversion strategy excels in contraction but risks ruin during expansion.
+
+<AnnotatedChart chartData={chartRegistry.VREG} />
+
+<Callout type="info">
+  When ATR reaches a multi-week low, traders should prepare for expansion by looking for structural breakout opportunities rather than fading the edges of the range.
+</Callout>
+
+<CompareTable 
+  headers={['Low Volatility Regime', 'High Volatility Regime']}
+  rows={[
+    ['Mean reversion strategies preferred', 'Momentum and trend following preferred'],
+    ['Fading range extremes is viable', 'Breakouts yield strong continuation'],
+    ['Tighter stop losses acceptable', 'Wider stops mandatory']
+  ]}
+/>
+
+<KeyTakeaways 
+  items={[
+    "Volatility alternates between contraction and expansion.",
+    "Low volatility environments build the energy for future directional moves.",
+    "Strategy selection must align with the current volatility regime."
+  ]}
+/>

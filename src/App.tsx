@@ -32,6 +32,14 @@ const CandlesVolume = () => <MdxPage loader={() => import('./features/kb/content
 const TimeframesMtf = () => <MdxPage loader={() => import('./features/kb/content/foundations/timeframes-mtf.mdx')} />;
 const LiquidityIntuition = () => <MdxPage loader={() => import('./features/kb/content/foundations/liquidity-intuition.mdx')} />;
 
+// Momentum & EMAs
+const WhatIsAnEma = () => <MdxPage loader={() => import('./features/kb/content/momentum/what-an-ema-is.mdx')} />;
+const Ema200TheTrendFilter = () => <MdxPage loader={() => import('./features/kb/content/momentum/ema-200-the-trend-filter.mdx')} />;
+const Ema50AndTheStack = () => <MdxPage loader={() => import('./features/kb/content/momentum/ema-50-and-the-stack.mdx')} />;
+const DynamicSupportResistance = () => <MdxPage loader={() => import('./features/kb/content/momentum/dynamic-support-resistance.mdx')} />;
+const GoldenAndDeathCross = () => <MdxPage loader={() => import('./features/kb/content/momentum/golden-and-death-cross.mdx')} />;
+const MomentumShift = () => <MdxPage loader={() => import('./features/kb/content/momentum/momentum-shift.mdx')} />;
+
 // 2. Key Levels
 const SwingHighLow = () => <MdxPage loader={() => import('./features/kb/content/key-levels/swing-high-low.mdx')} />;
 const PdhPdl = () => <MdxPage loader={() => import('./features/kb/content/key-levels/pdh-pdl-pwh-pwl.mdx')} />;
@@ -91,6 +99,38 @@ const MomentumContinuation = () => <MdxPage loader={() => import('./features/kb/
 const MeanReversion = () => <MdxPage loader={() => import('./features/kb/content/strategies/mean-reversion.mdx')} />;
 const TheWaitProtocol = () => <MdxPage loader={() => import('./features/kb/content/strategies/the-wait-protocol.mdx')} />;
 
+// Divergence
+const WhatDivergenceIs = () => <MdxPage loader={() => import('./features/kb/content/divergence/what-divergence-is.mdx')} />;
+const RegularVsHidden = () => <MdxPage loader={() => import('./features/kb/content/divergence/regular-vs-hidden.mdx')} />;
+const TradingDivergenceSafely = () => <MdxPage loader={() => import('./features/kb/content/divergence/trading-divergence-safely.mdx')} />;
+
+// Support/Resistance
+const SupportAndResistance = () => <MdxPage loader={() => import('./features/kb/content/support-resistance/support-and-resistance.mdx')} />;
+const RoleReversalFlip = () => <MdxPage loader={() => import('./features/kb/content/support-resistance/role-reversal-flip.mdx')} />;
+const SupplyAndDemandZones = () => <MdxPage loader={() => import('./features/kb/content/support-resistance/supply-and-demand-zones.mdx')} />;
+const ZoneQuality = () => <MdxPage loader={() => import('./features/kb/content/support-resistance/zone-quality.mdx')} />;
+
+// Wyckoff
+const WhoWasWyckoffAndTheThreeLaws = () => <MdxPage loader={() => import('./features/kb/content/wyckoff/who-was-wyckoff-and-the-three-laws.mdx')} />;
+const AccumulationSchematic = () => <MdxPage loader={() => import('./features/kb/content/wyckoff/accumulation-schematic.mdx')} />;
+const DistributionSchematic = () => <MdxPage loader={() => import('./features/kb/content/wyckoff/distribution-schematic.mdx')} />;
+const TheSpringAndUpthrust = () => <MdxPage loader={() => import('./features/kb/content/wyckoff/the-spring-and-upthrust.mdx')} />;
+const PhasesAndEvents = () => <MdxPage loader={() => import('./features/kb/content/wyckoff/phases-and-events.mdx')} />;
+
+// Volatility & ATR
+const WhatIsVolatility = () => <MdxPage loader={() => import('./features/kb/content/volatility/what-is-volatility.mdx')} />;
+const AtrExplained = () => <MdxPage loader={() => import('./features/kb/content/volatility/atr-explained.mdx')} />;
+const AtrBasedStops = () => <MdxPage loader={() => import('./features/kb/content/volatility/atr-based-stops.mdx')} />;
+const VolatilityAndPositionSize = () => <MdxPage loader={() => import('./features/kb/content/volatility/volatility-and-position-size.mdx')} />;
+const VolatilityRegimes = () => <MdxPage loader={() => import('./features/kb/content/volatility/volatility-regimes.mdx')} />;
+
+// Gold Context
+const WhyGoldMoves = () => <MdxPage loader={() => import('./features/kb/content/gold-context/why-gold-moves.mdx')} />;
+const TheEconomicCalendar = () => <MdxPage loader={() => import('./features/kb/content/gold-context/the-economic-calendar.mdx')} />;
+const TradingAroundNews = () => <MdxPage loader={() => import('./features/kb/content/gold-context/trading-around-news.mdx')} />;
+const DxyAndRealYields = () => <MdxPage loader={() => import('./features/kb/content/gold-context/dxy-and-real-yields.mdx')} />;
+const RiskOnRiskOff = () => <MdxPage loader={() => import('./features/kb/content/gold-context/risk-on-risk-off.mdx')} />;
+
 export function App() {
   return (
     <AppShell>
@@ -110,11 +150,30 @@ export function App() {
         <Route path="/foundations/timeframes-mtf" element={<TimeframesMtf />} />
         <Route path="/foundations/liquidity-intuition" element={<LiquidityIntuition />} />
 
+        {/* Momentum & EMAs */}
+        <Route path="/momentum/what-an-ema-is" element={<WhatIsAnEma />} />
+        <Route path="/momentum/ema-200-the-trend-filter" element={<Ema200TheTrendFilter />} />
+        <Route path="/momentum/ema-50-and-the-stack" element={<Ema50AndTheStack />} />
+        <Route path="/momentum/dynamic-support-resistance" element={<DynamicSupportResistance />} />
+        <Route path="/momentum/golden-and-death-cross" element={<GoldenAndDeathCross />} />
+        <Route path="/momentum/momentum-shift" element={<MomentumShift />} />
+
+        {/* Divergence */}
+        <Route path="/divergence/what-divergence-is" element={<WhatDivergenceIs />} />
+        <Route path="/divergence/regular-vs-hidden" element={<RegularVsHidden />} />
+        <Route path="/divergence/trading-divergence-safely" element={<TradingDivergenceSafely />} />
+
         {/* 2. Key Levels */}
         <Route path="/key-levels/swing-high-low" element={<SwingHighLow />} />
         <Route path="/key-levels/pdh-pdl-pwh-pwl" element={<PdhPdl />} />
         <Route path="/key-levels/round-numbers" element={<RoundNumbers />} />
         <Route path="/key-levels/session-high-low" element={<SessionHighLow />} />
+
+        {/* Support/Resistance */}
+        <Route path="/support-resistance/support-and-resistance" element={<SupportAndResistance />} />
+        <Route path="/support-resistance/role-reversal-flip" element={<RoleReversalFlip />} />
+        <Route path="/support-resistance/supply-and-demand-zones" element={<SupplyAndDemandZones />} />
+        <Route path="/support-resistance/zone-quality" element={<ZoneQuality />} />
 
         {/* 3. Price Action */}
         <Route path="/price-action/bos" element={<Bos />} />
@@ -127,6 +186,13 @@ export function App() {
         <Route path="/order-block/identify-manually" element={<IdentifyManually />} />
         <Route path="/order-block/mitigation-retest" element={<MitigationRetest />} />
         <Route path="/order-block/real-vs-fake" element={<RealVsFake />} />
+
+        {/* Wyckoff */}
+        <Route path="/wyckoff/who-was-wyckoff-and-the-three-laws" element={<WhoWasWyckoffAndTheThreeLaws />} />
+        <Route path="/wyckoff/accumulation-schematic" element={<AccumulationSchematic />} />
+        <Route path="/wyckoff/distribution-schematic" element={<DistributionSchematic />} />
+        <Route path="/wyckoff/the-spring-and-upthrust" element={<TheSpringAndUpthrust />} />
+        <Route path="/wyckoff/phases-and-events" element={<PhasesAndEvents />} />
 
         {/* 5. SMC */}
         <Route path="/smc/buyside-sellside-liquidity" element={<BuysideSellside />} />
@@ -158,6 +224,13 @@ export function App() {
         <Route path="/strategies/mean-reversion" element={<MeanReversion />} />
         <Route path="/strategies/the-wait-protocol" element={<TheWaitProtocol />} />
 
+        {/* Volatility & ATR */}
+        <Route path="/volatility/what-is-volatility" element={<WhatIsVolatility />} />
+        <Route path="/volatility/atr-explained" element={<AtrExplained />} />
+        <Route path="/volatility/atr-based-stops" element={<AtrBasedStops />} />
+        <Route path="/volatility/volatility-and-position-size" element={<VolatilityAndPositionSize />} />
+        <Route path="/volatility/volatility-regimes" element={<VolatilityRegimes />} />
+
         {/* Risk Management */}
         <Route path="/risk-management/why-risk-is-everything" element={<WhyRiskIsEverything />} />
         <Route path="/risk-management/position-sizing" element={<PositionSizing />} />
@@ -168,6 +241,13 @@ export function App() {
         <Route path="/risk-management/risk-of-ruin-and-streaks" element={<RiskOfRuinAndStreaks />} />
         <Route path="/risk-management/trade-management-and-stops" element={<TradeManagementAndStops />} />
         <Route path="/risk-management/the-risk-checklist" element={<TheRiskChecklist />} />
+
+        {/* Gold Context */}
+        <Route path="/gold-context/why-gold-moves" element={<WhyGoldMoves />} />
+        <Route path="/gold-context/the-economic-calendar" element={<TheEconomicCalendar />} />
+        <Route path="/gold-context/trading-around-news" element={<TradingAroundNews />} />
+        <Route path="/gold-context/dxy-and-real-yields" element={<DxyAndRealYields />} />
+        <Route path="/gold-context/risk-on-risk-off" element={<RiskOnRiskOff />} />
 
         {/* 404 */}
         <Route path="*" element={

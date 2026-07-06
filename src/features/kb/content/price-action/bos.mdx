@@ -4,6 +4,7 @@ export const frontmatter = {
 };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 import { CompareTable } from '../../../../shared/components/CompareTable';
@@ -36,14 +37,7 @@ Just as there are major and minor swings, there are major and minor structure br
 {/* 4. Visuals */}
 ## Visualizing the Break
 
-<AnnotatedChart 
-  title="Sequence of Bullish BOS"
-  isBull={true}
-  keyLevelY={100}
-  keyLevelLabel="Swing High"
-  showBOS={true}
-  showSwingHL={true}
-/>
+<AnnotatedChart chartData={chartRegistry.BOS} />
 
 *Notice how each time the previous Swing High is broken with a firm candle body closure, a BOS is logged, confirming the uptrend remains intact.*
 

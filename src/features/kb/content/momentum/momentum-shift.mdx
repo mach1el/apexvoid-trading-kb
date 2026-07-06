@@ -1,0 +1,96 @@
+export const frontmatter = { title: 'Momentum Shift & Reclaim', description: 'Combining EMA reclaims with structural Change of Character to catch early reversals.' };
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { EMAPlayground } from '../../components/EMAPlayground';
+import { MomentumShiftQuiz } from '../../components/MomentumShiftQuiz';
+
+## 1. Catching the Turn
+
+Waiting for a Golden Cross guarantees you will be late to a new trend. To enter closer to the reversal point without gambling on falling knives, traders combine momentum indicators with raw price action structure.
+
+## 2. Plain-Language Definition
+
+A Momentum Shift occurs when price aggressively breaks back above a key moving average (like the 50 EMA) AND simultaneously breaks previous structural resistance, confirming a true reversal of momentum.
+
+## 3. Deep Explanation: Early Tell vs Confirmation
+
+A trend is defined by lower lows and lower highs. In a downtrend, price stays below the 50 EMA. 
+
+When a trend is ending, two things must happen:
+1. **The Reclaim (Momentum Tell):** Price surges and closes strongly above the 50 EMA. This is the early warning that sell-side momentum has died and buyers have seized control of the dynamic mean.
+2. **The CHoCH (Structural Confirmation):** Price breaks above the last valid lower high, creating a Change of Character. 
+
+An EMA reclaim *without* a structural break is often a fakeout. A structural break *without* an EMA reclaim usually lacks sustained momentum. When you get **both** together, the probability of a genuine trend reversal skyrockets. You are catching the momentum shift before the lagging EMAs fully cross over.
+
+## 4. Visualizing the Shift
+
+<MomentumShiftQuiz />
+
+<AnnotatedChart chartData={{
+  id: "MOM-SHIFT", title: "EMA Reclaim + CHoCH Validation", sub: "reversal confirmation",
+  def: "A momentum shift occurs when price reclaims the 50 EMA and simultaneously breaks structural resistance (CHoCH), confirming the trend has turned.",
+  read: [
+    "Downtrend: Price sets a lower low (Swing Low).",
+    "Expansion: A strong rally reclaims the 50 EMA and breaks the prior lower high (Swing High).",
+    "Confirmation: The subsequent pullback finds support at the newly reclaimed 50 EMA."
+  ],
+  trap: "Buying the EMA reclaim without a structural CHoCH. It often results in a lower high and continuation of the downtrend.",
+  pMin: 85, pMax: 130,
+  c: [[110,112,98,100], [100,105,92,94], [94,108,92,106], [106,122,104,118], [118,120,108,110], [110,118,106,115], [115,126,114,124]],
+  a: [
+    { t: "curve", color: "ema50", pts: [{i:0,p:108}, {i:1,p:102}, {i:2,p:100}, {i:3,p:104}, {i:4,p:108}, {i:5,p:112}, {i:6,p:116}], label: "EMA 50" },
+    { t: "level", i: 0, p: 112, color: "muted", label: "lower high (resistance)" },
+    { t: "arrow", i: 2, p1: 100, p2: 108, color: "bull", label: "reclaim" },
+    { t: "arrow", i: 3, p1: 112, p2: 118, color: "bull", label: "CHoCH" },
+    { t: "swing", i: 5, p: 106, dir: "down", label: "higher low" }
+  ]
+}} />
+
+Observe the sequence: Price sets a low, rallies to reclaim the 50 EMA, breaks the previous lower high (CHoCH), and then the 50 EMA acts as support on the subsequent pullback.
+
+## 5. How to See It on a Chart
+
+1. Identify a clear downtrend with price confined below the 50 EMA.
+2. Mark the most recent lower high (structural resistance).
+3. Wait for a strong expansion candle to close above the 50 EMA.
+4. Check if that same move broke above the structural resistance (CHoCH).
+5. If both occur, the momentum shift is valid. Look to buy the next higher low.
+
+## 6. Worked Examples
+
+**Grounded Example: The Bottom Reversal**
+An asset has been downtrending for weeks. It makes a new low, then violently rallies on massive volume. The daily candle closes cleanly above the 50 EMA, snapping a 3-month streak of being below it. Crucially, this rally also eclipses the high of the previous week. The momentum shift is confirmed. When price pulls back three days later, it forms a higher low precisely at the newly reclaimed 50 EMA.
+
+**Idealized Example: The Failed Shift**
+Price rallies sharply above the 50 EMA, tricking early buyers. However, it fails to break the overarching lower high of the downtrend. Because structure remained bearish, the momentum shift is unconfirmed. Sellers step back in, price falls back below the EMA, and the downtrend makes a new lower low.
+
+## 7. The Beginner Trap
+
+<Callout type="trap">
+**Entering on the Reclaim Alone:** The most dangerous trap is buying the exact moment price pokes its head above the EMA while market structure remains in a downtrend. A moving average break means nothing if the price fails to set a higher high. Always demand structural confirmation.
+</Callout>
+
+## 8. Modern Restatements & Cross-Links
+
+This is the exact intersection of **Momentum Analysis** and [Market Structure](./market-structure.mdx). It proves that indicators are most powerful when they are used to augment raw price action rather than replace it. 
+
+## 9. Frequently Asked Questions
+
+**Which comes first, the EMA reclaim or the structural break?**
+It varies depending on the steepness of the trend, but they often happen simultaneously during a violent reversal. As long as both occur before you take your entry on the subsequent pullback, the order doesn't matter.
+
+**Should I use this for shorting too?**
+Absolutely. An aggressive close below the 50 EMA combined with a break of a higher low (bearish CHoCH) perfectly signals a shift from bullish to bearish momentum.
+
+## 10. Key Takeaways
+
+<KeyTakeaways items={[
+  "Breaking above a moving average is an early warning, not a confirmed reversal.",
+  "A true momentum shift requires BOTH an EMA reclaim and a structural Change of Character.",
+  "Never buy an EMA reclaim if the overarching trend structure is still making lower highs.",
+  "The safest entry is the first higher low (pullback) after a confirmed momentum shift."
+]} />

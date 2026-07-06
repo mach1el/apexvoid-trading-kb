@@ -1,0 +1,36 @@
+export const frontmatter = { 
+  title: 'Role Reversal (S/R Flip)', 
+  description: 'How broken support becomes resistance, and broken resistance becomes support.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Role Reversal (The S/R Flip)
+
+One of the most reliable and tradable phenomena in technical analysis is the concept of role reversal. When a significant level of support or resistance is broken, its role flips. 
+
+*   **Broken Resistance becomes Support.**
+*   **Broken Support becomes Resistance.**
+
+## The Psychology of the Flip
+
+When price breaks through a strong resistance level, traders who sold short at that resistance are now trapped in losing positions. When price inevitably returns to retest that broken level, those trapped shorts buy to cover their positions at breakeven. Simultaneously, traders who missed the initial breakout buy the retest. This influx of buying pressure turns the old resistance into new support.
+
+The inverse psychology applies when support breaks, turning it into resistance.
+
+<AnnotatedChart chartData={chartRegistry.SR} />
+
+## Trading the S/R Flip
+
+The S/R flip is a staple entry technique for trend-following and breakout traders. Instead of buying a breakout blindly (which can often result in getting caught in a fakeout), waiting for the retest and role reversal provides a structural confirmation and a tight area for stop-loss placement.
+
+<KeyTakeaways 
+  items={[
+    "Support and resistance levels swap roles once broken.",
+    "The psychology of trapped traders and breakout buyers drives this phenomenon.",
+    "Trading the retest (the flip) is generally safer than trading the initial breakout."
+  ]}
+/>

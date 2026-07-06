@@ -1,0 +1,52 @@
+export const frontmatter = { title: 'Risk-On vs. Risk-Off', description: 'Tracking capital flows and market sentiment to anticipate Gold movements.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Risk-On vs. Risk-Off
+
+Global financial markets constantly oscillate between two primary sentiment states: Risk-On and Risk-Off. Recognizing which environment currently dominates is essential for understanding the underlying bid (or lack thereof) in the gold market.
+
+## The Risk-On Environment
+
+In a Risk-On environment, market participants are optimistic about economic growth. Capital flows out of safe-haven assets and into riskier, high-yield assets like equities, emerging market currencies, and cryptocurrencies.
+
+<ConceptCard title="Risk-On Characteristics">
+  - S&P 500 / Nasdaq in strong uptrends
+  - High yield (junk) bond spreads narrowing
+  - Yen (JPY) and Swiss Franc (CHF) weakening
+  - **Impact on Gold**: Generally bearish or range-bound. Lack of institutional demand.
+</ConceptCard>
+
+## The Risk-Off Environment
+
+In a Risk-Off environment, fear dictates capital allocation. Whether due to geopolitical conflict, banking contagion, or recessionary fears, investors prioritize return *of* capital over return *on* capital. 
+
+During these phases, gold acts as the ultimate safe haven, often staging aggressive, parabolic rallies that ignore standard technical resistance levels.
+
+<CompareTable 
+  headers={['Asset Class', 'Risk-On Flow', 'Risk-Off Flow']}
+  rows={[
+    ['Equities (SPX)', 'Inflow (Bullish)', 'Outflow (Bearish)'],
+    ['US Treasuries', 'Outflow (Yields Up)', 'Inflow (Yields Down)'],
+    ['Gold (XAU)', 'Neutral to Bearish', 'Aggressive Inflow (Bullish)'],
+    ['Volatility (VIX)', 'Low / Dropping', 'Spiking / High']
+  ]}
+/>
+
+<AnnotatedChart chartData={chartRegistry.RORO} />
+
+<Callout type="warning">
+  Attempting to short gold during a genuine Risk-Off panic is one of the most dangerous trades possible. Fundamentals override technical resistance during systemic crises.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Risk-On environments favor equities and drain capital from safe havens.",
+    "Risk-Off environments trigger aggressive panic-buying in gold and bonds.",
+    "Monitor the VIX and equity markets to gauge the broader sentiment backdrop."
+  ]}
+/>

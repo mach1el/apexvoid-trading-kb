@@ -38,6 +38,18 @@ export const navigation: NavSection[] = [
     ],
   },
   {
+    label: 'Gold Context',
+    prefix: '/gold-context',
+    icon: '🥇',
+    items: [
+      { label: 'Why Gold Moves', slug: 'why-gold-moves', path: '/gold-context/why-gold-moves' },
+      { label: 'The Economic Calendar', slug: 'the-economic-calendar', path: '/gold-context/the-economic-calendar' },
+      { label: 'Trading Around News', slug: 'trading-around-news', path: '/gold-context/trading-around-news' },
+      { label: 'DXY and Real Yields', slug: 'dxy-and-real-yields', path: '/gold-context/dxy-and-real-yields' },
+      { label: 'Risk On Risk Off', slug: 'risk-on-risk-off', path: '/gold-context/risk-on-risk-off' },
+    ],
+  },
+  {
     label: 'Dow Theory',
     prefix: '/dow-theory',
     icon: '🏛️',
@@ -61,6 +73,29 @@ export const navigation: NavSection[] = [
     ],
   },
   {
+    label: 'Momentum & EMAs',
+    prefix: '/momentum',
+    icon: '🌊',
+    items: [
+      { label: 'What is an EMA?', slug: 'what-an-ema-is', path: '/momentum/what-an-ema-is' },
+      { label: 'EMA 200: The Trend Filter', slug: 'ema-200-the-trend-filter', path: '/momentum/ema-200-the-trend-filter' },
+      { label: 'EMA 50 & The Stack', slug: 'ema-50-and-the-stack', path: '/momentum/ema-50-and-the-stack' },
+      { label: 'Dynamic Support & Resistance', slug: 'dynamic-support-resistance', path: '/momentum/dynamic-support-resistance' },
+      { label: 'Golden & Death Cross', slug: 'golden-and-death-cross', path: '/momentum/golden-and-death-cross' },
+      { label: 'Momentum Shift', slug: 'momentum-shift', path: '/momentum/momentum-shift' },
+    ],
+  },
+  {
+    label: 'Divergence',
+    prefix: '/divergence',
+    icon: '🔍',
+    items: [
+      { label: 'What Divergence Is', slug: 'what-divergence-is', path: '/divergence/what-divergence-is' },
+      { label: 'Regular vs Hidden', slug: 'regular-vs-hidden', path: '/divergence/regular-vs-hidden' },
+      { label: 'Trading Divergence Safely', slug: 'trading-divergence-safely', path: '/divergence/trading-divergence-safely' },
+    ],
+  },
+  {
     label: '2. Key Levels',
     prefix: '/key-levels',
     icon: '📍',
@@ -69,6 +104,17 @@ export const navigation: NavSection[] = [
       { label: 'PDH/PDL & PWH/PWL', slug: 'pdh-pdl-pwh-pwl', path: '/key-levels/pdh-pdl-pwh-pwl' },
       { label: 'Round Numbers', slug: 'round-numbers', path: '/key-levels/round-numbers' },
       { label: 'Session Highs & Lows', slug: 'session-high-low', path: '/key-levels/session-high-low' },
+    ],
+  },
+  {
+    label: 'Support/Resistance',
+    prefix: '/support-resistance',
+    icon: '🚧',
+    items: [
+      { label: 'Support and Resistance', slug: 'support-and-resistance', path: '/support-resistance/support-and-resistance' },
+      { label: 'Role Reversal Flip', slug: 'role-reversal-flip', path: '/support-resistance/role-reversal-flip' },
+      { label: 'Supply and Demand Zones', slug: 'supply-and-demand-zones', path: '/support-resistance/supply-and-demand-zones' },
+      { label: 'Zone Quality', slug: 'zone-quality', path: '/support-resistance/zone-quality' },
     ],
   },
   {
@@ -91,6 +137,18 @@ export const navigation: NavSection[] = [
       { label: 'Identify Manually', slug: 'identify-manually', path: '/order-block/identify-manually' },
       { label: 'Mitigation & Retest', slug: 'mitigation-retest', path: '/order-block/mitigation-retest' },
       { label: 'Real vs Fake OBs', slug: 'real-vs-fake', path: '/order-block/real-vs-fake' },
+    ],
+  },
+  {
+    label: 'Wyckoff',
+    prefix: '/wyckoff',
+    icon: '⚖️',
+    items: [
+      { label: 'Who Was Wyckoff and the Three Laws', slug: 'who-was-wyckoff-and-the-three-laws', path: '/wyckoff/who-was-wyckoff-and-the-three-laws' },
+      { label: 'Accumulation Schematic', slug: 'accumulation-schematic', path: '/wyckoff/accumulation-schematic' },
+      { label: 'Distribution Schematic', slug: 'distribution-schematic', path: '/wyckoff/distribution-schematic' },
+      { label: 'The Spring and Upthrust', slug: 'the-spring-and-upthrust', path: '/wyckoff/the-spring-and-upthrust' },
+      { label: 'Phases and Events', slug: 'phases-and-events', path: '/wyckoff/phases-and-events' },
     ],
   },
   {
@@ -136,6 +194,18 @@ export const navigation: NavSection[] = [
       { label: 'Momentum Continuation', slug: 'momentum-continuation', path: '/strategies/momentum-continuation' },
       { label: 'Mean Reversion', slug: 'mean-reversion', path: '/strategies/mean-reversion' },
       { label: 'The WAIT Protocol', slug: 'the-wait-protocol', path: '/strategies/the-wait-protocol' },
+    ],
+  },
+  {
+    label: 'Volatility & ATR',
+    prefix: '/volatility',
+    icon: '📈',
+    items: [
+      { label: 'What is Volatility', slug: 'what-is-volatility', path: '/volatility/what-is-volatility' },
+      { label: 'ATR Explained', slug: 'atr-explained', path: '/volatility/atr-explained' },
+      { label: 'ATR Based Stops', slug: 'atr-based-stops', path: '/volatility/atr-based-stops' },
+      { label: 'Volatility and Position Size', slug: 'volatility-and-position-size', path: '/volatility/volatility-and-position-size' },
+      { label: 'Volatility Regimes', slug: 'volatility-regimes', path: '/volatility/volatility-regimes' },
     ],
   },
   {

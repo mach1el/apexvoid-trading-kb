@@ -1,0 +1,37 @@
+export const frontmatter = { 
+  title: 'Wyckoff Accumulation', 
+  description: 'Understanding how smart money builds a long position during a market bottom.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Wyckoff Accumulation
+
+Accumulation is the process by which the Composite Operator (smart money) absorbs the floating supply of an asset from retail traders before initiating a markup phase (uptrend). This happens at market bottoms and forms a specific, logical structure.
+
+## The Events of Accumulation
+
+Accumulation ranges can be broken down into specific events that map the psychology of the transition from a downtrend to an uptrend.
+
+1.  **Preliminary Support (PS):** Heavy buying begins to slow the downtrend. Volume increases, but the trend continues down.
+2.  **Selling Climax (SC):** Panic selling reaches its peak. Retail traders capitulate. Smart money buys heavily, creating a massive volume spike and a wide-spread down candle that often closes well off its lows.
+3.  **Automatic Rally (AR):** Selling pressure is exhausted. Short covering and smart money buying cause a rapid, automatic bounce off the SC lows. This defines the top of the trading range.
+4.  **Secondary Test (ST):** Price revisits the area of the SC to test the balance of supply and demand. If the SC low holds on lower volume, it confirms accumulation is taking place.
+5.  **The Spring (or Shakeout):** A critical deception. Price drops below the trading range lows (the SC/ST support). This traps breakout sellers and shakes out weak hand buyers. Smart money aggressively buys this liquidity, snapping price back into the range.
+6.  **Test of the Spring:** A higher low after the spring on low volume, confirming sellers are gone.
+7.  **Sign of Strength (SOS):** A strong, high-volume bullish move that breaks the top of the trading range (resistance).
+8.  **Last Point of Support (LPS) / Backup (BU):** Following the SOS, price pulls back to retest the broken resistance as new support. This is the optimal entry point.
+
+<AnnotatedChart chartData={chartRegistry.WYCK} />
+
+<KeyTakeaways 
+  items={[
+    "Accumulation is the absorption of supply by smart money.",
+    "The Selling Climax (SC) and Automatic Rally (AR) define the range boundaries.",
+    "The Spring is a liquidity sweep designed to trap retail traders.",
+    "The Last Point of Support (LPS) offers the highest probability entry for a markup."
+  ]}
+/>

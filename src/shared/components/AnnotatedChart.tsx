@@ -1,27 +1,4 @@
-interface Annotation {
-  t: 'swing' | 'zone' | 'level' | 'arrow';
-  i?: number;
-  p?: number;
-  p1?: number;
-  p2?: number;
-  dir?: 'up' | 'down';
-  color?: 'bull' | 'bear' | 'warn' | 'muted' | 'accent' | 'ok';
-  label?: string;
-  dash?: number;
-}
-
-interface ChartData {
-  id: string;
-  title: string;
-  sub: string;
-  def: string;
-  read: string[];
-  trap: string;
-  pMin: number;
-  pMax: number;
-  c: [number, number, number, number][];
-  a: Annotation[];
-}
+import type { ChartData } from '../../features/kb/content/chartRegistry';
 
 interface AnnotatedChartProps {
   title?: string;
@@ -49,20 +26,55 @@ export function AnnotatedChart({
   chartData,
 }: AnnotatedChartProps) {
   
-  if (chartData) {
-    const padding = 40;
-    const svgWidth = 520;
-    const svgHeight = 320;
-    const drawWidth = svgWidth - padding * 2;
-    const drawHeight = svgHeight - padding * 2;
+  if (chartData && !Array.isArray(chartData) && chartData.c && Array.isArray(chartData.c)) {
+    const W = 600;
+    const H = 340;
+    const xL = 46;
+    const xR = 524;
+    const yT = 30;
+    const yB = 300;
+
+    const n = chartData.c.length;
+    const step = (xR - xL) / n;
+    const cw = step * 0.58;
+    const hasOsc = Array.isArray(chartData.osc);
+    const priceBot = hasOsc ? 206 : yB;
+    const oscTop = 226;
+    const oscBot = 296;
+    const oMin = chartData.oscMin ?? 0;
+    const oMax = chartData.oscMax ?? 100;
     
-    const { pMin, pMax, c, a } = chartData;
-    const range = pMax - pMin;
-    
-    const y = (val: number) => svgHeight - padding - ((val - pMin) / range) * drawHeight;
-    const spacing = drawWidth / c.length;
-    const candleWidth = Math.min(20, spacing * 0.6);
-    const x = (idx: number) => padding + (idx + 0.5) * spacing;
+    const y = (p: number) => yT + (chartData.pMax - p) / (chartData.pMax - chartData.pMin) * (priceBot - yT);
+    const yo = (v: number) => oscTop + (oMax - v) / (oMax - oMin) * (oscBot - oscTop);
+    const x = (i: number) => xL + step * (i + 0.5);
+
+    const getColorVar = (c?: string) => {
+      switch (c) {
+        case 'bull': return 'var(--color-bull)';
+        case 'bear': return 'var(--color-bear)';
+        case 'warn': return 'var(--color-warn)';
+        case 'muted': return 'var(--color-text-muted)';
+        case 'ok': return 'var(--color-ok)';
+        case 'ema': return 'var(--color-ema)';
+        case 'ema50': return '#A78BFA';
+        case 'accent2': return '#60A5FA';
+        case 'accent': return 'var(--color-accent)';
+        default: return 'var(--color-accent)';
+      }
+    };
+
+    const ticks = 5;
+    const gridLines = [];
+    for (let k = 0; k <= ticks; k++) {
+      const p = chartData.pMin + (chartData.pMax - chartData.pMin) * k / ticks;
+      const yy = y(p);
+      gridLines.push(
+        <g key={`grid-${k}`}>
+          <line x1={xL} y1={yy} x2={xR} y2={yy} stroke="#1f1f1f" strokeWidth="1" />
+          <text x={xR + 8} y={yy + 3.5} fontFamily="var(--font-mono)" fontSize="10" fill="#5A5A5A">{p.toFixed(0)}</text>
+        </g>
+      );
+    }
 
     return (
       <div className="bg-bg-base border border-border rounded-lg overflow-hidden my-6 shadow-sm">
@@ -74,115 +86,173 @@ export function AnnotatedChart({
           <p className="text-text-muted text-sm leading-relaxed mb-6">{chartData.def}</p>
           
           <div className="flex justify-center border border-border bg-panel rounded-lg overflow-hidden mb-6 relative">
-            <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full max-w-[520px]" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox={`0 0 ${W} ${H}`} className="w-full max-w-[600px]" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <pattern id={`grid-${chartData.id}`} width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="var(--color-border)" strokeWidth="0.5" strokeDasharray="2,2" />
-                </pattern>
+                <marker id={`ah-${chartData.id}`} markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="context-stroke" />
+                </marker>
               </defs>
-              <rect width="100%" height="100%" fill={`url(#grid-${chartData.id})`} rx="4" />
-              
-              {/* Candles */}
-              {c.map((candle, idx) => {
-                const [O, H, L, C] = candle;
-                const isBull = C >= O;
-                const color = isBull ? 'var(--color-bull)' : 'var(--color-bear)';
-                const cx = x(idx);
-                const cyHigh = y(H);
-                const cyLow = y(L);
-                const cyTop = y(Math.max(O, C));
-                const cyBottom = y(Math.min(O, C));
-                const bodyHeight = Math.max(2, cyBottom - cyTop);
-                
-                return (
-                  <g key={`c-${idx}`}>
-                    <line x1={cx} y1={cyHigh} x2={cx} y2={cyLow} stroke={color} strokeWidth="2" />
-                    <rect x={cx - candleWidth/2} y={cyTop} width={candleWidth} height={bodyHeight} fill={color} rx="1" />
-                  </g>
-                );
-              })}
 
-              {/* Annotations */}
-              {a.map((ann, idx) => {
-                const getColorVar = (c?: string) => {
-                  switch (c) {
-                    case 'bull': return 'var(--color-bull)';
-                    case 'bear': return 'var(--color-bear)';
-                    case 'warn': return 'var(--color-warn)';
-                    case 'muted': return 'var(--color-text-muted)';
-                    case 'ok': return 'var(--color-ok)';
-                    case 'accent': return 'var(--color-accent)';
-                    default: return 'var(--color-accent)';
-                  }
-                };
-                const colorVar = getColorVar(ann.color);
-                
-                if (ann.t === 'swing' && ann.i !== undefined && ann.p !== undefined) {
-                  const cx = x(ann.i);
-                  const cy = y(ann.p);
-                  const isUp = ann.dir === 'up';
+              {/* Price Grid */}
+              {gridLines}
+              
+              {/* Annotations UNDER candles (zones, levels) */}
+              {(chartData.a || []).map((an: any, idx: number) => {
+                if (an.t === 'zone' && an.p1 !== undefined && an.p2 !== undefined) {
+                  const cVar = getColorVar(an.color);
+                  const yTop = y(Math.max(an.p1, an.p2));
+                  const h = Math.abs(y(an.p1) - y(an.p2));
                   return (
-                    <g key={`a-${idx}`}>
-                      <circle cx={cx} cy={cy} r="4" fill={colorVar} />
-                      {ann.label && (
-                        <text x={cx} y={isUp ? cy - 10 : cy + 18} fill="var(--color-text)" fontSize="11" textAnchor="middle" fontFamily="var(--font-mono)">
-                          {ann.label}
-                        </text>
-                      )}
+                    <g key={`au-${idx}`}>
+                      <rect x={xL} y={yTop} width={xR - xL} height={h} fill={cVar} fillOpacity="0.12" stroke={cVar} strokeOpacity="0.5" strokeWidth="1" />
+                      {an.label && <text x={xL + 7} y={yTop + 13} fontFamily="var(--font-mono)" fontSize="10.5" fill={cVar} fontWeight="600">{an.label}</text>}
                     </g>
                   );
                 }
-                
-                if (ann.t === 'zone' && ann.p1 !== undefined && ann.p2 !== undefined) {
-                  const yTop = y(Math.max(ann.p1, ann.p2));
-                  const yBot = y(Math.min(ann.p1, ann.p2));
-                  const h = Math.abs(yBot - yTop);
+                if (an.t === 'level' && an.p !== undefined) {
+                  const cVar = getColorVar(an.color);
+                  const yy = y(an.p);
                   return (
-                    <g key={`a-${idx}`}>
-                      <rect x={padding} y={yTop} width={drawWidth} height={h} fill={colorVar} fillOpacity="0.15" stroke={colorVar} strokeWidth="1" strokeDasharray="4,4" rx="3" />
-                      {ann.label && (
-                        <text x={svgWidth - padding - 5} y={yTop + h/2 + 4} fill="var(--color-text)" fontSize="11" textAnchor="end" fontFamily="var(--font-mono)">
-                          {ann.label}
-                        </text>
-                      )}
-                    </g>
-                  );
-                }
-                
-                if (ann.t === 'level' && ann.p !== undefined) {
-                  const cy = y(ann.p);
-                  return (
-                    <g key={`a-${idx}`}>
-                      <line x1={padding/2} y1={cy} x2={svgWidth - padding/2} y2={cy} stroke={colorVar} strokeWidth="1.5" strokeDasharray={ann.dash ? "6,4" : "none"} />
-                      {ann.label && (
-                        <g>
-                          <rect x={padding/2 + 5} y={cy - 14} width={ann.label.length * 7.5 + 12} height="14" fill={colorVar} fillOpacity="0.15" rx="2" />
-                          <text x={padding/2 + 11} y={cy - 4} fill={colorVar} fontSize="11" fontFamily="var(--font-mono)">{ann.label}</text>
-                        </g>
-                      )}
-                    </g>
-                  );
-                }
-                
-                if (ann.t === 'arrow' && ann.i !== undefined && ann.p1 !== undefined && ann.p2 !== undefined) {
-                  const cx = x(ann.i);
-                  const cy1 = y(ann.p1);
-                  const cy2 = y(ann.p2);
-                  const isUp = cy2 < cy1;
-                  return (
-                    <g key={`a-${idx}`}>
-                      <line x1={cx} y1={cy1} x2={cx} y2={cy2} stroke={colorVar} strokeWidth="2" />
-                      <polygon points={isUp ? `${cx},${cy2} ${cx-4},${cy2+6} ${cx+4},${cy2+6}` : `${cx},${cy2} ${cx-4},${cy2-6} ${cx+4},${cy2-6}`} fill={colorVar} />
-                      {ann.label && (
-                        <text x={cx + 10} y={cy2 + (isUp ? 8 : -4)} fill={colorVar} fontSize="11" fontFamily="var(--font-mono)">{ann.label}</text>
-                      )}
+                    <g key={`au-${idx}`}>
+                      <line x1={xL} y1={yy} x2={xR} y2={yy} stroke={cVar} strokeWidth="1.4" strokeDasharray={an.dash ? "5,4" : "none"} />
+                      {an.label && <text x={xL + 7} y={yy - 5} fontFamily="var(--font-mono)" fontSize="10.5" fill={cVar} fontWeight="600">{an.label}</text>}
                     </g>
                   );
                 }
                 return null;
               })}
 
-              <text x={svgWidth - 10} y={svgHeight - 10} fill="var(--color-text-muted)" fontSize="8" textAnchor="end" fontFamily="var(--font-mono)" opacity="0.4">ApexVoid Analytics</text>
+              {/* Candles */}
+              {chartData.c.map((k, i) => {
+                const [o, h, l, cl] = k;
+                const isBull = cl >= o;
+                const cVar = isBull ? 'var(--color-bull)' : 'var(--color-bear)';
+                const cx = x(i);
+                const yo = y(o);
+                const yc = y(cl);
+                const bt = Math.min(yo, yc);
+                const bh = Math.max(1.5, Math.abs(yc - yo));
+                return (
+                  <g key={`c-${i}`}>
+                    <line x1={cx} y1={y(h)} x2={cx} y2={y(l)} stroke={cVar} strokeWidth="1.3" />
+                    <rect x={cx - cw / 2} y={bt} width={cw} height={bh} fill={cVar} rx="0.5" />
+                  </g>
+                );
+              })}
+
+              {/* Oscillator Panel */}
+              {hasOsc && chartData.osc && (
+                <g>
+                  <line x1={xL} y1="214" x2={xR} y2="214" stroke="#2A2A2A" strokeWidth="1" />
+                  {[oMax, (oMin + oMax) / 2, oMin].map((v: any, i: number) => {
+                    const yy = yo(v);
+                    return (
+                      <g key={`osc-grid-${i}`}>
+                        <line x1={xL} y1={yy} x2={xR} y2={yy} stroke="#1a1a1a" strokeWidth="1" />
+                        <text x={xR + 8} y={yy + 3} fontFamily="var(--font-mono)" fontSize="9" fill="#4a4a4a">{v.toFixed(0)}</text>
+                      </g>
+                    );
+                  })}
+                  <polyline
+                    points={chartData.osc.map((v: any, i: number) => `${x(i)},${yo(v)}`).join(' ')}
+                    fill="none" stroke="#60A5FA" strokeWidth="1.8"
+                  />
+                  <text x={xL + 2} y="211" fontFamily="var(--font-mono)" fontSize="9" fill="#5A5A5A">{chartData.oscLabel || 'RSI'}</text>
+                </g>
+              )}
+
+              {/* Annotations OVER candles */}
+              {(chartData.a || []).map((an: any, idx: number) => {
+                const cVar = getColorVar(an.color);
+                if (an.t === 'curve' && an.pts) {
+                  const ptsString = an.pts.map((pt: any) => `${x(pt.i)},${y(pt.p)}`).join(" ");
+                  const firstPt = an.pts[0];
+                  return (
+                    <g key={`ao-${idx}`}>
+                      <polyline points={ptsString} fill="none" stroke={cVar} strokeWidth={an.w || 2} strokeLinejoin="round" strokeLinecap="round" strokeDasharray={an.dash ? String(an.dash) : "none"} />
+                      {an.label && firstPt && <text x={x(firstPt.i) + 3} y={y(firstPt.p) - 5} fontFamily="var(--font-mono)" fontSize="9.5" fill={cVar} fontWeight="600">{an.label}</text>}
+                    </g>
+                  );
+                }
+                if (an.t === 'trend2' && an.a && an.b) {
+                  const yy = (v: number) => an.panel === 'osc' ? yo(v) : y(v);
+                  const ax = x(an.a.i), ay = yy(an.a.v);
+                  const bx = x(an.b.i), by = yy(an.b.v);
+                  const mx = (ax + bx) / 2;
+                  const my = (ay + by) / 2;
+                  return (
+                    <g key={`ao-${idx}`}>
+                      <line x1={ax} y1={ay} x2={bx} y2={by} stroke={cVar} strokeWidth="1.6" strokeDasharray="5,3" />
+                      <circle cx={ax} cy={ay} r="2.6" fill={cVar} />
+                      <circle cx={bx} cy={by} r="2.6" fill={cVar} />
+                      <text x={mx} y={my - 6} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="9" fill={cVar} fontWeight="600">{an.label}</text>
+                    </g>
+                  );
+                }
+                if (an.t === 'swing' && an.i !== undefined && an.p !== undefined) {
+                  const cx = x(an.i);
+                  const yy = y(an.p);
+                  const isUp = an.dir === 'up';
+                  const ty = isUp ? yy - 9 : yy + 9;
+                  const tri = isUp ? `${cx - 4},${ty} ${cx + 4},${ty} ${cx},${ty + 5}` : `${cx - 4},${ty} ${cx + 4},${ty} ${cx},${ty - 5}`;
+                  return (
+                    <g key={`ao-${idx}`}>
+                      <polygon points={tri} fill="var(--color-text-muted)" />
+                      {an.label && <text x={cx} y={isUp ? ty - 4 : ty + 12} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="#B5B5B5" fontWeight="600">{an.label}</text>}
+                    </g>
+                  );
+                }
+                if (an.t === 'arrow' && an.i !== undefined && an.p1 !== undefined && an.p2 !== undefined) {
+                  const cx = x(an.i);
+                  const y1 = y(an.p1);
+                  const y2 = y(an.p2);
+                  const above = y2 < y1;
+                  const bw = Math.max(40, (an.label?.length || 0) * 6.4 + 14);
+                  let bx = cx - bw / 2;
+                  bx = Math.max(xL, Math.min(bx, xR - bw));
+                  const by = above ? y2 - 18 : y2 + 4;
+                  return (
+                    <g key={`ao-${idx}`}>
+                      <line x1={cx} y1={y1} x2={cx} y2={y2} stroke={cVar} strokeWidth="2" markerEnd={`url(#ah-${chartData.id})`} />
+                      {an.label && (
+                        <g>
+                          <rect x={bx} y={by} width={bw} height="15" rx="3" fill={cVar} />
+                          <text x={bx + bw / 2} y={by + 11} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="#0b0b0b" fontWeight="700">{an.label}</text>
+                        </g>
+                      )}
+                    </g>
+                  );
+                }
+                if (an.t === 'bracket' && an.i1 !== undefined && an.i2 !== undefined) {
+                  const x1 = x(an.i1) - cw / 2 - 2;
+                  const x2 = x(an.i2) + cw / 2 + 2;
+                  const yy = yT + 8;
+                  const warn = 'var(--color-warn)';
+                  return (
+                    <g key={`ao-${idx}`}>
+                      <path d={`M${x1},${yy} L${x1},${yy - 5} L${x2},${yy - 5} L${x2},${yy}`} fill="none" stroke={warn} strokeWidth="1.2" />
+                      {an.label && <text x={(x1 + x2) / 2} y={yy - 9} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="9.5" fill={warn}>{an.label}</text>}
+                    </g>
+                  );
+                }
+                if (an.t === 'entries' && an.pts) {
+                  const bear = 'var(--color-bear)';
+                  const topPt = an.pts.reduce((a: any, b: any) => y(b.p) < y(a.p) ? b : a);
+                  let lx = x(topPt.i);
+                  lx = Math.max(xL + 40, Math.min(lx, xR - 40));
+                  return (
+                    <g key={`ao-${idx}`}>
+                      {an.pts.map((pt: any, j: number) => (
+                        <circle key={j} cx={x(pt.i)} cy={y(pt.p)} r="3.2" fill={bear} stroke="var(--color-bg-base)" strokeWidth="1.2" />
+                      ))}
+                      {an.label && <text x={lx} y={y(topPt.p) - 9} textAnchor="middle" fontFamily="var(--font-mono)" fontSize="9.5" fill={bear} fontWeight="700">{an.label}</text>}
+                    </g>
+                  );
+                }
+                return null;
+              })}
+
+              <text x={W - 10} y={H - 10} fill="var(--color-text-muted)" fontSize="8" textAnchor="end" fontFamily="var(--font-mono)" opacity="0.4">ApexVoid Analytics</text>
             </svg>
           </div>
 
@@ -190,7 +260,7 @@ export function AnnotatedChart({
             <div>
               <h4 className="font-mono text-xs text-text-muted mb-3 tracking-wider">HOW TO READ</h4>
               <ul className="text-sm space-y-2">
-                {chartData.read.map((r, i) => (
+                {chartData.read.map((r: any, i: number) => (
                   <li key={i} className="flex gap-2 text-text-muted">
                     <span className="text-accent flex-shrink-0">•</span>
                     <span dangerouslySetInnerHTML={{ __html: r }} />
@@ -200,7 +270,7 @@ export function AnnotatedChart({
             </div>
             <div className="bg-warn/10 border border-warn/20 p-4 rounded-md h-fit">
               <h4 className="font-mono text-xs text-warn mb-2 tracking-wider">TRAP</h4>
-              <p className="text-sm text-text-muted leading-relaxed">{chartData.trap}</p>
+              <p className="text-sm text-text-muted leading-relaxed" dangerouslySetInnerHTML={{ __html: chartData.trap }} />
             </div>
           </div>
         </div>

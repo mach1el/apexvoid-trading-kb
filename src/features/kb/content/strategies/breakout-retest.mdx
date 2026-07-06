@@ -1,30 +1,14 @@
 export const frontmatter = { title: 'Breakout & Retest', description: 'Trading the shift in market structure with volume confirmation.' };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { CompareTable } from '../../../../shared/components/CompareTable';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 
 # Breakout & Retest
 
-<AnnotatedChart chartData={{
-  id:"BRT", title:"Breakout + Retest", sub:"strategy · Break & Retest",
-  def:"Trade only when price closes outside an important range and participation (volume) confirms — then enter on the retest of the broken level as it flips from resistance to support.",
-  read:[
-    "Define the <b>range</b>: repeated highs form resistance, with orders pooled above.",
-    "Require a <b>close outside the range</b> on an expansion candle — ideally rising volume.",
-    "Let price return to <b>retest the broken level</b> (now support).",
-    "Enter on the hold; stop back inside the range. No close / no volume = no trade."
-  ],
-  trap:"Chasing the breakout candle itself. The retest gives defined risk; the naked breakout often traps and reverses.",
-  pMin:2305,pMax:2337,
-  c:[[2308,2316,2307,2315],[2315,2316,2310,2311],[2311,2316,2310,2314],[2314,2316,2311,2312],[2312,2316,2311,2315],[2315,2325,2314,2324],[2324,2326,2320,2321],[2321,2322,2315,2316],[2316,2323,2315,2322],[2322,2329,2321,2328],[2328,2333,2327,2332]],
-  a:[
-    {t:"level",p:2316,dash:1,color:"muted",label:"range high → flip"},
-    {t:"arrow",i:5,p1:2315,p2:2324,color:"bull",label:"breakout"},
-    {t:"swing",i:7,p:2315,dir:"down",label:"retest"}
-  ]
-}} />
+<AnnotatedChart chartData={chartRegistry.BRT} />
 
 Breakouts occur when price aggressively breaches a well-established level of support or resistance. While buying the initial breakout can be lucrative, it is highly susceptible to "fakeouts" (false breakouts). The Breakout & Retest strategy waits for confirmation, offering a safer entry point.
 

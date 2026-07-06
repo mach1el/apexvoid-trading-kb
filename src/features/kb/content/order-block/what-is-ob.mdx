@@ -4,6 +4,7 @@ export const frontmatter = {
 };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 
@@ -34,12 +35,7 @@ Because they had to sell to manipulate the price, they are technically in "drawd
 {/* 4. Visuals */}
 ## Anatomy of an Order Block
 
-<AnnotatedChart 
-  title="The Anatomy of a Bullish Order Block"
-  isBull={true}
-  showOB={true}
-  showBOS={true}
-/>
+<AnnotatedChart chartData={chartRegistry.OB} />
 
 *In the chart above, note the final red candle before the massive green displacement. That red candle represents the institutional selling required to gather liquidity. The subsequent break of structure (BOS) validates it as a true Order Block.*
 

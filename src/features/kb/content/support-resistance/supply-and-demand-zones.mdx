@@ -1,0 +1,43 @@
+export const frontmatter = { 
+  title: 'Supply and Demand Zones', 
+  description: 'Moving beyond single-line support/resistance to price zones.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Supply and Demand Zones
+
+While traditional support and resistance are often drawn as single lines on a chart, the market rarely respects an exact price point to the penny. A more robust approach is to view these areas as **zones** of Supply and Demand.
+
+<ConceptCard title="Why Zones?">
+Institutional buying and selling are not executed at single price points. Large orders are filled across a range of prices to minimize slippage. Supply and demand zones represent this footprint of institutional activity.
+</ConceptCard>
+
+## Identifying the Zones
+
+*   **Demand Zone (Base of an uptrend):** Found at the origin of a strong impulsive move upwards. Look for the last bearish candle (or consolidation range) before a strong bullish expansion that breaks structure.
+*   **Supply Zone (Origin of a downtrend):** Found at the origin of a strong impulsive move downwards. Look for the last bullish candle (or consolidation range) before a strong bearish expansion that breaks structure.
+
+<AnnotatedChart chartData={chartRegistry.SD} />
+
+## Drawing the Zones
+
+There are several methods for drawing zones, but the most common involve the candle just prior to the strong expansion:
+1.  **Proximal Line:** The top of the consolidation or the open/close of the base candle.
+2.  **Distal Line:** The absolute extreme (wick high/low) of the consolidation or base candle.
+
+<Callout type="warning">
+Precision is less important than identifying the correct structural area. The zone represents an area where institutional liquidity is likely resting. If price wicks slightly beyond the zone before reversing, it was a liquidity sweep, not an invalidation of the zone.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "The market moves in zones, not exact lines.",
+    "Supply and demand zones are created by aggressive institutional buying or selling.",
+    "Draw zones using the base/consolidation prior to an impulsive expansion."
+  ]}
+/>

@@ -1,0 +1,49 @@
+export const frontmatter = { title: 'ATR-Based Stop Placement', description: 'Using ATR to objectively place stop losses that accommodate market noise.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# ATR-Based Stop Placement
+
+Placing stop losses based on arbitrary pip or dollar amounts exposes traders to the risk of being stopped out prematurely due to standard market noise. ATR provides a dynamic framework for stop placement that adapts to current volatility.
+
+## The Logic of Volatility Stops
+
+If a market typically moves 15 pips in a 5-minute candle, placing a 10-pip stop guarantees a high probability of execution simply due to random walk variance. A stop loss should ideally be placed outside the expected noise threshold so that execution only occurs when the premise of the trade is invalidated.
+
+<ConceptCard title="The ATR Multiplier">
+  Traders typically apply a multiplier to the current ATR to set stops.
+  - **1x ATR**: Tight, assumes immediate continuation. High risk of noiseouts.
+  - **1.5x - 2x ATR**: Standard. Accommodates normal pullbacks while protecting capital.
+  - **3x ATR**: Wide, suited for trend-following strategies aiming to capture major swings.
+</ConceptCard>
+
+## Implementing ATR Stops in Structure
+
+While pure ATR trailing stops (like Chandelier Exits) are common, ATR is best used in conjunction with market structure.
+
+<AnnotatedChart chartData={chartRegistry.ATR} />
+
+<Callout type="info">
+  When placing a stop below a swing low, subtract 1x or 0.5x ATR from the absolute low price. This ensures your stop isn't triggered by a marginal liquidity sweep of the exact low.
+</Callout>
+
+<CompareTable 
+  headers={['Fixed Stop (e.g. 20 pips)', 'ATR Stop (e.g. 1.5x ATR)']}
+  rows={[
+    ['Static regardless of market conditions', 'Expands and contracts with volatility'],
+    ['High risk of noiseout during news', 'Adapts to widened ranges'],
+    ['Simple to calculate quickly', 'Requires indicator or mental estimation']
+  ]}
+/>
+
+<KeyTakeaways 
+  items={[
+    "ATR stops remove arbitrary numbers from risk management.",
+    "Applying a multiplier to ATR allows you to size stops for different strategy types (scalp vs swing).",
+    "Combining ATR offsets with structural swing points provides robust invalidation levels."
+  ]}
+/>

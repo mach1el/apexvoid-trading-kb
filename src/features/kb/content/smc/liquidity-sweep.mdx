@@ -4,6 +4,7 @@ export const frontmatter = {
 };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 
@@ -33,11 +34,7 @@ It is critical to distinguish between a Liquidity Sweep and a genuine [Break of 
 {/* 4. Visuals */}
 ## Visualizing the Trap
 
-<AnnotatedChart 
-  title="The Liquidity Sweep (Stop Hunt)"
-  showSweep={true}
-  showSwingHL={true}
-/>
+<AnnotatedChart chartData={chartRegistry.SWEEP} />
 
 *Notice how price drops below the Swing Low, but fails to close there. The wick represents the raid on Sell-Side Liquidity. The immediate reversal confirms it was a trap, not a true downtrend continuation.*
 

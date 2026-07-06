@@ -1,0 +1,37 @@
+export const frontmatter = { 
+  title: 'What is Divergence?', 
+  description: 'Understand the concept of divergence between price and oscillators.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# What is Divergence?
+
+<ConceptCard title="Divergence">
+Divergence occurs when the price of an asset moves in the opposite direction of a technical indicator, typically an oscillator like the RSI or MACD. It acts as a warning sign that the current trend may be weakening or losing momentum.
+</ConceptCard>
+
+When trading, momentum is just as important as price action. While price dictates the current value, momentum indicators tell you how much force is behind that movement. Divergence is the disagreement between these two factors.
+
+## The Mechanics of Divergence
+
+In a healthy trend, price and momentum should agree. If price makes a new high, the oscillator should also make a new high. When they disagree, you have divergence.
+
+<AnnotatedChart chartData={chartRegistry.DIV} />
+
+<Callout type="warning">
+Divergence is not a standalone signal. It simply indicates a loss of momentum, not an immediate reversal. Always look for price structure breaks (like a Change of Character) to confirm the reversal.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Divergence is a disagreement between price and a momentum indicator.",
+    "It signals that the current trend is losing strength.",
+    "It is a leading indicator, often appearing before price action reverses.",
+    "Do not use divergence in isolation; combine it with market structure."
+  ]}
+/>

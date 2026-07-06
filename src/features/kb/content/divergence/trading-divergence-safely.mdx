@@ -1,0 +1,43 @@
+export const frontmatter = { 
+  title: 'Trading Divergence Safely', 
+  description: 'How to combine divergence with Change of Character (CHoCH) for high-probability setups.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { DivergenceSpotter } from '../../components/DivergenceSpotter';
+
+# Trading Divergence Safely
+
+Divergence alone is a weak signal. An asset with strong momentum can diverge on an oscillator for an extended period before finally reversing. To trade divergence safely, you must pair it with a shift in market structure, specifically a Change of Character (CHoCH).
+
+## The Divergence + CHoCH Setup
+
+A Change of Character occurs when price breaks the structural point that created the last extreme (high or low). When divergence appears, we wait for a CHoCH to confirm that the trend has actually reversed.
+
+1.  **Identify Divergence:** Spot regular divergence between price and your oscillator.
+2.  **Wait for Structure Break:** Wait for price to break the last lower high (for bullish reversals) or higher low (for bearish reversals).
+3.  **Enter on Retest:** Once the CHoCH occurs, wait for price to retest a newly formed supply or demand zone.
+
+<AnnotatedChart chartData={chartRegistry.DIVC} />
+
+<Callout type="tip">
+The most reliable divergence setups occur at higher timeframe Points of Interest (POIs), such as daily or weekly support/resistance levels.
+</Callout>
+
+### Practice: Spotting Divergence
+
+Use the interactive component below to practice identifying valid divergence setups.
+
+<DivergenceSpotter />
+
+<KeyTakeaways 
+  items={[
+    "Never trade divergence blindly; wait for structural confirmation.",
+    "A Change of Character (CHoCH) confirms the momentum shift indicated by divergence.",
+    "Entering on the retest after a CHoCH provides a better risk-to-reward ratio."
+  ]}
+/>

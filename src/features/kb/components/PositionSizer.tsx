@@ -8,10 +8,16 @@ export const PositionSizer: FC = () => {
   const [entry, setEntry] = useState(2340.0);
   const [stop, setStop] = useState(2337.0);
 
+  // ATR Mode
+  const [atrMode, setAtrMode] = useState(false);
+  const [atr, setAtr] = useState(2.5);
+  const [atrMult, setAtrMult] = useState(1.5);
+  const [isLong, setIsLong] = useState(true);
   const isGold = inst === '100';
   const activeCv = isGold ? 100 : cv;
   const riskAmt = acct * (riskPct / 100);
-  const pr = Math.abs(entry - stop);
+  const activeStop = atrMode ? (isLong ? entry - (atr * atrMult) : entry + (atr * atrMult)) : stop;
+  const pr = Math.abs(entry - activeStop);
   const bad = pr <= 0 || activeCv <= 0;
 
   const lots = bad ? 0 : riskAmt / (pr * activeCv);
@@ -56,10 +62,38 @@ export const PositionSizer: FC = () => {
             <label className="block text-xs font-mono text-text-muted uppercase mb-1">Entry price</label>
             <input type="number" value={entry} onChange={(e) => setEntry(Number(e.target.value))} step="0.1" className="w-full bg-bg-elevated border border-border rounded px-3 py-2 text-text font-mono focus:border-accent outline-none" />
           </div>
-          <div>
-            <label className="block text-xs font-mono text-text-muted uppercase mb-1">Stop-loss price</label>
-            <input type="number" value={stop} onChange={(e) => setStop(Number(e.target.value))} step="0.1" className="w-full bg-bg-elevated border border-border rounded px-3 py-2 text-text font-mono focus:border-accent outline-none" />
+          
+          <div className="flex items-center gap-2 mt-2">
+            <input type="checkbox" id="atrMode" checked={atrMode} onChange={e => setAtrMode(e.target.checked)} className="accent-accent" />
+            <label htmlFor="atrMode" className="text-xs font-mono text-text-muted uppercase cursor-pointer">ATR Mode (Auto-calculate Stop)</label>
           </div>
+
+          {!atrMode ? (
+            <div>
+              <label className="block text-xs font-mono text-text-muted uppercase mb-1">Stop-loss price</label>
+              <input type="number" value={stop} onChange={(e) => setStop(Number(e.target.value))} step="0.1" className="w-full bg-bg-elevated border border-border rounded px-3 py-2 text-text font-mono focus:border-accent outline-none" />
+            </div>
+          ) : (
+            <div className="bg-bg-elevated border border-border rounded p-3 flex flex-col gap-3">
+              <div className="flex gap-2">
+                 <button onClick={() => setIsLong(true)} className={`flex-1 py-1 rounded text-xs font-mono border ${isLong ? 'bg-green-500/20 border-green-500 text-green-400' : 'border-border text-text-muted'}`}>LONG</button>
+                 <button onClick={() => setIsLong(false)} className={`flex-1 py-1 rounded text-xs font-mono border ${!isLong ? 'bg-red-500/20 border-red-500 text-red-400' : 'border-border text-text-muted'}`}>SHORT</button>
+              </div>
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <label className="block text-xs font-mono text-text-muted uppercase mb-1">ATR</label>
+                  <input type="number" value={atr} onChange={e => setAtr(Number(e.target.value))} step="0.1" className="w-full bg-bg-panel border border-border rounded px-2 py-1 text-text font-mono focus:border-accent outline-none" />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs font-mono text-text-muted uppercase mb-1">Multiple</label>
+                  <input type="number" value={atrMult} onChange={e => setAtrMult(Number(e.target.value))} step="0.1" className="w-full bg-bg-panel border border-border rounded px-2 py-1 text-text font-mono focus:border-accent outline-none" />
+                </div>
+              </div>
+              <div className="text-xs font-mono text-text-muted">
+                Auto-Stop: <span className="text-accent">{activeStop.toFixed(2)}</span>
+              </div>
+            </div>
+          )}
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-between">

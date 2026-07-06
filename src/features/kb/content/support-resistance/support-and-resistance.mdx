@@ -1,0 +1,37 @@
+export const frontmatter = { 
+  title: 'Support & Resistance', 
+  description: 'The fundamental building blocks of price action trading.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { chartRegistry } from '../chartRegistry';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Support and Resistance
+
+Support and Resistance are foundational concepts in price action trading. They represent areas on a chart where buying and selling interest is historically strong enough to halt or reverse price movements.
+
+<ConceptCard title="Support vs. Resistance">
+**Support:** A price level where a downtrend tends to pause due to a concentration of demand (buying interest). It acts as a "floor" for price.
+**Resistance:** A price level where an uptrend tends to pause due to a concentration of supply (selling interest). It acts as a "ceiling" for price.
+</ConceptCard>
+
+## How Levels Are Formed
+
+Support and resistance levels are created by the psychology of market participants and the memory of previous price action. When price bounces from a specific level, traders remember it. If price returns to that level, buyers (at support) or sellers (at resistance) often step in again, anticipating another reaction.
+
+<AnnotatedChart chartData={chartRegistry.SRB} />
+
+<Callout type="info">
+The more times a support or resistance level is tested and holds, the stronger it becomes in the minds of traders. However, eventually, heavy testing can weaken a level as the resting orders (liquidity) are consumed.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Support acts as a price floor, while resistance acts as a price ceiling.",
+    "Levels are formed by historical buying and selling interest.",
+    "Price tends to bounce between these levels until one is definitively broken."
+  ]}
+/>

@@ -1,0 +1,41 @@
+export const frontmatter = { title: 'Volatility and Position Sizing', description: 'Normalizing risk across different volatility regimes by dynamically adjusting position size.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { ATRStopSizer } from '../../components/ATRStopSizer';
+
+# Volatility and Position Sizing
+
+Constant volume sizing (trading the same lot size on every setup) ignores the changing risk environment. When volatility expands, fixed lot sizes expose a portfolio to exponentially higher dollar risk per trade.
+
+## Risk Normalization
+
+The objective of dynamic position sizing is risk normalization: ensuring that the dollar amount risked on any given trade remains constant relative to account equity, regardless of how wide the stop loss needs to be.
+
+<ConceptCard title="The Sizing Formula">
+  `Position Size = (Account Equity * Risk %) / Stop Loss Distance`
+  
+  If the Stop Loss Distance is determined by ATR (e.g., 2x ATR), then as ATR increases, the Position Size must decrease to maintain the same monetary risk.
+</ConceptCard>
+
+## Interactive ATR Sizer
+
+<ATRStopSizer />
+
+## Psychological Benefits
+
+Adjusting position size based on volatility protects capital during chaotic markets. It also removes the psychological strain of facing massive PnL swings during high-volatility events. A 50-pip stop with 1 lot carries the exact same financial weight as a 25-pip stop with 2 lots.
+
+<Callout type="warning">
+  Failing to reduce position size when ATR doubles means you are effectively doubling your risk profile without conscious consent. This is a primary cause of account blowouts during regime shifts.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Position size must be inversely proportional to the required stop loss distance.",
+    "Risk normalization ensures consistent equity curves.",
+    "Higher volatility mandates smaller position sizing in volume terms."
+  ]}
+/>

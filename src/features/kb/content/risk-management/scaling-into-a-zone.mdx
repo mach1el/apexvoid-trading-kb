@@ -4,6 +4,7 @@ export const frontmatter = {
 };
 
 import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
 import { CompareTable } from '../../../../shared/components/CompareTable';
 import { ScaleInPlanner } from '../../components/ScaleInPlanner';
@@ -11,27 +12,7 @@ import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 
 # Scaling Into a Zone
 
-<AnnotatedChart chartData={{
-  id:"SCALE", title:"Scaling Into a Zone", sub:"execution · laddered entry / zone-DCA",
-  def:"Split one planned position across a zone instead of firing at a single price. Cap total risk with one stop beyond the zone; ladder the fills to improve the average entry, survive being early, and make partial profit-taking natural. This is planned scale-in — not averaging down.",
-  read:[
-    "Treat the entry as a <b>zone, not a line</b>. Here: supply 4174–4180, one stop above at 4184.",
-    "Decide <b>total size</b> so risk from the avg entry to the stop = your cap (0.20 lot ≈ 2%).",
-    "<b>Ladder the fills</b>: 0.05 at 4174/4176/4178/4180 → avg ≈ 4177. Early reversal? already filled. Runs the zone? better average + full size.",
-    "On reversal, <b>scale out</b>: bank partial at TP1, push stop to breakeven, let the rest run."
-  ],
-  trap:"This is NOT martingale. Legit scale-in has a <b>hard stop</b> and a <b>fixed total size set up front</b>. Adding to a loser with no stop to \"lower the average\" is how accounts blow up.",
-  pMin:4148,pMax:4186,
-  c:[[4162,4166,4160,4165],[4165,4170,4164,4169],[4169,4174,4168,4173],[4173,4176,4172,4176],[4176,4178,4175,4178],[4178,4181,4177,4180],[4180,4182,4176,4177],[4177,4178,4170,4171],[4171,4172,4164,4165],[4165,4166,4158,4160],[4160,4162,4154,4156],[4156,4158,4150,4152]],
-  a:[
-    {t:"zone",p1:4180,p2:4174,color:"bear",label:"supply · sell zone"},
-    {t:"level",p:4184,dash:1,color:"ema",label:"stop 4184 · risk cap 2%"},
-    {t:"level",p:4177,dash:1,color:"accent2",label:""},
-    {t:"entries",pts:[{i:2,p:4174},{i:3,p:4176},{i:4,p:4178},{i:5,p:4180}],label:"0.05 ×4 → avg 4177"},
-    {t:"level",p:4165,dash:1,color:"ok",label:"TP1 · scale out"},
-    {t:"arrow",i:7,p1:4178,p2:4171,color:"bear",label:"reversal"}
-  ]
-}} />
+<AnnotatedChart chartData={chartRegistry.SCALE} />
 
 Trading is rarely about picking exact tops or bottoms down to the pip. Often, price will react somewhere within a structural zone—like a Fair Value Gap (FVG) or an Order Block (OB).
 
