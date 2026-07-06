@@ -58,6 +58,14 @@ const IdentifyManually = () => <MdxPage loader={() => import('./features/kb/cont
 const MitigationRetest = () => <MdxPage loader={() => import('./features/kb/content/order-block/mitigation-retest.mdx')} />;
 const RealVsFake = () => <MdxPage loader={() => import('./features/kb/content/order-block/real-vs-fake.mdx')} />;
 
+// Liquidity
+const WhatLiquidityIs = () => <MdxPage loader={() => import('./features/kb/content/liquidity/what-liquidity-is.mdx')} />;
+const TheLiquidityMap = () => <MdxPage loader={() => import('./features/kb/content/liquidity/the-liquidity-map.mdx')} />;
+const BuySideVsSellSide = () => <MdxPage loader={() => import('./features/kb/content/liquidity/buy-side-vs-sell-side.mdx')} />;
+const SweepsGrabsAndStopHunts = () => <MdxPage loader={() => import('./features/kb/content/liquidity/sweeps-grabs-and-stop-hunts.mdx')} />;
+const InducementAndBecomingLiquidity = () => <MdxPage loader={() => import('./features/kb/content/liquidity/inducement-and-becoming-liquidity.mdx')} />;
+const UsingLiquidityAsATarget = () => <MdxPage loader={() => import('./features/kb/content/liquidity/using-liquidity-as-a-target.mdx')} />;
+
 // 5. SMC
 const BuysideSellside = () => <MdxPage loader={() => import('./features/kb/content/smc/buyside-sellside-liquidity.mdx')} />;
 const LiquiditySweep = () => <MdxPage loader={() => import('./features/kb/content/smc/liquidity-sweep.mdx')} />;
@@ -186,6 +194,14 @@ export function App() {
         <Route path="/order-block/identify-manually" element={<IdentifyManually />} />
         <Route path="/order-block/mitigation-retest" element={<MitigationRetest />} />
         <Route path="/order-block/real-vs-fake" element={<RealVsFake />} />
+
+        {/* Liquidity */}
+        <Route path="/liquidity/what-liquidity-is" element={<WhatLiquidityIs />} />
+        <Route path="/liquidity/the-liquidity-map" element={<TheLiquidityMap />} />
+        <Route path="/liquidity/buy-side-vs-sell-side" element={<BuySideVsSellSide />} />
+        <Route path="/liquidity/sweeps-grabs-and-stop-hunts" element={<SweepsGrabsAndStopHunts />} />
+        <Route path="/liquidity/inducement-and-becoming-liquidity" element={<InducementAndBecomingLiquidity />} />
+        <Route path="/liquidity/using-liquidity-as-a-target" element={<UsingLiquidityAsATarget />} />
 
         {/* Wyckoff */}
         <Route path="/wyckoff/who-was-wyckoff-and-the-three-laws" element={<WhoWasWyckoffAndTheThreeLaws />} />
