@@ -1,0 +1,48 @@
+export const frontmatter = { 
+  title: 'Sweeps, Grabs & Stop Hunts', 
+  description: 'How smart money engineers false breakouts to access liquidity before reversing.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+import { SweepSpotter } from '../../../components/SweepSpotter';
+
+# Sweeps, Grabs, and Stop Hunts
+
+A **liquidity sweep** (also known as a liquidity grab or a stop hunt) occurs when price intentionally reaches beyond a key structural level (like a swing high or low) to trigger the resting orders, only to immediately reverse direction.
+
+This is the exact mechanism by which smart money pairs their massive orders with retail liquidity. It is the most high-probability reversal pattern in modern trading.
+
+## The Anatomy of a Sweep
+
+A true liquidity sweep is characterized by **rejection**. 
+
+When price reaches into a pool of Buy-side Liquidity (BSL) above a swing high, it triggers a massive influx of buy orders. Smart money instantly absorbs all of these buy orders by selling into them. 
+
+Because smart money is selling heavily, the upward momentum is instantly crushed. The candlestick will push above the high, but by the time the candle closes, the heavy selling pressure forces the closing price back down below the level. 
+
+**The visual signature of a sweep is a long wick piercing the level, with a candle body that closes back inside the range.**
+
+<SweepSpotter />
+
+## Connection to the Wyckoff Spring
+
+If you have studied classical Wyckoff theory, the liquidity sweep is not a new concept. A sweep of Sell-side Liquidity (SSL) at the bottom of a trading range is exactly what Richard Wyckoff termed a **Spring** (or Shakeout) nearly a century ago. 
+
+A sweep of Buy-side Liquidity (BSL) at the top of a range is what Wyckoff called an **Upthrust** (UT) or Upthrust After Distribution (UTAD). The terminology changes, but the underlying market mechanics—sweeping stops to fill institutional size before a markup/markdown—remain identical.
+
+<Callout type="note" title="Timeframes Matter">
+A sweep on a 15-minute chart will look like a long wick. However, if you zoom into a 1-minute chart, that same sweep might look like a trend with multiple candle bodies closing above the level before reversing. Always confirm sweeps on the timeframe where you identified the liquidity pool.
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "A sweep is an intentional move to trigger resting orders and absorb the liquidity.",
+    "The signature of a sweep is a long wick rejecting a key level.",
+    "A sweep of SSL is the modern term for a Wyckoff Spring.",
+    "A sweep of BSL is the modern term for a Wyckoff Upthrust."
+  ]} 
+/>

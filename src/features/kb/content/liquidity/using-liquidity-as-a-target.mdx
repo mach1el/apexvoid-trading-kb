@@ -1,0 +1,47 @@
+export const frontmatter = { 
+  title: 'Using Liquidity as a Target', 
+  description: 'How to utilize liquidity pools for high-probability take-profit levels.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Using Liquidity as a Target
+
+We have focused heavily on how to avoid being trapped by liquidity sweeps. But liquidity has a second, equally important function in a trading plan: **it is the ultimate take-profit target.**
+
+Because price is magnetically drawn to liquidity pools, targeting these pools gives you a high-probability destination for your trades.
+
+## The Draw on Liquidity (DOL)
+
+The **Draw on Liquidity (DOL)** is a concept that asks: *Where is price being drawn to right now?* 
+
+When the market reverses (e.g., after sweeping SSL and creating a bullish CHoCH), it doesn't just wander randomly. It moves with purpose toward the nearest, most significant pool of opposing liquidity (BSL). 
+
+If you are long, your primary goal is to identify the most obvious resting BSL pool above you. That is your target.
+
+<AnnotatedChart chartData={chartRegistry.TARGETLIQ} />
+
+## Why Target Liquidity?
+
+Why is a liquidity pool a better target than a fixed Risk:Reward ratio (like a rigid 1:3) or a random Fibonacci extension?
+
+Because when your take-profit order (which is a sell order if you are long) is triggered at a BSL pool, it is matching perfectly with the flood of buy orders (short stops) being triggered in that pool. 
+
+If you target arbitrary levels in the middle of a range, there is no guarantee that enough volume exists there to fill your order without price reversing on you first. Targeting liquidity ensures your exit aligns with the market's natural mechanics.
+
+<Callout type="tip" title="Targeting Internal vs External">
+If the market has just swept a major External liquidity pool (e.g., Daily Low), the immediate draw on liquidity is often Internal (e.g., an unmitigated FVG within the range). Once internal liquidity is rebalanced, the draw shifts to the opposing External pool (e.g., Daily High).
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "Liquidity pools are the highest-probability take-profit targets.",
+    "The 'Draw on Liquidity' is the magnetic pull toward the next pool.",
+    "When long, target obvious BSL. When short, target obvious SSL.",
+    "Targeting liquidity aligns your exits with the market's volume distribution."
+  ]} 
+/>

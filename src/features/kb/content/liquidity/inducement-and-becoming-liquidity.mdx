@@ -1,0 +1,51 @@
+export const frontmatter = { 
+  title: 'Inducement & Becoming Liquidity', 
+  description: 'How the market manipulates retail traders into providing the necessary liquidity.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Inducement & Becoming Liquidity
+
+In the context of market structure, **inducement** is a deliberate trap set by the market. It is a minor structural level or an obvious "clean" support/resistance line designed specifically to induce (convince) retail traders to enter positions early and place their stop losses in a vulnerable location.
+
+## How Inducement Works
+
+Imagine the market is in an overall downtrend, and smart money wants to sell at a premium price (a major Order Block or FVG higher up). 
+
+To do this, they need retail traders to buy, providing the BSL required for smart money to sell. 
+1. The market creates a minor pullback and forms a very obvious "resistance" level just *below* the true target (the Order Block). 
+2. Retail traders see this resistance and assume the pullback is over. They are **induced** to go short early. 
+3. They place their stop losses (buy orders) just above this minor resistance. 
+4. The market then surges upward, sweeping those stops. The flurry of buy orders allows smart money to short heavily at the true Order Block. 
+
+The minor resistance level was pure inducement.
+
+<AnnotatedChart chartData={chartRegistry.INDUCEMENT} />
+
+## The Golden Rule of Liquidity
+
+The most important lesson in this entire knowledge base is this: **Do not place your stop loss where everyone else does.**
+
+If you are buying at a support level that has been touched 4 times and looks perfectly clean, and you place your stop loss 5 pips below that line, you are doing exactly what the algorithm wants you to do. You are not trading the market; you are providing the liquidity for someone else to trade the market.
+
+<Callout type="warn" title="Becoming Liquidity">
+If you enter a trade and you cannot clearly identify the liquidity pool the market is targeting, **you are the liquidity pool.**
+</Callout>
+
+How do you avoid becoming liquidity?
+1. **Wait for the sweep:** Let the obvious level get swept, wait for the reversal (CHoCH), and enter *after* the manipulation has occurred.
+2. **Hide your stops:** Place your stop loss beyond a major structural point that has *already* swept a liquidity pool.
+
+<KeyTakeaways 
+  points={[
+    "Inducement is a trap designed to make retail traders enter early.",
+    "Obvious retail support/resistance levels are usually inducement.",
+    "If you can't see the liquidity pool, you are the liquidity pool.",
+    "Enter trades AFTER inducement has been swept, not before."
+  ]} 
+/>

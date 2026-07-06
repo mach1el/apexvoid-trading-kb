@@ -598,7 +598,58 @@ const CH: ChartData[] = [
     {t:"arrow",i:5,p1:2324,p2:2333,color:"bull",label:"risk-off trigger"},
     {t:"swing",i:9,p:2366,dir:"up",label:"parabolic safe-haven bid"}
   ]
+ },
+
+ {
+  id:"LIQMAP", title:"The Liquidity Map", sub:"liquidity · where orders cluster", group:"Liquidity",
+  trap:"Retail traders hide stops above/below obvious levels, which smart money sweeps.",
+  def:"Liquidity pools form where traders place their stop losses and pending orders.",
+  read:[
+    "Major pools: above <b>swing highs</b> (buy-side), below <b>swing lows</b> (sell-side), and around <b>equal highs/lows</b>.",
+    "Retail traders hide their stops directly above/below obvious levels. Smart money sees this as the liquidity needed to fill large orders."
+  ],
+  pMin:4000,pMax:4100,
+  c:[[4050,4060,4045,4055],[4055,4075,4052,4070],[4070,4072,4030,4035],[4035,4045,4032,4040],[4040,4085,4038,4080],[4080,4082,4040,4045],[4045,4055,4043,4050],[4050,4090,4045,4085]],
+  a:[
+    {t:"level",p:4085,dash:1,color:"bear",label:"Buy-side Liquidity (BSL)"},
+    {t:"level",p:4030,dash:1,color:"bull",label:"Sell-side Liquidity (SSL)"},
+    {t:"level",p:4090,dash:0,color:"bear",label:"$$"},
+    {t:"level",p:4025,dash:0,color:"bull",label:"$$"}
+  ]
+ },
+ {
+  id:"INDUCEMENT", title:"Inducement & Becoming Liquidity", sub:"liquidity · trapping retail", group:"Liquidity",
+  trap:"If a level looks too perfect and obvious, it is likely being engineered as inducement.",
+  def:"Price creates an obvious support level to <b>induce</b> retail traders to go long and place stops just below.",
+  read:[
+    "Smart money sweeps those stops to accumulate a long position at a better price before reversing.",
+    "If a level looks 'too perfect' and obvious to everyone, it is likely being engineered as inducement."
+  ],
+  pMin:4000,pMax:4120,
+  c:[[4100,4105,4060,4065],[4065,4080,4062,4075],[4075,4078,4058,4063],[4063,4072,4061,4070],[4070,4075,4060,4065],[4065,4068,4040,4045],[4045,4110,4042,4105]],
+  a:[
+    {t:"level",p:4058,dash:1,color:"muted",label:"Obvious Retail Support (Inducement)"},
+    {t:"zone",i1:2,i2:4,p1:4055,p2:4065,color:"warn",label:"Retail Buys"},
+    {t:"arrow",i:5,p1:4058,p2:4040,color:"bear",label:"Sweep / Stop Hunt"},
+    {t:"arrow",i:6,p1:4045,p2:4100,color:"bull",label:"Real Move Begins"}
+  ]
+ },
+ {
+  id:"TARGETLIQ", title:"Using Liquidity as a Target", sub:"liquidity · take profit", group:"Liquidity",
+  trap:"Targeting fixed R:R ratios in the middle of a range ignores where the actual volume rests.",
+  def:"The highest probability take-profit is the <b>opposing liquidity pool</b>.",
+  read:[
+    "When long, target buy-side liquidity (BSL); when short, target sell-side liquidity (SSL)."
+  ],
+  pMin:1.1000,pMax:1.1200,
+  c:[[1.1050,1.1060,1.1040,1.1045],[1.1045,1.1150,1.1040,1.1140],[1.1140,1.1145,1.1080,1.1090],[1.1090,1.1180,1.1085,1.1170],[1.1170,1.1175,1.1150,1.1160]],
+  a:[
+    {t:"level",p:1.1180,dash:1,color:"bear",label:"Target: BSL (Swing High)"},
+    {t:"swing",i:1,p:1.1150,dir:"up",label:"Previous High"},
+    {t:"arrow",i:3,p1:1.1090,p2:1.1180,color:"bull",label:"Draw on Liquidity"}
+  ]
  }
+
 ];
 
 export const chartRegistry: Record<string, ChartData> = CH.reduce((acc, curr) => {

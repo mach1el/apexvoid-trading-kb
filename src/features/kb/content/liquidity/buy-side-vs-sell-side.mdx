@@ -1,0 +1,47 @@
+export const frontmatter = { 
+  title: 'Buy-side vs Sell-side', 
+  description: 'Categorizing liquidity by the type of orders resting in the market.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Buy-side vs Sell-side Liquidity
+
+To utilize liquidity concepts effectively, we must categorize pools based on the *type* of orders they contain. All external liquidity pools can be divided into **Buy-side Liquidity (BSL)** and **Sell-side Liquidity (SSL)**.
+
+## Buy-side Liquidity (BSL)
+
+**Buy-side Liquidity** rests **above** resistance levels, swing highs, and equal highs. 
+
+When price reaches BSL, it triggers a flood of **BUY orders** into the market. Where do these buy orders come from?
+1.  **Short Stop Losses:** Traders who are short have placed their stop losses above the high. A stop loss on a short position is a market *buy* order.
+2.  **Breakout Buyers:** Momentum traders place buy-stop pending orders above resistance to catch a breakout.
+
+**How smart money uses BSL:** If an institution wants to sell a massive amount of an asset (go short), they need buyers to take the other side of their trade. They will drive the price up into the BSL pool. The flood of triggered retail buy orders provides the exact liquidity the institution needs to execute their massive sell orders without crashing the price. 
+
+## Sell-side Liquidity (SSL)
+
+**Sell-side Liquidity** rests **below** support levels, swing lows, and equal lows.
+
+When price reaches SSL, it triggers a flood of **SELL orders** into the market. Where do these sell orders come from?
+1.  **Long Stop Losses:** Traders who are long have placed their stop losses below the low. A stop loss on a long position is a market *sell* order.
+2.  **Breakdown Sellers:** Momentum traders place sell-stop pending orders below support to catch a breakdown.
+
+**How smart money uses SSL:** If an institution wants to buy a massive amount of an asset (go long), they need sellers to take the other side of their trade. They will drive the price down into the SSL pool. The flood of triggered retail sell orders provides the exact liquidity the institution needs to execute their massive buy orders without spiking the price.
+
+<Callout type="tip" title="The Rule of Opposites">
+To buy huge size, smart money drives price into Sell-side Liquidity (SSL). To sell huge size, smart money drives price into Buy-side Liquidity (BSL).
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "BSL rests above highs and consists of buy orders (short stops + breakout entries).",
+    "SSL rests below lows and consists of sell orders (long stops + breakdown entries).",
+    "Institutions drive price into BSL to fill their massive short positions.",
+    "Institutions drive price into SSL to fill their massive long positions."
+  ]} 
+/>

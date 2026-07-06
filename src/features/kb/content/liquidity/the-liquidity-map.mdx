@@ -1,0 +1,48 @@
+export const frontmatter = { 
+  title: 'The Liquidity Map', 
+  description: 'How to map out where resting orders cluster on a price chart.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# The Liquidity Map
+
+Before executing any trade, a professional trader maps the battlefield. **The Liquidity Map** is the process of identifying exactly where large clusters of resting orders (liquidity pools) have accumulated on the chart. 
+
+If you do not know where the liquidity is, you are trading blind, and you are highly likely to place your stop loss exactly where smart money intends to engineer a sweep.
+
+## Where Do Pools Form?
+
+Retail trading education has taught millions of traders to place their stop losses in the exact same, predictable locations. These obvious technical levels become massive magnets for price.
+
+1.  **Equal Highs (EQH) & Equal Lows (EQL):** The ultimate liquidity pools. Retail sees a "strong double top" or "strong double bottom." Smart money sees a massive, concentrated pool of stop losses just waiting to be triggered.
+2.  **Major Swing Highs and Lows:** The most common location for trailing stop losses and breakout orders.
+3.  **Previous Daily High / Low (PDH / PDL):** Critical structural levels that intraday and swing traders use as reference points.
+4.  **Session Extremes:** The highs and lows of the Asian, London, and New York sessions.
+5.  **Round Numbers (Psychological Levels):** Human psychology loves round numbers (e.g., 1.1000 in EURUSD, 2000 in Gold). Stop and limit orders heavily cluster here.
+6.  **Trendline Touches:** When retail traders draw a diagonal trendline and price touches it 3 or 4 times, stop losses accumulate predictably below/above that diagonal.
+
+<AnnotatedChart chartData={chartRegistry.LIQMAP} />
+
+## The Engineering of Liquidity
+
+Liquidity isn't just randomly placed; it is often deliberately **engineered**. The market will create an obvious resistance level, bounce off it several times to convince retail traders that the level is "strong," and induce them to enter short positions with stops just above. 
+
+Once enough stops have clustered above the resistance, the market will aggressively spike through the level, triggering all the buy-stops (providing the sell liquidity smart money needs to go short), and then reverse.
+
+<Callout type="warn" title="The Retail Trap">
+If a support or resistance level looks perfectly clean and obvious to everyone on Twitter and Reddit, it is highly likely being engineered as a liquidity pool to be swept.
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "Mapping liquidity is a mandatory pre-trade routine.",
+    "Equal highs/lows are the most potent liquidity pools.",
+    "Previous day and session extremes attract massive liquidity.",
+    "If a level looks 'too perfect', it is likely engineered liquidity."
+  ]} 
+/>

@@ -129,6 +129,19 @@ export const navigation: NavSection[] = [
     ],
   },
   {
+    label: 'Liquidity',
+    prefix: '/liquidity',
+    icon: '💧',
+    items: [
+      { label: 'What Liquidity Is', slug: 'what-liquidity-is', path: '/liquidity/what-liquidity-is' },
+      { label: 'The Liquidity Map', slug: 'the-liquidity-map', path: '/liquidity/the-liquidity-map' },
+      { label: 'Buy-side vs Sell-side', slug: 'buy-side-vs-sell-side', path: '/liquidity/buy-side-vs-sell-side' },
+      { label: 'Sweeps, Grabs & Stop Hunts', slug: 'sweeps-grabs-and-stop-hunts', path: '/liquidity/sweeps-grabs-and-stop-hunts' },
+      { label: 'Inducement & Becoming Liquidity', slug: 'inducement-and-becoming-liquidity', path: '/liquidity/inducement-and-becoming-liquidity' },
+      { label: 'Using Liquidity as a Target', slug: 'using-liquidity-as-a-target', path: '/liquidity/using-liquidity-as-a-target' },
+    ],
+  },
+  {
     label: '4. Order Block',
     prefix: '/order-block',
     icon: '🧱',

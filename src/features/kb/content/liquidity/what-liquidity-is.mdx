@@ -1,0 +1,46 @@
+export const frontmatter = { 
+  title: 'What Liquidity Is', 
+  description: 'Understanding the clustered resting orders that fuel market movements.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+import { LiquidityMapper } from '../../../components/LiquidityMapper';
+
+# What Liquidity Is
+
+In trading, **liquidity** refers to the availability of orders at a specific price level. When we talk about "liquidity" in price action and smart money concepts, we are specifically referring to **clustered resting orders**—both stop-loss orders from existing positions and pending entry orders from breakout traders. 
+
+Understanding liquidity is arguably the most critical skill in reading a chart. The core thesis is this: **find and understand where liquidity rests, or you become the liquidity yourself.**
+
+## The Engine of Price Movement
+
+Financial markets require a counterparty for every transaction. For a large institution (or "smart money") to buy 10,000 contracts without causing massive slippage and ruining their average entry price, they must find 10,000 contracts willing to sell at that exact moment. 
+
+Where do they find a concentrated pool of sell orders? 
+They find them where retail traders place their stop losses (which are market sell orders when triggered) and where breakout traders place their sell stops (to enter short on a breakdown).
+
+<Callout type="note" title="The Gravitational Pull">
+Price is drawn to liquidity pools like a magnet. The market moves from one pocket of liquidity to the next because large entities *must* push price into these pools to generate the volume needed to fill their massive positions.
+</Callout>
+
+## Internal vs. External Liquidity
+
+Liquidity can be broadly categorized into two types:
+
+1.  **External Liquidity:** Rests beyond the extremes of a defined range (above the swing high or below the swing low). When external liquidity is taken, the market often seeks internal liquidity.
+2.  **Internal Liquidity:** Rests inside a defined range, often in the form of Fair Value Gaps (FVGs) or minor swing points. When internal liquidity is rebalanced, the market often expands towards external liquidity.
+
+<LiquidityMapper />
+
+<KeyTakeaways 
+  points={[
+    "Liquidity equals clustered resting orders (stop losses and pending entries).",
+    "Large institutions need these pools to enter/exit massive positions without slippage.",
+    "Price is naturally drawn toward these pools of liquidity.",
+    "External liquidity rests outside ranges; internal liquidity rests inside ranges."
+  ]} 
+/>
