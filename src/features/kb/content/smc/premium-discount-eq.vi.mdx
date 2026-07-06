@@ -1,0 +1,118 @@
+export const frontmatter = {
+  title: 'Premium, Discount & Equilibrium',
+  description: 'Mô hình định giá của tổ chức (institutional pricing model). Cách sử dụng Fibonacci thoái lui (retracements) để đảm bảo bạn luôn mua giá sỉ và bán giá lẻ.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { PremiumDiscountSlider } from '../../components/PremiumDiscountSlider';
+
+{/* 1. Hook */}
+Nếu bạn định mua một chiếc xe hơi thường có giá $50,000, và đại lý nói với bạn rằng họ đã tăng giá lên $75,000 do "nhu cầu cao", bạn sẽ bỏ đi. Bạn từ chối mua ở mức giá Premium. Tuy nhiên, trên thị trường tài chính, các nhà giao dịch nhỏ lẻ (retail traders) lại làm chính xác điều này mỗi ngày. Họ đuổi theo những cây nến xanh khổng lồ, mua tài sản ở mức giá bị thổi phồng, chỉ để kinh hãi nhìn thị trường ngay lập tức thoái lui. Dòng tiền thông minh (Smart money) không bao giờ fomo (chasing). Họ chỉ mua ở vùng Discount, và họ chỉ bán ở vùng Premium.
+
+{/* 2. Definition */}
+**Premium/Discount Array** là một khuôn khổ khái niệm để đánh giá mức độ "đắt đỏ" của một tài sản so với phạm vi giao dịch gần đây của nó (swing leg).
+- **Equilibrium (EQ):** Điểm giữa chính xác 50% của nhịp sóng (swing leg). Đây là giá trị hợp lý (fair value).
+- **Premium:** Bất kỳ mức giá nào nằm trên đường 50% Equilibrium. Đây là nơi Smart money tìm cách *bán* (hoặc short).
+- **Discount:** Bất kỳ mức giá nào nằm dưới đường 50% Equilibrium. Đây là nơi Smart money tìm cách *mua* (hoặc long).
+
+{/* 3. Deep Explanation */}
+## Mô hình Định giá của Tổ chức (Institutional Pricing Model)
+
+Các tổ chức hoạt động giống như những nhà bán buôn (wholesalers). Họ tích lũy hàng tồn kho (mua) khi nó rẻ (Discount) và phân phối hàng tồn kho (bán) khi nó đắt (Premium).
+
+Khi thị trường tạo ra một đợt tăng giá mạnh mẽ và bốc đồng (impulsive move), nó thiết lập một Đỉnh sóng (Swing High) mới và một Đáy sóng (Swing Low) mới. Toàn bộ nhịp sóng này đại diện cho mô hình định giá mới. 
+Nếu một tổ chức muốn thêm vào vị thế long của họ, họ sẽ không mua gần Đỉnh sóng (Swing High). Họ sẽ rút lực mua của mình lại, cho phép giá giảm xuống. Khi giá cắt xuống dưới đường 50% Equilibrium, tài sản đó chính thức được "giảm giá" (on sale). Sau đó, họ sẽ tìm kiếm các dấu chân của tổ chức (như [Order Blocks](/order-block/what-is-ob) hoặc [FVGs](/smc/fvg)) nằm trong vùng Discount để thực hiện các lệnh mua của mình.
+
+### Vùng Vào Lệnh Tối Ưu (Optimal Trade Entry - OTE)
+Mặc dù bất cứ đâu dưới mức 50% về mặt kỹ thuật đều là Discount, các thuật toán của tổ chức thường nhắm mục tiêu vào một dải thoái lui cụ thể, sâu hơn được gọi là **Vùng Vào Lệnh Tối Ưu (Optimal Trade Entry - OTE)**. 
+Sử dụng công cụ Fibonacci Retracement được vẽ từ Đáy sóng (Swing Low) lên Đỉnh sóng (Swing High), vùng OTE được định nghĩa là khu vực giữa các mức thoái lui **62% và 79%** (thường với mức 70.5% đóng vai trò là điểm ngọt - sweet spot). 
+
+Nếu bạn có thể tìm thấy một Order Block nằm gọn hoàn hảo bên trong dải OTE, bạn đã tìm thấy một trong những thiết lập có xác suất cao nhất trong giao dịch.
+
+{/* 4. Visuals */}
+## Tương tác: Mảng PD (Premium/Discount array)
+
+Sử dụng tiện ích tương tác bên dưới để phủ một mảng Premium/Discount lên một nhịp sóng xung lực (impulsive swing leg). Hãy chú ý cách đợt thoái lui (retracement) nhúng chính xác vào vùng Discount (và dải OTE) trước khi xu hướng tiếp tục.
+
+<PremiumDiscountSlider />
+
+{/* 5. How to see it on a chart */}
+## Cách Vẽ Mảng (How to Draw the Array)
+
+1. **Xác định Nhịp sóng (Identify the Leg):** Tìm một nhịp sóng giá bốc đồng và rõ ràng. Nó phải có một Đáy sóng (Swing Low) xác định và một Đỉnh sóng (Swing High) xác định.
+2. **Neo Công cụ (Anchor the Tool):** Sử dụng công cụ Fibonacci Retracement trên nền tảng biểu đồ của bạn.
+   - Đối với Xu hướng tăng (tìm kiếm cơ hội mua): Vẽ từ râu nến thấp nhất tuyệt đối của Đáy sóng (Swing Low) lên râu nến cao nhất tuyệt đối của Đỉnh sóng (Swing High).
+   - Đối với Xu hướng giảm (tìm kiếm cơ hội bán): Vẽ từ râu nến cao nhất tuyệt đối của Đỉnh sóng (Swing High) xuống râu nến thấp nhất tuyệt đối của Đáy sóng (Swing Low).
+3. **Thiết lập Các Mức (Set the Levels):** Cấu hình công cụ Fibonacci của bạn để chỉ hiển thị các mức sau: 0%, 50% (EQ), 62%, 70.5%, 79%, và 100%.
+4. **Lọc Các Thiết lập của bạn (Filter Your Setups):** Nhìn vào các Điểm Quan Tâm (POIs) trên Khung Thời Gian Lớn (HTF) của bạn (Order Blocks, FVGs). 
+   - Nếu bạn muốn mua, và Order Block của bạn nằm ở mức thoái lui 30% (Premium), *hãy bỏ qua nó*. Nó là một cái bẫy.
+   - Chỉ thực hiện các lệnh mua tại các POI tồn tại *bên dưới* đường 50%.
+
+{/* 6. Worked Examples */}
+## Ví dụ Thực tế (Worked Examples)
+
+### Ví dụ 1: Sự Hội tụ OTE (Lý tưởng hóa)
+
+**Kịch bản:** AUD/USD đẩy mạnh mẽ từ 0.6500 lên 0.6600, phá vỡ cấu trúc Khung Ngày (Daily).
+1. Bạn vẽ Fib từ Đáy sóng (0.6500) lên Đỉnh sóng (0.6600).
+2. Mức 50% Equilibrium là 0.6550.
+3. Bạn quét nhịp sóng để tìm Order Blocks. Bạn tìm thấy hai cái:
+   - OB #1 nằm ở 0.6570. (Cái này nằm ở vùng Premium).
+   - OB #2 nằm ở 0.6530. (Cái này nằm ở vùng Discount, cụ thể là bên trong dải OTE 62-79%).
+4. Các nhà giao dịch nhỏ lẻ (Retail traders) mua khi giá kéo ngược lại tại OB #1. Giá bật lên trong mười phút, sau đó đâm xuyên qua nó, quét Stop Loss của họ.
+5. Giá giảm vào OB #2 tại 0.6530. Các thuật toán của tổ chức kích hoạt. 
+6. Giá đảo chiều dữ dội và phóng lên các mức cao mới tại 0.6650.
+
+**Giải thích (Walkthrough):**
+Bằng cách áp dụng ma trận Premium/Discount, bạn đã lọc thành công một Order Block Giả (Inducement). OB #1 đơn giản chỉ là mồi nhử để tạo ra Thanh khoản (Liquidity) làm nhiên liệu cho sự sụt giảm xuống vùng Discount thực sự nơi các tổ chức thực sự muốn mua.
+
+### Ví dụ 2: Hội chứng FOMO với Đợt Thoái lui Nông (Thực tế)
+
+**Kịch bản:** SPX phóng thẳng lên trên tin tức thu nhập (earnings news) mạnh mẽ.
+1. Bạn neo Fib của mình và chờ một đợt kéo ngược (pullback) vào vùng Discount (dưới 50%).
+2. Giá kéo ngược về mức 38.2% (vẫn nằm trong vùng Premium) và bắt đầu tích lũy (consolidate).
+3. Bạn bị FOMO (Sợ Bỏ Lỡ - Fear Of Missing Out) và quyết định mua bằng mọi giá, sợ rằng giá sẽ chạy mất mà không có bạn.
+4. SPX nhích lên nhẹ, sau đó đảo chiều và sụp đổ hoàn toàn, rớt sâu vào mức OTE 79% trước khi cuối cùng tìm thấy lực mua (catching a bid).
+5. Điểm vào lệnh FOMO của bạn ở vùng Premium dẫn đến một đợt sụt giảm tài khoản khổng lồ và không cần thiết (hoặc một giao dịch bị dính Stop Loss).
+
+**Giải thích (Walkthrough):**
+Thị trường sẽ thử thách sự kiên nhẫn của bạn. Đôi khi, trong những xu hướng cực kỳ mạnh mẽ, giá *sẽ* bật lên từ một mức Premium và chạy mất mà không có bạn. Hãy mặc kệ nó. Kỷ luật của mảng PD là bạn chỉ giao dịch khi toán học (xác suất) nghiêng hẳn về phía bạn. Mua ở vùng Premium sẽ phá hỏng hồ sơ Rủi ro:Phần thưởng (Risk:Reward) của bạn.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cái Bẫy Phép thuật Fibonacci">
+  Các đường Fibonacci 62% và 79% không phải là phép thuật. Thị trường không đảo chiều *vì* các con số Fibonacci. Thị trường đảo chiều bởi vì có một hồ chứa thanh khoản đang chờ đợi (resting pool of liquidity) (một Order Block hoặc FVG) nằm trong vùng giá bán buôn (wholesale pricing zone). Công cụ Fib chỉ là một thước đo trực quan để giúp bạn xác định nơi nào là "rẻ" và "đắt". Không bao giờ giao dịch mù quáng tại một mức Fib nếu không có POI cấu trúc nào hội tụ với nó.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Các Cách Diễn đạt Khung Khái niệm Hiện đại (Modern Framework Translations)
+
+- **SMC / ICT:** Toàn bộ khuôn khổ này đã được ICT chính thức hóa dưới dạng "Premium/Discount Array". Mô hình OTE (Optimal Trade Entry) là một trong những giáo lý nền tảng của ông.
+- **Phân tích Kỹ thuật Cổ điển (Classic TA):** Biểu đồ cổ điển phụ thuộc rất nhiều vào các mức thoái lui Fibonacci (38.2%, 50%, 61.8%). Tuy nhiên, TA cổ điển thường ủng hộ việc mua tại các đợt thoái lui nông 38.2% trong các xu hướng mạnh, điều này mâu thuẫn trực tiếp với logic định giá của tổ chức.
+- **Đầu tư Giá trị (Value Investing):** Trong tài chính truyền thống, đây đơn giản là khái niệm "Biên độ An toàn" (Margin of Safety). Bạn không mua một tài sản khi nó được định giá quá cao (Premium); bạn chờ đợi một sự điều chỉnh của thị trường để mua nó ở giá trị nội tại hoặc thấp hơn (Discount).
+
+{/* 9. FAQ */}
+## Câu hỏi Thường gặp (Frequently Asked Questions)
+
+**H: Tôi phải vẽ các điểm neo Fib chính xác ở đâu?**
+Đ: Từ điểm cực trị tuyệt đối của nhịp sóng. Đối với xu hướng tăng, neo ở râu nến thấp nhất của chuyển động bắt đầu sự dịch chuyển (displacement), và kéo lên râu nến cao nhất trước khi đợt thoái lui bắt đầu.
+
+**H: Tôi có thể short một thị trường chỉ vì nó đang ở vùng Premium không?**
+Đ: Không. Trong một xu hướng tăng vĩ mô (macro uptrend), thị trường sẽ dành rất nhiều thời gian ở vùng Premium trước khi nó thực sự thoái lui. Bạn chỉ sử dụng mảng PD để lọc các điểm vào lệnh *theo hướng* xu hướng chủ đạo (trend bias) của bạn. Trong một xu hướng tăng, bạn đợi một vùng Discount để mua. Bạn không mù quáng short chỉ vì nó đang ở vùng Premium.
+
+**H: Điều gì xảy ra nếu giá rớt qua mức OTE 79%?**
+Đ: Nếu nó rớt xuống 100%, nó đã quét qua Đáy sóng (Swing Low). Đây có thể là một đợt Quét Thanh khoản ([Liquidity Sweep](/smc/liquidity-sweep)), hoặc nó có thể là một sự đảo chiều xu hướng hoàn toàn (CHoCH). Bạn phải đợi xem liệu nến có đóng cửa dưới đường 100% hay không trước khi đưa ra quyết định.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Các tổ chức mua giá sỉ (Discount) và bán giá lẻ (Premium).",
+  "Equilibrium (50%) là đường ranh giới phân chia. Không bao giờ mua trên 50%; không bao giờ bán dưới 50%.",
+  "Vùng Vào Lệnh Tối Ưu (Optimal Trade Entry - OTE) là một dải thoái lui cụ thể, sâu giữa 62% và 79%.",
+  "Sử dụng mảng PD để lọc ra các Order Block Giả. Nếu một Bullish OB nằm ở vùng Premium, hãy bỏ qua nó.",
+  "Các đường Fibonacci không phải là các mức hỗ trợ ma thuật. Chúng phải hội tụ với các yếu tố cấu trúc thực tế như Order Blocks hoặc FVGs."
+]} />
+
+---
+*Tham khảo (References):*
+Mô hình định giá của tổ chức và logic ma trận thuật toán. Được chính thức hóa thành OTE bởi Inner Circle Trader.

@@ -1,0 +1,71 @@
+export const frontmatter = {
+  title: 'Các Cấp Độ Đánh Giá: Thiết Lập A+, B, và C',
+  description: 'Cách đánh giá khách quan các thiết lập của bạn để loại bỏ cảm xúc và tiêu chuẩn hóa quá trình thực thi.'
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { ConfluenceMeter } from '../../components/ConfluenceMeter';
+
+# Các Cấp Độ Đánh Giá: Thiết Lập A+, B, và C
+
+<ConceptCard title="Thực Thi Có Hệ Thống" icon="📋">
+Các nhà giao dịch chuyên nghiệp không đối xử với mọi thiết lập (setup) như nhau. Bằng cách đánh giá các thiết lập dựa trên sự hiện diện của các yếu tố hội tụ (confluence), bạn có thể chủ động điều chỉnh rủi ro và tránh thực hiện những giao dịch kém chất lượng chỉ vì nhàm chán.
+</ConceptCard>
+
+Một trong những thách thức lớn nhất trong giao dịch là tính chủ quan của việc đọc biểu đồ. Những gì có vẻ như là một thiết lập tuyệt vời vào thứ Hai có thể trông tồi tệ vào thứ Sáu nếu bạn đã có một tuần giao dịch không tốt.
+
+Để loại bỏ cảm xúc, chúng ta phải chuyển từ cảm nhận chủ quan sang đánh giá khách quan. Điều này được thực hiện bằng cách tạo ra một bảng tiêu chí các yếu tố hội tụ và chấm điểm mỗi giao dịch trước khi vào lệnh.
+
+## 1. Bảng Tiêu Chí Đánh Giá
+
+Một bảng tiêu chí đánh giá tiêu chuẩn của tổ chức sẽ đưa ra một danh sách kiểm tra (checklist) bắt buộc để một thiết lập được coi là hợp lệ. Dưới đây là một ví dụ về bảng tiêu chí khách quan dựa trên các trụ cột Thời gian (Time), Giá (Price), và Cấu trúc (Structure).
+
+**Danh Sách Kiểm Tra Chính:**
+1. **Sự Đồng Thuận HTF:** Giao dịch có cùng hướng với xu hướng Khung thời gian lớn (Daily/4H) không?
+2. **Thời Gian:** Thiết lập có đang hình thành trong một Killzone (London/NY) không?
+3. **Vị Trí:** Thiết lập có đang hình thành tại một POI HTF (Order Block, FVG, hoặc quét Liquidity quan trọng) không?
+4. **Discount/Premium:** Chúng ta đang mua ở vùng discount hay bán ở vùng premium?
+5. **Xác Nhận:** Khung thời gian nhỏ (LTF) có tạo ra một CHoCH rõ ràng với sự dịch chuyển mạnh (displacement) không?
+
+<ConfluenceMeter />
+
+## 2. Xác Định Các Cấp Độ
+
+Dựa trên danh sách kiểm tra ở trên, chúng ta có thể phân loại các giao dịch thành ba cấp độ.
+
+### Thiết Lập A+ (5/5 Yếu Tố)
+Thiết lập A+ là "thiết lập thần thánh". Mọi thứ đều đồng thuận hoàn hảo. Bạn đang giao dịch theo xu hướng tổng thể, trong phiên có khối lượng giao dịch cao, bật lên từ một mức HTF quan trọng ở vùng discount, với sự xác nhận hoàn hảo ở khung thời gian nhỏ.
+- **Hành động:** Phân bổ rủi ro tối đa (ví dụ: 1% đến 2% tài khoản).
+- **Tần suất:** Hiếm. Bạn có thể chỉ thấy 1 hoặc 2 thiết lập như vậy mỗi tuần cho mỗi tài sản.
+
+### Thiết Lập B (3-4/5 Yếu Tố)
+Đây là nguồn sống cơ bản của bạn. Thiết lập này có xác suất rất cao, nhưng có thể thiếu một yếu tố. Ví dụ: thiết lập hình thành hoàn hảo trong NY Killzone với xác nhận LTF tuyệt vời, nhưng bạn đang giao dịch ngược xu hướng so với biểu đồ Ngày (một cú hồi).
+- **Hành động:** Phân bổ rủi ro giảm (ví dụ: 0.5% tài khoản).
+- **Tần suất:** Phổ biến. Bạn có khả năng thấy vài thiết lập như vậy mỗi tuần.
+
+### Thiết Lập C (1-2/5 Yếu Tố)
+Đây là những giao dịch làm cạn kiệt tài khoản. Một thiết lập C thường xảy ra khi bạn đang nhàm chán. Ví dụ: bạn thấy một CHoCH trên biểu đồ 1 phút giữa thời gian nghỉ trưa ảm đạm, không ở gần bất kỳ điểm quan tâm (POI) HTF nào.
+- **Hành động:** KHÔNG GIAO DỊCH. Bỏ qua hoàn toàn.
+- **Tần suất:** Thật không may, những điều này xảy ra cả ngày, mỗi ngày, nhử mồi những nhà giao dịch thiếu kiên nhẫn.
+
+<Callout type="trap" title="Giao Dịch Do Nhàm Chán">
+Thiết lập nguy hiểm nhất là thiết lập C mà bạn lừa dối bản thân tin rằng nó là thiết lập B vì bạn đã không thực hiện giao dịch nào trong ba ngày. Nếu bạn phải căng mắt ra mới thấy sự hội tụ, thì thực sự giao dịch đó không tồn tại.
+</Callout>
+
+## 3. Quản Lý Rủi Ro Động
+
+Đánh giá các thiết lập của bạn không chỉ là để lọc ra những giao dịch tồi tệ; nó gắn liền chặt chẽ với quản lý rủi ro.
+
+Nếu bạn rủi ro 1% cho một thiết lập A+ và 1% cho một thiết lập C, phân bổ rủi ro của bạn đã bị hỏng về cơ bản. Bạn đang rủi ro cùng một lượng vốn cho một trò tung đồng xu có xác suất thấp cũng như cho một sự đồng thuận tổ chức có xác suất cao.
+
+Bằng cách gắn rủi ro mỗi giao dịch trực tiếp với cấp độ của thiết lập, bạn đảm bảo rằng vốn của mình được tập trung nhiều nhất vào lợi thế mạnh nhất của mình.
+
+<KeyTakeaways>
+- Bạn phải tạo ra một danh sách kiểm tra khách quan để loại bỏ cảm xúc khỏi việc chọn giao dịch.
+- Các thiết lập A+ sở hữu tất cả các yếu tố hội tụ; phân bổ rủi ro tối đa.
+- Các thiết lập B có thể giao dịch nhưng thiếu một yếu tố nhỏ; giảm rủi ro.
+- Các thiết lập C thiếu các trụ cột chính như Thời Gian hoặc Vị Trí HTF; không giao dịch chúng.
+- Phân bổ rủi ro động dựa trên cấp độ thiết lập bảo vệ vốn của bạn khỏi các biến động xác suất thấp.
+</KeyTakeaways>

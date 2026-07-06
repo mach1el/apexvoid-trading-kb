@@ -1,0 +1,49 @@
+export const frontmatter = { title: 'Lịch Kinh tế', description: 'Điều hướng qua các bản phát hành dữ liệu vĩ mô và tác động của chúng lên Vàng.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Lịch Kinh tế
+
+Đối với các nhà giao dịch trong ngày (day traders) và giao dịch theo sóng (swing traders) trên XAUUSD, lịch kinh tế cũng quan trọng không kém hành động giá. Các đợt công bố dữ liệu lớn bơm thanh khoản (liquidity) và độ biến động khổng lồ vào thị trường, thường xuyên kích hoạt các đợt săn stop loss (stop hunts) và thiết lập các xu hướng có hướng đi mới.
+
+## Dữ liệu Cấp 1 (Tier 1) đối với Nhà giao dịch Vàng
+
+Không phải tất cả tin tức đều được tạo ra như nhau. Vàng chủ yếu nhạy cảm với dữ liệu của Mỹ có ảnh hưởng đến quỹ đạo chính sách tiền tệ của Cục Dự trữ Liên bang (Fed).
+
+<CompareTable 
+  headers={['Phát hành Dữ liệu', 'Tần suất', 'Tác động lên Vàng']}
+  rows={[
+    ['Bảng lương Phi nông nghiệp (NFP)', 'Hàng tháng (Thứ Sáu đầu tiên)', 'Biến động mạnh. Việc làm mạnh = vàng giảm.'],
+    ['Chỉ số Giá Tiêu dùng (CPI)', 'Hàng tháng', 'Biến động cao. Lạm phát nóng = phản ứng phức tạp tùy thuộc vào Fed.'],
+    ['Quyết định Lãi suất của FOMC', '8 lần/năm', 'Xác định xu hướng. Giọng điệu diều hâu (Hawkish) = vàng giảm.'],
+    ['Các bài phát biểu của Jerome Powell', 'Biến đổi', 'Biến động cao. Định hướng tương lai (Forward guidance) thúc đẩy giá cả.']
+  ]}
+/>
+
+<ConceptCard title="Sự sai lệch so với Đồng thuận">
+  Thị trường phản ánh con số dự kiến (đồng thuận) vào giá trước khi phát hành. Sự biến động xảy ra khi dữ liệu thực tế *sai lệch* so với sự đồng thuận. Một con số NFP "tốt" có thể khiến vàng tăng giá nếu kỳ vọng đồng thuận là một con số "xuất sắc". Hãy giao dịch dựa trên sự sai lệch, không phải con số tuyệt đối.
+</ConceptCard>
+
+## Hành động Giá trước Tin tức
+
+Thị trường thường thể hiện các hành vi cụ thể dẫn đến các sự kiện Cấp 1 lớn:
+- **Tích lũy (Consolidation)**: Giá nén lại thành một phạm vi hẹp khi các tổ chức giữ vốn đứng ngoài, chờ đợi sự rõ ràng.
+- **Xây dựng Thanh khoản**: Các đường xu hướng và các mức cản rõ ràng được thiết lập, tích lũy stop loss ngay trên và dưới hành động giá hiện tại.
+
+<AnnotatedChart chartData={chartRegistry.ECON} />
+
+<Callout type="warning">
+  Cây nến 1 phút ban đầu của một đợt phát hành tin tức lớn hiếm khi là xu hướng thực sự. Nó thường là một đợt quét thanh khoản (liquidity grab) để khớp các lệnh của tổ chức trước khi thị trường di chuyển đến đích dự kiến của nó.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Chỉ có dữ liệu Cấp 1 của Mỹ mới tác động đáng kể đến cấu trúc của vàng.",
+    "Biến động được thúc đẩy bởi sự sai lệch giữa dữ liệu thực tế và sự đồng thuận của thị trường.",
+    "Sự tích lũy trước tin tức thường đóng vai trò như một cái bẫy thanh khoản."
+  ]}
+/>

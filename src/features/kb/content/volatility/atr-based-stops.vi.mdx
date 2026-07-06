@@ -1,0 +1,49 @@
+export const frontmatter = { title: 'Đặt Stop Loss dựa trên ATR', description: 'Sử dụng ATR để đặt Stop Loss một cách khách quan nhằm thích ứng với nhiễu thị trường.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Đặt Stop Loss dựa trên ATR
+
+Việc đặt Stop Loss dựa trên số pip hoặc số tiền tùy ý khiến các nhà giao dịch phải đối mặt với rủi ro bị cắt lỗ sớm do nhiễu thị trường (market noise) thông thường. ATR cung cấp một khuôn khổ động cho việc đặt Stop Loss thích ứng với biến động (volatility) hiện tại.
+
+## Logic của Volatility Stops
+
+Nếu một thị trường thường di chuyển 15 pip trong một cây nến 5 phút, việc đặt Stop Loss 10 pip đảm bảo xác suất khớp lệnh cao đơn giản là do phương sai bước ngẫu nhiên (random walk variance). Một Stop Loss lý tưởng nên được đặt ngoài ngưỡng nhiễu dự kiến để việc cắt lỗ chỉ xảy ra khi tiền đề của giao dịch bị vô hiệu hóa.
+
+<ConceptCard title="Hệ số nhân ATR (ATR Multiplier)">
+  Các nhà giao dịch thường áp dụng một hệ số nhân (multiplier) vào ATR hiện tại để đặt Stop Loss.
+  - **1x ATR**: Chặt chẽ, giả định sự tiếp diễn ngay lập tức. Nguy cơ cao bị cắt lỗ do nhiễu (noiseouts).
+  - **1.5x - 2x ATR**: Tiêu chuẩn. Đáp ứng được các cú Pullback bình thường trong khi vẫn bảo vệ được vốn.
+  - **3x ATR**: Rộng, phù hợp với các chiến lược theo xu hướng (trend-following) nhằm nắm bắt các nhịp Swing chính.
+</ConceptCard>
+
+## Áp dụng Stop Loss ATR vào Cấu trúc (Structure)
+
+Mặc dù các Trailing Stop thuần túy bằng ATR (như Chandelier Exits) rất phổ biến, ATR tốt nhất nên được sử dụng kết hợp với Cấu trúc thị trường (Market Structure).
+
+<AnnotatedChart chartData={chartRegistry.ATR} />
+
+<Callout type="info">
+  Khi đặt Stop Loss dưới một Swing Low, hãy trừ đi 1x hoặc 0.5x ATR từ mức giá thấp nhất tuyệt đối. Điều này đảm bảo Stop Loss của bạn không bị kích hoạt bởi một cú quét thanh khoản (Liquidity sweep) nhỏ tại đúng điểm đáy.
+</Callout>
+
+<CompareTable 
+  headers={['Stop Loss cố định (VD: 20 pip)', 'Stop Loss ATR (VD: 1.5x ATR)']}
+  rows={[
+    ['Tĩnh, bất kể điều kiện thị trường', 'Mở rộng và thu hẹp theo biến động (volatility)'],
+    ['Nguy cơ cao bị noiseout trong thời điểm có tin tức', 'Thích ứng với các phạm vi (ranges) được mở rộng'],
+    ['Tính toán nhanh và đơn giản', 'Yêu cầu chỉ báo hoặc ước tính nhẩm']
+  ]}
+/>
+
+<KeyTakeaways 
+  items={[
+    "Stop Loss ATR loại bỏ các con số tùy ý khỏi quản lý rủi ro.",
+    "Áp dụng hệ số nhân cho ATR cho phép bạn định cỡ Stop Loss cho các loại chiến lược khác nhau (Scalp vs Swing).",
+    "Kết hợp khoảng đệm (offset) ATR với các điểm xoay cấu trúc (structural swing points) cung cấp các mức vô hiệu hóa mạnh mẽ."
+  ]}
+/>

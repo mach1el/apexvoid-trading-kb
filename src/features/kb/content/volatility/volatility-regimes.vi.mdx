@@ -1,0 +1,50 @@
+export const frontmatter = { title: 'Các Chế độ Biến động (Volatility Regimes)', description: 'Xác định và thích ứng với các chu kỳ mở rộng và thu hẹp biến động.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Các Chế độ Biến động (Volatility Regimes)
+
+Thị trường tài chính không tồn tại ở một trạng thái ổn định (steady state); chúng luân chuyển có hệ thống giữa các giai đoạn biến động thấp (thu hẹp) và biến động cao (mở rộng). Việc hiểu được thị trường hiện đang ở chế độ (regime) nào là rất quan trọng để lựa chọn chiến lược giao dịch phù hợp.
+
+## Từ Thu hẹp (Contraction) đến Mở rộng (Expansion)
+
+Biến động có tính chu kỳ. Các giai đoạn biến động thấp kéo dài gần như chắc chắn sẽ dẫn đến những sự mở rộng dữ dội. Điều này xảy ra bởi vì môi trường biến động thấp khuyến khích sự tích tụ đòn bẩy (leverage buildup) và việc đặt Stop Loss chặt chẽ. Khi một chất xúc tác (catalyst) xuất hiện, những đợt thanh lý bắt buộc (forced liquidations) sẽ kích hoạt các bước di chuyển có hướng mạnh mẽ.
+
+<ConceptCard title="Đặc điểm của Sự thu hẹp (Contraction)">
+  - Phạm vi giao dịch hẹp (Narrow trading ranges)
+  - Hành động giá hoàn nguyên (Mean-reverting price action)
+  - Khối lượng giao dịch thấp
+  - Các đường trung bình động (Moving averages) đi ngang
+  - Bollinger Bands thắt lại (hiện tượng "Squeeze")
+</ConceptCard>
+
+## Thích ứng Chiến lược theo Chế độ
+
+Một chiến lược phá vỡ (Breakout) hoạt động cực kỳ hiệu quả trong quá trình chuyển đổi từ thu hẹp sang mở rộng sẽ gánh chịu những khoản lỗ nặng nề trong một giai đoạn thu hẹp thuần túy (do các phá vỡ giả - false breakouts). Ngược lại, một chiến lược Mean-reversion vượt trội trong giai đoạn thu hẹp nhưng có nguy cơ phá sản trong giai đoạn mở rộng.
+
+<AnnotatedChart chartData={chartRegistry.VREG} />
+
+<Callout type="info">
+  Khi ATR chạm mức thấp nhất trong nhiều tuần, các nhà giao dịch nên chuẩn bị cho sự mở rộng bằng cách tìm kiếm các cơ hội Breakout theo Cấu trúc (structural) thay vì đánh ngược lại tại các vùng biên của phạm vi (fading the edges of the range).
+</Callout>
+
+<CompareTable 
+  headers={['Chế độ Biến động Thấp', 'Chế độ Biến động Cao']}
+  rows={[
+    ['Ưu tiên các chiến lược Mean-reversion', 'Ưu tiên Động lượng (Momentum) và theo xu hướng (Trend following)'],
+    ['Đánh ngược (Fading) ở các vùng biên range là khả thi', 'Breakout tạo ra sự tiếp diễn (continuation) mạnh mẽ'],
+    ['Có thể chấp nhận Stop Loss chặt chẽ hơn', 'Bắt buộc phải có Stop Loss rộng hơn']
+  ]}
+/>
+
+<KeyTakeaways 
+  items={[
+    "Biến động luân phiên giữa thu hẹp và mở rộng.",
+    "Môi trường biến động thấp tích tụ năng lượng cho các chuyển động có hướng trong tương lai.",
+    "Việc chọn lựa chiến lược phải phù hợp với chế độ biến động hiện tại."
+  ]}
+/>

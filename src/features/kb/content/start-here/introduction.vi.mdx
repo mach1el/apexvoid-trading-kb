@@ -1,0 +1,104 @@
+export const frontmatter = {
+  title: 'Chào mừng đến với Kiến thức Giao dịch ApexVoid',
+  description: 'Điểm khởi đầu của bạn cho chương trình giáo dục giao dịch có cấu trúc, độc lập với framework, bao gồm cấu trúc thị trường (market structure), các mức giá quan trọng (key levels), hành động giá (price action), Order Block, SMC, ICT concepts và sự hợp lưu (confluence).',
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { ConfluenceMeter } from '../../components/ConfluenceMeter';
+import { StepFlow, Step } from '../../../../shared/components/StepFlow';
+import { Term, Glossary } from '../../../../shared/components/Term';
+
+# Chào mừng đến với Kiến thức Giao dịch ApexVoid
+
+Cơ sở kiến thức này là một tài nguyên có cấu trúc, độc lập với framework để học cách giá di chuyển và cách các trader đọc sự di chuyển đó. Nó bao gồm các ý tưởng cốt lõi đằng sau **cấu trúc thị trường (market structure)**, **các mức giá quan trọng (key levels)**, **hành động giá (price action)**, **Order Block**, **SMC**, **ICT concepts** và **sự hợp lưu (confluence)** — mà không cố bán bất kỳ phương pháp đơn lẻ nào như một "câu trả lời tuyệt đối."
+
+---
+
+## Dành Cho Ai
+
+<ConceptCard title="Đối tượng mục tiêu" icon="🎯">
+  <p>Tài nguyên này được thiết kế cho các trader muốn <strong>hiểu rõ cơ chế</strong> đằng sau các khái niệm giao dịch thường được thảo luận — chứ không chỉ ghi nhớ các setup.</p>
+  <ul>
+    <li><strong>Trader đang phát triển</strong>, những người đã có kinh nghiệm đọc biểu đồ cơ bản và muốn hiểu sâu hơn về cấu trúc.</li>
+    <li><strong>Trader giàu kinh nghiệm</strong> đang tìm kiếm một tài liệu tham khảo rõ ràng kết nối các framework có sự giao thoa (SMC, ICT, hành động giá cổ điển).</li>
+    <li><strong>Người tự học</strong> thích đọc hơn là xem hàng giờ nội dung video.</li>
+  </ul>
+</ConceptCard>
+
+Đây **không phải** là bài hướng dẫn cho người mới bắt đầu về nến là gì hay cách mở tài khoản môi giới. Tài liệu giả định bạn đã có một số hiểu biết cơ bản về biểu đồ.
+
+---
+
+## Cách Sử Dụng Cơ Sở Kiến Thức Này
+
+Nội dung được tổ chức thành các phần được đánh số và xây dựng dựa trên nhau:
+
+<StepFlow>
+  <Step>
+    <strong>Nền tảng (Phần 1)</strong> — Cấu trúc thị trường, nến & khối lượng (volume), khung thời gian (timeframes) và trực giác về thanh khoản (Liquidity). Hãy bắt đầu từ đây nếu bạn cảm thấy bất kỳ phần nào chưa vững.
+  </Step>
+  <Step>
+    <strong>Các mức giá quan trọng (Phần 2)</strong> — Đỉnh/đáy đảo chiều (Swing highs/lows), PDH/PDL, PWH/PWL, số tròn (round numbers) và các mức giá theo phiên (session levels). Các điểm tham chiếu mà mọi thứ khác xoay quanh.
+  </Step>
+  <Step>
+    <strong>Hành động giá thuần túy (Phần 3)</strong> — BOS, CHoCH, sự dịch chuyển (displacement) và đọc giá không cần chỉ báo. Các kỹ năng độc lập với framework.
+  </Step>
+  <Step>
+    <strong>Order Block (Phần 4)</strong> — Một Order Block (OB) thực sự là gì, cách xác định chúng thủ công, logic giảm thiểu/kiểm tra lại (mitigation/retest) và lọc OB thật khỏi OB giả.
+  </Step>
+  <Step>
+    <strong>SMC (Phần 5)</strong> — Thanh khoản bên mua/bên bán (Buy-side/sell-side Liquidity), quét thanh khoản (sweeps), FVG và các vùng Premium/Discount. Lăng kính Smart Money Concepts.
+  </Step>
+  <Step>
+    <strong>ICT Concepts (Phần 6)</strong> — Killzones, mảng PD (PD arrays), OTE và Judas swings. Các thuật ngữ và mô hình định thời gian (timing models) đặc thù của ICT.
+  </Step>
+  <Step>
+    <strong>Sự hợp lưu (Phần 7)</strong> — Cách kết hợp nhiều yếu tố, đánh giá chất lượng các mức giá và xây dựng niềm tin trước khi vào lệnh.
+  </Step>
+  <Step>
+    <strong>Tổng hợp lại</strong> — Các framework liên quan với nhau như thế nào, quy trình làm việc thực tế từ khung thời gian lớn xuống nhỏ (HTF→LTF) và một bảng chú giải thuật ngữ (Glossary) đầy đủ.
+  </Step>
+</StepFlow>
+
+Bạn không cần phải đọc mọi thứ theo thứ tự tuyến tính. Nếu bạn đã hiểu về cấu trúc thị trường, hãy bỏ qua và đến phần giải quyết lỗ hổng kiến thức của bạn. Sử dụng **Bảng chú giải thuật ngữ** (trong phần "Tổng hợp lại") như một tài liệu tham khảo nhanh cho bất kỳ thuật ngữ nào chưa quen thuộc.
+
+---
+
+## Tài Liệu Này Là Gì — Và Không Là Gì
+
+<Callout type="warn" title="Chỉ Dành Cho Mục Đích Giáo Dục">
+  <p>Không có nội dung nào trong cơ sở kiến thức này cấu thành lời khuyên tài chính, tín hiệu giao dịch hay đảm bảo lợi nhuận. Toàn bộ nội dung <strong>hoàn toàn mang tính giáo dục</strong>.</p>
+  <p>Giao dịch luôn đi kèm rủi ro thua lỗ đáng kể. Các mô hình trong quá khứ không đảm bảo kết quả trong tương lai. Bạn hoàn toàn chịu trách nhiệm cho các quyết định giao dịch và quản lý rủi ro của riêng mình.</p>
+</Callout>
+
+Tài nguyên này:
+
+- **Có** giải thích rõ ràng các khái niệm bằng định nghĩa, sơ đồ và ví dụ thực tế.
+- **Có** trình bày nhiều framework một cách trung thực, lưu ý những điểm chúng giao thoa và khác biệt.
+- **Không** hứa hẹn bất kỳ tỷ lệ thắng (win rate), lợi thế (edge) hay khả năng sinh lời nào.
+- **Không** xác nhận (endorse) bất kỳ khóa học trả phí, dịch vụ tín hiệu hay chỉ báo độc quyền nào.
+- **Không** tuyên bố rằng bất kỳ framework đơn lẻ nào vượt trội hơn những framework khác.
+
+---
+
+## Giọng Điệu & Triết Lý
+
+Mỗi phần đều hướng tới cùng một tiêu chuẩn:
+
+- **Trung lập.** Các khái niệm được trình bày dựa trên giá trị thực của chúng. Không thổi phồng, không tôn sùng "guru", không trung thành mù quáng với một phương pháp luận duy nhất.
+- **Chính xác.** Các định nghĩa rất rõ ràng. Khi một thuật ngữ có ý nghĩa khác nhau trong các cộng đồng khác nhau, điều đó sẽ được chú thích.
+- **Thực tế.** Lý thuyết kết nối với hành vi biểu đồ có thể quan sát được. Các sơ đồ có chú thích cho thấy khái niệm đó trông như thế nào trong thực tế.
+- **Trung thực về các hạn chế.** Không có khái niệm nào hoạt động 100% thời gian. Các trường hợp thất bại và cạm bẫy phổ biến được thảo luận cùng với các trường hợp lý tưởng.
+
+<KeyTakeaways>
+  <ul>
+    <li><strong>Bắt đầu với Nền tảng</strong> nếu bạn đang xây dựng từ đầu, hoặc chuyển đến phần bạn cần.</li>
+    <li><strong>Các khái niệm giao thoa giữa các framework</strong> — phần "Tổng hợp lại" ánh xạ những kết nối này một cách rõ ràng.</li>
+    <li><strong>Đây là giáo dục, không phải lời khuyên.</strong> Áp dụng những gì bạn học theo quyết định và rủi ro của riêng bạn.</li>
+    <li><strong>Sử dụng Bảng chú giải thuật ngữ (Glossary)</strong> bất cứ lúc nào bạn bắt gặp một từ viết tắt hoặc thuật ngữ lạ.</li>
+  </ul>
+</KeyTakeaways>

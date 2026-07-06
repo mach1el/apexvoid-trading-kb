@@ -1,0 +1,70 @@
+export const frontmatter = {
+  title: 'Xếp Chồng Yếu Tố: Thời Gian, Giá & Cấu Trúc',
+  description: 'Cách xây dựng một lập luận giao dịch chặt chẽ bằng cách kết hợp ba trụ cột của sự phân phối thuật toán.'
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Xếp Chồng Yếu Tố: Thời Gian, Giá & Cấu Trúc
+
+<ConceptCard title="Bộ Ba Thần Thánh Trong Giao Dịch" icon="🏛️">
+Mọi thiết lập giao dịch xác suất cao đều dựa trên ba trụ cột: **Thời Gian** (khi nào bạn giao dịch), **Giá** (nơi bạn giao dịch), và **Cấu Trúc** (giá làm gì khi nó đến đó). Nếu thiếu bất kỳ trụ cột nào trong số này, xác suất thành công của giao dịch sẽ giảm đi đáng kể.
+</ConceptCard>
+
+Khi thảo luận về sự hội tụ (confluence), các nhà giao dịch thường mắc sai lầm khi xếp chồng các yếu tố chỉ từ một danh mục (ví dụ: xếp chồng nhiều mức giá như Fibonacci, Hỗ trợ và Điểm Pivot). Sự hội tụ thực sự đòi hỏi sự xếp chồng qua ba trụ cột cơ bản của thị trường.
+
+## Trụ Cột 1: Thời Gian (Khi Nào)
+
+Trong giao dịch thuật toán, thời gian thường quan trọng hơn giá. Thị trường không di chuyển đồng đều trong chu kỳ 24 giờ. Biến động và dòng tiền Liquidity được tập trung mạnh vào các khoảng thời gian cụ thể.
+
+**Các Yếu Tố Thời Gian Quan Trọng Cần Xếp Chồng:**
+- **Killzones:** Chúng ta đang ở phiên London Open, New York AM hay New York PM?
+- **Khung Thời Gian Vĩ Mô (Macro Windows):** Chúng ta có đang ở trong một khung thuật toán macro 20 phút cụ thể (ví dụ: 9:50 - 10:10 AM) không?
+- **Thời Gian Trong Ngày/Tuần:** Chúng ta có đang giao dịch vào thứ Tư (về mặt lịch sử là đỉnh/đáy của tuần cho nhiều cặp tiền) trong những giờ có khối lượng cao nhất không?
+
+<Callout type="warn" title="Cạm Bẫy Vùng Chết">
+Một sự hình thành Order Block hoàn hảo trên biểu đồ 5 phút vào lúc 1:00 PM EST (trong thời gian nghỉ trưa ảm đạm) có tỷ lệ thất bại cực cao so với cùng một sự hình thành đó xảy ra vào lúc 9:30 AM EST. Cấu trúc giá mà không có khối lượng hỗ trợ là những cái bẫy.
+</Callout>
+
+## Trụ Cột 2: Giá (Ở Đâu)
+
+Giá quyết định mức chính xác mà bạn mong đợi các thuật toán tổ chức định giá lại tài sản. Chúng ta đang tìm kiếm các khu vực kém hiệu quả cực đoan hoặc tập trung thanh khoản cao.
+
+**Các Yếu Tố Giá Quan Trọng Cần Xếp Chồng:**
+- **Lực Hút Thanh Khoản (Draw on Liquidity - DOL):** Giá có bị hút mạnh về một mức cụ thể (ví dụ: Đỉnh Ngày Trước Đó - Previous Daily High) không?
+- **Fair Value Gaps (FVG):** Có những sự kém hiệu quả chưa được chạm tới trên thị trường không?
+- **Order Blocks (OB):** Có dấu chân tổ chức để lại từ một lần quét Liquidity trước đó không?
+- **Premium/Discount:** Chúng ta có đang mua dưới mức cân bằng (equilibrium) 50% của phạm vi giao dịch không?
+
+## Trụ Cột 3: Cấu Trúc (Cái Gì)
+
+Cấu trúc là sự xác nhận cuối cùng. Bạn có thời gian đúng, bạn ở mức giá đúng, nhưng bây giờ bạn phải đợi xem *giá thực sự làm gì*. Điều này giúp bạn tránh cố gắng bắt dao rơi.
+
+**Các Yếu Tố Cấu Trúc Quan Trọng Cần Xếp Chồng:**
+- **Xu Hướng Khung Thời Gian Lớn:** Biểu đồ Daily/4H có đang tạo các Đỉnh Cao Hơn (Higher Highs) không?
+- **Quét Thanh Khoản (Liquidity Sweeps):** Giá có chạy qua các mức Stop Loss trước khi đảo chiều không?
+- **Thay Đổi Tính Chất (CHoCH):** Cấu trúc khung thời gian nhỏ có thay đổi đồng điệu với khung thời gian lớn không?
+- **Sự Dịch Chuyển Mạnh (Displacement):** Sự thay đổi có mạnh mẽ và quyết liệt, để lại một FVG mới không?
+
+## Kết Hợp Lại: Thiết Lập A+
+
+Hãy xem một ví dụ về việc xếp chồng ba trụ cột này để tạo ra một lập luận giao dịch chặt chẽ.
+
+1. **(Thời Gian) London Killzone:** Lúc 3:15 AM EST, khối lượng giao dịch bước vào thị trường.
+2. **(Giá) Mức Quan Trọng:** Giá giảm xuống một Bullish Order Block 4H nằm trong vùng Discount sâu.
+3. **(Cấu Trúc) Quét & Thay Đổi:** Giá quét các Đáy Phiên Á (quét Liquidity), bật lên mạnh mẽ tạo ra một CHoCH trên 5 phút, và để lại một FVG mới.
+
+Trong kịch bản này, bạn không chỉ mua vì "hỗ trợ được giữ vững". Bạn đang mua vì khối lượng tổ chức (Thời Gian) bước vào ở một mức discount quan trọng về mặt lịch sử (Giá) để bẫy những người bán sớm và dịch chuyển động lượng (Cấu Trúc).
+
+<Callout type="tip" title="Giao Thức Chờ Đợi">
+Đừng bao giờ cầm đèn chạy trước ô tô ở trụ cột thứ ba. Nhiều nhà giao dịch xác định Thời Gian và Giá hoàn hảo, nhưng vào lệnh *trước khi* sự thay đổi Cấu Trúc xảy ra. Chờ đợi CHoCH và Displacement chính là hợp đồng bảo hiểm của bạn.
+</Callout>
+
+<KeyTakeaways>
+- Sự hội tụ thực sự xếp chồng các yếu tố xuyên suốt Thời Gian, Giá và Cấu Trúc.
+- Thời Gian quyết định khối lượng và sự tham gia của thuật toán.
+- Giá quyết định các vùng kém hiệu quả và thanh khoản.
+- Cấu Trúc cung cấp sự xác nhận cuối cùng rằng dòng tiền thông minh (smart money) đã bước vào.
+</KeyTakeaways>

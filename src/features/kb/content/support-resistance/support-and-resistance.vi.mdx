@@ -1,0 +1,37 @@
+export const frontmatter = { 
+  title: 'Hỗ trợ & Kháng cự (Support & Resistance)', 
+  description: 'Những khối xây dựng cơ bản của giao dịch theo hành động giá (price action).' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { chartRegistry } from '../chartRegistry';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Hỗ trợ và Kháng cự
+
+Hỗ trợ và Kháng cự là các khái niệm nền tảng trong giao dịch theo hành động giá. Chúng đại diện cho các khu vực trên biểu đồ nơi mà lực mua và lực bán trong lịch sử đủ mạnh để tạm dừng hoặc đảo ngược các chuyển động của giá.
+
+<ConceptCard title="Hỗ trợ vs. Kháng cự">
+**Hỗ trợ (Support):** Một mức giá nơi một xu hướng giảm có xu hướng tạm dừng do sự tập trung của lực cầu (lực mua). Nó đóng vai trò như một "sàn nhà" đối với giá.
+**Kháng cự (Resistance):** Một mức giá nơi một xu hướng tăng có xu hướng tạm dừng do sự tập trung của lực cung (lực bán). Nó đóng vai trò như một "trần nhà" đối với giá.
+</ConceptCard>
+
+## Các Mức (Levels) Được Hình Thành Như Thế Nào
+
+Các mức hỗ trợ và kháng cự được tạo ra bởi tâm lý của những người tham gia thị trường và bộ nhớ về hành động giá trước đó. Khi giá bật lên từ một mức cụ thể, các nhà giao dịch sẽ ghi nhớ nó. Nếu giá quay trở lại mức đó, người mua (tại hỗ trợ) hoặc người bán (tại kháng cự) thường sẽ nhảy vào một lần nữa, dự đoán về một phản ứng tiếp theo.
+
+<AnnotatedChart chartData={chartRegistry.SRB} />
+
+<Callout type="info">
+Một mức hỗ trợ hoặc kháng cự càng được kiểm tra (test) nhiều lần và giữ vững, nó càng trở nên mạnh mẽ trong tâm trí của các nhà giao dịch. Tuy nhiên, cuối cùng, việc kiểm tra quá nhiều có thể làm suy yếu một mức vì các lệnh đang chờ (thanh khoản) bị tiêu thụ hết.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Hỗ trợ đóng vai trò như một mức sàn giá, trong khi kháng cự đóng vai trò như một mức trần giá.",
+    "Các mức được hình thành bởi lực mua và bán trong lịch sử.",
+    "Giá có xu hướng bật lại giữa các mức này cho đến khi một mức bị phá vỡ dứt khoát."
+  ]}
+/>

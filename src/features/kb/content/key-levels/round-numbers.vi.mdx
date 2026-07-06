@@ -1,0 +1,131 @@
+export const frontmatter = {
+  title: 'Số Tròn (Các Mức Tâm Lý)',
+  description: 'Cách tâm lý con người và các rào cản quyền chọn (options) của tổ chức tạo ra cung và cầu khổng lồ tại các số chẵn.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+
+{/* 1. Hook */}
+Con người được lập trình để tìm kiếm sự đơn giản. Khi một nhà giao dịch nghiệp dư đặt một lệnh giới hạn (limit order) trên EUR/USD, họ không đặt nó ở mức 1.09873; họ đặt ở 1.1000. Đặc thù tâm lý này tạo ra những bức tường vốn khổng lồ quyết định nơi các xu hướng chết đi và đảo chiều.
+
+{/* 2. Definition */}
+**Số Tròn (Round Numbers)** (còn được gọi là Mức Tâm lý, Big Figures, hoặc Số Chẵn) là các mức giá kết thúc bằng nhiều số không (ví dụ: 1.1000 trong Forex, hoặc $4,000 trên S&P 500). Chúng hoạt động như các ngưỡng hỗ trợ và kháng cự tự nhiên vì chúng có thể được nhận diện rộng rãi và được giao dịch mạnh mẽ bởi cả những người tham gia thị trường bán lẻ và tổ chức.
+
+{/* 3. Deep Explanation */}
+## Tâm Lý Học Của Big Figures
+
+Sức mạnh của các số tròn bắt nguồn từ cách bộ não con người xử lý thông tin. Về mặt nhận thức, việc neo giá trị vào một số chẵn, gọn gàng sẽ dễ dàng hơn. Hiện tượng này được gọi là "sở thích chữ số" (digit preference) trong kinh tế học hành vi.
+
+Trong giao dịch, điều này biểu hiện ở dòng lệnh (order flow):
+- **Chốt Lời (Take Profit) Của Bán Lẻ:** Một nhà giao dịch mua Bitcoin ở mức $43,000 có khả năng rất cao sẽ đặt mục tiêu Chốt Lời chính xác ở mức $50,000, chứ không phải $49,612.
+- **Dừng Lỗ (Stop Loss) Của Bán Lẻ:** Một nhà giao dịch mua một cổ phiếu ở mức $105 thường sẽ đặt Stop Loss ngay dưới rào cản tâm lý $100, giả định rằng nó sẽ đóng vai trò như một sàn hỗ trợ.
+
+Sự tập trung các lệnh này tạo ra sự biến động dữ dội xung quanh các mức này.
+
+### Cơ Chế Tổ Chức (Rào Cản Quyền Chọn - Option Barriers)
+
+Có một quan niệm sai lầm rằng các số tròn chỉ hoạt động vì "dòng tiền bán lẻ ngu ngốc" (dumb retail money) giao dịch chúng. Trên thực tế, các tổ chức mới là những người bảo vệ chính của các số tròn, đặc biệt là trong thị trường FX và Quyền chọn (Options).
+
+Các ngân hàng lớn viết (bán) các hợp đồng quyền chọn ngoại lai khổng lồ (như quyền chọn rào cản - barrier options) sẽ hết hạn vô giá trị nếu tài sản cơ sở phá vỡ một mức giá cụ thể. Các rào cản này hầu như chỉ được đặt ở các Big Figures chính (ví dụ: 1.1000, 1.2000).
+
+Nếu giá tiếp cận 1.1000, ngân hàng đã viết quyền chọn có nguy cơ mất hàng triệu đô la nếu mức này bị phá vỡ. Để bảo vệ vị thế của mình, ngân hàng sẽ tích cực bán tài sản đó ngay *trước khi* nó chạm 1.1000, tạo ra kháng cự tổ chức khổng lồ. Đây là lý do tại sao bạn thường thấy giá tiếp cận một số tròn lớn, chững lại cách đó 5-10 pip, và đảo chiều dữ dội.
+
+### Hệ Thống Phân Cấp Các Số Tròn
+
+Không phải tất cả các số tròn đều được tạo ra như nhau. Chúng tuân theo một hệ thống phân cấp tầm quan trọng nghiêm ngặt:
+1. **Double Century (000):** Mạnh mẽ nhất. Ví dụ: 1.1000, $5,000. Đây là những điểm uốn vĩ mô.
+2. **Mid-Figure (50):** Mức thứ cấp. Ví dụ: 1.0550, $4,050. Những mức này thường đóng vai trò là hỗ trợ/kháng cự trung gian trong phạm vi hàng ngày.
+3. **Quarter-Figures (25 / 75):** Các mức tâm lý phụ. Hữu ích cho giao dịch lướt sóng (scalping), nhưng hiếm khi đảo ngược xu hướng vĩ mô.
+
+{/* 4. Visuals */}
+## Hiệu Ứng Rào Cản
+
+<AnnotatedChart 
+  title="The 1.1000 Institutional Barrier"
+  isBull={false}
+  keyLevelY={20}
+  keyLevelLabel="1.1000 (Big Figure)"
+  showSwingHL={true}
+/>
+
+*Chú ý cách giá liên tục bật lên vùng ngay dưới 1.1000 nhưng không thể đóng cửa trên mức đó. Các râu nến trên dài cho thấy lực bán tích cực của tổ chức (sự bảo vệ) phía trước rào cản.*
+
+{/* 5. How to see it on a chart */}
+## Cách Giao Dịch Số Tròn (Từng bước)
+
+Giao dịch mù quáng tại các số tròn là nguy hiểm. Bạn phải sử dụng chúng như các khu vực *hội tụ (confluence)*, không phải là tín hiệu độc lập.
+
+1. **Vẽ Lưới:** Trên nền tảng biểu đồ của bạn, hãy bật lưới giá hoặc tự vẽ các đường ngang tại các mức "00" và "50" chính cho tài sản của bạn.
+2. **Xác Định Xu Hướng:** Xác định xu hướng vĩ mô đang thịnh hành. Nếu xu hướng là tăng, bạn đang tìm kiếm giá hồi về và tìm *hỗ trợ* tại một số tròn.
+3. **Theo Dõi Khi Giá Tiếp Cận:** Theo dõi cách giá cư xử khi nó nằm trong khoảng 10-20 pip/điểm của số tròn lớn. Động lượng có tăng tốc (một cú breakout tiềm năng) hay chậm lại (một sự từ chối tiềm năng)?
+4. **Cú Quét (Sweep) hoặc Sự Ép Giá (Squeeze):**
+   - *Cú Quét:* Giá đâm thủng số tròn từ 10-15 pip, kích hoạt Stop Loss bán lẻ, và ngay lập tức từ chối quay trở lại dưới/trên mức đó. Đây là một thiết lập đảo chiều xác suất cao.
+   - *Sự Ép Giá:* Giá tích lũy cực kỳ chặt chẽ ngay *dưới* mức kháng cự (ví dụ: ở 1.0990) và từ chối giảm. Điều này ngụ ý người mua đang hấp thụ sự bảo vệ của tổ chức. Một cú breakout dữ dội sắp xảy ra.
+5. **Thực Thi:** Chỉ vào thị trường sau khi sự từ chối được xác nhận bằng một nến đóng cửa, hoặc sự phá vỡ được xác nhận bằng một nến đóng cửa rõ ràng phía trên mức đó.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+Hãy xem xét hai cách phổ biến nhất mà các số tròn quyết định hành động giá.
+
+### Ví Dụ 1: Quét Số Tròn (Thực tế)
+
+**Kịch Bản:** USD/JPY đang trong một xu hướng giảm và tiếp cận mức 150.00 khổng lồ.
+1. Truyền thông đang thổi phồng 150.00 là một "sàn lịch sử". Các nhà giao dịch bán lẻ đặt hàng ngàn lệnh mua giới hạn (buy limit) chính xác tại 150.00, với Stop Loss ở 149.80.
+2. Giá giảm xuống 150.10, chững lại, và sau đó đâm sầm xuống 149.75.
+3. Stop Loss bán lẻ bị kích hoạt. Truyền thông tuyên bố sàn hỗ trợ đã bị phá vỡ.
+4. Ngay lập tức, khối lượng mua khổng lồ của tổ chức bước vào. Nến 4 Giờ đóng cửa ở 150.30, để lại một râu nến từ chối dài 55 pip phía dưới số tròn.
+5. Giá tăng vọt 300 pip trong tuần tiếp theo.
+
+**Phân Tích:**
+Mức 150.00 là quá rõ ràng. Các tổ chức biết rằng thanh khoản bán lẻ nằm ngay bên dưới nó. Bằng cách đẩy giá qua sàn tâm lý, họ có được thanh khoản cần thiết để đảo ngược xu hướng vĩ mô. Bạn không bao giờ đặt lệnh limit chính xác *tại* số tròn; bạn đợi cú quét và mua sự từ chối.
+
+### Ví Dụ 2: Hiệu Ứng Máy Hút Bụi (Lý tưởng)
+
+**Kịch Bản:** GBP/USD phá vỡ qua mức kháng cự mạnh tại 1.2930.
+1. Không có mức cấu trúc chính nào (đỉnh cũ) giữa 1.2930 và 1.3000.
+2. Khi giá vượt qua 1.2950, động lượng đột nhiên tăng tốc đáng kể.
+3. Giá bay vút theo một đường thẳng lên 50 pip, chạm 1.3000 trong vài phút, nơi nó ngay lập tức dừng lại và kéo ngược (pullback).
+
+**Phân Tích:**
+Đây được gọi là "Hiệu ứng Máy Hút Bụi" (Vacuum Effect) hay lực hút từ tính. Khi giá vượt qua một kháng cự nhỏ và có một Big Figure lớn gần đó, nó hoạt động như một nam châm. Các thuật toán lớn nhận ra sự thiếu hụt kháng cự và tích cực mua để đẩy giá vào bể thanh khoản nằm ở số tròn. Các nhà giao dịch sử dụng điều này để giữ các vị thế đang có lãi lâu hơn, biết rằng 1.3000 là mục tiêu hút thanh khoản (Draw on Liquidity) cuối cùng.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm Bẫy Lệnh Giới Hạn (Limit Order)">
+  Cách tồi tệ nhất tuyệt đối để giao dịch một số tròn là đặt một lệnh giới hạn mù quáng chính xác tại mức đó (ví dụ: Buy Limit ở 1.1000). Các thuật toán tổ chức được lập trình cụ thể để quét các mức chính xác này 10-20 pip để kích hoạt Stop Loss trước khi đảo chiều. Nếu bạn phải sử dụng lệnh limit, hãy đặt nó vượt qua mức đó một chút (ví dụ: 1.0985) để bắt được cú quét, hoặc đợi sự xác nhận.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **ICT:** Số tròn được gọi là "Định Giá Tổ Chức" (Institutional Pricing). ICT dạy rằng sự phân phối giá thuật toán đặc biệt nhắm vào các mức này (00, 20, 50, 80) như một phần của Thuật Toán Phân Phối Giá Liên Ngân Hàng (IPDA).
+- **Order Flow (Dòng Lệnh):** Phần mềm bản đồ nhiệt (Heatmap, như Bookmap) xác nhận trực quan hiện tượng này. Bạn sẽ thường xuyên thấy các dải lệnh limit đang chờ màu đỏ rực, khổng lồ tụ tập chính xác tại các mức "00".
+- **Hành Động Giá (Price Action):** Lý thuyết hỗ trợ và kháng cự cổ điển thường sử dụng các số tròn làm xương sống để vẽ các vùng ngang, thừa nhận tác động tâm lý của các số chẵn đối với hành vi đám đông.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Các số tròn có hoạt động trên tiền điện tử (crypto) không?**
+Đ: Có, cực kỳ tốt. Bởi vì crypto được thúc đẩy mạnh mẽ bởi lực lượng bán lẻ, tác động tâm lý của các con số lớn được phóng đại. Việc Bitcoin đấu tranh để phá vỡ $50,000, $60,000 hoặc $100,000 là một ví dụ hoàn hảo về kháng cự số tròn.
+
+**H: "Vùng" xung quanh một số tròn rộng bao nhiêu?**
+Đ: Một số tròn không phải là một đường mỏng như dao lam; nó là một vùng. Trong Forex, vùng này thường là 10 đến 20 pip ở cả hai phía (ví dụ: 1.0980 đến 1.1020). Giá sẽ thường tương tác trong vùng đệm này trước khi đảo chiều hoặc phá vỡ.
+
+**H: Điều gì xảy ra nếu một số tròn chính bị phá vỡ?**
+Đ: Nếu một mức khổng lồ (như EUR/USD 1.1000) bị phá vỡ và giá *chấp nhận* giao dịch bên trên nó (đóng cửa nhiều nến ngày bên trên), tâm lý sẽ đảo ngược. Kháng cự khổng lồ trước đây trở thành hỗ trợ khổng lồ, và giá thường bị "hút" tới mid-figure tiếp theo (1.1050) hoặc big figure (1.1100).
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Tâm lý con người và các rào cản quyền chọn tổ chức tạo ra các bể thanh khoản khổng lồ tại các số tròn.",
+  "Các mức quan trọng nhất là các mức '00' (Big Figures) và '50' (Mid-Figures).",
+  "Các tổ chức tích cực bảo vệ các mức này hoặc thao túng giá xuyên qua chúng để kích hoạt Stop Loss bán lẻ.",
+  "Không bao giờ đặt lệnh giới hạn mù quáng chính xác trên một số tròn. Chờ cú quét hoặc sự xác nhận phá vỡ.",
+  "Khi không tồn tại kháng cự cấu trúc nào khác, các số tròn hoạt động như một lực hút từ tính đối với giá."
+]} />
+
+---
+*Tham khảo:*
+Mitchell, J. (2001). *Clustering and Psychological Barriers: The Importance of Numbers*. Bài báo học thuật trình bày chi tiết về sự tập trung thống kê của các lệnh tại các số tròn trên thị trường tài chính.

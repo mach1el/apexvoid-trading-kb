@@ -1,0 +1,114 @@
+export const frontmatter = {
+  title: 'Liquidity Sweep (Săn Stop Loss)',
+  description: 'Cách nhận biết khi dòng tiền thông minh (smart money) bẫy các nhà giao dịch phá vỡ (breakout) và kích hoạt stop loss để làm nhiên liệu cho xu hướng thật sự của họ.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+{/* 1. Hook */}
+Mọi nhà giao dịch đều từng trải qua cơn ác mộng này: Bạn xác định được một vùng hỗ trợ mạnh. Bạn mua khi giá bật lên. Bạn đặt Stop Loss chính xác ở nơi mọi sách giáo khoa chỉ dạy—ngay dưới đường hỗ trợ. Giá giảm, quét qua Stop Loss của bạn đúng hai pip, và sau đó ngay lập tức tăng vọt đến mục tiêu chốt lời mà không có bạn. Bạn không hề thiếu may mắn; bạn là nạn nhân của một cú Liquidity Sweep (Quét Thanh Khoản) đã được tính toán kỹ.
+
+{/* 2. Definition */}
+Một cú **Liquidity Sweep** (thường được gọi là Stop Hunt - Săn Stop Loss) xảy ra khi giá hung hăng đâm xuyên qua một vùng Liquidity (Thanh Khoản) lớn đang chờ sẵn (một đỉnh hoặc đáy cũ), kích hoạt các lệnh đang chờ tại đó, và sau đó nhanh chóng đảo chiều quay trở lại vùng giá. Đó là biểu hiện vật lý của việc các tổ chức lớn thu thập Thanh Khoản để thực hiện các khối lượng lệnh khổng lồ.
+
+{/* 3. Deep Explanation */}
+## Cơ Chế Của Một Cú Sweep
+
+Như đã thiết lập trong bài [Buy-Side & Sell-Side Liquidity](/smc/buyside-sellside-liquidity), các bể lệnh (pools of orders) luôn nằm chờ phía trên các đỉnh cũ và phía dưới các đáy cũ.
+
+Khi một ngân hàng trung ương muốn mở một vị thế mua (long) khổng lồ, họ phải tìm được những người sẵn sàng bán. Họ làm điều này bằng cách đẩy giá *xuống dưới* một mức hỗ trợ quan trọng.
+1. **Kích Hoạt Stop Loss:** Những người mua (long) giấu lệnh Stop Loss dưới vùng hỗ trợ sẽ bị kích hoạt (trở thành lệnh bán).
+2. **Kích Thích Đánh Phá Vỡ (Breakout):** Các nhà giao dịch breakout thấy hỗ trợ bị phá vỡ và mở các vị thế bán (short) mới (cũng là lệnh bán).
+3. **Cái Bẫy (The Trap):** Ngân hàng lúc này có một bể lệnh bán khổng lồ để hấp thụ. Họ mua mạnh mẽ để khớp với các lệnh bán này. Khi các lệnh mua của ngân hàng được lấp đầy, họ ngừng dìm giá. Áp lực bán biến mất, và giá quay ngoắt trở lại bên trên mức hỗ trợ một cách dữ dội.
+
+Đặc điểm nhận dạng của một cú Sweep là sự **thất bại trong việc đóng nến** vượt ra ngoài ranh giới đó. Giá sẽ *rút râu (wick)* xuyên qua vùng thanh khoản, nhưng thân nến sẽ đóng lại bên trong vùng giá.
+
+### Sweep vs. Break of Structure (BOS)
+Việc phân biệt giữa một cú Liquidity Sweep và một cú [Break of Structure (BOS)](/price-action/bos) thực sự là vô cùng quan trọng.
+- Một cú **BOS** báo hiệu sự tiếp diễn. Nó được xác nhận khi nến *đóng cửa* một cách dứt khoát vượt qua đỉnh/đáy cũ.
+- Một cú **Sweep** báo hiệu sự đảo chiều. Nó được xác nhận khi nến *rút râu* vượt qua đỉnh/đáy cũ nhưng lại *đóng cửa* bên trong vùng giá.
+
+{/* 4. Visuals */}
+## Trực Quan Hóa Cái Bẫy
+
+<AnnotatedChart chartData={chartRegistry.SWEEP} />
+
+*Hãy chú ý cách giá giảm xuống dưới Đáy Cũ (Swing Low), nhưng thất bại trong việc đóng nến tại đó. Phần râu nến đại diện cho cuộc càn quét Sell-Side Liquidity (Thanh Khoản Bên Bán). Sự đảo chiều ngay lập tức xác nhận rằng đó là một cái bẫy, chứ không phải là sự tiếp diễn của xu hướng giảm thực sự.*
+
+{/* 5. How to see it on a chart */}
+## Cách Giao Dịch Khi Xảy Ra Liquidity Sweep
+
+Giao dịch theo một cú Sweep đòi hỏi sự kiên nhẫn và tính kỷ luật, vì bạn đang giao dịch ngược lại với động lượng tức thời của giá.
+
+1. **Xác Định Vùng Thanh Khoản:** Tìm kiếm một vùng Liquidity lớn đang chờ (ví dụ: Đỉnh Của Ngày Hôm Trước - Previous Daily High, Đáy Bằng Nhau - Equal Lows, Đỉnh Phiên Á - Asian Session High). Đánh dấu nó bằng một đường nằm ngang.
+2. **Chờ Đợi Cuộc Càn Quét (The Raid):** Chờ giá đẩy qua vùng đó một cách hung hăng. Đừng vội vào lệnh khi nó vừa phá qua.
+3. **Chờ Đợi Đóng Nến:** Quan sát nến đóng cửa trên khung thời gian bạn chọn (ví dụ: 15 Phút hoặc 1 Giờ). Nếu nó đóng cửa *quay lại bên trong* vùng giá, để lại một cái râu nến xuyên qua mức đó, cú Sweep được xác nhận.
+4. **Vào Lệnh Đảo Chiều:** Bạn có thể vào lệnh thị trường (market) ngay khi nến đóng cửa quay trở lại vào trong, hoặc chuyển xuống khung thời gian nhỏ hơn và chờ một cú [CHoCH](/price-action/choch) để xác nhận sự đảo chiều trước khi vào lệnh.
+5. **Mục Tiêu Là Thanh Khoản Bên Trong (Internal Liquidity):** Nếu giá quét Sell-Side Liquidity ở đáy của một vùng giá, hãy nhắm mục tiêu đến Buy-Side Liquidity đang chờ ở đỉnh của vùng giá đó.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví dụ 1: Quét Đỉnh Phiên Á (The Asian High Sweep - Trường Hợp Lý Tưởng)
+
+**Kịch Bản:** USD/JPY tích lũy chặt chẽ trong suốt phiên Á, tạo ra một đỉnh rõ ràng tại 140.50 và đáy tại 140.00.
+1. Khi phiên Âu (London) mở cửa, giá tăng vọt hung hăng lên 140.60.
+2. Các nhà giao dịch Breakout mua theo động lượng, nghĩ rằng một xu hướng tăng lớn đang bắt đầu. Những người bán khống sớm bị dính Stop Loss.
+3. Nến 15 Phút đóng cửa ở mức 140.45. Nó để lại một râu nến lớn chọc thủng đỉnh phiên Á, nhưng phần thân lại đóng bên trong vùng giá.
+4. Một nhà giao dịch dòng lệnh (order flow trader) nhận ra cú quét Buy-Side Liquidity (BSL). Họ vào vị thế bán (short) tại 140.45, với Stop Loss đặt phía trên râu nến ở mức 140.65.
+5. Giá ngay lập tức sụp đổ, giảm 80 pip để quét thanh khoản Đáy Phiên Á tại mức 140.00.
+
+**Giải Thích:**
+Đây là mẫu hình "Judas Swing" (phá vỡ giả) kinh điển. Khối lượng giao dịch phiên Âu được sử dụng để quét thanh khoản phiên Á nhằm nạp nhiên liệu cho biến động thật sự trong ngày. Việc chờ nến đóng cửa chính là ranh giới phân biệt giữa nhà giao dịch nhỏ lẻ bị mắc bẫy và nhà giao dịch tổ chức có lợi nhuận.
+
+### Ví dụ 2: Cái Bẫy Đáy Đôi (The Double Bottom Trap - Trường Hợp Điển Hình)
+
+**Kịch Bản:** TSLA hình thành Đáy Đôi (Double Bottom) ở mức $200. Nó nảy lên hai lần, xác nhận đây là "hỗ trợ mạnh" đối với các nhà giao dịch nhỏ lẻ.
+1. Một tuần sau, TSLA tiến sát về mức $200 một lần nữa.
+2. Nó phá vỡ qua mức này, giảm nhanh xuống $195.
+3. Một nhà giao dịch cố gắng giao dịch theo cú quét thanh khoản. Họ mua ở $195 trước khi nến đóng cửa, giả định rằng đó là một đợt săn Stop Loss.
+4. Nến 1 Giờ đóng cửa tại $195. Nến 4 Giờ đóng cửa tại $192.
+5. TSLA tiếp tục rỉ máu trong tuần tiếp theo, giảm xuống $170.
+
+**Giải Thích:**
+Tại sao giao dịch này thất bại? Bởi vì nhà giao dịch đã vội vàng vào lệnh trước khi nến đóng. Một cú Sweep *chỉ* là Sweep nếu giá bị từ chối và đóng cửa trở lại bên trong vùng giá. Nếu nến đóng sâu bên ngoài mức đó, nó là một cú Break of Structure thật sự. Nhà giao dịch này đã bắt dao rơi thay vì chờ đợi sự xác nhận.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cái Bẫy Vào Lệnh Sớm (The Premature Entry Trap)">
+  Đừng cố gắng đoán chính xác một cú Sweep sẽ đi xa đến đâu. Thuật toán của các tổ chức có thể đẩy giá đi quá 5 pip qua một mức, hoặc quá 50 pip qua mức đó, tùy thuộc vào việc họ cần thọc sâu bao nhiêu để lấp đầy khối lượng lệnh. Nếu bạn đặt lệnh limit mù quáng ngay trên đỉnh cũ, bạn sẽ thường xuyên bị chèn ép. Luôn chờ nến đóng cửa quay lại bên trong vùng giá, hoặc chờ xác nhận cấu trúc ở khung thời gian nhỏ hơn.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Liên Hệ Các Khung Phân Tích Hiện Đại
+
+- **SMC / ICT:** ICT đề cập đến khái niệm này rất rộng rãi. Một cú quét đỉnh/đáy chính tiếp nối bằng sự đảo chiều là cốt lõi của chiến lược "Turtle Soup". Nó cũng là đặc điểm nhận dạng của một "Judas Swing" trong các killzone.
+- **Wyckoff:** Trong pha tích lũy (accumulation) Wyckoff, cú quét đáy của vùng đi ngang được gọi là "Spring" (Lò Xo). Trong pha phân phối (distribution), cú quét đỉnh của vùng đi ngang được gọi là "Upthrust". Cả hai đều phục vụ cùng một mục đích thu thập Liquidity.
+- **Classic TA (Phân Tích Kỹ Thuật Cổ Điển):** Phân tích biểu đồ cổ điển gọi đây là "Phá vỡ giả" (False Breakout) hay "Fakeout".
+
+{/* 9. FAQ */}
+## Những Câu Hỏi Thường Gặp
+
+**Hỏi: Tôi nên sử dụng khung thời gian nào để tìm kiếm các cú Sweep?**
+Đáp: Các cú Sweep xảy ra trên mọi khung thời gian bởi vì thị trường có tính phân dạng (fractal). Tuy nhiên, các cú Sweep đỉnh/đáy trên khung 4 Giờ hoặc Ngày mang lại những pha đảo chiều đáng tin cậy và bùng nổ nhất. Một cú Sweep đỉnh trên khung 1 Phút chủ yếu là nhiễu (noise).
+
+**Hỏi: Làm sao tôi biết liệu râu nến có đủ dài để được coi là một cú Sweep hay không?**
+Đáp: Nó không phụ thuộc nhiều vào độ dài tuyệt đối của râu nến, mà phụ thuộc vào *phản ứng* của giá. Nếu giá xuyên qua một vùng và ngay lập tức bị từ chối mạnh mẽ quay trở lại vùng giá cũ, đó là một cú Sweep.
+
+**Hỏi: Nếu giá Sweep qua một đỉnh, điều đó có nghĩa là xu hướng đã kết thúc?**
+Đáp: Không hẳn. Một cú Sweep tại một đỉnh nhỏ bên trong có thể chỉ là một nhịp hồi (pullback) trong một xu hướng tăng lớn (macro). Tuy nhiên, nếu giá Sweep một đỉnh lớn của Tuần hoặc Tháng và bị từ chối mạnh mẽ, nó có thể báo hiệu sự đảo chiều của xu hướng lớn.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Liquidity Sweep là một động thái cố ý của smart money nhằm kích hoạt stop loss và bẫy các nhà giao dịch đánh breakout.",
+  "Các cú Sweep được đặc trưng bởi giá rút râu xuyên qua một vùng thanh khoản lớn, nhưng đóng cửa quay lại bên trong vùng giá.",
+  "Việc đóng nến vượt qua mức đó báo hiệu sự tiếp diễn (BOS). Việc đóng nến quay lại bên trong báo hiệu sự đảo chiều (Sweep).",
+  "Không bao giờ vào lệnh trước khi hoàn tất cú Sweep. Luôn chờ nến đóng cửa hoặc chờ xác nhận cấu trúc ở khung thời gian nhỏ hơn (LTF).",
+  "Khi thanh khoản bên ngoài (external liquidity - đỉnh/đáy cũ) bị quét, hãy nhắm mục tiêu đến thanh khoản bên trong (FVG hoặc phía đối diện của vùng giá)."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Cơ chế săn Stop Loss và phá vỡ giả. Được chính thức hóa với tên gọi "Turtle Soup" bởi Linda Raschke và Larry Connors, sau đó được điều chỉnh thành các phương pháp luận của SMC/ICT.

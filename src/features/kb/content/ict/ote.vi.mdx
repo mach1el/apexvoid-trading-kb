@@ -1,0 +1,119 @@
+export const frontmatter = {
+  title: 'Điểm Vào Lệnh Tối Ưu (Optimal Trade Entry - OTE)',
+  description: 'Điểm ngọt ngào (sweet spot) toán học cho các điểm vào lệnh của tổ chức. Cách sử dụng vùng Fibonacci 62-79% để đảm bảo các giao dịch thoái lui (retracement) có xác suất cao nhất.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { OTECalculator } from '../../components/OTECalculator';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+{/* 1. Hook */}
+Mọi nhà giao dịch đều biết câu ngạn ngữ cổ: "Mua khi giá giảm" (Buy the dip). Nhưng cú giảm nên sâu bao nhiêu? Nếu bạn mua ở một cú hồi cạn 30%, bạn có nguy cơ bị nghiền nát khi thị trường quyết định nó muốn một mức giá tốt hơn. Nếu bạn đợi một cú hồi 99%, bạn sẽ bỏ lỡ 90% các xu hướng. Các tổ chức giải quyết vấn đề này bằng toán học. Họ đã định nghĩa một "điểm ngọt ngào" thuật toán cụ thể, nơi xác suất đảo chiều là cao nhất, và rủi ro là thấp nhất.
+
+{/* 2. Definition */}
+**Optimal Trade Entry (OTE)** là một vùng thoái lui cụ thể được tìm thấy giữa các mức Fibonacci **62% và 79%** của một nhịp đẩy (impulsive swing leg).
+- **62%:** Ngưỡng vào lệnh. Ngay khoảnh khắc giá vượt qua đường này, nó đã nằm trong OTE.
+- **70.5%:** "Điểm Ngọt Ngào" (Sweet Spot). Đây chính xác là điểm giữa của dải OTE và đóng vai trò là mục tiêu chính của tổ chức.
+- **79%:** Tuyến phòng thủ cuối cùng. Nếu giá phá vỡ mạnh dưới mức này, thiết lập thường bị vô hiệu.
+
+{/* 3. Deep Explanation */}
+## Tại Sao OTE Hoạt Động
+
+Như chúng ta đã thảo luận trong mô-đun [Premium/Discount](/smc/premium-discount-eq), các tổ chức từ chối mua ở mức giá Premium (trên 50%). Họ đòi hỏi một mức giá Discount (Chiết khấu).
+
+Tuy nhiên, một sự thoái lui 51% về mặt kỹ thuật là một discount, nhưng không phải là một discount *sâu*. Các thuật toán kiểm soát việc giao giá hiện đại được lập trình để tìm kiếm những bể thanh khoản nội bộ sâu nhất (Order Blocks và FVGs) trước khi tiếp tục xu hướng.
+
+Bằng cách chờ đợi dải OTE 62-79%, bạn đang đạt được hai điều về mặt toán học:
+1. **Bạn đang lọc ra Bẫy Bán Lẻ:** Các nhà giao dịch bán lẻ thích mua các cú hồi cạn 38.2% và 50%. Bằng cách chờ đợi OTE, bạn đang để thị trường quét Stop Loss của các nhà giao dịch bán lẻ thiếu kiên nhẫn trước khi bạn vào lệnh.
+2. **Bạn đang tối đa hóa tỷ lệ Risk:Reward:** Bởi vì OTE rất gần với Swing Low (mức vô hiệu hóa 100%), Stop Loss của bạn có thể vô cùng chặt chẽ. Một Stop Loss chặt chẽ có nghĩa là tỷ lệ Risk:Reward của bạn tăng vọt, thường cho phép bạn nắm bắt các giao dịch 1:3, 1:5, hoặc thậm chí 1:10.
+
+### Ghi Chú Trung Thực: Nguồn Gốc
+<Callout type="note" title="Nguồn Gốc Của OTE">
+  Mặc dù thuật ngữ "Optimal Trade Entry" do ICT đặt ra, khái niệm này hoàn toàn bắt nguồn từ lý thuyết Fibonacci cổ điển. Mức 61.8% là Tỷ Lệ Vàng, được các nhà giao dịch sử dụng trong gần một thế kỷ. Mức 78.6% là căn bậc hai của Tỷ Lệ Vàng, được Scott Carney phổ biến mạnh mẽ trong Harmonic Trading (các mẫu hình Gartley và Cypher). OTE đơn giản là đóng gói các số liệu thoái lui sâu cổ điển này thành một khuôn khổ tổ chức có tính ứng dụng cao.
+</Callout>
+
+{/* 4. Visuals */}
+## Tương Tác: Máy Tính OTE
+
+Sử dụng máy tính bên dưới để nhập giá Swing High và Swing Low của bạn. Nó sẽ ngay lập tức tạo ra dải OTE và tính toán các mức giá chính xác mà bạn nên theo dõi cho điểm vào lệnh của mình.
+
+<OTECalculator />
+
+{/* 5. How to see it on a chart */}
+## Cách Giao Dịch OTE
+
+OTE là một khuôn khổ (framework), không phải là một tín hiệu độc lập. Đừng đặt các lệnh giới hạn (limit order) mù quáng tại đường 70.5%. Bạn phải kết hợp OTE với các [PD Arrays](/ict/pd-arrays).
+
+1. **Tìm Nhịp Đẩy (Impulse):** Xác định một sự dịch chuyển mạnh phá vỡ cấu trúc thị trường ([BOS](/price-action/bos)).
+2. **Vẽ Fib:** Neo công cụ Fibonacci của bạn từ Swing Low đến Swing High (đối với một thiết lập Mua).
+3. **Quét Dải OTE:** Nhìn vào bên trong vùng 62-79%. Có Bullish Order Block nào không? Có Fair Value Gap không?
+4. **Kích Hoạt (Trigger):** Đợi giá giảm xuống dải OTE và chạm vào Order Block.
+5. **Điểm Vào Lệnh (Entry):** Vào lệnh khi giá chạm Order Block bên trong OTE, hoặc chuyển xuống khung thời gian nhỏ hơn và chờ [CHoCH](/price-action/choch) bên trong dải OTE để có thêm xác nhận.
+6. **Stop Loss:** Đặt Stop Loss của bạn ngay dưới Swing Low 100%.
+7. **Mục Tiêu (Target):** Chốt lời một phần tại Swing High 0%. Để lại một phần lệnh (runner) cho sự tiếp diễn xa hơn.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: Sự Đồng Bộ Hoàn Hảo (Lý tưởng)
+
+**Kịch Bản:** NAS100 (Nasdaq) phá vỡ mạnh mẽ vào lúc New York Open, để lại một nhịp tăng giá khổng lồ.
+1. Bạn vẽ Fib từ đáy lúc 09:30 AM đến đỉnh lúc 10:15 AM.
+2. Bạn nhìn vào mức OTE 70.5%. Nằm chính xác trên đường đó là một Order Block 5 Phút chưa bị giảm thiểu (unmitigated).
+3. Bạn đặt cảnh báo cho vùng OTE.
+4. Lúc 11:00 AM, giá giảm xuống mức 62%. Nó tiếp tục giảm xuống mức 70.5%, chạm hoàn hảo vào Order Block.
+5. Bạn vào lệnh Mua (Long). Stop Loss của bạn cách đáy (Swing Low) 15 pip. Mục tiêu của bạn là đỉnh (Swing High), cách đó 60 pip.
+6. Giá từ chối mãnh liệt khỏi OTE và chạm mạnh vào mục tiêu của bạn. Bạn vừa đảm bảo một giao dịch Risk:Reward 1:4.
+
+**Phân Tích:**
+Đây là thiết lập "Chén Thánh". Các mức toán học Fib đồng bộ hoàn hảo với Order Block cấu trúc. Bạn đã mua ở giá sỉ (wholesale), bảo vệ rủi ro giảm giá, và để thuật toán làm phần việc nặng nhọc.
+
+### Ví Dụ 2: Quét Tin Tức (Thực tế)
+
+**Kịch Bản:** EUR/USD đang chờ đợi quyết định lãi suất.
+1. Bạn xác định một thiết lập tăng giá. Bạn có một Order Block nằm bên trong dải OTE.
+2. Quyết định lãi suất được công bố.
+3. Giá đâm sầm xuống mạnh. Nó cắt qua 62%, cắt qua 70.5%, và cắt qua 79%.
+4. Nó tạo râu nến xuống tận 105% (quét qua Swing Low) trước khi ngay lập tức đảo chiều và tăng vọt.
+5. Nếu bạn có một lệnh limit nằm ở 70.5% với một Stop Loss chặt chẽ, bạn đã bị trượt giá (slipped) và bị Stop Loss.
+
+**Phân Tích:**
+OTE không thể bảo vệ bạn khỏi các sự kiện tin tức vĩ mô. Trong lúc tin tức có tác động mạnh, các thuật toán mở rộng Spread và săn lùng các cú [Quét Liquidity](/smc/liquidity-sweep) sâu. Chúng sẽ cố ý đẩy giá vượt qua mức 100% để loại bỏ Stop Loss bán lẻ trước khi đảo chiều. Đừng bao giờ giao dịch OTE một cách mù quáng trong thời gian có tin tức đỏ.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm Bẫy Nhịp Siêu Nhỏ (Micro-Swing)">
+  Một sai lầm phổ biến là vẽ các mức OTE Fibonacci trên những nhịp giá nhỏ xíu, không đáng kể trên biểu đồ 1 Phút trong Phiên Á. OTE chỉ hoạt động khi nó được vẽ trên một nhịp hành động giá đẩy (impulsive) có ý nghĩa đã phá vỡ cấu trúc. Nếu nhịp giá nhỏ và đi ngang, các mức OTE không có ý nghĩa gì. Luôn ưu tiên các OTE được vẽ trên biểu đồ 15 Phút, 1 Giờ hoặc 4 Giờ.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **SMC / ICT:** OTE là mô hình điểm vào lệnh tiêu biểu cho Inner Circle Trader. Nó là đặc điểm xác định của mô hình Mentorship năm 2022 của ông.
+- **Harmonic Trading:** Các nhà giao dịch Harmonic tìm kiếm các mô hình Gartley, bắt buộc phải có mức thoái lui 61.8%, hoặc mô hình Cypher, sử dụng mức 78.6%. OTE chỉ đơn giản là bao gồm cả hai vào một dải duy nhất.
+- **Lý Thuyết Sóng Elliott:** Sóng 2 của một chuỗi Sóng Elliott thường thoái lui vào vùng 61.8 - 78.6% của Sóng 1 trước khi phóng lên thành Sóng 3 bùng nổ.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Tôi nên vào lệnh ở 62%, 70.5%, hay 79%?**
+Đ: Bạn không vào lệnh dựa hoàn toàn vào phần trăm. Bạn vào lệnh dựa trên việc *cấu trúc* nằm ở đâu. Nếu Order Block ở 62%, hãy vào ở đó. Nếu Order Block ở 79%, hãy đợi 79%. Nếu không có cấu trúc nào trong OTE, đừng vào lệnh.
+
+**H: Tôi có thể dời Stop Loss (trailing stop) sau các mức OTE không?**
+Đ: Không. Các mức OTE là vùng vào lệnh, không phải là bức tường hỗ trợ. Stop Loss của bạn phải nằm sau Swing Low cấu trúc (mức 100%), bởi vì nếu mức đó bị phá vỡ, cấu trúc thị trường đã chính thức thay đổi.
+
+**H: Nếu giá chỉ thoái lui về 50% rồi bay lên thì sao?**
+Đ: Bạn bỏ lỡ giao dịch. Và điều đó hoàn toàn ổn. Mục tiêu của giao dịch không phải là bắt mọi chuyển động; mục tiêu là bảo vệ vốn và chỉ thực thi khi bạn có một lợi thế thống kê to lớn. Nếu giá không cho bạn OTE, bạn thực thi [Giao Thức CHỜ ĐỢI (WAIT Protocol)](/strategies/the-wait-protocol).
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "OTE (Optimal Trade Entry) là dải thoái lui từ 62% đến 79% của một nhịp đẩy.",
+  "70.5% được coi là 'Điểm Ngọt Ngào' tối thượng cho các điểm vào lệnh của tổ chức.",
+  "OTE lọc ra các nhà giao dịch bán lẻ thiếu kiên nhẫn mua ở các mức hồi cạn 38.2%.",
+  "Không bao giờ giao dịch OTE một cách mù quáng. Nó phải đồng bộ với một cấu trúc PD Array (như OB hoặc FVG).",
+  "Nếu thị trường không thoái lui đủ sâu để chạm OTE, hãy đứng ngoài. Bỏ lỡ một giao dịch tốt hơn là rủi ro vốn cho một thiết lập có xác suất thấp."
+]} />
+
+---
+*Tham khảo:*
+Tỷ lệ thoái lui Fibonacci cổ điển (61.8%, 78.6%). Được hệ thống hóa thành dải OTE bởi Inner Circle Trader.

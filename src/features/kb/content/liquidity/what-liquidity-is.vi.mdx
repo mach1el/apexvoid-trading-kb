@@ -1,0 +1,46 @@
+export const frontmatter = { 
+  title: 'Liquidity là gì', 
+  description: 'Hiểu về các lệnh chờ được tập trung tạo nên động lực di chuyển của thị trường.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+import { LiquidityMapper } from '../../components/LiquidityMapper';
+
+# Liquidity là gì
+
+Trong giao dịch, **Liquidity** (thanh khoản) đề cập đến sự sẵn có của các lệnh ở một mức giá cụ thể. Khi chúng ta nói về "liquidity" trong hành động giá (price action) và các khái niệm smart money, chúng ta đang cụ thể đề cập đến **các lệnh chờ được tập trung**—bao gồm cả lệnh Stop Loss từ các vị thế hiện tại và lệnh chờ vào lệnh từ các nhà giao dịch breakout.
+
+Hiểu về liquidity có lẽ là kỹ năng quan trọng nhất trong việc đọc biểu đồ. Luận điểm cốt lõi là: **tìm và hiểu nơi liquidity tập trung, hoặc chính bạn sẽ trở thành liquidity.**
+
+## Động cơ của sự di chuyển giá
+
+Thị trường tài chính đòi hỏi một đối tác cho mỗi giao dịch. Để một tổ chức lớn (hoặc "smart money") mua 10.000 hợp đồng mà không gây ra trượt giá (slippage) lớn và làm hỏng mức giá vào lệnh trung bình của họ, họ phải tìm 10.000 hợp đồng sẵn sàng bán tại đúng thời điểm đó.
+
+Họ tìm thấy một lượng lớn các lệnh bán tập trung ở đâu?
+Họ tìm thấy chúng ở nơi các nhà giao dịch nhỏ lẻ (retail traders) đặt Stop Loss của họ (là các lệnh bán thị trường khi được kích hoạt) và ở nơi các nhà giao dịch breakout đặt các lệnh sell stop của họ (để vào lệnh short khi giá phá vỡ xuống).
+
+<Callout type="note" title="Lực hấp dẫn">
+Giá bị thu hút vào các vùng liquidity như một thỏi nam châm. Thị trường di chuyển từ một vùng liquidity này sang vùng liquidity khác vì các tổ chức lớn *phải* đẩy giá vào các vùng này để tạo ra khối lượng cần thiết nhằm khớp các vị thế khổng lồ của họ.
+</Callout>
+
+## Internal vs. External Liquidity
+
+Liquidity có thể được phân loại rộng rãi thành hai loại:
+
+1.  **External Liquidity (Thanh khoản bên ngoài):** Nằm ngoài các mức cực trị của một phạm vi xác định (trên đỉnh swing high hoặc dưới đáy swing low). Khi external liquidity bị lấy đi, thị trường thường tìm kiếm internal liquidity.
+2.  **Internal Liquidity (Thanh khoản bên trong):** Nằm bên trong một phạm vi xác định, thường ở dạng Fair Value Gaps (FVGs) hoặc các điểm swing nhỏ. Khi internal liquidity được cân bằng lại, thị trường thường mở rộng hướng tới external liquidity.
+
+<LiquidityMapper />
+
+<KeyTakeaways 
+  points={[
+    "Liquidity bằng với các lệnh chờ tập trung (Stop Loss và lệnh chờ vào lệnh).",
+    "Các tổ chức lớn cần những vùng này để vào/ra các vị thế khổng lồ mà không bị trượt giá.",
+    "Giá tự nhiên bị thu hút về phía các vùng liquidity này.",
+    "External liquidity nằm ngoài các phạm vi; internal liquidity nằm bên trong các phạm vi."
+  ]} 
+/>

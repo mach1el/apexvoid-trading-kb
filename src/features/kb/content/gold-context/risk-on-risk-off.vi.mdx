@@ -1,0 +1,52 @@
+export const frontmatter = { title: 'Risk-On vs. Risk-Off', description: 'Theo dõi dòng vốn và tâm lý thị trường để dự đoán các chuyển động của Vàng.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Risk-On vs. Risk-Off
+
+Thị trường tài chính toàn cầu liên tục dao động giữa hai trạng thái tâm lý chính: Risk-On (Khẩu vị rủi ro cao) và Risk-Off (Tâm lý e ngại rủi ro). Việc nhận biết môi trường nào đang thống trị là điều cần thiết để hiểu được lực mua cơ bản (hoặc sự thiếu hụt của nó) trong thị trường vàng.
+
+## Môi trường Risk-On
+
+Trong môi trường Risk-On, những người tham gia thị trường lạc quan về tăng trưởng kinh tế. Dòng vốn chảy ra khỏi các tài sản trú ẩn an toàn và đổ vào các tài sản rủi ro hơn, lợi suất cao như cổ phiếu, tiền tệ thị trường mới nổi và tiền điện tử.
+
+<ConceptCard title="Đặc điểm của Risk-On">
+  - S&P 500 / Nasdaq trong xu hướng tăng mạnh
+  - Chênh lệch lợi suất trái phiếu rác (high yield bond spreads) thu hẹp
+  - Đồng Yên (JPY) và Franc Thụy Sĩ (CHF) suy yếu
+  - **Tác động lên Vàng**: Thường là giảm giá (bearish) hoặc đi ngang. Thiếu lực cầu từ các tổ chức.
+</ConceptCard>
+
+## Môi trường Risk-Off
+
+Trong môi trường Risk-Off, sự sợ hãi quyết định việc phân bổ vốn. Cho dù do xung đột địa chính trị, sự lây lan trong hệ thống ngân hàng hay nỗi lo suy thoái, các nhà đầu tư ưu tiên việc hoàn vốn (return *of* capital) hơn là lợi tức trên vốn (return *on* capital). 
+
+Trong các giai đoạn này, vàng đóng vai trò là hầm trú ẩn an toàn tuyệt đối, thường tạo ra các đợt tăng giá mạnh, theo đường parabol và phớt lờ các mức kháng cự kỹ thuật tiêu chuẩn.
+
+<CompareTable 
+  headers={['Loại tài sản', 'Dòng tiền Risk-On', 'Dòng tiền Risk-Off']}
+  rows={[
+    ['Cổ phiếu (SPX)', 'Dòng tiền vào (Tăng)', 'Dòng tiền ra (Giảm)'],
+    ['Trái phiếu Mỹ', 'Dòng tiền ra (Lợi suất tăng)', 'Dòng tiền vào (Lợi suất giảm)'],
+    ['Vàng (XAU)', 'Trung lập đến Giảm', 'Dòng tiền vào mạnh (Tăng)'],
+    ['Biến động (VIX)', 'Thấp / Đang giảm', 'Tăng vọt / Cao']
+  ]}
+/>
+
+<AnnotatedChart chartData={chartRegistry.RORO} />
+
+<Callout type="warning">
+  Việc cố gắng bán khống (short) vàng trong một đợt hoảng loạn Risk-Off thực sự là một trong những giao dịch nguy hiểm nhất có thể làm. Các yếu tố cơ bản sẽ vượt qua kháng cự kỹ thuật trong các cuộc khủng hoảng hệ thống.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Môi trường Risk-On ưu ái cổ phiếu và rút vốn khỏi các tài sản trú ẩn an toàn.",
+    "Môi trường Risk-Off kích hoạt việc mua hoảng loạn mạnh mẽ đối với vàng và trái phiếu.",
+    "Theo dõi chỉ số VIX và thị trường cổ phiếu để đánh giá bối cảnh tâm lý rộng lớn hơn."
+  ]}
+/>

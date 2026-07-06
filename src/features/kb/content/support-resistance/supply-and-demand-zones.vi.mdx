@@ -1,0 +1,43 @@
+export const frontmatter = { 
+  title: 'Vùng Cung và Cầu (Supply and Demand Zones)', 
+  description: 'Vượt ra khỏi các đường hỗ trợ/kháng cự đơn lẻ để đến với các vùng giá.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Vùng Cung và Cầu
+
+Mặc dù hỗ trợ và kháng cự truyền thống thường được vẽ dưới dạng các đường đơn lẻ trên biểu đồ, nhưng thị trường hiếm khi tôn trọng một mức giá chính xác đến từng xu. Một cách tiếp cận mạnh mẽ hơn là xem những khu vực này như những **vùng** Cung (Supply) và Cầu (Demand).
+
+<ConceptCard title="Tại sao lại là Vùng (Zones)?">
+Việc mua và bán của các tổ chức không được thực hiện tại một mức giá duy nhất. Các lệnh lớn được khớp trong một phạm vi giá để giảm thiểu sự trượt giá (slippage). Các vùng cung và cầu đại diện cho dấu chân này của hoạt động tổ chức.
+</ConceptCard>
+
+## Nhận diện các Vùng
+
+*   **Vùng Cầu (Demand Zone - Khởi nguồn của xu hướng tăng):** Được tìm thấy tại điểm khởi nguồn của một đợt mở rộng tăng giá mạnh. Tìm kiếm cây nến giảm cuối cùng (hoặc phạm vi tích lũy) trước một đợt mở rộng tăng giá (bullish expansion) phá vỡ cấu trúc.
+*   **Vùng Cung (Supply Zone - Khởi nguồn của xu hướng giảm):** Được tìm thấy tại điểm khởi nguồn của một đợt mở rộng giảm giá mạnh. Tìm kiếm cây nến tăng cuối cùng (hoặc phạm vi tích lũy) trước một đợt mở rộng giảm giá (bearish expansion) phá vỡ cấu trúc.
+
+<AnnotatedChart chartData={chartRegistry.SD} />
+
+## Vẽ các Vùng
+
+Có một số phương pháp để vẽ các vùng, nhưng phổ biến nhất là liên quan đến cây nến ngay trước đợt mở rộng mạnh:
+1.  **Đường Cận biên (Proximal Line):** Đỉnh của vùng tích lũy hoặc giá mở/đóng cửa của nến cơ sở (base candle).
+2.  **Đường Viễn biên (Distal Line):** Điểm cực trị tuyệt đối (râu nến cao/thấp) của vùng tích lũy hoặc nến cơ sở.
+
+<Callout type="warning">
+Sự chính xác ít quan trọng hơn việc xác định đúng khu vực cấu trúc. Vùng đại diện cho một khu vực mà thanh khoản của tổ chức có khả năng đang được đặt ở đó. Nếu giá chỉ quét qua vùng (wick) một chút trước khi đảo chiều, đó là một đợt quét thanh khoản (liquidity sweep), chứ không phải là sự vô hiệu hóa của vùng đó.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Thị trường di chuyển theo các vùng, không phải các đường chính xác.",
+    "Các vùng cung và cầu được tạo ra bởi việc mua hoặc bán tích cực của các tổ chức.",
+    "Vẽ các vùng sử dụng nến cơ sở/tích lũy ngay trước một đợt mở rộng mạnh mẽ (impulsive expansion)."
+  ]}
+/>

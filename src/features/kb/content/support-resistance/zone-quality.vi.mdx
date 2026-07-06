@@ -1,0 +1,39 @@
+export const frontmatter = { 
+  title: 'Đánh giá Chất lượng Vùng (Zone Quality)', 
+  description: 'Cách xác định các vùng cung và cầu nào có khả năng giữ vững cao nhất.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { LevelStrengthRater } from '../../components/LevelStrengthRater';
+
+# Đánh giá Chất lượng Vùng
+
+Không phải tất cả các vùng cung và cầu đều được tạo ra như nhau. Việc thực hiện giao dịch tại mọi vùng hình thành trên biểu đồ sẽ dẫn đến tỷ lệ thắng thấp. Các nhà giao dịch phải đánh giá chất lượng của một vùng trước khi thực hiện giao dịch dựa trên nó.
+
+## Các Yếu tố Chính quyết định Sức mạnh Vùng
+
+1.  **Sức mạnh của Nhịp Di chuyển (Sự mất cân bằng - Imbalance):** Giá đã rời khỏi vùng đó mạnh mẽ đến mức nào? Một nhịp di chuyển lớn, gần như thẳng đứng cho thấy sự khẩn cấp tột độ của tổ chức và để lại các lệnh chưa được khớp. Những nhịp di chuyển chậm chạp rời khỏi vùng có xác suất thấp hơn.
+2.  **Phá vỡ Cấu trúc (BOS / CHoCH):** Nhịp di chuyển xuất phát từ vùng đó có phá vỡ một mức cấu trúc quan trọng nào không? Một vùng gây ra sự phá vỡ cấu trúc lớn mạnh hơn đáng kể so với một vùng chỉ tạo ra một swing nhỏ.
+3.  **Độ tươi mới (Freshness):** Đây có phải là lần đầu tiên giá quay trở lại vùng này không? Lần chạm (test) đầu tiên của một vùng cung/cầu luôn có xác suất cao nhất. Các lần chạm tiếp theo sẽ tiêu thụ thanh khoản (liquidity) đang chờ, làm cho vùng yếu đi theo thời gian.
+4.  **Thời gian tại Cơ sở (Time at Base):** Giá đã tích lũy trong bao lâu trước khi xảy ra nhịp mở rộng (impulsive move)? Quá trình tích lũy ngắn (1-3 nến) thường chỉ ra sự thực thi lệnh quyết liệt, thiếu kiên nhẫn của tổ chức, tạo ra một vùng mạnh. Sự tích lũy dài, lộn xộn thường kém tin cậy hơn.
+5.  **Dàn xếp Thanh khoản (Liquidity Engineering):** Có thanh khoản rõ ràng (như mô hình hai đáy hoặc một đường xu hướng - trendline) nằm ngay *trước* vùng đó không? Nếu có, giá có khả năng cao sẽ quét qua (sweep) vùng thanh khoản đó và chạm vào vùng của bạn.
+
+<Callout type="tip">
+Luôn căn chỉnh các vùng của bạn với xu hướng trên khung thời gian lớn hơn. Việc thực hiện một giao dịch tại vùng cung khung 5 phút trong một xu hướng tăng khung ngày là công thức dẫn đến việc bị dính stop loss.
+</Callout>
+
+### Thực hành: Đánh giá Vùng
+
+Sử dụng thành phần tương tác bên dưới để đánh giá sức mạnh của các mức thị trường khác nhau dựa trên các tiêu chí trên.
+
+<LevelStrengthRater />
+
+<KeyTakeaways 
+  items={[
+    "Đánh giá các vùng dựa trên sức mạnh của nhịp rời đi, sự phá vỡ cấu trúc và độ tươi mới.",
+    "Lần chạm đầu tiên của một vùng là đáng tin cậy nhất.",
+    "Bối cảnh khung thời gian lớn hơn quyết định tính hợp lệ của các vùng khung thời gian nhỏ hơn."
+  ]}
+/>

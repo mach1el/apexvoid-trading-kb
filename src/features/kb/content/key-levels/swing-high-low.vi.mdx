@@ -1,0 +1,131 @@
+export const frontmatter = {
+  title: 'Swing High & Swing Low',
+  description: 'Cơ chế 3 nến chính xác, khách quan cần thiết để xác định các điểm xoay cấu trúc thật.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { StructureLabeler } from '../../components/StructureLabeler';
+
+{/* 1. Hook */}
+Nếu bạn yêu cầu mười trader bán lẻ vẽ bản đồ các swing high và swing low trên một biểu đồ duy nhất, bạn có thể sẽ nhận được mười câu trả lời hoàn toàn khác nhau. Nếu không có một quy tắc khách quan để định nghĩa một điểm swing, phân tích kỹ thuật của bạn chỉ là đoán mò dựa trên cái "trông có vẻ đúng".
+
+{/* 2. Definition */}
+Một **Swing High** là một đỉnh của giá nơi cây nến cao nhất được hai nến có đỉnh thấp hơn kèm hai bên. Một **Swing Low** là một đáy nơi cây nến thấp nhất được hai nến có đáy cao hơn kèm hai bên. Đây được gọi là quy tắc 3 nến khách quan.
+
+{/* 3. Deep Explanation */}
+## Cơ Chế Của Một Điểm Swing
+
+Trong việc nghiên cứu [Cấu Trúc Thị Trường](/foundations/market-structure), ta đã thiết lập rằng thị trường di chuyển theo các chuỗi cú đẩy và cú hồi. Các điểm chính xác nơi những chân này đảo chiều là các điểm swing. Tuy nhiên, thị trường thì nhiễu. Nếu bạn coi mọi cây nến đỏ trong một xu hướng tăng là một "Swing High", bạn sẽ hoàn toàn lạc lối trong vi cấu trúc, liên tục nghĩ xu hướng đã đảo chiều trong khi nó chỉ tạm dừng.
+
+Để lọc nhiễu này, các nhà phân tích kỹ thuật tổ chức dựa vào các định nghĩa cơ học. Định nghĩa vững chắc và được chấp nhận phổ quát nhất là mẫu fractal 3 nến (đôi khi mở rộng thành mẫu 5 nến, được Bill Williams phổ biến).
+
+### Swing High 3 Nến
+Một Swing High hợp lệ đòi hỏi chính xác ba nến:
+1. **Nến 1 (Thiết Lập):** Một nến ban đầu đẩy lên cao hơn.
+2. **Nến 2 (Đỉnh):** Một nến có Giá Cao *cao hơn* hẳn Giá Cao của Nến 1, VÀ có Giá Cao *cao hơn* hẳn Giá Cao của Nến 3.
+3. **Nến 3 (Xác Nhận):** Một nến có Giá Cao *thấp hơn* hẳn Giá Cao của Nến 2.
+
+### Swing Low 3 Nến
+Một Swing Low hợp lệ đòi hỏi điều ngược lại:
+1. **Nến 1 (Thiết Lập):** Một nến ban đầu đẩy xuống thấp hơn.
+2. **Nến 2 (Đáy):** Một nến có Giá Thấp *thấp hơn* hẳn Giá Thấp của Nến 1, VÀ có Giá Thấp *thấp hơn* hẳn Giá Thấp của Nến 3.
+3. **Nến 3 (Xác Nhận):** Một nến có Giá Thấp *cao hơn* hẳn Giá Thấp của Nến 2.
+
+Bằng cách tuân thủ nghiêm ngặt quy tắc này, bạn loại bỏ cảm xúc khỏi việc vẽ bản đồ biểu đồ. Nếu một đỉnh không có đỉnh thấp hơn ở *cả* bên trái và bên phải, nó không phải một điểm swing. Nó chỉ đơn giản là tích lũy nội bộ.
+
+### Swing Lớn và Swing Nhỏ
+Ngay cả với quy tắc 3 nến, một biểu đồ 1 phút sẽ in hàng trăm điểm swing hợp lệ một ngày. Để giao dịch hiệu quả, bạn phải phân biệt giữa:
+- **Swing Nhỏ:** Chúng tạo thành cấu trúc nội bộ của một chân giá duy nhất. Chúng hữu ích cho scalping nhưng không quyết định xu hướng tổng thể.
+- **Swing Lớn:** Đây là các điểm xoay nổi bật định nghĩa các chuỗi [Đỉnh Cao Hơn / Đáy Cao Hơn](/foundations/market-structure) vĩ mô. Chúng nổi bật về mặt thị giác và thường tương tác với các Mức Chính Khung Lớn Hơn.
+
+{/* 4. Visuals */}
+## Xác Định Cấu Trúc Khách Quan
+
+Dùng trình gán nhãn tương tác bên dưới để luyện tập phát hiện nơi các điểm swing thật, nổi bật cư ngụ trên một đường cong giá có cấu trúc.
+
+<StructureLabeler />
+
+Chú ý cách các dao động nhỏ dọc theo các chân đẩy không được tính là các điểm swing lớn. Chỉ các đỉnh và đáy dứt khoát mới quyết định chuỗi.
+
+{/* 5. How to see it on a chart */}
+## Cách Vẽ Bản Đồ Swing Trên Biểu Đồ (Từng Bước)
+
+Nếu bạn vật lộn với việc vẽ bản đồ cấu trúc, hãy làm theo quy trình cơ học chính xác này:
+
+1. **Chọn Khung Thời Gian:** Chọn khung neo của bạn (ví dụ biểu đồ 1 Giờ) và đừng đổi nó trong khi vẽ bản đồ.
+2. **Xác Định Đỉnh Cao Nhất:** Nhìn vào 100 nến gần nhất và tìm râu cao nhất tuyệt đối. Gán nhãn đây là Swing High lớn ban đầu của bạn.
+3. **Áp Dụng Quy Tắc 3 Nến:** Xác minh rằng nến ngay bên trái và bên phải của đỉnh này có đỉnh thấp hơn. Nếu không, đó là một tích lũy phức tạp, hãy chờ một đỉnh sạch hơn.
+4. **Truy Vết Cú Đảo Chiều:** Từ đỉnh đó, theo giá đi xuống cho tới khi bạn tìm được râu thấp nhất tuyệt đối được kèm hai bên bởi hai đáy cao hơn. Gán nhãn đây là Swing Low lớn.
+5. **Nối Các Điểm:** Vẽ một đường từ Swing High tới Swing Low. Bạn vừa định nghĩa một chân cấu trúc hoàn chỉnh.
+6. **Lặp Lại:** Chờ mẫu đỉnh 3 nến hợp lệ tiếp theo hình thành.
+
+{/* 6. Worked Examples */}
+## Ví Dụ Thực Hành
+
+Hãy xem cách quy tắc 3 nến cứu bạn khỏi các lệnh tồi trong các môi trường thị trường thật.
+
+### Ví Dụ 1: Inside Bar (Lý Tưởng)
+
+**Kịch bản:** Một xu hướng tăng đang đẩy lên cao hơn.
+1. Nến 1 in một nến bullish lớn với Giá Cao ở $100.
+2. Nến 2 in một nến bullish khác với Giá Cao ở $105.
+3. Nến 3 in một "inside bar"—nó là một nến bearish, nhưng Giá Cao chỉ là $104 và Giá Thấp là $101 (hoàn toàn nằm trong biên độ Nến 2).
+4. Nến 4 đẩy lên và đóng với Giá Cao ở $110.
+
+**Diễn giải:**
+Một trader bán lẻ thấy Nến 3 đỏ và cho rằng $105 là một Swing High, và cú đi tiếp theo tới $110 là một Break of Structure (BOS). Điều này sai. Vì Nến 4 ngay lập tức phá lên cao hơn, đỉnh $105 chưa bao giờ được xác nhận bởi một cú hồi hợp lệ. Toàn bộ chuỗi từ $100 tới $110 là một chân đẩy duy nhất. Không có Swing High nào cho tới khi một mẫu 3 nến đúng đắn in ra *sau* $110.
+
+### Ví Dụ 2: Cú Hồi Phức Tạp (Thực Tế)
+
+<AnnotatedChart 
+  title="Lọc Cấu Trúc Nội Bộ"
+  isBull={true}
+  keyLevelY={100}
+  showSwingHL={true}
+  keyLevelLabel="Swing High Lớn"
+/>
+
+**Diễn giải:**
+Trong kịch bản này trên biểu đồ 4 Giờ, giá giảm quyết liệt từ một Swing High tại $150 xuống $140. Rồi nó bật lên $145, giảm xuống $142, bật lên $147, và cuối cùng giảm để tạo một Swing Low khổng lồ tại $130.
+
+Nếu bạn vẽ bản đồ mọi cú xoay 3 nến ở đây, bạn sẽ vẽ 5 swing khác nhau giữa $150 và $130. Tuy nhiên, chân cấu trúc *lớn* đơn giản là $150 tới $130. Hành động giá lộn xộn ở giữa ($145, $142, $147) là **Cấu Trúc Nội Bộ**. Không đỉnh nội bộ nào trong số đó phá điểm khởi đầu của cú đi ($150). Do đó, xu hướng tổng thể vẫn nặng nề bearish suốt thời gian. Một cú chuyển đổi cấu trúc thật chỉ xảy ra nếu Swing High $150 bị phá.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Bẫy Cấu Trúc Nội Bộ">
+  Lỗi chí mạng nhất trong giao dịch hành động giá là nhầm cấu trúc nội bộ với cấu trúc swing lớn. Nếu một Swing High hình thành, và giá bắt đầu hồi lại, mọi đỉnh và đáy hình thành *bên trong* biên độ của cú hồi đó đều là nội bộ. Một cú phá đỉnh thấp hơn nội bộ KHÔNG phải là một cú đảo chiều xu hướng vĩ mô; nó chỉ đơn giản là thanh khoản đang tích tụ trước khi xu hướng chính tiếp tục.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Diễn Giải Theo Các Framework Hiện Đại
+
+- **SMC/ICT:** Sự phân biệt giữa swing lớn và nhỏ là toàn bộ nền tảng của việc giao dịch ma trận [Premium / Discount EQ](/smc/premium-discount-eq). Bạn phải xác định Swing High và Low lớn thật để vẽ Fibonacci retracement chính xác. Vẽ Fib trên cấu trúc nội bộ dẫn tới các setup [OTE](/ict/ote) thất bại.
+- **Wyckoff:** Các nhà thực hành Wyckoff dùng khối lượng để xác thực các điểm swing. Một Swing High thật (một Buying Climax) thường sẽ kèm khối lượng cực cao, trong khi các swing nội bộ xảy ra trên khối lượng trung bình hoặc thấp.
+- **Bill Williams:** Phổ biến chỉ báo "Fractal", vốn là một quy tắc 5 nến cơ học (hai đỉnh thấp hơn bên trái, hai bên phải). Nó là phiên bản nghiêm ngặt hơn đôi chút của quy tắc 3 nến được dạy ở đây.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp
+
+**Hỏi: Tôi dùng râu hay thân để định nghĩa điểm swing?**
+Đáp: Luôn dùng các râu cực trị. Râu đại diện cho mức giá cao nhất hoặc thấp nhất tuyệt đối mà thị trường chấp nhận trong giai đoạn đó. Dùng thân để xác định swing sẽ khiến bạn vẽ các biên độ không chính xác.
+
+**Hỏi: Nếu hai nến có Giá Cao chính xác giống nhau, đó có phải một Swing High không?**
+Đáp: Điều này tạo một kịch bản "Đỉnh Đôi" hay [Đỉnh Bằng Nhau](/smc/buyside-sellside-liquidity). Để một swing 3 nến hợp lệ nghiêm ngặt, phải có một đỉnh đơn nhất. Tuy nhiên, một cách thực dụng, nếu Nến 2 và Nến 3 chia sẻ chính xác cùng giá cao, và Nến 4 thấp hơn, bạn có thể coi đỉnh đôi là điểm swing. Hãy lưu ý rằng các đỉnh bằng nhau là mục tiêu hàng đầu cho các cú quét thanh khoản.
+
+**Hỏi: Vì sao các điểm swing của tôi cứ bị vượt qua ngay sau khi hình thành?**
+Đáp: Bạn có thể đang xác định các swing nhỏ, nội bộ trong một thị trường đi ngang, thay vì các swing cấu trúc lớn. Nếu bạn bị chặt tơi tả, hãy phóng ra một khung thời gian (ví dụ chuyển từ 15M sang biểu đồ 1H). Các swing lớn sẽ trở nên rõ ràng ngay lập tức, và nhiễu nội bộ sẽ biến mất.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Một quy tắc cơ học để xác định swing là bắt buộc. Quy tắc 3 nến là tiêu chuẩn ngành.",
+  "Một Swing High thật đòi hỏi nến trung tâm có Giá Cao cao hơn hẳn các nến bên trái và bên phải.",
+  "Luôn phân biệt giữa cấu trúc swing lớn (xu hướng vĩ mô) và cấu trúc nội bộ (nhiễu trong một chân).",
+  "Một chân cấu trúc chưa bị phá cho tới khi điểm khởi đầu của chân đó (swing lớn) bị phá.",
+  "Luôn vẽ bản đồ các swing lớn dùng các râu cực trị, không phải thân nến."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Williams, B. (1995). *Trading Chaos*. Giới thiệu định nghĩa cơ học của Fractal để vẽ bản đồ thị trường khách quan.

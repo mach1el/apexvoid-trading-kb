@@ -1,0 +1,47 @@
+export const frontmatter = { 
+  title: 'Buy-side vs Sell-side', 
+  description: 'Phân loại liquidity dựa trên loại lệnh đang chờ trên thị trường.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Buy-side vs Sell-side Liquidity
+
+Để sử dụng hiệu quả các khái niệm liquidity, chúng ta phải phân loại các vùng dựa trên *loại* lệnh mà chúng chứa. Tất cả các vùng external liquidity có thể được chia thành **Buy-side Liquidity (BSL)** và **Sell-side Liquidity (SSL)**.
+
+## Buy-side Liquidity (BSL)
+
+**Buy-side Liquidity** nằm **phía trên** các mức kháng cự, swing high, và các đỉnh bằng nhau (equal highs).
+
+Khi giá chạm đến BSL, nó kích hoạt một làn sóng **lệnh BUY** vào thị trường. Những lệnh buy này đến từ đâu?
+1.  **Stop Loss của lệnh Short:** Các nhà giao dịch đang short đã đặt stop loss của họ phía trên đỉnh. Một lệnh stop loss cho một vị thế short chính là một lệnh *buy* thị trường.
+2.  **Người mua Breakout:** Các nhà giao dịch theo động lượng đặt các lệnh chờ buy-stop phía trên mức kháng cự để bắt một cú breakout.
+
+**Cách smart money sử dụng BSL:** Nếu một tổ chức muốn bán một lượng lớn tài sản (vào lệnh short), họ cần những người mua để khớp với phía bên kia của giao dịch của họ. Họ sẽ đẩy giá lên vào vùng BSL. Làn sóng lệnh buy của các nhà giao dịch nhỏ lẻ được kích hoạt cung cấp chính xác liquidity mà tổ chức cần để thực hiện các lệnh sell khổng lồ của họ mà không làm sập giá.
+
+## Sell-side Liquidity (SSL)
+
+**Sell-side Liquidity** nằm **phía dưới** các mức hỗ trợ, swing low, và các đáy bằng nhau (equal lows).
+
+Khi giá chạm đến SSL, nó kích hoạt một làn sóng **lệnh SELL** vào thị trường. Những lệnh sell này đến từ đâu?
+1.  **Stop Loss của lệnh Long:** Các nhà giao dịch đang long đã đặt stop loss của họ phía dưới đáy. Một lệnh stop loss cho một vị thế long chính là một lệnh *sell* thị trường.
+2.  **Người bán Breakdown:** Các nhà giao dịch theo động lượng đặt các lệnh chờ sell-stop phía dưới mức hỗ trợ để bắt một cú breakdown.
+
+**Cách smart money sử dụng SSL:** Nếu một tổ chức muốn mua một lượng lớn tài sản (vào lệnh long), họ cần những người bán để khớp với phía bên kia của giao dịch của họ. Họ sẽ đẩy giá xuống vào vùng SSL. Làn sóng lệnh sell của các nhà giao dịch nhỏ lẻ được kích hoạt cung cấp chính xác liquidity mà tổ chức cần để thực hiện các lệnh buy khổng lồ của họ mà không làm giá tăng vọt.
+
+<Callout type="tip" title="Quy tắc đối lập">
+Để mua với khối lượng lớn, smart money đẩy giá vào Sell-side Liquidity (SSL). Để bán với khối lượng lớn, smart money đẩy giá vào Buy-side Liquidity (BSL).
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "BSL nằm phía trên các đỉnh và bao gồm các lệnh buy (stop của lệnh short + vào lệnh breakout).",
+    "SSL nằm phía dưới các đáy và bao gồm các lệnh sell (stop của lệnh long + vào lệnh breakdown).",
+    "Các tổ chức đẩy giá vào BSL để khớp các vị thế short khổng lồ của họ.",
+    "Các tổ chức đẩy giá vào SSL để khớp các vị thế long khổng lồ của họ."
+  ]} 
+/>

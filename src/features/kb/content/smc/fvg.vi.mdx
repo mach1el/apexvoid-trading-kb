@@ -1,0 +1,118 @@
+export const frontmatter = {
+  title: 'Fair Value Gap (FVG)',
+  description: 'Xác định sự mất cân bằng trong việc phân phối giá và tại sao các khoảng trống có xu hướng được lấp đầy khi thị trường tìm kiếm sự hiệu quả.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { FVGFiller } from '../../components/FVGFiller';
+
+{/* 1. Hook */}
+Thông thường, các thị trường tài chính di chuyển một cách trôi chảy, với việc người mua và người bán trao đổi tài sản ở mọi mức giá. Nhưng đôi khi, một lượng lớn khối lượng giao dịch từ các tổ chức đổ vào thị trường cùng một lúc. Giá tăng vọt (hoặc lao dốc) quá nhanh đến mức phe đối diện của thị trường hoàn toàn bị áp đảo. Điều này để lại một "khoảng trống" (gap) trong hành động giá, nơi không có giao dịch nào diễn ra. Thị trường rất ghét những khoảng trống này, và hầu như luôn quay trở lại để lấp đầy chúng.
+
+{/* 2. Definition */}
+Một **Fair Value Gap (FVG)**, còn được gọi là Sự mất cân bằng (Imbalance) hoặc Sự kém hiệu quả (Inefficiency), là một mô hình giá gồm ba cây nến cho thấy một vùng trống Liquidity. 
+- **Bullish FVG (FVG Tăng giá):** Xảy ra trong một đợt tăng giá mạnh. Đó là khoảng trống giữa Đỉnh (High) của Cây nến 1 và Đáy (Low) của Cây nến 3.
+- **Bearish FVG (FVG Giảm giá):** Xảy ra trong một đợt giảm giá mạnh. Đó là khoảng trống giữa Đáy (Low) của Cây nến 1 và Đỉnh (High) của Cây nến 3.
+
+{/* 3. Deep Explanation */}
+## Cấu trúc của Sự mất cân bằng
+
+Trong một thị trường cân bằng và hiệu quả hoàn hảo, râu của các cây nến liền kề sẽ chồng chéo lên nhau một chút. Sự chồng chéo này chứng tỏ rằng cả người mua và người bán đều có cơ hội giao dịch ở các mức giá đó. 
+
+Một FVG xảy ra khi cây nến ở giữa (Cây nến 2) lớn và mạnh một cách bất thường đến mức Cây nến 1 và Cây nến 3 không chạm vào nhau.
+
+Hãy tưởng tượng một Bullish FVG:
+1. **Cây nến 1:** Đóng cửa. Râu nến trên của nó chạm mức $100.
+2. **Cây nến 2 (Sự dịch chuyển - Displacement):** Lực mua khổng lồ từ các tổ chức xuất hiện. Giá tăng vọt từ $100 thẳng lên $110. 
+3. **Cây nến 3:** Mở cửa ở $110, giảm xuống $108, và sau đó tiếp tục tăng.
+
+Lưu ý khoảng trống giữa $100 (Đỉnh của Cây nến 1) và $108 (Đáy của Cây nến 3). Trong khoảng giá $8 đó, giá di chuyển nhanh đến mức *chỉ có* người mua tham gia. Hoàn toàn không có giao dịch hai chiều. Đây là một sự phân phối giá kém hiệu quả. 
+
+### Tại sao Thị trường lấp đầy Khoảng trống
+Các thuật toán của thị trường được thiết kế để cung cấp mức giá công bằng cho cả người mua và người bán. Khi một FVG bị bỏ lại, thuật toán xem nó như một công việc chưa hoàn thành. Cuối cùng, giá sẽ bị hút ngược trở lại vào vùng $100-$108 đó để tạo cơ hội cho người bán tham gia. Sự quay trở lại FVG này được gọi là **Lấp đầy (Fill)** hoặc **Giảm nhẹ (Mitigation)**.
+
+{/* 4. Visuals */}
+## Tương tác: Lấp đầy & Mitigation FVG
+
+Sử dụng trình mô phỏng tương tác bên dưới để quan sát cách một Fair Value Gap được hình thành, cách giá quay trở lại để lấp đầy một phần hoặc toàn bộ khoảng trống, và cách xu hướng tiếp tục.
+
+<FVGFiller />
+
+{/* 5. How to see it on a chart */}
+## Cách Giao dịch với Fair Value Gaps
+
+Các FVG cực kỳ linh hoạt. Chúng có thể được sử dụng làm tín hiệu kích hoạt điểm vào lệnh (entry), làm mục tiêu chốt lời (target), hoặc làm xác nhận cho các Order Block.
+
+1. **Xác định Mô hình 3 Cây nến:** Tìm kiếm các cây nến dịch chuyển khổng lồ (Cây nến 2).
+2. **Vẽ Hộp (Box):** Vẽ một hình chữ nhật từ Đỉnh của Cây nến 1 đến Đáy của Cây nến 3. Kéo dài nó sang bên phải.
+3. **Chờ Đợi Sự Thoái lui (Retrace):** Đừng đuổi theo sự dịch chuyển. Hãy đợi giá tự nhiên trôi ngược trở lại vào hộp FVG.
+4. **Điểm vào lệnh (Entry):** Bạn có thể đặt một lệnh limit (giới hạn) ở điểm bắt đầu của FVG, hoặc đợi giá đi vào FVG và in ra một mô hình đảo chiều ở khung thời gian nhỏ hơn trước khi vào lệnh.
+5. **Stop Loss (Cắt lỗ):** Đặt Stop Loss của bạn hoàn toàn nằm ngoài đầu đối diện của FVG. Nếu giá đóng cửa xuyên qua toàn bộ FVG, thiết lập giao dịch sẽ bị vô hiệu hóa.
+
+**Consequent Encroachment (CE):** Đây là điểm giữa chính xác 50% của FVG. Nhiều thuật toán tổ chức sử dụng CE làm điểm vào lệnh chính xác của họ. Nếu giá giảm xuống dưới mốc 50% của một Bullish FVG và đóng cửa ở đó, đó là một dấu hiệu của sự suy yếu.
+
+{/* 6. Worked Examples */}
+## Các Ví dụ Thực tế
+
+### Ví dụ 1: Tiếp diễn xu hướng với FVG (Lý tưởng)
+
+**Kịch bản:** S&P 500 (SPY) đang trong một xu hướng tăng mạnh trên khung thời gian Ngày (Daily).
+1. Một cây nến Ngày màu xanh khổng lồ hình thành, để lại một Bullish FVG trị giá $5 giữa đỉnh của ngày thứ Hai và đáy của ngày thứ Tư.
+2. Thứ Năm và thứ Sáu là những ngày giảm điểm chậm chạp, giằng co. Giá trôi dần xuống vào trong FVG.
+3. Vào thứ Hai, giá chạm chính xác điểm giữa 50% của FVG (Consequent Encroachment).
+4. Ngay lập tức, người mua nhảy vào. Giá phục hồi, đóng cửa ngày bằng một cây nến búa (hammer) màu xanh mạnh mẽ.
+5. Xu hướng tăng tiếp tục, phá vỡ các mức đỉnh mới.
+
+**Phân tích:**
+Đây là thiết lập tiếp diễn xu hướng tiêu chuẩn. FVG hoạt động như một thỏi nam châm, hút giá quay trở lại để tái cân bằng sổ lệnh. Khi sự hiệu quả được khôi phục tại mốc 50%, lực mua thuật toán vĩ mô lại tiếp tục.
+
+### Ví dụ 2: Bẫy Đảo chiều (Thực tế)
+
+**Kịch bản:** Bitcoin (BTC) để lại một Bullish FVG khổng lồ trên biểu đồ 4 Giờ ở mức $60,000.
+1. Bạn đặt một lệnh buy limit (mua giới hạn) ở mức $60,000, kỳ vọng một sự bật lên.
+2. Giá giảm vào FVG. Nó không dừng lại. 
+3. Một cây nến đỏ 4 Giờ khổng lồ in ra, cắt hoàn toàn xuyên qua FVG và đóng cửa ở mức $59,000. Stop Loss của bạn bị quét.
+4. Hai giờ sau, giá phục hồi trở lại mức $60,000. 
+5. Thay vì phá vỡ đi lên, nó coi mức $60,000 như một mức *kháng cự*, bị từ chối mạnh mẽ và sụp đổ xuống $55,000.
+
+**Phân tích:**
+Tại sao nó thất bại? Bởi vì động lượng vĩ mô đã thay đổi. Khi một Bullish FVG bị cắt xuyên qua hoàn toàn và đóng cửa bên dưới, nó trở thành một **Inversion FVG (FVG Đảo ngược)**. Nó đảo ngược từ việc là hỗ trợ trở thành kháng cự. Sự thất bại của FVG thực chất là một tín hiệu giảm giá khổng lồ.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Bẫy Quá Nhiều Khoảng Trống (The Over-Gap Trap)">
+  Đừng cố gắng giao dịch mọi FVG duy nhất mà bạn nhìn thấy. Trong một thị trường biến động giật cục (choppy) và đi ngang (ranging), các FVG nhỏ sẽ hình thành và bị cắt xuyên qua liên tục. Các FVG chỉ có xác suất thành công cao khi chúng được tạo ra bởi sự dịch chuyển khổng lồ, rõ ràng phá vỡ cấu trúc (BOS/CHoCH). Nếu FVG không đạt được bất cứ điều gì về mặt cấu trúc, hãy bỏ qua nó.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải nghĩa Theo Hệ thống Hiện đại
+
+- **SMC / ICT:** ICT đã phổ biến thuật ngữ Fair Value Gap (FVG) và Consequent Encroachment (CE). Đây được cho là khái niệm được sử dụng rộng rãi nhất trong bộ công cụ SMC ngày nay.
+- **Phân tích Kỹ thuật Cổ điển (Classic TA):** Phân tích biểu đồ cổ điển đôi khi gọi những điều này là "Hidden Gaps" (Khoảng trống Ẩn) hoặc "Single Prints" (trong lý thuyết Market Profile). Tuy nhiên, Phân tích Kỹ thuật cổ điển tập trung nhiều vào các khoảng trống cuối tuần thực sự (nơi thị trường mở cửa ở một mức giá khác với mức giá đóng cửa), trong khi các FVG xảy ra *trong suốt* quá trình giao dịch liên tục.
+- **Dòng lệnh (Order Flow):** Trong giao dịch Volume Profile, một FVG tương quan hoàn hảo với một "Low Volume Node" (LVN) - một khu vực nơi có rất ít khối lượng được giao dịch, mà giá thường sẽ quay lại thăm để xây dựng khối lượng.
+
+{/* 9. FAQ */}
+## Những Câu hỏi Thường gặp
+
+**Hỏi: Giá có bắt buộc phải lấp đầy toàn bộ FVG không?**
+Đáp: Không. Việc lấp đầy một phần (thậm chí chỉ chạm vào rìa của FVG) thường là đủ để khôi phục sự cân bằng và tiếp tục xu hướng, đặc biệt là trong các thị trường có động lượng cực kỳ mạnh mẽ.
+
+**Hỏi: Một Order Block và một FVG có thể chồng chéo lên nhau không?**
+Đáp: Có! Đây là một thiết lập tối thượng. Khi một sự dịch chuyển khổng lồ để lại một FVG *và* một Order Block chưa được giảm nhẹ (unmitigated) ngay phía sau nó, vùng chồng chéo là một Điểm Quan Tâm (POI - Point of Interest) có xác suất cực kỳ cao.
+
+**Hỏi: Điều gì xảy ra nếu giá dùng râu nến quét hoàn toàn qua FVG nhưng lại đóng cửa bên trong nó?**
+Đáp: Nếu nó chỉ là một râu nến, FVG vẫn hợp lệ. Thuật toán đơn giản là đã vươn xuống sâu hơn một chút để tìm kiếm Liquidity. Miễn là thân nến không đóng cửa bên ngoài FVG, vùng này vẫn giữ nguyên giá trị.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Một FVG là một mô hình 3 cây nến cho thấy một khoảng trống nơi chỉ có một phe của thị trường tham gia.",
+  "Thị trường tự nhiên tìm kiếm sự hiệu quả và thường sẽ quay trở lại để lấp đầy những khoảng trống này.",
+  "Các FVG phải được tạo ra bởi một sự dịch chuyển mạnh mẽ. Bỏ qua những khoảng trống nhỏ trong các thị trường đi ngang, giật cục.",
+  "Điểm giữa 50% của FVG (Consequent Encroachment) là một mức cực kỳ nhạy cảm.",
+  "Nếu giá hung hãn đóng cửa xuyên qua hoàn toàn một FVG, nó sẽ đảo cực (Inversion FVG), chuyển từ hỗ trợ thành kháng cự (hoặc ngược lại)."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Các khái niệm về Sự kém hiệu quả (Inefficiency) và mất cân bằng (imbalance) từ các mô hình phân phối giá theo thuật toán. Thuật ngữ được phổ biến bởi Inner Circle Trader (ICT).

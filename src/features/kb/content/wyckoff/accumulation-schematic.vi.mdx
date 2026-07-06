@@ -1,0 +1,37 @@
+export const frontmatter = { 
+  title: 'Tích lũy Wyckoff (Wyckoff Accumulation)', 
+  description: 'Hiểu cách smart money xây dựng vị thế long trong quá trình tạo đáy của thị trường.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Tích lũy Wyckoff (Wyckoff Accumulation)
+
+Tích lũy là quá trình mà Composite Operator (dòng tiền thông minh - smart money) hấp thụ nguồn cung trôi nổi của một tài sản từ các nhà giao dịch nhỏ lẻ (retail traders) trước khi bắt đầu giai đoạn đẩy giá (markup phase / uptrend). Điều này xảy ra tại các vùng đáy thị trường và hình thành một cấu trúc logic cụ thể.
+
+## Các Sự kiện trong Tích lũy
+
+Các phạm vi tích lũy (Accumulation ranges) có thể được chia thành các sự kiện cụ thể lập bản đồ tâm lý của quá trình chuyển đổi từ xu hướng giảm sang xu hướng tăng.
+
+1.  **Hỗ trợ Sơ bộ (Preliminary Support - PS):** Lực mua mạnh bắt đầu làm chậm xu hướng giảm. Khối lượng tăng lên, nhưng xu hướng vẫn tiếp tục giảm.
+2.  **Cao trào Bán (Selling Climax - SC):** Lực bán hoảng loạn đạt đến đỉnh điểm. Các nhà giao dịch nhỏ lẻ đầu hàng (capitulate). Smart money mua vào mạnh mẽ, tạo ra một đợt tăng vọt khối lượng khổng lồ và một cây nến giảm với biên độ rộng (wide-spread) thường đóng cửa cách xa mức giá thấp nhất của nó.
+3.  **Phục hồi Tự động (Automatic Rally - AR):** Áp lực bán cạn kiệt. Hoạt động chốt lời lệnh short (short covering) và lực mua của smart money gây ra một đợt bật tăng tự động, nhanh chóng từ các mức đáy SC. Điều này xác định đỉnh của phạm vi giao dịch (trading range).
+4.  **Kiểm tra Thứ cấp (Secondary Test - ST):** Giá quay trở lại vùng của SC để kiểm tra sự cân bằng cung cầu. Nếu mức đáy SC giữ vững với khối lượng thấp hơn, điều đó xác nhận quá trình tích lũy đang diễn ra.
+5.  **Cú Bật (The Spring) hoặc Rũ bỏ (Shakeout):** Một sự lừa dối quan trọng. Giá giảm xuống dưới mức đáy của phạm vi giao dịch (hỗ trợ SC/ST). Điều này bẫy những người bán Breakout và rũ bỏ những người mua yếu tay (weak hand buyers). Smart money tích cực mua lượng thanh khoản này, nhanh chóng đưa giá quay trở lại phạm vi.
+6.  **Kiểm tra Spring (Test of the Spring):** Một đáy cao hơn sau cú Spring với khối lượng thấp, xác nhận người bán đã rời đi.
+7.  **Dấu hiệu Sức mạnh (Sign of Strength - SOS):** Một động thái tăng giá mạnh mẽ, khối lượng cao phá vỡ đỉnh của phạm vi giao dịch (kháng cự).
+8.  **Điểm Hỗ trợ Cuối cùng (Last Point of Support - LPS) / Backup (BU):** Sau SOS, giá kéo ngược lại (pullback) để kiểm tra mức kháng cự bị phá vỡ với tư cách là một hỗ trợ mới. Đây là điểm vào lệnh tối ưu.
+
+<AnnotatedChart chartData={chartRegistry.WYCK} />
+
+<KeyTakeaways 
+  items={[
+    "Tích lũy là sự hấp thụ nguồn cung bởi smart money.",
+    "Cao trào Bán (SC) và Phục hồi Tự động (AR) xác định các ranh giới của phạm vi.",
+    "Spring là một cú quét thanh khoản (liquidity sweep) được thiết kế để bẫy các nhà giao dịch nhỏ lẻ.",
+    "Điểm Hỗ trợ Cuối cùng (LPS) mang đến điểm vào lệnh với xác suất cao nhất cho đợt tăng giá (markup)."
+  ]}
+/>

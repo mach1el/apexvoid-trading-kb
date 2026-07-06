@@ -1,0 +1,123 @@
+export const frontmatter = {
+  title: 'PDH/PDL & PWH/PWL',
+  description: 'Ý nghĩa tổ chức của Đỉnh/Đáy Ngày Trước và Tuần Trước như những mục tiêu thanh khoản chính.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { LevelPlotter } from '../../components/LevelPlotter';
+
+{/* 1. Hook */}
+Nếu bạn nạp một biểu đồ trần và chỉ vẽ hai đường—đỉnh của hôm qua và đáy của hôm qua—bạn sẽ sở hữu một lợi thế vượt trội hơn 90% các hệ thống giao dịch bán lẻ dựa trên chỉ báo.
+
+{/* 2. Definition */}
+**PDH** (Previous Daily High - Đỉnh Ngày Trước) và **PDL** (Previous Daily Low - Đáy Ngày Trước) là các điểm giá cực trị được ghi nhận trong ngày giao dịch trước. **PWH** và **PWL** là các cực trị của tuần giao dịch trước. Các mức này đóng vai trò nam châm khổng lồ cho thanh khoản tổ chức.
+
+{/* 3. Deep Explanation */}
+## Vì Sao Các Cực Trị Trước Đó Quan Trọng?
+
+Trong module [Trực Giác Về Thanh Khoản](/foundations/liquidity-intuition), ta đã thiết lập rằng tổ chức cần các pool lệnh đối tác khổng lồ (thanh khoản) để vào hoặc ra các vị thế lớn mà không chịu trượt giá.
+
+Các pool thanh khoản lớn nhất, rõ ràng nhất trên bất kỳ biểu đồ nào nằm ngay trên Đỉnh Ngày Trước (PDH) và ngay dưới Đáy Ngày Trước (PDL).
+Vì sao? Vì đó là nơi mọi trader trong ngày và swing ngắn hạn đặt stop-loss của họ.
+- Nếu một trader bán lẻ mua hôm qua và giữ vị thế qua đêm, stop-loss của họ đặt ngay dưới PDL.
+- Nếu một trader breakout bán lẻ đang chờ short thị trường hôm nay, họ đặt một lệnh sell-stop ngay dưới PDL.
+
+Điều này tạo một cụm khổng lồ các lệnh bán dưới PDL, và một cụm khổng lồ các lệnh mua trên PDH.
+
+### Cuộc Đột Kích Của Tổ Chức (Cú Quét)
+
+Khi thị trường mở cửa ngày hôm sau, thuật toán tổ chức vẽ bản đồ các pool thanh khoản này. Nếu một ngân hàng cần tích lũy một vị thế long khổng lồ hôm nay, cách hiệu quả nhất để được khớp là đẩy giá *xuống* qua PDL.
+
+Hành động này kích hoạt tất cả các lệnh bán bán lẻ đang chờ (stop và short breakout). Ngân hàng hấp thụ toàn bộ áp lực bán này, khớp các lệnh mua của họ với giá chiết khấu. Một khi các lệnh được khớp, áp lực bán nhân tạo ngừng lại, và cú đi định hướng thật bắt đầu đi lên. PDL đã bị quét.
+
+### Cú Phá Vỡ Thật (Displacement)
+
+Thỉnh thoảng, giá sẽ đẩy qua PDH hoặc PDL và *duy trì* mức giá đó, không bao giờ ngoái lại. Điều này xảy ra khi câu chuyện kinh tế vĩ mô thay đổi về căn bản, hoặc trong các cú tiếp diễn xu hướng HTF mạnh. Trong những trường hợp này, thanh khoản trên PDH không chỉ được dùng để khớp các lệnh đối tác; nó đóng vai trò nhiên liệu để tăng tốc xu hướng (một short squeeze).
+
+Tuy nhiên, về mặt thống kê, một cú quét và đảo chiều phổ biến hơn nhiều so với một cú phá vỡ bền vững, đặc biệt trong các thị trường đi ngang hoặc bị thao túng cao như Forex.
+
+{/* 4. Visuals */}
+## Tương Tác: Vẽ Biên Độ Ngày
+
+Dùng Level Plotter bên dưới để hình dung biên độ giữa PDH (Đỉnh) và PDL (Đáy). Một khi được thiết lập, bạn có thể thấy cách giá chia thành các vùng Premium và Discount quyết định ý định của tổ chức.
+
+<LevelPlotter />
+
+Chú ý cách tổ chức ưa đột kích PDH (Premium) trước khi bán tháo, hoặc đột kích PDL (Discount) trước khi mua.
+
+{/* 5. How to see it on a chart */}
+## Cách Giao Dịch PDH/PDL (Từng Bước)
+
+1. **Đánh Dấu Các Mức Lúc Nửa Đêm:** Trước khi phiên giao dịch của bạn bắt đầu, mở một biểu đồ Ngày. Vẽ một đường ngang tại râu cao cực trị và râu thấp cực trị của nến ngày *trước* đã hoàn thành.
+2. **Xác Định Thiên Hướng:** Nhìn vào cấu trúc thị trường HTF. Ta đang trong một xu hướng tăng vĩ mô? Nếu có, mục tiêu chính của bạn là chờ giá giảm và đột kích PDL, để bạn có thể mua cú đảo chiều.
+3. **Chờ Cuộc Đột Kích:** Hạ xuống một khung thời gian nhỏ hơn (ví dụ 5 Phút hoặc 15 Phút). Kiên nhẫn chờ giá tiến tới và xuyên qua đường PDL của bạn. Đừng vào lệnh trước.
+4. **Tìm Cú Từ Chối:** Quan sát giá đóng của nến. Nếu một nến 5M đẩy xuống dưới PDL nhưng từ chối dữ dội, để lại một râu dưới dài và đóng trở lại trên PDL, cú quét thanh khoản được xác nhận.
+5. **Thực Thi Khi Có Cú Chuyển Đổi:** Vào thị trường khi cấu trúc khung nhỏ chuyển bullish (một CHoCH) ngay sau cú quét, nhắm phía đối diện của biên độ (PDH).
+
+{/* 6. Worked Examples */}
+## Ví Dụ Thực Hành
+
+### Ví Dụ 1: Cú Săn Stop PDL (Thực Tế)
+
+<AnnotatedChart 
+  title="Cuộc Đột Kích Thanh Khoản PDL"
+  isBull={true}
+  keyLevelY={90}
+  keyLevelLabel="PDL (Đáy Ngày Trước)"
+  showSweep={true}
+/>
+
+**Diễn giải:**
+Thị trường mở cửa và ngay lập tức bắt đầu trôi xuống thấp hơn. Bán lẻ thấy một "xu hướng giảm" đang hình thành. Giá tiến tới đường xanh (PDL). Các trader breakout bán lẻ đặt lệnh short dưới đường. Giá xuyên qua đường, kích hoạt các lệnh short và quét các người mua sớm.
+
+Tuy nhiên, chú ý cú từ chối tức thời, dữ dội. Nến đóng trở lại trên PDL như một pin bar bullish mạnh. Tổ chức đã thiết kế thanh khoản họ cần. Trong 4 giờ tiếp theo, giá tăng vọt lên, cuối cùng nhắm PDH. Nếu bạn nhận ra cú quét, bạn đã mua chính xác đáy của ngày.
+
+### Ví Dụ 2: Tiếp Diễn Xu Hướng PWH (Lý Tưởng)
+
+**Kịch bản:** Ta đang trong một xu hướng tăng Tuần vĩ mô mạnh. Tuần trước in một nến bullish lớn.
+1. Thứ Hai mở cửa và giá tích lũy.
+2. Thứ Ba đẩy xuống, đột kích đáy Thứ Hai (xây một Discount).
+3. Thứ Tư tăng vọt lên, phá tan Đỉnh Tuần Trước (PWH).
+4. Cú phá PWH kích hoạt các buy stop khổng lồ. Thay vì từ chối, các nến momentum lớn (Displacement) tiếp tục in, đóng xa trên PWH.
+
+**Diễn giải:**
+Vì xu hướng vĩ mô cực kỳ bullish, PWH không chỉ là một pool thanh khoản cho một cú đảo chiều; nó là kích hoạt cho một cú giãn nở biến động. Sự thiếu một râu từ chối tại PWH xác nhận rằng tổ chức đang tài trợ giá cao hơn. PWH chuyển từ một mục tiêu thành một sàn hỗ trợ cho phần còn lại của tuần.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Bẫy Phá Vỡ Sớm">
+  Một cái bẫy bán lẻ phổ biến là mua đúng khoảnh khắc giá cắt PDH. Thuật toán tổ chức biết trader bán lẻ dùng cảnh báo và lệnh thị trường tự động kích hoạt ngay khi một mức bị phá. 80% thời gian, cú phá 10-pip ban đầu của một PDH là một cú phá vỡ giả (một Judas Swing) được thiết kế để bẫy những người mua đó. Luôn chờ một nến đóng hoặc một cú retest thứ hai trước khi cam kết vào một cú phá vỡ.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Diễn Giải Theo Các Framework Hiện Đại
+
+- **ICT:** Khái niệm quét PDH/PDL đồng nghĩa với [Judas Swing](/ict/judas-swing) và hồ sơ "Seek and Destroy". PDH/PDL đóng vai trò draw on liquidity chính cho thiên hướng Ngày.
+- **Wyckoff:** Một cú quét PDL trong một sơ đồ tích lũy được gọi là "Spring". Một cú quét PDH trong phân phối là một "Upthrust" (UTAD).
+- **Market Profile:** Các trader dùng TPO (Time Price Opportunity) nhìn các cực trị của vùng giá trị ngày trước theo đúng cách—như các vùng then chốt cho sự chấp nhận (breakout) hoặc từ chối (sweep).
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp
+
+**Hỏi: Tôi nên dùng múi giờ nào để định nghĩa nến Ngày?**
+Đáp: Với Forex và Crypto, tiêu chuẩn được chấp nhận phổ quát là nửa đêm New York (EST/EDT). Các algo tổ chức reset và tính biên độ ngày dựa trên giờ đóng New York (5:00 PM EST) và giờ mở nửa đêm.
+
+**Hỏi: Tôi dùng râu hay thân để đánh dấu PDH/PDL?**
+Đáp: Tuyệt đối dùng râu. Râu cực trị là nơi các lệnh stop-loss vật lý thực sự được đặt. Thân cho bạn biết giai đoạn đóng ở đâu, nhưng râu cho bạn biết thanh khoản nằm ở đâu.
+
+**Hỏi: Nếu giá quét PDL, có đảm bảo nó sẽ nhắm PDH không?**
+Đáp: Không gì được đảm bảo. Tuy nhiên, nếu xu hướng HTF là bullish và PDL bị quét dữ dội với displacement mạnh, PDH trở thành draw on liquidity thống kê xác suất cao nhất cho phiên đó. Nếu biên độ ngày rất lớn, nhắm Equilibrium (mốc 50%) của ngày trước là một điểm chốt lời đầu tiên an toàn hơn.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Đỉnh Ngày Trước (PDH) và Đáy (PDL) là các pool thanh khoản chờ lớn nhất trên một biểu đồ trong ngày.",
+  "Tổ chức thường đẩy giá qua các mức này cụ thể để kích hoạt stop-loss bán lẻ (một Cú Quét Thanh Khoản).",
+  "Chờ một nến đóng trở lại bên trong biên độ sau khi xuyên qua PDH/PDL để xác nhận một cú quét và đảo chiều.",
+  "Nếu xu hướng vĩ mô mạnh, một cú phá PDH/PDL không có từ chối báo hiệu một cú giãn nở biến động (phá vỡ thật).",
+  "Đừng bao giờ mù quáng mua hoặc bán đúng lúc mức bị cắt; bạn sẽ trở thành nạn nhân của Judas Swing."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Dalton, J. (1990). *Mind Over Markets*. Tài liệu nền tảng về Market Profile và ý nghĩa của các cực trị và vùng giá trị ngày trước.

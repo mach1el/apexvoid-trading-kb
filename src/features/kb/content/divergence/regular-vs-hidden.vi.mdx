@@ -1,0 +1,48 @@
+export const frontmatter = { 
+  title: 'Phân kỳ thường (Regular) vs. Phân kỳ ẩn (Hidden)', 
+  description: 'Phân biệt giữa các mô hình phân kỳ đảo chiều và tiếp diễn.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Phân kỳ thường vs. Phân kỳ ẩn
+
+Phân kỳ có hai dạng chính: Thường (Regular) và Ẩn (Hidden). Trong khi phân kỳ thường chỉ ra một khả năng đảo chiều xu hướng, phân kỳ ẩn cho thấy sự tiếp diễn của xu hướng hiện tại.
+
+## Phân kỳ thường (Đảo chiều xu hướng)
+
+Phân kỳ thường được sử dụng để xác định sự kết thúc của một xu hướng. Nó xảy ra khi giá tạo ra các mức cao hoặc mức thấp cực trị, nhưng chỉ báo không làm được điều tương tự.
+
+*   **Phân kỳ thường Tăng giá (Bullish):** Giá tạo Đáy thấp hơn (Lower Low - LL), nhưng chỉ báo tạo Đáy cao hơn (Higher Low - HL). Cho thấy động lượng giảm đang suy yếu và khả năng đảo chiều tăng giá.
+*   **Phân kỳ thường Giảm giá (Bearish):** Giá tạo Đỉnh cao hơn (Higher High - HH), nhưng chỉ báo tạo Đỉnh thấp hơn (Lower High - LH). Cho thấy động lượng tăng đang suy yếu và khả năng đảo chiều giảm giá.
+
+<AnnotatedChart chartData={chartRegistry.DIVH} />
+
+## Phân kỳ ẩn (Tiếp diễn xu hướng)
+
+Phân kỳ ẩn được sử dụng để bắt các nhịp điều chỉnh (pullback) trong một xu hướng đã được thiết lập. Nó báo hiệu rằng xu hướng chính vẫn đang mạnh bất chấp sự thoái lui giá ngắn hạn.
+
+*   **Phân kỳ ẩn Tăng giá (Bullish):** Giá tạo Đáy cao hơn (Higher Low - HL), nhưng chỉ báo tạo Đáy thấp hơn (Lower Low - LL). Được tìm thấy trong các xu hướng tăng, chỉ ra rằng nhịp điều chỉnh đã cạn kiệt và xu hướng tăng sẽ tiếp tục.
+*   **Phân kỳ ẩn Giảm giá (Bearish):** Giá tạo Đỉnh thấp hơn (Lower High - LH), nhưng chỉ báo tạo Đỉnh cao hơn (Higher High - HH). Được tìm thấy trong các xu hướng giảm, chỉ ra rằng nhịp phục hồi đã cạn kiệt và xu hướng giảm sẽ tiếp tục.
+
+<CompareTable 
+  headers={['Loại', 'Hành động giá', 'Hành động chỉ báo', 'Tín hiệu']}
+  rows={[
+    ['Thường Tăng (Regular Bullish)', 'Đáy thấp hơn (LL)', 'Đáy cao hơn (HL)', 'Đảo chiều (Tăng)'],
+    ['Thường Giảm (Regular Bearish)', 'Đỉnh cao hơn (HH)', 'Đỉnh thấp hơn (LH)', 'Đảo chiều (Giảm)'],
+    ['Ẩn Tăng (Hidden Bullish)', 'Đáy cao hơn (HL)', 'Đáy thấp hơn (LL)', 'Tiếp diễn (Tăng)'],
+    ['Ẩn Giảm (Hidden Bearish)', 'Đỉnh thấp hơn (LH)', 'Đỉnh cao hơn (HH)', 'Tiếp diễn (Giảm)']
+  ]}
+/>
+
+<KeyTakeaways 
+  items={[
+    "Phân kỳ thường báo hiệu một khả năng đảo chiều xu hướng.",
+    "Phân kỳ ẩn báo hiệu một khả năng tiếp diễn xu hướng.",
+    "Phân kỳ ẩn thường đáng tin cậy hơn vì nó đồng pha với xu hướng chủ đạo."
+  ]}
+/>

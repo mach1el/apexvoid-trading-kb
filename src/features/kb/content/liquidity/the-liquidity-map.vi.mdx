@@ -1,0 +1,48 @@
+export const frontmatter = { 
+  title: 'Bản đồ Liquidity (The Liquidity Map)', 
+  description: 'Cách vạch ra vị trí các lệnh chờ tập trung trên biểu đồ giá.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Bản đồ Liquidity (The Liquidity Map)
+
+Trước khi thực hiện bất kỳ giao dịch nào, một nhà giao dịch chuyên nghiệp phải vẽ ra chiến trường. **The Liquidity Map** (Bản đồ Liquidity) là quá trình xác định chính xác nơi các cụm lệnh chờ lớn (các vùng liquidity) đã tích lũy trên biểu đồ.
+
+Nếu bạn không biết liquidity ở đâu, bạn đang giao dịch một cách mù quáng, và bạn rất có khả năng đặt Stop Loss của mình vào chính xác nơi smart money dự định tạo ra một cú sweep (quét thanh khoản).
+
+## Các vùng Liquidity hình thành ở đâu?
+
+Giáo dục giao dịch cho các nhà giao dịch nhỏ lẻ đã dạy hàng triệu người đặt Stop Loss của họ ở những vị trí hoàn toàn giống nhau, có thể dự đoán được. Những mức kỹ thuật rõ ràng này trở thành những thỏi nam châm khổng lồ thu hút giá.
+
+1.  **Equal Highs (EQH) & Equal Lows (EQL) (Các đỉnh / đáy bằng nhau):** Vùng liquidity tối thượng. Các nhà giao dịch nhỏ lẻ nhìn thấy "mô hình hai đỉnh mạnh" hoặc "mô hình hai đáy mạnh". Smart money nhìn thấy một vùng lệnh stop loss khổng lồ, tập trung chỉ chờ được kích hoạt.
+2.  **Các Swing Highs và Lows chính:** Vị trí phổ biến nhất cho trailing stop loss và các lệnh đột phá (breakout).
+3.  **Đỉnh / Đáy của ngày hôm trước (PDH / PDL):** Các mức cấu trúc quan trọng mà các nhà giao dịch trong ngày và swing trader sử dụng làm điểm tham chiếu.
+4.  **Các mức cực trị của Phiên giao dịch:** Mức cao nhất và thấp nhất của các phiên Á, Âu (London) và Mỹ (New York).
+5.  **Số tròn (Các mức tâm lý):** Tâm lý con người thích các con số tròn (ví dụ: 1.1000 đối với EURUSD, 2000 đối với Vàng). Lệnh Stop và Limit tập trung rất nhiều ở đây.
+6.  **Các điểm chạm Trendline (Đường xu hướng):** Khi các nhà giao dịch nhỏ lẻ vẽ một đường xu hướng chéo và giá chạm vào nó 3 hoặc 4 lần, các lệnh Stop Loss sẽ tích lũy một cách dễ đoán phía dưới/phía trên đường chéo đó.
+
+<AnnotatedChart chartData={chartRegistry.LIQMAP} />
+
+## Sự thiết kế của Liquidity (Engineering of Liquidity)
+
+Liquidity không chỉ được đặt ngẫu nhiên; nó thường được **thiết kế** có chủ ý. Thị trường sẽ tạo ra một mức kháng cự rõ ràng, bật lại từ đó vài lần để thuyết phục các nhà giao dịch nhỏ lẻ rằng mức đó "mạnh", và dụ dỗ họ vào các vị thế short với stop loss ngay phía trên.
+
+Khi có đủ lệnh stop tích lũy phía trên mức kháng cự, thị trường sẽ đâm thủng mức đó một cách mạnh mẽ, kích hoạt tất cả các lệnh buy-stop (cung cấp thanh khoản bán mà smart money cần để short), và sau đó đảo chiều.
+
+<Callout type="warn" title="Cái bẫy nhỏ lẻ (Retail Trap)">
+Nếu một mức hỗ trợ hoặc kháng cự trông hoàn toàn sạch đẹp và rõ ràng đối với mọi người trên Twitter và Reddit, rất có khả năng nó đang được thiết kế như một vùng liquidity để bị quét.
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "Lập bản đồ liquidity là một thói quen bắt buộc trước khi giao dịch.",
+    "Equal highs/lows là những vùng liquidity mạnh mẽ nhất.",
+    "Các mức cực trị của ngày trước đó và của các phiên giao dịch thu hút liquidity khổng lồ.",
+    "Nếu một mức giá trông 'quá hoàn hảo', rất có thể đó là liquidity được thiết kế."
+  ]} 
+/>

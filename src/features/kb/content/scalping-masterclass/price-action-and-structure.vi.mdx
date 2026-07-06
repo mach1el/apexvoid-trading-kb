@@ -1,0 +1,84 @@
+export const frontmatter = { 
+  title: 'Hành động Giá & Cấu trúc Thị trường', 
+  description: 'Đọc câu chuyện sâu sắc phía sau các thân nến M1/M5 và hiểu sự thay đổi cấu trúc chi tiết để thống trị các khung thời gian siêu nhỏ.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Hành động Giá & Cấu trúc Thị trường
+
+Hành động giá (price action) là dạng dữ liệu thị trường thuần túy nhất, không bị lọc bỏ nhất hiện có. Trước khi các chỉ báo in ra tín hiệu, trước khi các đường trung bình động giao nhau, giá đã di chuyển rồi. Đối với một scalper hoạt động trên khung thời gian 1 phút (M1) và 5 phút (M5), việc nắm vững hành động giá và cấu trúc thị trường không phải là một lựa chọn—nó là nền tảng tuyệt đối cho lợi thế của bạn.
+
+Bằng cách đọc câu chuyện đằng sau mỗi cây nến và vạch ra tỉ mỉ những thay đổi cấu trúc vi mô, một scalper có thể xác định chính xác ai đang kiểm soát thị trường, nơi liquidity nằm ở đâu, và khi nào một sự đảo chiều có xác suất xảy ra về mặt thống kê.
+
+## Cuộc chiến Vi mô Bên trong Cây nến
+
+Mỗi cây nến đơn lẻ trên biểu đồ đại diện cho một cuộc đấu tranh bạo lực, thời gian thực giữa người mua (phe bò) và người bán (phe gấu) trong một khoảng thời gian cụ thể. Trên biểu đồ M1, trận chiến này diễn ra trong khoảng thời gian 60 giây. Cấu trúc của một cây nến—thân của nó, bóng trên, bóng dưới, và nơi nó mở cửa và đóng cửa—kể một câu chuyện chi tiết về sự từ chối, sự tiếp diễn, sự cạn kiệt, hoặc sự lưỡng lự.
+
+Hiểu cấu trúc nến vượt xa việc ghi nhớ các tên gọi như "Doji" hoặc "Hammer". Nó đòi hỏi bạn phải hình dung luồng lệnh (order flow) đã tạo ra cây nến.
+
+- **Thân nến (The Body):** Khoảng cách giữa giá mở cửa và giá đóng cửa. Một thân nến lớn, đầy đặn cho thấy niềm tin và động lượng mạnh mẽ từ một phía. Nếu một nến M5 mở cửa ở mức 1.1000 và đóng cửa ở mức 1.1020 gần như không có bóng nến, điều đó có nghĩa là người mua đã kiểm soát hoàn toàn, không thể tranh cãi trong 5 phút đó.
+- **Bóng nến (The Wicks):** Các bóng nến đại diện cho những điểm cực trị của trận chiến. Một bóng nến dài chỉ ra một mức giá đã được kiểm tra nhưng cuối cùng bị từ chối. Đây là dấu chân của những nhà giao dịch bị mắc kẹt.
+
+<ConceptCard title="Các Nến Đảo chiều & Động lượng Quan trọng cho Scalping">
+  - **Nến Pin Bar (Hammer / Shooting Star):** Một cây nến với thân nhỏ và bóng nến cực kỳ dài ở một bên. Hãy tưởng tượng giá giảm nhanh chóng, kích hoạt các lệnh sell và dụ dỗ các lệnh short, nhưng ngay sau đó người mua tổ chức tích cực tham gia, hấp thụ toàn bộ áp lực bán và đẩy giá trở lại để đóng cửa gần mức mở cửa. Điều này tạo ra một bóng dưới dài (Hammer) và là một dấu hiệu to lớn của sự từ chối theo hướng tăng giá. Ngược lại là nến Shooting Star.
+  - **Nến Engulfing (Nhấn chìm):** Một sự thay đổi động lượng mạnh mẽ. Nếu một nến giảm M1 nhỏ ngay lập tức được theo sau bởi một nến tăng M1 khổng lồ hoàn toàn che lấp nến trước đó, nó biểu thị một sự chuyển giao quyền lực đột ngột, dữ dội cho người mua.
+  - **Nến Doji Lưỡng lự:** Một cây nến nơi giá mở cửa và đóng cửa gần như giống hệt nhau, với bóng nến ở cả hai bên. Trên biểu đồ M1, điều này thường xảy ra trước một cú breakout bùng nổ, vì cả hai bên đã kiệt sức khi chiến đấu đến mức hòa, và thị trường đang chờ đợi một dòng khối lượng mới tràn vào.
+</ConceptCard>
+
+## Sóng (Market Swings): Sóng đẩy (Impulse) vs. Sóng điều chỉnh (Correction)
+
+Thị trường không bao giờ di chuyển theo một đường thẳng tắp hoàn hảo, kể cả trên các khung thời gian siêu nhỏ. Nó thở. Nó di chuyển theo các sóng (swings). Hiểu được bản chất luân phiên của những con sóng này là rất quan trọng để định thời điểm vào lệnh của bạn với độ chính xác đến từng milimet.
+
+### 1. Sóng Đẩy (Impulse Swings)
+Sóng đẩy là những động thái mạnh mẽ, hung hãn, bạo lực theo hướng của xu hướng cơ bản. Chúng được đặc trưng bởi các nến động lượng lớn, rất ít hành động giá chồng chéo, và sự thay đổi giá nhanh chóng. Đây là lúc khối lượng tổ chức đang tích cực thúc đẩy thị trường.
+*Ví dụ:* Giá bùng nổ từ $100.00 lên $105.00 chỉ trong ba nến tăng 5 phút liên tiếp. Đây là một sự phô diễn sức mạnh to lớn của sự thống trị từ người mua.
+
+### 2. Sóng Điều chỉnh (Correction Swings / Pullback)
+Sóng điều chỉnh là những động thái chậm chạp, ì ạch, yếu ớt chống lại xu hướng chính. Chúng đại diện cho việc chốt lời từ nhịp sóng đẩy và sự thiếu niềm tin từ những người tham gia giao dịch ngược xu hướng. Sự điều chỉnh thường có các nến nhỏ hơn, lộn xộn, bóng nến ở cả hai hướng, và hành động giá chồng chéo nặng nề khi thị trường từ từ quay trở lại một vùng giá trị.
+*Ví dụ:* Sau nhịp sóng đẩy lên $105.00, giá mất 12 cây nến 5 phút riêng biệt để từ từ giảm trở lại $102.50. Thực tế là mất 15 phút để tăng $5, nhưng 60 phút để giảm $2.50, nói cho bạn biết rằng phe bán không có sức mạnh thực sự. Xu hướng cơ bản vẫn là tăng.
+
+Các scalper không giao dịch ở giữa một sóng đẩy; họ chờ đợi sự điều chỉnh chậm chạp cạn kiệt tại một mức hỗ trợ hợp lý, và họ vào lệnh ngay khi sóng đẩy dữ dội tiếp theo bắt đầu.
+
+## Lập bản đồ Cấu trúc Thị trường
+
+Cấu trúc thị trường là khuôn khổ cung cấp bối cảnh cho các mô hình nến. Nó được xác định bởi chuỗi liên tục của các swing high và swing low. Nếu bạn không thể vạch ra đúng cấu trúc thị trường, bạn đang giao dịch mù quáng.
+
+- **Xu hướng tăng (Bullish Structure):** Thị trường đang tạo ra một mô hình bậc thang đi lên, được đặc trưng bởi các Đỉnh Cao hơn (Higher Highs - HH) và Đáy Cao hơn (Higher Lows - HL). Quy tắc của một xu hướng tăng rất đơn giản: Chừng nào Đáy Cao hơn (HL) gần nhất chưa bị phá vỡ, người mua vẫn hoàn toàn kiểm soát. Bạn chỉ nên tìm kiếm các setup long tại các vùng pullback.
+- **Xu hướng giảm (Bearish Structure):** Thị trường đang đi theo bậc thang đi xuống, được đặc trưng bởi các Đáy Thấp hơn (Lower Lows - LL) và Đỉnh Thấp hơn (Lower Highs - LH). Chừng nào Đỉnh Thấp hơn (LH) gần nhất được bảo vệ, người bán vẫn thống trị thị trường. Bạn chỉ nên tìm kiếm các nhịp hồi để short.
+
+<AnnotatedChart 
+  title="Lập bản đồ Cấu trúc Thị trường M5"
+  description="Lưu ý chuỗi rõ ràng của các Đỉnh Cao hơn (HH) và Đáy Cao hơn (HL). Xu hướng tăng vẫn hợp lệ cho đến khi Đáy Cao hơn (HL) cuối cùng bị vi phạm bởi một nến đóng cửa dứt khoát."
+  showSwingHL={true} 
+/>
+
+## Phá vỡ Cấu trúc Thực sự (BOS) vs. Quét Thanh khoản (Liquidity Sweeps)
+
+Đây có lẽ là sự phân biệt quan trọng nhất mà một scalper phải nắm vững. Trên các khung thời gian M1 và M5, thị trường sẽ liên tục cố gắng đánh lừa bạn tin rằng cấu trúc đã thay đổi.
+
+Một sự **Phá vỡ Cấu trúc (Break of Structure - BOS)** xảy ra khi thị trường thực sự thay đổi xu hướng của nó. Ví dụ, trong một xu hướng tăng, giá giảm và hoàn toàn phá vỡ Đáy Cao hơn (HL) gần nhất. Tuy nhiên, để là một BOS thực sự, bạn phải thấy một thân nến mạnh mẽ, dứt khoát *đóng cửa* dưới mức đó. Điều này cho thấy những người tham gia đã chấp nhận mức giá thấp hơn mới.
+
+Một cú **Quét Thanh khoản (Liquidity Sweep / Fake-out)** xảy ra khi giá tạm thời giảm xuống dưới Đáy Cao hơn (HL) gần nhất chỉ để kích hoạt các lệnh stop loss, nhưng ngay lập tức từ chối và đóng cửa trở lại phía trên mức đó, để lại một bóng nến dài.
+
+*Kịch bản Từng bước:*
+1. Thị trường đang trong xu hướng tăng M5. Đáy Cao hơn (HL) gần nhất ở mức 4500.00.
+2. Giá pullback mạnh về 4498.00. Các nhà giao dịch nhỏ lẻ hoảng sợ, cho rằng xu hướng đã kết thúc, và bán ra. Các nhà giao dịch breakout thấy hỗ trợ bị phá vỡ và bắt đầu short.
+3. Trong chính xác cây nến 5 phút đó, người mua tổ chức hấp thụ tất cả lực bán đó, và cây nến đóng cửa ngược trở lên ở 4502.00.
+4. Kết quả? Một bóng nến dưới dài đâm xuyên qua 4500.00. Cấu trúc không bị phá vỡ; đó là một cú liquidity sweep. Xu hướng tăng hoàn toàn nguyên vẹn, và cú sweep này cung cấp điểm vào lệnh hoàn hảo, xác suất cao cho một scalper vào lệnh long.
+
+<Callout type="info" title="Bối cảnh là Vua">
+  Một mô hình nến đơn lẻ, dù nó trông hoàn hảo đến đâu, hoàn toàn vô nghĩa nếu đứng một mình. Một nến Bullish Hammer đẹp đẽ chẳng có ý nghĩa gì nếu nó hình thành một cách ngẫu nhiên ở giữa một vùng giá đi ngang. Nó phải được giao dịch trong bối cảnh cấu trúc thị trường—ví dụ, một nến Bullish Hammer hình thành ngay sau một cú Liquidity Sweep của một Đáy Cao hơn (HL) trong một xu hướng tăng mạnh, đã được thiết lập.
+</Callout>
+
+<KeyTakeaways items={[
+  "Phân tích mọi cây nến để xác định sự cân bằng quyền lực trong thời gian thực giữa người mua và người bán.",
+  "Phân biệt giữa các sóng Đẩy mạnh mẽ, nhanh chóng và các sóng Điều chỉnh chậm chạp, lộn xộn.",
+  "Vạch ra cấu trúc thị trường một cách tỉ mỉ sử dụng HH/HL cho xu hướng tăng và LH/LL cho xu hướng giảm.",
+  "Yêu cầu một nến đóng cửa dứt khoát để xác nhận một sự Phá vỡ Cấu trúc (BOS) thực sự.",
+  "Hãy coi những bóng nến đâm xuyên qua các mức cấu trúc nhưng đóng cửa trở lại bên trong là các cú Liquidity Sweeps—những cơ hội scalping tuyệt vời."
+]} />

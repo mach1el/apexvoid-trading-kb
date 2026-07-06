@@ -1,0 +1,43 @@
+export const frontmatter = { title: 'Giải thích Average True Range (ATR)', description: 'Tìm hiểu sâu về chỉ báo ATR và cách nó đo lường biến động thị trường.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Giải thích Average True Range (ATR)
+
+Average True Range (ATR) là một chỉ báo kỹ thuật được giới thiệu bởi J. Welles Wilder Jr., dùng để đo lường biến động (volatility) thị trường bằng cách phân tách toàn bộ phạm vi (range) giá của tài sản trong khoảng thời gian đó.
+
+## Tính toán True Range
+
+Nền tảng của ATR là True Range (TR), tính đến các khoảng trống giá qua đêm (overnight gaps) và các bước giá giới hạn (limit moves) mà một phạm vi High-Low đơn giản có thể bỏ lỡ. TR được xác định là giá trị lớn nhất trong các giá trị sau:
+
+1. Đỉnh (High) hiện tại trừ Đáy (Low) hiện tại
+2. Giá trị tuyệt đối của Đỉnh hiện tại trừ Giá đóng cửa (Close) trước đó
+3. Giá trị tuyệt đối của Đáy hiện tại trừ Giá đóng cửa trước đó
+
+<ConceptCard title="Tính toán ATR">
+  ATR là một đường trung bình động hàm mũ (hoặc trung bình động được làm mượt) của True Range trong một số chu kỳ nhất định (thường là 14).
+  
+  `ATR_t = ((ATR_{t-1} * 13) + TR_t) / 14`
+</ConceptCard>
+
+## Diễn giải các giá trị ATR
+
+ATR mang tính tuyệt đối, không phải tương đối. ATR cao hơn cho thấy biến động cao hơn, trong khi ATR thấp hơn cho thấy biến động thấp hơn. Tuy nhiên, ATR tỷ lệ thuận với giá của tài sản; một tài sản giá $2000 về bản chất sẽ có ATR lớn hơn một tài sản giá $50, giả định phần trăm biến động là tương tự nhau.
+
+<AnnotatedChart chartData={chartRegistry.ATRX} />
+
+<Callout type="warning">
+  ATR là một thước đo của biến động (volatility), không phải hướng đi (direction). Nó sẽ mở rộng trong những đợt bán tháo mạnh (sell-offs) giống hệt như trong những đợt tăng giá mạnh (rallies).
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "ATR tính đến các khoảng trống giá (gaps) bằng cách kết hợp giá đóng cửa trước đó vào tính toán True Range của nó.",
+    "Nó cung cấp một thước đo tuyệt đối, thô về chuyển động giá dự kiến trên mỗi chu kỳ.",
+    "Chu kỳ nhìn lại (lookback) 14 là tiêu chuẩn, nhưng các nhà giao dịch trong ngày (intraday) có thể điều chỉnh điều này dựa trên khung thời gian (time horizon)."
+  ]}
+/>

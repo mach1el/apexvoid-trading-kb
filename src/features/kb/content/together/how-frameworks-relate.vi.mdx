@@ -1,0 +1,73 @@
+export const frontmatter = {
+  title: 'Sự Liên Kết Giữa Các Hệ Thống (Frameworks)',
+  description: 'Làm rõ các khái niệm trùng lặp trong các phương pháp giao dịch. Biểu đồ tôn trọng thanh khoản (liquidity), không phải các nhãn dán.'
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Sự Liên Kết Giữa Các Hệ Thống
+
+<ConceptCard title="Khung Tiếp Cận Tổng Thể (The Meta Framework)" icon="🧩">
+Smart Money Concepts (SMC), Inner Circle Trader (ICT), Classic Price Action, và Supply & Demand phần lớn chỉ là những quy ước đặt tên khác nhau cho cùng một cơ chế thị trường cốt lõi: thanh khoản (liquidity) và dòng lệnh (order flow).
+</ConceptCard>
+
+Nếu bạn dành đủ thời gian trong các cộng đồng giao dịch, bạn sẽ chứng kiến những cuộc tranh luận không hồi kết về việc hệ thống nào là "tốt nhất". Các trader theo Price Action chế giễu những người dùng chỉ báo (indicator). Các trader theo SMC chế nhạo những retail trader giao dịch theo hỗ trợ/kháng cự. Các trader theo ICT tự nhận rằng họ đang giao dịch theo "thuật toán" (algorithm) thực sự.
+
+Sự thật đơn giản hơn nhiều: biểu đồ không quan tâm bạn gọi một vùng giá cụ thể là gì. Các thuật toán của tổ chức không biết sự khác biệt giữa một Order Block và một Supply Zone (vùng cung). Chúng chỉ biết nơi nào có thanh khoản (liquidity) và nơi nào tồn tại sự mất cân bằng mua/bán (imbalances).
+
+## Giá Trị Cốt Lõi Bền Vững (The Durable Core)
+
+Ngành giáo dục giao dịch là một ngành kinh doanh. Các nhà giáo dục khác nhau đóng gói cùng một khái niệm dưới những cái tên mới để tạo sự khác biệt và bán khóa học. Tuy nhiên, giá trị cốt lõi bền vững của tất cả các hệ thống biểu đồ thành công đều dựa trên bốn sự thật phổ quát:
+
+1. **Cấu trúc thị trường (Market Structure):** Xác định xu hướng (Đỉnh Cao Hơn / Đáy Cao Hơn hoặc Đỉnh Thấp Hơn / Đáy Thấp Hơn).
+2. **Các Vùng Giá Quan Trọng (Key Levels - Ở Đâu):** Xác định các khu vực mà lệnh được tập trung dày đặc (Các điểm Swing, Đỉnh/Đáy phiên, sự mất cân bằng lịch sử).
+3. **Sự Hợp Lưu (Confluence - Tại Sao & Khi Nào):** Xếp chồng các xác suất bằng cách sử dụng thời gian, khối lượng (volume) và động lượng (momentum).
+4. **Quản Lý Rủi Ro (Risk Management):** Thực tế toán học rằng sự sống còn đi trước lợi nhuận.
+
+<Callout type="note" title="Một Góc Nhìn Khách Quan">
+ApexVoid Trading không ủng hộ một "hệ thống bí mật" cụ thể nào. Cho dù bạn gọi một vùng giá là "Order Block", "Supply Zone", hay "Dấu Chân Tổ Chức", thị trường tôn trọng các cơ chế, chứ không phải nhãn dán.
+</Callout>
+
+## Hướng Dẫn Dịch Thuật Tổng Quan (The Grand Translation Guide)
+
+Để trở thành một trader thành thạo, bạn phải học cách "dịch" giữa các "ngôn ngữ" khác nhau của phân tích kỹ thuật. Dưới đây là hướng dẫn dịch thuật cho các khái niệm phổ biến nhất qua các hệ thống chính.
+
+<CompareTable 
+  headers={["Khái Niệm / Cơ Chế", "Classic Price Action", "Supply & Demand", "SMC / ICT"]}
+  rows={[
+    ["Tiếp Diễn Xu Hướng (Trend Continuation)", "Phá Vỡ (Breakout) / Bật Cạnh Xu Hướng (Trendline Bounce)", "Mô Hình Tiếp Diễn", "Phá Vỡ Cấu Trúc (Break of Structure - BOS)"],
+    ["Đảo Chiều Xu Hướng (Trend Reversal)", "Vai Đầu Vai / Hai Đỉnh (Double Top)", "Chuyển Đổi Đường Cong (Curve Shift)", "Thay Đổi Tính Chất (Change of Character - CHoCH)"],
+    ["Phá Vỡ Giả (False Breakout)", "Fakeout / Bẫy Tăng (Bull Trap)", "Kiểm Tra Thất Bại (Failed Test)", "Quét Thanh Khoản (Liquidity Sweep) / Stop Hunt"],
+    ["Điểm Bơm Thanh Khoản Cuối Cùng", "Hỗ Trợ / Kháng Cự (Support / Resistance)", "Base / Rally-Base-Rally", "Khối Lệnh (Order Block - OB)"],
+    ["Giá Phân Phối Kém Hiệu Quả", "Gap / Nến Động Lượng (Momentum)", "Mất Cân Bằng (Imbalance)", "Khoảng Trống Giá Hợp Lý (Fair Value Gap - FVG)"],
+    ["Vùng Vào Lệnh Thoái Đoái", "Pullback Về Hỗ Trợ", "Trở Về Nguồn Cội", "Điểm Vào Lệnh Tối Ưu (Optimal Trade Entry - OTE)"]
+  ]}
+/>
+
+### Nghiên Cứu Tình Huống: "Bật Hỗ Trợ" so với "Giảm Thiểu" (Mitigation)
+
+Hãy tưởng tượng một kịch bản trong đó giá tăng mạnh từ một mức giá cụ thể, sau đó hồi lại mức đó vài ngày sau và tiếp tục tăng. 
+
+- **Retail Trader** vẽ một đường ngang và nói, *"Hỗ trợ đã giữ vững."*
+- **Trader theo S&D** vẽ một hộp quanh vùng đi ngang trước đợt tăng và nói, *"Vùng Cầu (Demand zone) đã được kiểm tra."*
+- **Trader theo SMC** đánh dấu cây nến giảm cuối cùng trước đợt tăng và nói, *"Bullish Order Block đã được mitigate."*
+
+Ai đúng? **Tất cả đều đúng.** Họ chỉ đơn giản là đang áp dụng các mức độ chi tiết khác nhau vào cùng một hiện tượng chính xác: các lệnh giới hạn của tổ chức (institutional limit orders) đã nằm chờ ở mức giá đó để hấp thụ áp lực bán.
+
+## Thoát Khỏi Sự Giáo Điều (Escaping the Dogma)
+
+Sự nguy hiểm của việc quá gắn bó với một hệ thống duy nhất là sự giáo điều. Khi bạn tin rằng hệ thống của mình là sự thật *duy nhất*, bạn trở nên cứng nhắc. Thị trường luôn năng động; chúng đòi hỏi sự linh hoạt.
+
+<Callout type="trap" title="Sự Sùng Bái Tính Phức Tạp (The Cult of Complexity)">
+Nhiều trader áp dụng các hệ thống phức tạp (như ICT) vì sự phức tạp làm họ cảm thấy như đang sở hữu kiến thức "bí mật". Phức tạp không đồng nghĩa với lợi nhuận. Nếu một cú phá vỡ đường xu hướng đơn giản kết hợp với quản lý rủi ro vững chắc hiệu quả với bạn, đừng từ bỏ nó chỉ vì một Youtuber bảo rằng nó là "retail".
+</Callout>
+
+<KeyTakeaways>
+- Tập trung vào các *cơ chế* (tại sao giá di chuyển) thay vì các *nhãn dán* (cái tên guru đặt cho nó).
+- Tất cả các hệ thống đều chia sẻ một nguồn gốc chung bắt nguồn từ Lý thuyết Dow (Dow Theory) và Wyckoff.
+- Làm chủ các khái niệm cốt lõi về thanh khoản (liquidity) và cấu trúc (structure), và bạn sẽ hiểu bất kỳ hệ thống nào.
+- Những trader giỏi nhất là những người "đa ngôn ngữ" — họ có thể đọc biểu đồ qua nhiều lăng kính để tìm kiếm sự hợp lưu (confluence).
+</KeyTakeaways>

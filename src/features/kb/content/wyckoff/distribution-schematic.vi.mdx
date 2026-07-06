@@ -1,0 +1,36 @@
+export const frontmatter = { 
+  title: 'Phân phối Wyckoff (Wyckoff Distribution)', 
+  description: 'Hiểu cách smart money xả các vị thế của họ tại các vùng đỉnh thị trường.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Phân phối Wyckoff (Wyckoff Distribution)
+
+Phân phối hoàn toàn ngược lại với tích lũy. Đó là quá trình mà Composite Operator (smart money) cẩn thận xả các vị thế long của họ cho công chúng nhỏ lẻ tại vùng đỉnh thị trường, trước một giai đoạn giảm giá (markdown phase / downtrend).
+
+## Các Sự kiện trong Phân phối
+
+Các phạm vi phân phối lập bản đồ quá trình chuyển đổi từ xu hướng tăng sang xu hướng giảm, đặc trưng bởi lực mua mạnh của công chúng và lực bán âm thầm của các tổ chức.
+
+1.  **Nguồn cung Sơ bộ (Preliminary Supply - PSY):** Các tổ chức lớn bắt đầu bán ra, cản trở sự gia tăng nhanh chóng. Khối lượng mở rộng.
+2.  **Cao trào Mua (Buying Climax - BC):** Hội chứng sợ bỏ lỡ (FOMO) cực độ từ công chúng. Sự cạn kiệt của xu hướng tăng trên khối lượng khổng lồ khi nhỏ lẻ mua ngay đỉnh và smart money khớp các lệnh bán của họ.
+3.  **Phản ứng Tự động (Automatic Reaction - AR):** Khi lực mua cạn kiệt, giá giảm nhanh chóng. Điều này thiết lập ranh giới dưới của phạm vi phân phối.
+4.  **Kiểm tra Thứ cấp (Secondary Test - ST):** Giá phục hồi trở lại để kiểm tra vùng BC. Thông thường, khối lượng thấp hơn, xác nhận sức mua đang suy yếu.
+5.  **Upthrust (UT) / Upthrust sau Phân phối (UTAD):** Tương đương với Spring nhưng mang tính giảm giá (bearish). Giá phá vỡ lên trên kháng cự của phạm vi giao dịch, quét thanh khoản (buy stops) từ những người short sớm và bẫy những người mua Breakout. Smart money sử dụng lượng thanh khoản này để thực thi các lệnh bán cuối cùng của họ, và giá nhanh chóng đảo chiều quay trở lại phạm vi.
+6.  **Dấu hiệu Điểm yếu (Sign of Weakness - SOW):** Một động thái giảm giá mạnh mẽ, khối lượng cao phá vỡ đáy của phạm vi giao dịch (hỗ trợ).
+7.  **Điểm Cung cấp Cuối cùng (Last Point of Supply - LPSY):** Một đợt phục hồi yếu ớt kiểm tra lại hỗ trợ bị phá vỡ với tư cách là một kháng cự mới. Đây là điểm vào lệnh tối ưu cho một vị thế short.
+
+<AnnotatedChart chartData={chartRegistry.WYCKD} />
+
+<KeyTakeaways 
+  items={[
+    "Phân phối là việc chuyển giao tài sản từ những tay to sang những tay yếu (weak hands).",
+    "Cao trào Mua (BC) đánh dấu sự hưng phấn tột độ của nhỏ lẻ.",
+    "UTAD là một cái bẫy đối với những người mua breakout và là một cú lấy thanh khoản cho các lệnh short của smart money.",
+    "LPSY là nơi an toàn nhất để tham gia vào giai đoạn giảm giá (markdown) sau đó."
+  ]}
+/>

@@ -1,0 +1,52 @@
+export const frontmatter = { 
+  title: 'Spring và Upthrust', 
+  description: 'Thành thạo các cú quét thanh khoản và cơ chế của các bẫy smart money.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Spring và Upthrust (Các cú quét thanh khoản)
+
+Trong phương pháp Wyckoff, **Spring** (trong tích lũy) và **Upthrust** (trong phân phối) là những sự kiện quan trọng nhất. Chúng đại diện cho thao túng cuối cùng của Composite Operator trước khi xu hướng thực sự bắt đầu.
+
+Trong thuật ngữ giao dịch hiện đại, những sự kiện này thường được gọi là **quét thanh khoản (liquidity sweeps)** hoặc **săn dừng lỗ (stop hunts)**.
+
+## Cơ chế của Cái Bẫy
+
+Thị trường cần thanh khoản (liquidity) để di chuyển. Các tổ chức lớn không thể vào các vị thế khổng lồ mà không có các bên đối tác (counter-parties). Nếu một tổ chức muốn mua một lượng tài sản khổng lồ, họ cần một lượng lớn các lệnh bán.
+
+Làm thế nào để họ tạo ra những lệnh bán đó? Bằng cách đẩy giá xuống dưới một mức hỗ trợ chính.
+
+### Cú Spring (Bẫy Tăng giá)
+Khi giá phá vỡ xuống dưới mức hỗ trợ đã được thiết lập của một phạm vi tích lũy (đáy của SC và ST):
+1.  **Người bán Breakout:** Các nhà giao dịch nhỏ lẻ giao dịch phá vỡ nhìn thấy hỗ trợ bị thủng và short thị trường (tạo ra các lệnh bán).
+2.  **Stop Loss:** Những nhà giao dịch đã long có Stop Loss được đặt ngay dưới hỗ trợ. Một lệnh Stop Loss trên một vị thế long là một lệnh bán.
+3.  **Cú Quét (The Sweep):** Smart money hấp thụ toàn bộ lượng thanh khoản bán được dàn xếp này để xây dựng các vị thế long của họ, khiến giá đảo chiều dữ dội lên trở lại vào trong phạm vi.
+
+### Cú Upthrust (Bẫy Giảm giá)
+Khi giá phá vỡ lên trên mức kháng cự đã được thiết lập của một phạm vi phân phối:
+1.  **Người mua Breakout:** Các nhà giao dịch nhỏ lẻ nhìn thấy sự phá vỡ tăng giá và mua vào thị trường.
+2.  **Stop Loss:** Những nhà giao dịch đang short có Stop Loss được đặt ngay trên kháng cự. Một lệnh Stop Loss trên một vị thế short là một lệnh mua.
+3.  **Cú Quét:** Smart money bán lượng cổ phần cuối cùng của họ vào bể thanh khoản mua được dàn xếp khổng lồ này, khiến giá sụp đổ trở lại vào trong phạm vi.
+
+<Callout type="warning">
+Một cú Spring hoặc Upthrust thực sự nên được theo sau bởi sự từ chối (rejection) ngay lập tức. Nếu giá vẫn lơ lửng bên ngoài phạm vi và thiết lập sự chấp nhận (acceptance) với khối lượng lớn, thì đó là một sự phá vỡ thực sự (genuine breakout), không phải là một cú quét.
+</Callout>
+
+## Giao dịch Cú Quét
+
+Nhiều nhà giao dịch chuyên nghiệp chỉ giao dịch theo các biến thể của Spring và Upthrust. Thiết lập (setup) này mang tính logic rất cao:
+1.  Xác định phạm vi giao dịch.
+2.  Chờ giá đâm xuyên qua vùng cực hạn (extreme) của phạm vi.
+3.  Chờ giá đóng cửa trở lại vào bên trong phạm vi.
+4.  Vào lệnh hướng tới mục tiêu là phía đối diện của phạm vi.
+
+<KeyTakeaways 
+  items={[
+    "Spring và Upthrust là các cú quét thanh khoản được thiết kế để bẫy các nhà giao dịch nhỏ lẻ.",
+    "Smart money sử dụng các cú quét này để khớp các lệnh khổng lồ của họ mà không bị trượt giá (slippage).",
+    "Sự từ chối nhanh chóng quay trở lại phạm vi giao dịch xác nhận hành vi thao túng (manipulation)."
+  ]}
+/>

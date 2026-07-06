@@ -1,0 +1,85 @@
+export const frontmatter = {
+  title: 'Quy trình HTF → LTF',
+  description: 'Quy trình phân tích từ trên xuống (top-down) từng bước giúp lọc nhiễu và xác định các điểm vào lệnh có xác suất cao.'
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { TradeWorkflowSim } from '../../components/TradeWorkflowSim';
+import { StepFlow } from '../../../../shared/components/StepFlow';
+
+# Quy trình HTF → LTF
+
+<ConceptCard title="Phân tích Top-Down" icon="🔭">
+Phân tích Top-Down là phương pháp xác định hướng đi tổng thể của thị trường trên Khung thời gian lớn (HTF), tìm kiếm vùng giá trị trên Khung thời gian trung gian (ITF), và thực thi giao dịch trên Khung thời gian nhỏ (LTF).
+</ConceptCard>
+
+Nếu bạn mở biểu đồ 5 phút mà không biết biểu đồ Ngày (Daily) trông như thế nào, bạn đang lái xe bịt mắt. Các khung thời gian nhỏ thường nhiễu, biến động bất thường và đầy cạm bẫy. Các khung thời gian lớn sẽ quyết định dòng vốn tổ chức thực sự.
+
+Quy trình làm việc HTF → LTF là cách chúng ta điều chỉnh các điểm vào lệnh (entries) vi mô của mình cho phù hợp với dòng vốn vĩ mô.
+
+## Bộ ba Khung thời gian
+
+Các trader chuyên nghiệp thường sử dụng bộ ba khung thời gian. Các khung thời gian cụ thể phụ thuộc vào phong cách của bạn (Day Trader so với Swing Trader), nhưng mối quan hệ giữa chúng vẫn giữ nguyên.
+
+1. **Khung thời gian Bias (HTF):** Quyết định hướng đi. Bạn chỉ giao dịch theo hướng này.
+2. **Khung thời gian POI (ITF):** Quyết định vị trí. Bạn sẽ tìm kiếm entry ở đâu?
+3. **Khung thời gian Entry (LTF):** Quyết định thực thi. Chính xác khi nào bạn sẽ vào lệnh (pull the trigger)?
+
+### Các bộ ba phổ biến
+- **Day Trader:** Daily (Bias) → 1H (POI) → 5m (Entry)
+- **Scalper:** 4H (Bias) → 15m (POI) → 1m (Entry)
+- **Swing Trader:** Weekly (Bias) → Daily (POI) → 4H (Entry)
+
+<TradeWorkflowSim />
+
+## Bước 1: Bias HTF (Hướng đi)
+
+Bắt đầu ngày mới của bạn bằng cách nhìn vào HTF (ví dụ: biểu đồ Daily). Mục tiêu duy nhất của bạn ở đây là trả lời hai câu hỏi:
+1. Cấu trúc thị trường hiện tại là gì (Bullish, Bearish, Ranging)?
+2. Đâu là Draw on Liquidity (DOL) chính tiếp theo?
+
+Nếu biểu đồ Daily đang tạo ra các Đỉnh cao hơn (Higher Highs) và vùng thanh khoản (Liquidity) rõ ràng tiếp theo là một swing high nổi bật phía trên giá hiện tại, bias của bạn là **Bullish**. Trong phần còn lại của ngày, bạn thường chỉ tìm kiếm các setup mua (long setups).
+
+## Bước 2: POI ITF (Vị trí)
+
+Chuyển xuống Khung thời gian trung gian của bạn (ví dụ: biểu đồ 1H). Bây giờ bạn đã biết mình muốn mua, bạn cần tìm *nơi* các thuật toán tổ chức có khả năng cung cấp mức giá chiết khấu (discount).
+
+Bạn đang tìm kiếm các Điểm quan tâm (Points of Interest - POI) phù hợp với bias bullish của mình. Đây có thể là:
+- Một Bullish Order Block 1H chưa được kiểm tra (untested).
+- Một Fair Value Gap (FVG) 1H nằm trong vùng Discount.
+- Một cú quét (sweep) thanh khoản tại mức thấp của phiên giao dịch trước đó.
+
+Đánh dấu các vùng này trên biểu đồ của bạn. **Chưa thực thi lệnh ngay.** Đặt cảnh báo (alerts) tại các vùng này và chờ đợi.
+
+<Callout type="trap" title="Cạm bẫy vào lệnh sớm">
+Việc đặt một lệnh limit mù quáng tại một POI ITF là rất nguy hiểm. Một Order Block 1H chỉ là một ý tưởng. Nó có thể giữ được giá, hoặc giá có thể phá vỡ xuyên qua nó. Bạn phải chuyển xuống LTF để tìm sự xác nhận (confirmation).
+</Callout>
+
+## Bước 3: Entry LTF (Thực thi)
+
+Khi cảnh báo của bạn kêu và giá đi vào POI 1H của bạn, hãy chuyển xuống Khung thời gian nhỏ của bạn (ví dụ: biểu đồ 5m hoặc 1m).
+
+Bây giờ bạn đang theo dõi hành động giá bên trong "kill box". Bạn không mua chỉ vì giá chạm vào vùng đó. Bạn chờ cấu trúc LTF thay đổi theo hướng có lợi cho bạn.
+
+**Tín hiệu thực thi (The Execution Trigger):**
+1. Chờ đợi một cú quét Thanh khoản (Liquidity Sweep) LTF bên trong POI HTF.
+2. Chờ đợi một Change of Character (CHoCH) LTF với sự dịch chuyển mạnh mẽ (energetic displacement).
+3. Chờ giá hồi lại (pull back) vào Order Block hoặc FVG LTF mới được tạo ra.
+4. Thực thi giao dịch. Đặt Stop Loss của bạn bên dưới swing low LTF.
+
+## Sức mạnh của Quy trình này
+
+Tại sao phải nỗ lực qua tất cả các bước này? **Risk to Reward (R:R).**
+
+Nếu bạn giao dịch trực tiếp từ biểu đồ Daily, Stop Loss của bạn có thể cần rộng tới 100 pip. Bằng cách định hình ý tưởng trên biểu đồ Daily, tìm vùng giá trên 1H, và thực thi trên 1m, bạn có thể giảm Stop Loss của mình xuống còn 5 pip.
+
+Khi mức rủi ro 5 pip của bạn bắt được một đợt di chuyển do xu hướng Daily quyết định, tỷ lệ Risk to Reward của bạn sẽ tăng theo cấp số nhân (ví dụ: R:R 1:10 hoặc 1:20). Sự bất đối xứng này chính là cách tạo dựng nên những gia tài.
+
+<KeyTakeaways>
+- Không bao giờ thực thi lệnh trên một LTF mà không có bối cảnh của HTF.
+- HTF cho bạn hướng đi; ITF cho bạn vị trí; LTF cho bạn sự xác nhận.
+- Chờ giá đi đến các POI của bạn. Đừng đuổi theo giá ở giữa một vùng giá đi ngang (range).
+- Phân tích Top-Down cho phép đặt các mức Stop Loss cực kỳ chặt chẽ trong các động thái do vĩ mô dẫn dắt, mở khóa tỷ lệ R:R bất đối xứng.
+</KeyTakeaways>

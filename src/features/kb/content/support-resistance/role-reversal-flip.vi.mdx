@@ -1,0 +1,36 @@
+export const frontmatter = { 
+  title: 'Đảo vai trò (S/R Flip)', 
+  description: 'Cách hỗ trợ bị phá vỡ trở thành kháng cự và kháng cự bị phá vỡ trở thành hỗ trợ.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Đảo vai trò (S/R Flip)
+
+Một trong những hiện tượng đáng tin cậy nhất và có thể giao dịch được trong phân tích kỹ thuật là khái niệm đảo vai trò (role reversal). Khi một mức hỗ trợ hoặc kháng cự quan trọng bị phá vỡ, vai trò của nó sẽ đảo ngược.
+
+*   **Kháng cự bị phá vỡ trở thành Hỗ trợ.**
+*   **Hỗ trợ bị phá vỡ trở thành Kháng cự.**
+
+## Tâm lý của sự Đảo vai trò (The Flip)
+
+Khi giá xuyên phá một mức kháng cự mạnh, những nhà giao dịch đã bán khống (short) tại mức kháng cự đó giờ đây bị mắc kẹt trong các vị thế thua lỗ. Khi giá tất yếu quay trở lại để retest mức bị phá vỡ đó, những người bán khống bị mắc kẹt sẽ mua vào để đóng vị thế của họ ở mức hòa vốn (breakeven). Đồng thời, những nhà giao dịch đã bỏ lỡ đợt breakout ban đầu cũng mua tại nhịp retest. Sự gia tăng áp lực mua này biến mức kháng cự cũ thành hỗ trợ mới.
+
+Tâm lý ngược lại được áp dụng khi hỗ trợ bị phá vỡ, biến nó thành kháng cự.
+
+<AnnotatedChart chartData={chartRegistry.SR} />
+
+## Giao dịch S/R Flip
+
+S/R flip là một kỹ thuật vào lệnh cơ bản dành cho các nhà giao dịch theo xu hướng và giao dịch breakout. Thay vì mua breakout một cách mù quáng (điều thường dẫn đến việc bị mắc kẹt trong một cú fakeout), việc chờ đợi nhịp retest và sự đảo vai trò cung cấp một sự xác nhận về cấu trúc và một vùng cắt lỗ (stop-loss) chặt chẽ.
+
+<KeyTakeaways 
+  items={[
+    "Các mức hỗ trợ và kháng cự hoán đổi vai trò một khi bị phá vỡ.",
+    "Tâm lý của các nhà giao dịch bị mắc kẹt và những người mua breakout thúc đẩy hiện tượng này.",
+    "Giao dịch nhịp retest (flip) nhìn chung an toàn hơn giao dịch đợt breakout ban đầu."
+  ]}
+/>

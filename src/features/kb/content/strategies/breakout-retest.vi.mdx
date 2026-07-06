@@ -1,0 +1,49 @@
+export const frontmatter = { title: 'Phá vỡ & Kiểm tra lại (Breakout & Retest)', description: 'Giao dịch sự thay đổi trong cấu trúc thị trường với xác nhận từ khối lượng.' };
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+# Phá vỡ & Kiểm tra lại (Breakout & Retest)
+
+<AnnotatedChart chartData={chartRegistry.BRT} />
+
+Các cú phá vỡ (Breakouts) xảy ra khi giá xâm phạm mạnh mẽ một mức hỗ trợ hoặc kháng cự đã được thiết lập vững chắc. Mặc dù việc mua vào tại cú phá vỡ ban đầu có thể sinh lời, nhưng nó rất dễ gặp phải "fakeouts" (phá vỡ giả). Chiến lược Breakout & Retest chờ đợi sự xác nhận, mang lại một điểm vào lệnh an toàn hơn.
+
+## Cơ chế
+
+Khi kháng cự bị phá vỡ, tâm lý thị trường thay đổi. Những nhà giao dịch đã bán tại vùng kháng cự hiện đang bị mắc kẹt (thua lỗ). Khi giá quay trở lại mức cựu kháng cự đó, những người bán bị mắc kẹt này đóng lệnh short của họ (điều này yêu cầu phải mua), và những người mua mới nhìn thấy giá trị. Điều này biến kháng cự cũ thành hỗ trợ mới.
+
+### Khối lượng là Yếu tố Xác thực Tối thượng
+
+Một cú phá vỡ không có khối lượng (volume) là một cái bẫy.
+
+<CompareTable 
+  headers={['Chỉ số', 'Breakout Xác suất cao', 'Có khả năng là Fakeout']}
+  rows={[
+    ['Khối lượng Breakout', 'Cao hơn đáng kể so với mức trung bình', 'Trung bình hoặc giảm dần'],
+    ['Hành động Giá', 'Đóng cửa mạnh gần cực trị của cây nến', 'Để lại một râu nến dài / đuôi từ chối'],
+    ['Khối lượng Retest', 'Khối lượng thấp / cạn kiệt', 'Áp lực bán với khối lượng cao'],
+    ['Sự củng cố trước đó', 'Tích lũy chặt chẽ ngay dưới kháng cự', 'Đi thẳng hình chữ V từ hỗ trợ lên']
+  ]}
+/>
+
+## Kế hoạch Chiến lược
+
+1. **Xác định Mức giá:** Tìm một mức kháng cự hoặc hỗ trợ ngang rõ ràng đã được kiểm tra nhiều lần.
+2. **Cú Phá vỡ (Breakout):** Quan sát một cây nến đóng cửa mạnh mẽ qua mức này, kèm theo khối lượng tương đối cao. *Chưa vào lệnh vội.*
+3. **Cú Kiểm tra lại (Retest):** Chờ giá trôi dạt tự nhiên về lại mức phá vỡ với khối lượng thấp hơn.
+4. **Tín hiệu Kích hoạt (Trigger):** Vào lệnh khi bạn thấy một phản ứng tăng giá (trên khung thời gian nhỏ hơn) tại mức hỗ trợ mới.
+5. **Dừng lỗ (Stop Loss):** Đặt Stop Loss ngay dưới mức thấp nhất của cây nến breakout, hoặc dưới điểm xoay (pivot) của cú retest.
+
+<Callout type="tip" title="Sự kiên nhẫn mang lại phần thưởng">
+Hội chứng sợ bỏ lỡ (FOMO) sẽ gào thét thôi thúc bạn mua ngay tại cây nến breakout ban đầu. Bằng cách chờ đợi cú retest, bạn chấp nhận rằng mình có thể bỏ lỡ một số giao dịch đi thẳng lên trên, nhưng bạn sẽ tự cứu mình khỏi vô số những cú fakeout tàn nhẫn.
+</Callout>
+
+<KeyTakeaways takeaways={[
+  "Không bao giờ tin tưởng một cú breakout không có khối lượng lớn.",
+  "Kháng cự cũ trở thành hỗ trợ mới là do các nhà giao dịch bị mắc kẹt.",
+  "Chờ đợi cú retest cải thiện tỷ lệ chiến thắng (win rate) của bạn một cách đáng kể."
+]} />

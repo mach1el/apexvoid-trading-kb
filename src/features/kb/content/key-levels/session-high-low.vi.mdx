@@ -1,0 +1,126 @@
+export const frontmatter = {
+  title: 'Đỉnh & Đáy Phiên Giao Dịch (Session Highs & Lows)',
+  description: 'Cách sự luân chuyển vốn toàn cầu từ Châu Á sang London sang New York tạo ra các chu kỳ và bẫy thanh khoản trong ngày có thể dự đoán được.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+
+{/* 1. Hook */}
+Nếu bạn cố gắng giao dịch chính xác cùng một chiến lược breakout vào lúc 8:00 Tối ở Tokyo và 8:30 Sáng ở New York, bạn sẽ thất bại. Thị trường có các "mùa" riêng biệt mỗi 24 giờ, được thúc đẩy bởi sự mở cửa và đóng cửa của các trung tâm tài chính lớn trên thế giới.
+
+{/* 2. Definition */}
+**Đỉnh và Đáy Phiên (Session Highs and Lows)** đề cập đến các điểm giá cực đoan được thiết lập trong ba cửa sổ giao dịch toàn cầu chính: Phiên Á (Asian Session), Phiên London (London Session), và Phiên New York (New York Session). Các điểm cực đoan này hoạt động như các bể thanh khoản trong ngày mà các phiên tiếp theo tích cực săn lùng.
+
+{/* 3. Deep Explanation */}
+## Chu Kỳ Vốn Trong Ngày
+
+Thị trường Forex và Crypto mở cửa 24 giờ một ngày, nhưng biến động không được phân bổ đồng đều. Sự di chuyển giá thực sự chỉ xảy ra khi lượng vốn lớn của tổ chức đang hoạt động. Bằng cách theo dõi các đỉnh và đáy của các cửa sổ thời gian cụ thể này, bạn có thể ánh xạ chu kỳ "tích lũy, thao túng và phân phối" hàng ngày.
+
+### 1. Phiên Á (Tích Lũy - Accumulation)
+- **Đặc điểm:** Khối lượng thấp, phạm vi hẹp, được điều khiển bởi thuật toán. Các ngân hàng lớn phương Tây đang ngủ.
+- **Thiết lập:** Phiên Á thường thiết lập một hộp tích lũy hẹp.
+- **Thanh khoản:** Bởi vì phạm vi giao dịch hẹp, các nhà giao dịch bán lẻ đặt Stop Loss của họ ngay trên Đỉnh Phiên Á (Asian High) và ngay dưới Đáy Phiên Á (Asian Low). Điều này xây dựng một bể thanh khoản khổng lồ ở cả hai phía của thị trường trong khi thế giới đang ngủ.
+
+### 2. Phiên London (Thao Túng - Manipulation)
+- **Đặc điểm:** Khối lượng cao, biến động cực đoan. Đây là lúc trung tâm tài chính thế giới thức giấc.
+- **Thiết lập:** Khi London mở cửa, các tổ chức cần thanh khoản để định vị bản thân cho xu hướng hàng ngày thực sự. Họ không thể vào các lệnh khổng lồ bên trong phạm vi Phiên Á chật hẹp.
+- **Hành động:** London thường xuyên tạo ra một cú phá vỡ giả (fake breakout), quét Đỉnh Phiên Á hoặc Đáy Phiên Á. Đây là "London Fake-out" kinh điển hoặc Judas Swing. Một khi Stop Loss của bán lẻ bị kích hoạt, London bắt đầu xu hướng đi có định hướng *thực sự* của ngày.
+
+### 3. Phiên New York (Phân Phối/Tiếp Diễn - Distribution/Continuation)
+- **Đặc điểm:** Khối lượng khổng lồ, do tin tức thúc đẩy. Chồng chéo với London trong 4 giờ đầu tiên (thời điểm thanh khoản nhất thế giới).
+- **Thiết lập:** New York thường phản ứng với những gì London đã làm.
+- **Hành động:** Nếu London thiết lập đáy của ngày và có xu hướng tăng cao hơn, New York thường sẽ cung cấp một cú hồi (tạo ra Đáy Mở Cửa NY - NY Open Low) và tiếp tục giai đoạn phân phối theo hướng của xu hướng London. Mặt khác, nếu có tin tức kinh tế quan trọng, New York có thể đảo chiều mạnh mẽ xu hướng của London.
+
+### Tại Sao Các Thái Cực Của Phiên Lại Quan Trọng
+Đỉnh và đáy của một phiên cụ thể là các phiên bản vi mô của [Đỉnh/Đáy Ngày Trước Đó (Previous Daily High/Low)](/key-levels/pdh-pdl-pwh-pwl). Nếu bạn biết Đỉnh Phiên Á đang nằm ở mức 1.1050, và London mở cửa, đẩy giá lên 1.1055 trước khi hình thành một râu nến từ chối khổng lồ, bạn có một nhận định xác suất cao rằng sự thao túng đã kết thúc và xu hướng thực sự là đi xuống.
+
+{/* 4. Visuals */}
+## Cấu Trúc Trong Ngày Kinh Điển
+
+<AnnotatedChart 
+  title="Tích Lũy Á → Quét London → Xu Hướng NY"
+  isBull={false}
+  keyLevelY={90}
+  keyLevelLabel="Asian Session High"
+  showSweep={true}
+  showSwingHL={true}
+/>
+
+*Trong cấu trúc kinh điển này, Châu Á tích lũy. London mở cửa, quét Đỉnh Phiên Á để bẫy những người mua sớm, và thiết lập Đỉnh của Ngày (HOD). New York sau đó tham gia vào đợt bán tháo, phân phối giá thấp hơn.*
+
+{/* 5. How to see it on a chart */}
+## Cách Giao Dịch Sự Chuyển Giao Phiên (Từng bước)
+
+Để giao dịch chu kỳ này, bạn phải đồng bộ hóa biểu đồ của mình với các múi giờ.
+
+1. **Thiết Lập Chỉ Báo:** Sử dụng chỉ báo hộp phiên (session box) để làm nổi bật Phiên Á (thường từ 8:00 Tối đến nửa đêm EST đối với FX).
+2. **Đánh Dấu Hộp:** Vẽ một đường ngang tại râu nến cao nhất tuyệt đối và thấp nhất của phiên Á.
+3. **Chờ London Mở Cửa:** Không vào vị thế *bên trong* hộp Phiên Á. Chờ Frankfurt/London mở cửa (2:00 Sáng - 3:00 Sáng EST).
+4. **Săn Cú Quét (Sweep):** Theo dõi giá đẩy ra ngoài hộp Phiên Á. Nếu giá đẩy lên trên Đỉnh Phiên Á, hãy tìm kiếm sự từ chối nhanh chóng và sự thay đổi cấu trúc (CHoCH) trên biểu đồ 5 phút.
+5. **Thực Thi Đảo Chiều:** Nếu cú quét được xác nhận, hãy vào lệnh bán khống. Mục tiêu của bạn là phía *bên kia* của hộp Phiên Á (Đáy Phiên Á), vì London bây giờ sẽ phân phối giá để săn thanh khoản ở phía đối diện.
+6. **Sự Tiếp Diễn New York:** Nếu bạn bỏ lỡ nhịp di chuyển của London, hãy chờ NY mở cửa (8:00 Sáng EST). Tìm kiếm một cú hồi vào một Order Block hoặc FVG được tạo ra trong đợt chạy của London, và vào lệnh theo hướng xu hướng của London.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: Cú Quét London (Lý tưởng)
+
+**Kịch Bản:** EUR/USD đi ngang hẹp giữa 1.0500 và 1.0520 trong 8 giờ suốt phiên Á.
+1. Frankfurt mở cửa. Giá tăng vọt mạnh mẽ lên 1.0525, phá vỡ Đỉnh Phiên Á.
+2. Các thuật toán breakout bán lẻ mua cú phá vỡ này.
+3. London chính thức mở cửa 1 giờ sau đó. Mức 1.0525 ngay lập tức bị từ chối. Một nến nhấn chìm giảm (bearish engulfing) khổng lồ in trên biểu đồ 15 phút, đóng cửa quay lại bên trong phạm vi Phiên Á tại 1.0515.
+4. Giá sau đó đổ đèo trong 4 giờ tiếp theo, dễ dàng cắt qua Đáy Phiên Á (1.0500) và giảm xuống tận 1.0450.
+
+**Phân Tích:**
+Đây là chu kỳ "Tích lũy, Thao túng, Phân phối" sách giáo khoa. Cú tăng vọt lên 1.0525 là sự thao túng thuần túy được dàn dựng nhằm kích hoạt các lệnh mua dừng (buy stops) phía trên Đỉnh Phiên Á. Khi dòng tiền thông minh đã có vị thế bán khống (short), họ phân phối tài sản thấp hơn. Giao dịch cú quét của London đối với phạm vi Phiên Á là một trong những thiết lập có độ tin cậy thống kê mạnh mẽ nhất trong giao dịch trong ngày (day trading).
+
+### Ví Dụ 2: Sự Đảo Chiều New York (Thực tế)
+
+**Kịch Bản:** GBP/USD có một phiên London giảm giá, đẩy từ 1.2500 xuống 1.2450.
+1. New York mở cửa lúc 8:00 Sáng EST. Giá hiện đang ở mức đáy của ngày.
+2. Lúc 8:30 Sáng EST, tin tức CPI quan trọng được công bố.
+3. Giá đâm sầm xuống 1.2440, quét Đáy London, và sau đó lập tức bay vút lên trong một đợt phục hồi hình chữ V khổng lồ.
+4. Trong 3 giờ tiếp theo, New York hoàn toàn xóa bỏ xu hướng của London, cuối cùng quét Đỉnh London ở mức 1.2500.
+
+**Phân Tích:**
+Mặc dù New York thường tiếp tục xu hướng London, tin tức có tác động mạnh sẽ ghi đè lên nó. Trong kịch bản này, phiên New York đã sử dụng thanh khoản nằm dưới Đáy London để thúc đẩy một sự đảo chiều khổng lồ. Nếu bạn đang giữ lệnh bán từ London, đây là lý do tại sao bạn phải bảo vệ lợi nhuận trước khi NY Mở cửa, đặc biệt là vào những ngày có tin tức.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm Bẫy Breakout Phiên Á">
+  Một chiến lược bán lẻ rất cũ, rất hay bị hỏng là "Breakout Hộp Phiên Á" (Asian Box Breakout). Các sách từ đầu những năm 2000 khuyên các nhà giao dịch đặt lệnh Buy Stop phía trên Đỉnh Phiên Á và lệnh Sell Stop phía dưới Đáy Phiên Á, giả định rằng giá phá vỡ theo hướng nào thì đó sẽ là xu hướng. Trong thị trường thuật toán hiện đại, làm điều này đảm bảo bạn sẽ bị mắc kẹt trong London Judas Swing. Đừng bao giờ giao dịch sự phá vỡ ban đầu của phạm vi Phiên Á; hãy giao dịch sự thất bại (cú quét) của sự phá vỡ đó.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **ICT:** Toàn bộ chu kỳ này được hệ thống hóa thành AMD (Accumulation, Manipulation, Distribution) hoặc PO3 (Power of 3). ICT nhấn mạnh rằng nến ngày mở cửa, thao túng một hướng (tạo ra râu nến), và sau đó phân phối theo hướng khác (tạo ra thân nến).
+- **Wyckoff:** Chu kỳ trong ngày thường bắt chước các sơ đồ Wyckoff ở quy mô vi mô. Châu Á là phạm vi giao dịch (Pha A/B), London cung cấp Spring/Upthrust (Pha C), và NY cung cấp đợt tăng/giảm giá (Pha D/E).
+- **Volume Profile:** Phiên Á xây dựng một điểm nghẽn khối lượng cao (Point of Control). London từ chối giá trị ra xa khỏi điểm đó, tìm kiếm thanh khoản mới.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Thời gian các phiên có thay đổi theo Giờ Mùa Hè (Daylight Savings) không?**
+Đ: Có. Việc điều chỉnh các hộp phiên của bạn khi Hoa Kỳ hoặc Châu Âu chuyển đổi giờ là rất quan trọng. Thị trường hoạt động theo thời gian sinh học đối với những người làm việc tại các ngân hàng. Luôn dựa thời gian của bạn xung quanh giờ địa phương của London (8 Sáng GMT/BST) và New York (8 Sáng EST/EDT).
+
+**H: Chu kỳ này có hoạt động trên cổ phiếu hay chỉ Forex?**
+Đ: Chu kỳ Á-London-NY cụ thể dành riêng cho các thị trường 24 giờ (Forex, Crypto, Hàng hóa). Tuy nhiên, thị trường chứng khoán Hoa Kỳ (cổ phiếu) có chu kỳ vi mô riêng: Phiên Sáng (biến động cao, quét thanh khoản), Sự ảm đạm lúc nghỉ trưa (tích lũy), và Giờ Quyền lực - Power Hour (phân phối/xu hướng về cuối phiên).
+
+**H: Điều gì xảy ra nếu London không bao giờ quét phạm vi Phiên Á?**
+Đ: Nếu London mở cửa và ngay lập tức chạy xu hướng ra xa khỏi phạm vi Phiên Á mà không quét nó, điều đó ngụ ý thị trường đang ở trong một xu hướng có định hướng cực kỳ mạnh. Trong trường hợp này, bạn tìm kiếm các cú kéo ngược (pullbacks) vào các Fair Value Gap hoặc Order Block, thay vì chờ đợi một cú quét không bao giờ tới.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Thị trường 24 giờ được chia thành ba giai đoạn riêng biệt: Châu Á Tích Lũy, London Thao Túng, và NY Phân Phối.",
+  "Đỉnh và Đáy Phiên Á tạo ra các bể thanh khoản lớn, chặt chẽ, là mục tiêu hàng đầu cho sự thao túng.",
+  "'London Fake-out' xảy ra khi London mở cửa, quét qua mức cực đoan của Phiên Á và đảo chiều để tạo ra xu hướng thực sự của ngày.",
+  "Đừng bao giờ giao dịch mù quáng vào sự phá vỡ ban đầu của phạm vi Phiên Á; hãy giả định nó là một cái bẫy cho đến khi được chứng minh ngược lại.",
+  "New York thường sẽ tiếp tục xu hướng của London, trừ khi tin tức có tác động mạnh kích hoạt sự đảo chiều."
+]} />
+
+---
+*Tham khảo:*
+Inner Circle Trader (ICT). Các bài giảng khác nhau trình bày chi tiết về chu kỳ AMD (Tích lũy, Thao túng, Phân phối) và thời gian Killzone.

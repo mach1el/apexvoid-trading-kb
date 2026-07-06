@@ -1,0 +1,131 @@
+export const frontmatter = {
+  title: 'Killzones & Thời Gian Các Phiên (Session Timing)',
+  description: 'Hiểu các chu kỳ thời gian thuật toán của thị trường Forex và lý do tại sao khi nào bạn giao dịch cũng quan trọng như bạn giao dịch cái gì.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { KillzoneClock } from '../../components/KillzoneClock';
+
+{/* 1. Hook */}
+Hãy tưởng tượng bạn thiết lập một giao dịch hoàn hảo. Cấu trúc của bạn là tăng giá, bạn có một Fair Value Gap đẹp mắt, và một Order Block nằm hoàn hảo trong vùng Optimal Trade Entry. Bạn thực hiện giao dịch của mình lúc 6:00 PM EST. Thị trường hầu như không nhúc nhích. Trong bốn giờ tiếp theo, giá đi ngang, cuối cùng trôi vào Stop Loss của bạn chỉ một pip trước khi một động thái thực sự xảy ra vào sáng hôm sau. Thiết lập của bạn hoàn hảo, nhưng thời điểm của bạn thì tồi tệ.
+
+Trong giao dịch tổ chức, thời gian là biến số thống trị. Nếu bạn không giao dịch khi các thuật toán đang tích cực bơm khối lượng vào, các thiết lập của bạn sẽ không có lợi thế (edge).
+
+{/* 2. Definition */}
+Thị trường Forex và Crypto mở cửa 24 giờ một ngày, nhưng khối lượng không được phân bổ đều. Khối lượng tập trung cao độ vào giờ mở cửa của các trung tâm tài chính toàn cầu lớn.
+- **Phiên (Sessions):** Các khối thời gian vĩ mô khi một trung tâm tài chính mở cửa (Châu Á, London, New York).
+- **Killzones:** Một cửa sổ cụ thể, kéo dài 2 đến 3 giờ ở *đầu* của một phiên, nơi sự biến động thuật toán đạt mức cao nhất. Đây là lúc dòng lệnh (order flow) của tổ chức được khởi tạo.
+
+{/* 3. Deep Explanation */}
+## Ba Phiên Giao Dịch Vĩ Mô
+
+Thị trường di chuyển trong một chu kỳ hàng ngày có thể dự đoán cao được gọi là **Chu kỳ AMD** (Accumulation - Tích lũy, Manipulation - Thao túng, Distribution - Phân phối). Chu kỳ này phù hợp hoàn hảo với ba phiên giao dịch toàn cầu chính.
+
+### 1. Phiên Á (Tích Lũy)
+*Khoảng từ 18:00 đến 02:00 EST*
+Phiên Á (Tokyo/Sydney) thường đặc trưng bởi khối lượng thấp và sự tích lũy hẹp. Các ngân hàng lớn sử dụng khoảng thời gian yên tĩnh này để từ từ tích lũy các vị thế mà không làm xáo trộn giá cả.
+- **Kết Quả:** Sự đi ngang này xây dựng các vùng [Thanh Khoản Mua và Thanh Khoản Bán (Buy-Side and Sell-Side Liquidity)](/smc/buyside-sellside-liquidity) khổng lồ phía trên và phía dưới phạm vi Phiên Á.
+
+### 2. Phiên London (Thao Túng)
+*Khoảng từ 03:00 đến 11:00 EST*
+London là thủ đô tài chính của thế giới Forex. Khi London mở cửa, khối lượng khổng lồ đổ vào thị trường.
+- **Kết Quả:** Các thuật toán hầu như luôn sử dụng đợt khối lượng ban đầu này để kích hoạt một [Judas Swing](/ict/judas-swing)—một động thái giả mạnh mẽ được thiết kế để quét thanh khoản nằm ngoài phạm vi Phiên Á. Sự thao túng này bẫy các nhà giao dịch breakout trước khi đảo chiều thành xu hướng thực sự của ngày.
+
+### 3. Phiên New York (Phân Phối/Tiếp Diễn)
+*Khoảng từ 08:00 đến 17:00 EST*
+Khối lượng New York chồng chéo với nửa sau của phiên London. Sự chồng chéo này (08:00 đến 11:00 EST) là khoảng thời gian thanh khoản và biến động lớn nhất trong ngày.
+- **Kết Quả:** NY thường phân phối các vị thế đã được tích lũy ở Châu Á và bị thao túng ở London. Nếu London đã thiết lập đỉnh của ngày, NY sẽ tiếp tục xu hướng đi xuống. Đôi khi, NY sẽ tạo ra sự đảo chiều của riêng nó nếu tin tức lớn (như CPI hoặc NFP) được công bố lúc 08:30 EST.
+
+{/* 4. Visuals */}
+## Tương Tác: Đồng Hồ Killzone
+
+Sử dụng dòng thời gian tương tác bên dưới để hình dung cách các phiên chồng chéo lên nhau và nơi các Killzone biến động mạnh tọa lạc. Lưu ý rằng Killzones chỉ là *cửa sổ mở cửa* của một phiên rộng hơn.
+
+<KillzoneClock />
+
+{/* 5. How to see it on a chart */}
+## Giao Dịch Trong Killzones
+
+"Killzone" không phải là một chiến lược; nó là một bộ lọc thời gian. Bạn chỉ nên tìm kiếm các thiết lập hạng A của mình (như giảm thiểu OB hoặc FVG) *trong* cửa sổ Killzone.
+
+Dưới đây là các Killzone tiêu chuẩn (Tất cả thời gian theo EST - Giờ địa phương New York):
+
+1. **Asian Killzone (20:00 - 00:00 EST):**
+   - Tốt nhất cho các cặp AUD, NZD, và JPY.
+   - Mong đợi các phạm vi hẹp, đi ngang. Nếu một thiết lập xảy ra ở đây, hãy nhắm đến lợi nhuận nhỏ hơn, vì các xu hướng vĩ mô hàng ngày hiếm khi bắt nguồn từ đây.
+
+2. **London Open Killzone (02:00 - 05:00 EST):**
+   - Tốt nhất cho các cặp EUR và GBP.
+   - Tìm kiếm Judas Swing. Chờ Đỉnh hoặc Đáy Phiên Á bị quét, sau đó tìm kiếm một mẫu hình đảo chiều (CHoCH) để bắt xu hướng thực sự trong ngày. Đỉnh hoặc đáy của toàn bộ ngày thường được hình thành từ 02:00 đến 04:00 EST.
+
+3. **New York AM Killzone (07:00 - 10:00 EST):**
+   - Tốt nhất cho các cặp USD, Chỉ số (SPX, NAS100) và Hàng hóa (Vàng, Dầu).
+   - Rất bùng nổ do lệnh cấm tin tức vĩ mô 08:30 EST. Thường cung cấp một cú hồi Optimal Trade Entry (OTE) để tiếp tục xu hướng do London thiết lập.
+
+4. **London Close Killzone (10:00 - 12:00 EST):**
+   - Đợt khối lượng cuối cùng khi các nhà giao dịch Châu Âu đóng sổ cho ngày làm việc. Thường dẫn đến sự thoái lui ngược lại xu hướng trong ngày.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: Sự Thao Túng London (Lý tưởng)
+
+**Kịch Bản:** GBP/USD đi ngang chặt chẽ trong Phiên Á, thiết lập một đỉnh ở 1.2550 và đáy ở 1.2500.
+1. Xu hướng vĩ mô hàng ngày là giảm.
+2. Lúc 02:30 EST (bên trong London Killzone), giá đột nhiên vọt lên 1.2560.
+3. Các nhà giao dịch breakout bán lẻ mua "động lượng mạnh" này.
+4. Đây là Judas Swing. Thuật toán đang quét Thanh Khoản Mua (Buy-Side Liquidity) phía trên Đỉnh Phiên Á để thiết lập các vị thế bán khống ở mức giá cao (Premium).
+5. Lúc 03:15 EST, giá từ chối mạnh mẽ, phá vỡ cấu trúc đi xuống, và giảm liên tục trong 6 giờ tiếp theo, rớt xuống 1.2400.
+
+**Phân Tích:**
+Nếu bạn giao dịch điều này lúc 01:00 EST, bạn sẽ bị cắt xén. Bằng cách chờ đợi London Killzone, bạn để sự thao túng diễn ra. Cú quét Đỉnh Phiên Á trong Killzone chính là kích hoạt để vào lệnh bán khống.
+
+### Ví Dụ 2: Cạm Bẫy Vùng Chết (Thực tế)
+
+**Kịch Bản:** EUR/USD đang có xu hướng rất đẹp suốt buổi sáng.
+1. Bạn ăn trưa xong và ngồi vào biểu đồ lúc 13:00 EST (1:00 PM).
+2. Bạn thấy một Fair Value Gap 5 phút hoàn hảo đang hình thành. Bạn đặt một lệnh mua giới hạn (buy limit).
+3. Lệnh của bạn được khớp. Giá có lãi được 3 pip, sau đó rớt xuống mức lỗ 4 pip.
+4. Nó cứ như vậy trong ba giờ tiếp theo.
+5. Chênh lệch (spread) giãn rộng vào lúc 17:00 EST, chạm Stop Loss của bạn.
+
+**Phân Tích:**
+Từ 13:00 đến 17:00 EST là "Vùng Chết" (Dead Zone). London đã nghỉ ngơi và các thuật toán New York đã hoàn tất đợt phân phối hàng ngày. Không có khối lượng tổ chức nào đẩy giao dịch của bạn đến mục tiêu. Thiết lập là hoàn hảo, nhưng thời điểm đã làm vô hiệu hóa nó.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm Bẫy Giờ Mùa Hè (Daylight Savings)">
+  Killzones về cơ bản gắn liền với giờ địa phương của các nhân viên ngân hàng và tiếng chuông mở cửa sàn giao dịch ở London và New York. Do đó, khi Quy ước giờ mùa hè (Daylight Savings Time) thay đổi (điều này xảy ra vào các tuần khác nhau ở Mỹ so với Châu Âu), thời gian EST của các Killzone sẽ tạm thời dịch chuyển. Luôn đảm bảo bạn đang theo dõi đúng tiếng chuông mở cửa địa phương thực tế của các thị trường đó.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **SMC / ICT:** Khái niệm Killzones và chu kỳ AMD được Inner Circle Trader (ICT) phổ biến rộng rãi. Nó tạo thành nền tảng tuyệt đối cho các mô hình giao dịch dựa trên thời gian của ông.
+- **Phân Tích Kỹ Thuật Cổ Điển:** Tài liệu day trading cổ điển thường đề cập đến "Phiên Sáng" (9:30 AM đến 11:30 AM EST) và "Phiên Chiều" (1:30 PM đến 3:30 PM EST) trong chứng khoán, phản ánh hoàn hảo khái niệm về cửa sổ khối lượng NY, mặc dù nó bỏ qua chu kỳ Forex toàn cầu.
+- **Wyckoff:** Chu kỳ AMD (Châu Á = Tích lũy, London = Thao túng, NY = Phân phối) là một biểu hiện phân dạng (fractal), trong ngày của Chu kỳ Thị trường Wyckoff vĩ mô.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Tôi có phải thức dậy lúc 2:00 AM EST để giao dịch London không?**
+Đ: Không! Bạn chỉ cần chọn *một* Killzone để chuyên tâm vào. Nếu bạn sống ở Châu Mỹ, hãy giao dịch NY Killzone (07:00-10:00 EST). Nếu bạn sống ở Châu Âu, hãy giao dịch London Killzone. Đừng hủy hoại giấc ngủ của bạn vì cố gắng giao dịch tất cả.
+
+**H: Còn về Crypto thì sao? Nó giao dịch 24/7.**
+Đ: Mặc dù Crypto về mặt lý thuyết là 24/7, nhưng Bitcoin và Ethereum đã trở nên thể chế hóa nặng nề. Chúng hiện tuân theo rất chặt chẽ với New York AM Killzone (cụ thể là lúc thị trường chứng khoán mở cửa lúc 09:30 EST), vì đây là lúc các Bitcoin ETF và các bàn giao dịch tổ chức hoạt động mạnh nhất.
+
+**H: Tôi có thể giữ một lệnh mở qua thời điểm đóng cửa ngày lúc 17:00 EST không?**
+Đ: Có thể, nhưng hãy cẩn thận: vào lúc 17:00 EST, thanh khoản của nhà môi giới giảm xuống gần bằng không khi máy chủ đặt lại cho nến ngày mới. Chênh lệch (Spread) có thể giãn ra rất lớn, thường xuyên kích hoạt các Stop Loss cách xa 10-20 pip.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Thời gian là biến số thống trị. Một thiết lập hoàn hảo nằm ngoài Killzone là một giao dịch xác suất thấp.",
+  "Killzones là các khoảng thời gian kéo dài 2-3 giờ với biến động thuật toán cực đại vào đầu các phiên chính.",
+  "Phiên Á tích lũy thanh khoản. London thao túng nó. New York phân phối nó.",
+  "London Killzone (02:00 - 05:00 EST) thường xuyên tạo ra đỉnh hoặc đáy của ngày.",
+  "New York Killzone (07:00 - 10:00 EST) có độ biến động cao nhất do sự chồng chéo với khối lượng của London và các thông báo tin tức vĩ mô của Mỹ."
+]} />
+
+---
+*Tham khảo:*
+Các mô hình biến động dựa trên thời gian thuật toán. Chu kỳ AMD (Tích lũy, Thao túng, Phân phối) và thuật ngữ Killzone được phổ biến bởi Inner Circle Trader.

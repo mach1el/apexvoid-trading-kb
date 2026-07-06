@@ -1,0 +1,122 @@
+export const frontmatter = {
+  title: 'Judas Swing & Chạy Điểm Thanh Khoản (Liquidity Run)',
+  description: 'Sự phá vỡ giả (false breakout) của thuật toán. Cách xác định và giao dịch với sự thao túng được dàn dựng nhằm bẫy các nhà giao dịch bán lẻ vào đầu phiên.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+{/* 1. Hook */}
+Điều này xảy ra vào mỗi sáng lúc 03:00 AM EST, ngay khi phiên London mở cửa. Thị trường, sau khi ngủ yên suốt nhiều giờ, đột nhiên bùng nổ. Một cây nến xanh khổng lồ phá vỡ khỏi phạm vi qua đêm. Các nhà giao dịch bán lẻ trên toàn cầu nhìn thấy sự phá vỡ, nhấn nút "Mua" (Buy), và ăn mừng cùng nhau. Mười phút sau, thị trường dừng lại, quay đầu và giảm mạnh 50 pip, quét Stop Loss của tất cả người mua. Thị trường không thay đổi ý định; nó đang thực hiện một Judas Swing.
+
+{/* 2. Definition */}
+**Judas Swing** là một sự di chuyển có định hướng giả được dàn dựng xảy ra vào thời điểm mở cửa của một phiên giao dịch cụ thể (đáng chú ý nhất là London Open hoặc NY Open).
+Mục đích duy nhất của nó là kích hoạt các nhà giao dịch đánh theo phá vỡ (breakout) và quét Stop Loss của các nhà giao dịch hiện tại, từ đó tạo ra thanh khoản (Liquidity) khổng lồ cần thiết để các tổ chức vào các vị thế thực sự, ngược chiều của họ.
+
+{/* 3. Deep Explanation */}
+## Cấu Phẫu Của Judas Swing
+
+Judas Swing là giai đoạn "Thao túng" (Manipulation) của chu kỳ AMD (Accumulation - Tích lũy, Manipulation - Thao túng, Distribution - Phân phối). Nó hoàn toàn dựa vào tâm lý của các nhà giao dịch bán lẻ khi giao dịch breakout.
+
+Dưới đây là trình tự cơ học của một Bearish Judas Swing (dẫn đến một ngày giảm giá mạnh):
+
+1. **Thiết Lập (Phiên Á - Asian Range):** Thị trường đi ngang trong 6-8 giờ. Nó thiết lập một Đỉnh Phiên Á (Asian High) rõ ràng và một Đáy Phiên Á (Asian Low) rõ ràng. Các nhà giao dịch đã đặt Stop Loss của họ ngay bên ngoài phạm vi này.
+2. **Mở Cửa (London Killzone):** Lúc 02:00 EST, khối lượng giao dịch London bước vào thị trường. Thuật toán bắt đầu mua vào nhanh chóng.
+3. **Cạm Bẫy (Judas Swing):** Giá tăng vọt một cách quyết liệt vượt qua Đỉnh Phiên Á.
+   - Những người bán khống sớm bị quét Stop Loss (tạo ra lệnh Mua).
+   - Các nhà giao dịch breakout bán lẻ vào lệnh mua (tạo ra lệnh Mua).
+4. **Sự Hấp Thụ (Absorption):** Các ngân hàng cần bán. Họ sử dụng làn sóng lệnh Mua nhân tạo khổng lồ này của phe bán lẻ làm thanh khoản đối ứng để khớp các vị thế Bán khống (Short) khổng lồ của họ.
+5. **Sự Đảo Chiều (Reversal):** Ngay khi các lệnh bán khống của tổ chức được khớp, việc mua nhân tạo dừng lại. Thị trường ngay lập tức sụp đổ, bẫy các lệnh mua bán lẻ dưới nước và bắt đầu xu hướng giảm thực sự của ngày.
+
+### Tại Sao Gọi Là "Judas"?
+Nó được đặt tên là Judas Swing vì nó phản bội nhà giao dịch bán lẻ. Nó thể hiện một sự phá vỡ đẹp đẽ, đầy thuyết phục, chỉ để ngay lập tức đâm sau lưng họ.
+
+{/* 4. Visuals */}
+## Hình Dung Về Cạm Bẫy
+
+<AnnotatedChart 
+  title="The London Judas Swing"
+  showSweep={true}
+  keyLevelLabel="Asian Session High"
+  keyLevelY={30}
+/>
+
+*Chú ý cách Phiên Á xây dựng một phạm vi yên tĩnh. Ngay khi London mở cửa, giá tăng vọt vượt qua Đỉnh Phiên Á. Đây là Judas Swing. Nó ngay lập tức đảo chiều, để lại một râu nến dài (một cú quét Liquidity), và cung cấp xu hướng thực sự đi xuống.*
+
+{/* 5. How to see it on a chart */}
+## Cách Giao Dịch Judas Swing
+
+Để giao dịch Judas Swing, bạn phải đợi bẫy sập trước khi vào lệnh. Bạn là thợ săn chờ đợi bẫy sập kẹp chặt con mồi.
+
+1. **Thiết Lập Định Kiến (Bias):** Xác định định kiến định hướng Khung thời gian lớn (Daily/4H). Nếu HTF là Giảm (Bearish), bạn đang tìm kiếm một Judas Swing *tăng giá* để bán khống vào.
+2. **Đánh Dấu Phạm Vi Phiên Á:** Vẽ các đường ngang tại đỉnh cao nhất và đáy thấp nhất xảy ra giữa 18:00 và 00:00 EST.
+3. **Chờ Killzone:** Không làm gì cả cho đến London Open (02:00 EST) hoặc NY Open (07:00 EST).
+4. **Xác Định Swing:** Theo dõi giá tăng vọt xuyên qua ranh giới Phiên Á *ngược lại* với định kiến HTF của bạn. (ví dụ: nếu bạn muốn bán khống, hãy đợi một cú tăng vọt vượt qua Đỉnh Phiên Á).
+5. **Chờ Sự Từ Chối (Rejection):** Không đi trước swing. Chờ nến đóng cửa. Nếu nó đóng cửa quay trở lại bên trong phạm vi Phiên Á, để lại một râu nến khổng lồ (một [Quét Liquidity](/smc/liquidity-sweep)), cạm bẫy đã được giăng sẵn.
+6. **Vào Lệnh Khi Có Xác Nhận:** Chuyển xuống khung thời gian nhỏ hơn (1M hoặc 5M). Chờ một [CHoCH](/price-action/choch) và một [cú hồi OTE](/ict/ote) để thực hiện giao dịch của bạn theo hướng của xu hướng thực sự.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: London Short Kinh Điển (Lý tưởng)
+
+**Kịch Bản:** Biểu đồ Daily của GBP/USD đang trong xu hướng giảm.
+1. Phiên Á tạo ra một phạm vi 20-pip hẹp. Đỉnh là 1.2750.
+2. Lúc 02:30 EST, giá bùng nổ lên 1.2765. Các nhà giao dịch bán lẻ bắt đầu mua mạnh.
+3. Bạn kiểm tra biểu đồ HTF của mình. Tại 1.2765, có một Bearish Order Block 4 Giờ chưa bị giảm thiểu (unmitigated).
+4. Nến 15 Phút đóng cửa ở 1.2745, để lại một râu nến dài 20-pip đâm thủng Đỉnh Phiên Á và chạm vào OB 4 Giờ.
+5. Judas Swing đã hoàn tất. Bạn vào lệnh bán khống.
+6. Giá sụp đổ xuyên suốt phiên London, giảm 100 pip để quét Đáy Phiên Á và tiếp tục xu hướng giảm vĩ mô.
+
+**Phân Tích:**
+Đây là thiết lập sách giáo khoa. Judas Swing không ngẫu nhiên; nó đặc biệt nhắm mục tiêu thanh khoản Đỉnh Phiên Á để kéo giá vào một HTF Order Block vùng Premium. Một khi thuật toán có được thanh khoản và giảm thiểu OB, nó đã mang lại xu hướng thực sự.
+
+### Ví Dụ 2: Judas Kép (Thực tế)
+
+**Kịch Bản:** EUR/USD đang đi ngang trên biểu đồ Daily.
+1. London mở cửa và tăng vọt vượt qua Đỉnh Phiên Á. Nó từ chối, và bạn vào lệnh bán khống.
+2. Giá giảm 20 pip, nhưng sau đó chững lại trước khi vào NY Open (07:00 EST).
+3. Lúc 08:30 EST, dữ liệu lạm phát CPI được công bố.
+4. Giá giảm mạnh, quét Đáy Phiên Á, chạm điểm chốt lời của bạn (nếu bạn may mắn) hoặc ngay lập tức đảo chiều.
+5. Sau đó, nó vọt lên lại, quét điểm hòa vốn của bạn, và quét luôn Đỉnh London.
+
+**Phân Tích:**
+Khi xu hướng vĩ mô không rõ ràng (đi ngang), cả London và NY đều có thể thực hiện Judas Swing độc lập của riêng chúng ở hai phía đối diện của phạm vi. NY thường sẽ sử dụng tin tức có tác động mạnh để quét thanh khoản mà London để lại. Nếu bạn đang giao dịch London Judas Swing, luôn chốt lời một phần trước NY Open để bảo vệ bản thân khỏi "Judas Kép".
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm Bẫy Judas Giả">
+  Judas Swing chỉ hoạt động nếu nó di chuyển *ngược* với xu hướng Khung thời gian lớn (HTF). Nếu biểu đồ Daily đang tăng mạnh (Bullish), và London mở cửa với một cây nến xanh khổng lồ phá vỡ Đỉnh Phiên Á... đó có thể không phải là một Judas Swing. Nó có thể chỉ là một sự Phá vỡ Cấu trúc (BOS) thực sự tiếp tục xu hướng tăng. Không bao giờ bán khống một xu hướng tăng mạnh chỉ vì nó phá vỡ Đỉnh Phiên Á. Bạn cần sự đồng thuận HTF.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **SMC / ICT:** "Judas Swing" là một thuật ngữ độc quyền được đặt ra bởi Inner Circle Trader (ICT). Nó là cơ chế cốt lõi của mô hình điểm vào lệnh London Open của ông.
+- **Phân Tích Kỹ Thuật (TA) Cổ Điển:** Phân tích biểu đồ cổ điển gọi đây là "Bull Trap" (Bẫy Tăng) hoặc "Bear Trap" (Bẫy Giảm) xảy ra lúc thị trường mở cửa.
+- **Phân Tích Khối Lượng và Biến Động (VSA):** Các nhà giao dịch VSA tìm kiếm một "Upthrust" với khối lượng cao tại vùng kháng cự. Một Upthrust về mặt cơ học giống hệt với Judas Swing—nó cho thấy nỗ lực (khối lượng) không mang lại kết quả (đóng cửa trên vùng kháng cự), biểu thị sự phân phối của tổ chức.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Judas Swing có xảy ra mỗi ngày không?**
+Đ: Không. Nó xảy ra khoảng 60-70% thời gian. Vào những ngày có động lượng lớn, một chiều (những ngày có xu hướng), giá sẽ chỉ mở cửa và chạy về một hướng mà không bao giờ quay lại thao túng phạm vi Phiên Á.
+
+**H: Judas Swing thường lớn như thế nào?**
+Đ: Trong Forex (EUR/USD, GBP/USD), Judas Swing thường là 15 đến 30 pip phía trên/dưới phạm vi Phiên Á. Đối với Vàng hoặc Chỉ số, nó có thể lớn hơn đáng kể do mức biến động cơ bản cao hơn.
+
+**H: Phiên NY có thể có Judas Swing không?**
+Đ: Có! NY Judas Swing thường xảy ra lúc 08:30 EST (do tin tức) hoặc 09:30 EST (thị trường chứng khoán mở cửa). Nó thường sẽ quét đáy hoặc đỉnh được thiết lập bởi phiên London trước khi đảo chiều.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Judas Swing là một sự phá vỡ giả được dàn dựng vào đầu một phiên giao dịch.",
+  "Mục đích của nó là kích hoạt Stop Loss của người bán lẻ và các lệnh phá vỡ để tạo thanh khoản cho các tổ chức.",
+  "Đó là giai đoạn 'Thao túng' của chu kỳ Tích lũy-Thao túng-Phân phối (AMD).",
+  "Đừng bao giờ mua khi mới phá vỡ phạm vi Phiên Á. Hãy đợi xem liệu nó có bị từ chối và đóng cửa lại bên trong phạm vi hay không.",
+  "Judas Swing nên di chuyển ngược với định kiến Khung thời gian lớn (ví dụ: tăng mạnh để bẫy phe mua, sau đó giảm)."
+]} />
+
+---
+*Tham khảo:*
+Sự thao túng thuật toán đối với giá mở cửa. Được định nghĩa là "Judas Swing" bởi Inner Circle Trader.

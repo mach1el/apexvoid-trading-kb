@@ -1,0 +1,35 @@
+export const frontmatter = { title: 'Biến động (Volatility) là gì?', description: 'Hiểu về biến động thị trường như một thước đo sự phân tán giá và ý nghĩa của nó đối với giao dịch.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Biến động (Volatility) là gì?
+
+Biến động đề cập đến mức độ thay đổi của một chuỗi giá giao dịch theo thời gian. Về mặt định lượng, nó thường được đo lường bằng độ lệch chuẩn (standard deviation) của lợi suất logarit. Đối với các nhà giao dịch chủ động (active traders), biến động quyết định phạm vi chuyển động tiềm năng của giá và ảnh hưởng trực tiếp đến các thông số rủi ro.
+
+<ConceptCard title="Biến động Lịch sử vs. Biến động Hàm ý">
+  **Biến động Lịch sử (Historical Volatility - HV)** đo lường các biến động giá trong quá khứ qua một khoảng thời gian nhìn lại cụ thể. Nó phản ánh những gì đã xảy ra.
+  
+  **Biến động Hàm ý (Implied Volatility - IV)** bắt nguồn từ việc định giá các hợp đồng quyền chọn (options) và đại diện cho kỳ vọng của thị trường về biến động trong tương lai. Mặc dù IV hướng tới tương lai, hầu hết các phân tích kỹ thuật trực tiếp về hành động giá đều dựa trên các số liệu HV.
+</ConceptCard>
+
+## Bản chất Kép của Biến động
+
+Biến động thường bị hiểu sai một cách đơn giản là "rủi ro". Mặc dù môi trường biến động cao đòi hỏi Stop Loss rộng hơn và quy mô vị thế (position sizes) nhỏ hơn—qua đó thể hiện mức rủi ro gia tăng—nhưng biến động cũng là nguồn cội của các cơ hội giao dịch. Nếu không có sự chuyển động của giá, các giao dịch chênh lệch giá (arbitrage) và giao dịch theo hướng (directional) không thể mang lại lợi nhuận.
+
+<AnnotatedChart chartData={chartRegistry.VOL} />
+
+<Callout type="info">
+  Với Vàng (XAUUSD), phạm vi dao động trung bình hàng ngày có thể khác nhau đáng kể dựa trên các môi trường kinh tế vĩ mô. Việc theo dõi phạm vi trung bình hàng ngày qua khoảng thời gian 14 và 20 ngày cung cấp một đường cơ sở (baseline) cho sự di chuyển dự kiến trong ngày (intraday).
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Biến động đo lường sự phân tán lợi suất của giá.",
+    "Nó mang lại cả rủi ro và cơ hội; các phạm vi (ranges) rộng hơn đòi hỏi các thông số phải được điều chỉnh.",
+    "Các nhà giao dịch phải liên tục theo dõi biến động hiện tại để điều chỉnh kỳ vọng của mình."
+  ]}
+/>

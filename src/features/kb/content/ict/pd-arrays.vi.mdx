@@ -1,0 +1,131 @@
+export const frontmatter = {
+  title: 'PD Arrays (Premium & Discount Arrays)',
+  description: 'Hệ thống phân cấp cấu trúc giá của tổ chức. Hiểu ma trận cụ thể của hỗ trợ và kháng cự mà dòng tiền thông minh (smart money) sử dụng để định hình giao dịch.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+{/* 1. Hook */}
+Khi một nhà giao dịch bán lẻ nhìn vào biểu đồ, họ thấy một mạng lưới hỗn loạn của các đường xu hướng chéo, đường trung bình động và các vùng hỗ trợ ngang được vẽ tùy ý. Khi một nhà giao dịch thuật toán nhìn vào biểu đồ, họ thấy một ma trận phân cấp nghiêm ngặt của các dấu chân giá rất cụ thể. Họ không đoán xem giá có thể đảo chiều ở đâu; họ tìm kiếm PD Array logic tiếp theo trong chuỗi.
+
+{/* 2. Definition */}
+Một **PD Array (Premium/Discount Array)** là một hệ thống phân cấp có cấu trúc của các dấu chân giá tổ chức. Một array chỉ đơn giản là một danh sách các cấu trúc kỹ thuật cụ thể, được sắp xếp từ độ nhạy thời gian cao nhất đến thấp nhất.
+- **Premium Arrays:** Các cấu trúc nằm phía trên đường Cân bằng (Equilibrium - 50%), được sử dụng để thiết lập các lệnh bán khống (short).
+- **Discount Arrays:** Các cấu trúc nằm phía dưới đường Cân bằng (Equilibrium - 50%), được sử dụng để thiết lập các lệnh mua (long).
+
+{/* 3. Deep Explanation */}
+## Hệ Thống Phân Cấp Của Các Arrays
+
+Các thuật toán phân phối giá một cách có hệ thống, di chuyển từ array này sang array khác. Phương pháp ICT xác định một hệ thống phân cấp nghiêm ngặt của các array này, mà bạn quét từ mức giá hiện tại của thị trường ra ngoài.
+
+Dưới đây là hệ thống phân cấp tiêu chuẩn (di chuyển từ giá hiện tại ra các thái cực của nhịp swing):
+
+1. **Mitigation Block / Breaker Block:** Array gần nhất. Đây là các Order Block thất bại mà giá đã phá vỡ qua. Một khi bị phá vỡ, chúng hoạt động như mức hỗ trợ/kháng cự ngay lập tức (tương tự như hỗ trợ chuyển thành kháng cự cổ điển).
+2. **Fair Value Gap (FVG):** Array phổ biến nhất. Sự mất cân bằng 3 nến bị bỏ lại do sự dịch chuyển (displacement) nhanh.
+3. **Order Block (OB):** Cây nến đối lập cuối cùng trước sự dịch chuyển. Thường được tìm thấy giới hạn ở thái cực của một FVG.
+4. **Rejection Block:** Một râu nến dài ở thái cực của một swing, nơi giá từ từ chối mạnh mẽ.
+5. **Old High / Old Low (Bể Thanh Khoản - Liquidity Pools):** Thái cực tuyệt đối của ma trận. Đây là nơi chứa [Thanh Khoản Mua/Bán Bên Ngoài (External Buy-Side/Sell-Side Liquidity)](/smc/buyside-sellside-liquidity).
+
+### Cách Sử Dụng Ma Trận
+Khi giá ở vùng [Discount](/smc/premium-discount-eq) và bạn muốn mua, bạn không chỉ nhắm mắt mua ở đường 50%. Bạn quét vùng Discount để tìm sự hiện diện của các arrays này.
+- Có Bullish Breaker không?
+- Có Bullish FVG không?
+- Có Bullish Order Block ở dưới cùng của FVG không?
+
+Nếu nhiều arrays xếp thẳng hàng ở cùng một mức giá bên trong vùng Discount, bạn đã tìm thấy một Điểm Cần Quan Tâm (POI) có xác suất cực kỳ cao.
+
+{/* 4. Visuals */}
+## Ma Trận
+
+<CompareTable 
+  title="Premium vs Discount Arrays"
+  headers={["Premium Arrays (Tìm Cơ Hội Bán)", "Discount Arrays (Tìm Cơ Hội Mua)"]}
+  rows={[
+    ["Old High (Bể BSL)", "Old Low (Bể SSL)"],
+    ["Bearish Rejection Block", "Bullish Rejection Block"],
+    ["Bearish Order Block", "Bullish Order Block"],
+    ["Bearish Fair Value Gap (FVG)", "Bullish Fair Value Gap (FVG)"],
+    ["Bearish Breaker / Mitigation Block", "Bullish Breaker / Mitigation Block"]
+  ]}
+/>
+
+*Ma trận có tính phân dạng (fractal). Bạn có thể ánh xạ các arrays này trên biểu đồ Tháng để tìm định kiến vĩ mô của mình, và sau đó ánh xạ chúng trên biểu đồ 5 Phút để tìm điểm kích hoạt vào lệnh chính xác của bạn.*
+
+{/* 5. How to see it on a chart */}
+## Phân Tích Câu Chuyện Của Giá
+
+Giao dịch với PD Arrays là việc đọc câu chuyện về sự phân phối giá. Giá di chuyển giữa thanh khoản nội bộ (FVGs, Order Blocks) và thanh khoản bên ngoài (Old Highs, Old Lows).
+
+1. **Thiết Lập Phạm Vi (Range):** Xác định Phạm Vi Giao Dịch hiện tại (từ Swing High đến Swing Low của nhịp đẩy).
+2. **Vẽ Đường Cân Bằng (Equilibrium):** Vẽ một đường 50% cắt ngang phạm vi.
+3. **Xác Định Điểm Hút Thanh Khoản (Draw on Liquidity):** Hãy tự hỏi, "Giá đang cố đi về đâu?" Nếu xu hướng vĩ mô là tăng, điểm hút thanh khoản là Old High (Premium Array).
+4. **Tìm Array Vào Lệnh:** Nếu giá cần đạt đến Old High, trước tiên nó sẽ giảm xuống vùng Discount để tích lũy lệnh. Quét vùng Discount. Tìm Bullish FVG hoặc Bullish Order Block rõ ràng nhất.
+5. **Thực Thi:** Đợi giá giảm xuống Discount Array của bạn, sau đó mua. Nhắm mục tiêu Premium Array (Old High).
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: Sự Đồng Bộ Ma Trận (Lý tưởng)
+
+**Kịch Bản:** Biểu đồ Daily của EUR/USD đang tăng rất mạnh. Giá vừa tạo một nhịp đẩy khổng lồ lên, phá vỡ một swing high hàng ngày.
+1. Bạn xác định Phạm Vi Giao Dịch: từ đáy của nhịp đẩy đến đỉnh.
+2. Giá bắt đầu thoái lui. Bạn nhìn vào vùng Discount (dưới 50%).
+3. Bạn phát hiện một Bullish Order Block nguyên sơ ở mức thoái lui 70.5%.
+4. Ngay phía trên Order Block đó, có một Bullish FVG khổng lồ.
+5. Bạn có sự đồng bộ: Giá ở trong Discount -> FVG -> OB.
+6. Giá giảm vào FVG, chạm vào đỉnh của Order Block, và ngay lập tức đảo chiều, tăng vọt lên để quét Old High (mục tiêu Premium).
+
+**Phân Tích:**
+Đây là sự phân phối thuật toán sách giáo khoa. Thuật toán cung cấp một mức Discount, giảm thiểu sự kém hiệu quả (FVG), vốn hóa các lệnh chờ (OB), và sau đó đẩy giá đến thanh khoản bên ngoài (Old High).
+
+### Ví Dụ 2: Cạm Bẫy Premium Array (Thực tế)
+
+**Kịch Bản:** USD/CAD đang trong một xu hướng giảm vĩ mô.
+1. Giá tạo một nhịp đẩy mạnh xuống. Bạn muốn bán khống nó.
+2. Giá bắt đầu hồi lên.
+3. Tại mức thoái lui 38.2%, bạn thấy một Bearish Order Block.
+4. Bạn quyết định bán khống tại OB.
+5. Giá phản ứng trong một nến 15 phút, sau đó đâm sầm lên mạnh mẽ xuyên qua Order Block của bạn, làm bạn bị Stop Loss.
+6. Nó tiếp tục đi lên mức thoái lui 79%, chạm vào một Bearish Order Block *khác*, và sau đó sụp đổ mang lại một chiến thắng lớn.
+
+**Phân Tích:**
+Bạn đã giao dịch đúng array (một Order Block) nhưng trong môi trường sai. OB đầu tiên nằm ở vùng **Discount** so với nhịp swing. Dòng tiền thông minh không bán ở vùng discount. OB đó chỉ là một bẫy Dụ Dỗ (Inducement). Bạn phải đợi giá đạt đến Premium Array trước khi thực hiện bán khống.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm Bẫy Chuyện Bé Xé Ra To (Over-Complication)">
+  Ma trận PD Array có nhiều lớp (Mitigation blocks, Rejection blocks, v.v.). Đừng làm bản thân tê liệt khi cố gắng ghi nhớ và gắn nhãn mọi thứ trên biểu đồ. Phần lớn các giao dịch tổ chức có lợi nhuận có thể được thực hiện chỉ bằng **Order Blocks, FVGs và Old Highs/Lows**. Hãy nắm vững ba điều đó trước khi lo lắng về các arrays trừu tượng khác.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **SMC / ICT:** Cách phân loại cụ thể và quy ước đặt tên này (PD Arrays) được tạo ra bởi Inner Circle Trader (ICT). Nó nhằm mục đích tổ chức các khái niệm hành động giá cổ điển thành một hệ thống phân cấp thuật toán nghiêm ngặt.
+- **Phân Tích Kỹ Thuật (TA) Cổ Điển:** TA cổ điển sử dụng "Hỗ trợ và Kháng cự". Ma trận PD Array đơn giản là một phiên bản Hỗ trợ và Kháng cự rất cụ thể, được tiêu chuẩn hóa, giúp loại bỏ các đường chéo chủ quan nghiêng về các vùng khách quan, dựa trên dấu chân.
+- **Cung và Cầu (Supply and Demand):** Các nhà giao dịch S&D tìm kiếm các vùng "Rally-Base-Drop". Trong ma trận PD Array, đây chính xác là thế nào là một Bearish Order Block.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Breaker Block là gì?**
+Đ: Một Breaker là một Order Block dẫn đến một đỉnh/đáy thất bại, và sau đó bị phá vỡ với động lượng (momentum). Một khi bị phá vỡ, nó đảo ngược cực tính. Nếu giá phá vỡ lên qua một Bearish OB, OB đó trở thành một Bullish Breaker (hỗ trợ).
+
+**H: Tôi có phải sử dụng tất cả các arrays không?**
+Đ: Không. Hãy coi các arrays như một thực đơn. Các điều kiện thị trường khác nhau sẽ đưa ra các arrays khác nhau. Đôi khi không có FVG, chỉ có Order Block. Đôi khi chỉ có một râu nến khổng lồ (Rejection Block). Bạn giao dịch những gì thị trường thể hiện trong vùng Premium/Discount chính xác.
+
+**H: Điều gì xảy ra nếu một Premium Array và một Discount Array chồng chéo lên nhau?**
+Đ: Về mặt vật lý, chúng không thể. Theo định nghĩa, Premium Arrays tồn tại phía trên đường 50% của phạm vi giao dịch, và Discount Arrays tồn tại phía dưới nó. Nếu bạn vẽ lại phạm vi của mình và chúng chồng chéo lên nhau, có khả năng bạn đang xem xét sai phạm vi giao dịch.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "PD Array là một cấu trúc giá tổ chức cụ thể (OB, FVG, Old High/Low).",
+  "Hệ thống phân cấp quy định cách giá di chuyển: từ thanh khoản nội bộ (FVGs/OBs) sang thanh khoản bên ngoài (Old Highs/Lows).",
+  "Chỉ giao dịch Premium Arrays khi bạn muốn bán khống (short).",
+  "Chỉ giao dịch Discount Arrays khi bạn muốn mua (long).",
+  "Nếu nhiều arrays xếp chồng lên nhau trong cùng một vùng (ví dụ: một OB bên trong một FVG bên trong vùng Discount), xác suất của thiết lập tăng lên đáng kể."
+]} />
+
+---
+*Tham khảo:*
+Ma trận PD Array, được hệ thống hóa bởi Inner Circle Trader.

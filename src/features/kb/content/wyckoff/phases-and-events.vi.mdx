@@ -1,0 +1,57 @@
+export const frontmatter = { 
+  title: 'Các Giai đoạn & Sự kiện Wyckoff', 
+  description: 'Phân tích năm giai đoạn riêng biệt của một chu kỳ Wyckoff.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { WyckoffPhaseLabeler } from '../../components/WyckoffPhaseLabeler';
+
+# Các Giai đoạn Wyckoff từ A đến E
+
+Cả sơ đồ Tích lũy (Accumulation) và Phân phối (Distribution) đều được chia thành năm giai đoạn riêng biệt (A, B, C, D và E). Các giai đoạn này phân loại tiến trình của chu kỳ thị trường từ việc dừng xu hướng trước đó cho đến việc bắt đầu xu hướng mới.
+
+## Năm Giai đoạn
+
+### Giai đoạn A: Dừng Xu hướng Trước đó
+Giai đoạn A đánh dấu sự cạn kiệt của xu hướng diễn ra trước đó. Cung và cầu đạt đến trạng thái cân bằng.
+*   **Các Sự kiện Tích lũy:** PS (Hỗ trợ Sơ bộ), SC (Cao trào Bán), AR (Phục hồi Tự động), ST (Kiểm tra Thứ cấp).
+*   **Mục đích:** Để ngăn cản động lượng (momentum) của xu hướng giảm và thiết lập các ranh giới của phạm vi giao dịch (trading range).
+
+### Giai đoạn B: Xây dựng Nguyên nhân
+Giai đoạn B thường là giai đoạn dài nhất. Đó là nơi các tổ chức tích cực tích lũy (hoặc phân phối) vị thế cốt lõi của họ.
+*   **Sự kiện:** Nhiều lần ST (Kiểm tra Thứ cấp) và các dao động (swings) trong phạm vi được thiết lập ở Giai đoạn A.
+*   **Mục đích:** Để hấp thụ nguồn cung (hoặc cầu) trôi nổi. Biến động và khối lượng thường thu hẹp khi Giai đoạn B diễn ra, cho thấy quá trình hấp thụ đang sắp hoàn tất.
+
+### Giai đoạn C: Kiểm tra (Cái Bẫy)
+Giai đoạn C là khoảnh khắc quyết định của sơ đồ. Nó liên quan đến một động thái lừa dối để kiểm tra lượng cung/cầu còn lại và bẫy các nhà giao dịch nhỏ lẻ.
+*   **Sự kiện Tích lũy:** Cú Spring hoặc Shakeout.
+*   **Sự kiện Phân phối:** Cú Upthrust (UT) hoặc UTAD.
+*   **Mục đích:** Quét thanh khoản và đảm bảo đường đi ít kháng cự nhất được thông thoáng cho đợt đẩy giá/giảm giá (markup/markdown) sắp tới.
+
+### Giai đoạn D: Xu hướng trong Phạm vi
+Giai đoạn D là sự chuyển đổi từ giai đoạn tích lũy đi ngang sang xu hướng có hướng mới. Giá bắt đầu thể hiện ý định định hướng rõ ràng nhưng vẫn nằm một phần trong ranh giới của phạm vi ban đầu.
+*   **Sự kiện Tích lũy:** SOS (Dấu hiệu Sức mạnh), LPS (Điểm Hỗ trợ Cuối cùng).
+*   **Sự kiện Phân phối:** SOW (Dấu hiệu Điểm yếu), LPSY (Điểm Cung cấp Cuối cùng).
+*   **Mục đích:** Xác nhận kết quả của Giai đoạn C. Thị trường lúc này bị chi phối bởi Composite Operator theo hướng của xu hướng mới.
+
+### Giai đoạn E: Xu hướng Bùng nổ
+Giai đoạn E là sự phá vỡ (breakout) khỏi phạm vi giao dịch và sự mở ra của một xu hướng lớn (Markup hoặc Markdown).
+*   **Mục đích:** 'Kết quả' (Effect) bắt nguồn từ 'Nguyên nhân' (Cause) được xây dựng trong Giai đoạn B. Tài sản hoàn toàn bỏ lại phạm vi giao dịch phía sau.
+
+### Thực hành: Gắn nhãn các Giai đoạn
+
+Kiểm tra kiến thức của bạn bằng cách xác định các giai đoạn Wyckoff chính xác trên biểu đồ bên dưới.
+
+<WyckoffPhaseLabeler />
+
+<KeyTakeaways 
+  items={[
+    "Giai đoạn A dừng lại xu hướng trước đó.",
+    "Giai đoạn B xây dựng 'Nguyên nhân' thông qua việc củng cố và hấp thụ.",
+    "Giai đoạn C là cái bẫy lừa dối (Spring/UTAD) để lấy thanh khoản.",
+    "Giai đoạn D xác nhận hướng xu hướng mới trong ranh giới phạm vi.",
+    "Giai đoạn E là cú phá vỡ (breakout) cuối cùng và xu hướng bền vững."
+  ]}
+/>

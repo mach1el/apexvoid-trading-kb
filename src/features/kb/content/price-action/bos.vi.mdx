@@ -1,0 +1,119 @@
+export const frontmatter = {
+  title: 'Break of Structure (BOS)',
+  description: 'Cơ chế cơ bản của sự tiếp diễn xu hướng. Cách xác định và xác nhận một sự phá vỡ cấu trúc thực sự so với việc quét thanh khoản (Liquidity Sweep).'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+{/* 1. Hook */}
+Một xu hướng không được xác định bởi đường trung bình động hay một đường xu hướng được vẽ ở một góc tùy ý. Một xu hướng được định nghĩa bởi một chuỗi cơ học, không bị phá vỡ của các lần phá vỡ cấu trúc. Nếu bạn không thể xác định khách quan một Break of Structure (BOS), bạn không thể xác định khách quan xu hướng.
+
+{/* 2. Definition */}
+Một **Break of Structure (BOS)** xảy ra khi giá đóng cửa thành công vượt qua Đỉnh Đảo chiều (Swing High) chính trước đó (trong một xu hướng tăng) hoặc Đáy Đảo chiều (Swing Low) trước đó (trong một xu hướng giảm), báo hiệu rằng xu hướng hiện tại đang tiếp diễn.
+
+{/* 3. Deep Explanation */}
+## Cơ chế của Sự Tiếp diễn Xu hướng
+
+Trong [Cấu trúc Thị trường (Market Structure)](/foundations/market-structure), chúng ta đã học được rằng một xu hướng tăng bao gồm các Đỉnh Cao hơn (Higher Highs - HH) và Đáy Cao hơn (Higher Lows - HL). Ngay thời điểm một Higher High mới được xác nhận, một Break of Structure đã xảy ra. 
+
+Một BOS là cách thị trường xác nhận ý định. Khi giá phá vỡ đỉnh trước đó, điều này cho thấy lực cầu (demand) vẫn đang áp đảo lực cung (supply), và các tổ chức sẵn sàng tài trợ cho các mức giá cao hơn. Ngược lại, trong một xu hướng giảm, một BOS xảy ra khi Swing Low trước đó bị phá vỡ, xác nhận rằng lực cung vẫn chiếm ưu thế.
+
+### Quy tắc Xác nhận: Giá đóng cửa của Thân nến (Body Close) so với Râu nến (Wick)
+Cuộc tranh luận quan trọng nhất trong giao dịch hành động giá (price action) là *cách* một mức cấu trúc phải bị phá vỡ để được coi là một BOS hợp lệ. Có hai phe, nhưng các nhà giao dịch tổ chức thường tuân theo quy tắc nghiêm ngặt hơn: **Giá đóng cửa của Thân nến (The Body Close).**
+
+Nếu một cây nến đẩy lên trên một Swing High nhưng chỉ để lại một râu nến (đuôi) phía trên đường đó, và *thân* của cây nến đóng cửa trở lại dưới đường đó, đây **KHÔNG** phải là một BOS. Đây là một Liquidity Sweep (Quét Thanh khoản). Thị trường chỉ đơn thuần đâm thủng đỉnh để kích hoạt các lệnh buy-stop (thu thập thanh khoản) trước khi đảo chiều.
+
+Một BOS thực sự yêu cầu **thân nến** đóng cửa vững chắc vượt qua mức cấu trúc. Thân nến đóng cửa cho thấy sự chấp nhận mức giá mới, chứ không chỉ là một đợt tăng vọt nhất thời. 
+
+### Internal BOS so với Swing BOS
+Giống như có các sóng đảo chiều chính (major) và phụ (minor), cũng có các phá vỡ cấu trúc chính và phụ:
+- **Swing BOS (Vĩ mô):** Một sự phá vỡ của Swing High/Low thực sự, chính yếu. Điều này xác nhận sự tiếp diễn xu hướng trên khung thời gian lớn hơn.
+- **Internal BOS (Vi mô):** Một sự phá vỡ của một mức cấu trúc phụ *bên trong* nhịp sóng vĩ mô hiện tại. Một Internal BOS có thể báo hiệu một đợt kéo ngược (pullback) đang kết thúc, nhưng nó không quyết định xu hướng vĩ mô.
+
+{/* 4. Visuals */}
+## Trực quan hóa Sự Phá vỡ
+
+<AnnotatedChart chartData={chartRegistry.BOS} />
+
+*Lưu ý cách mỗi khi Swing High trước đó bị phá vỡ với thân nến đóng cửa chắc chắn, một BOS được ghi nhận, xác nhận xu hướng tăng vẫn còn nguyên vẹn.*
+
+{/* 5. How to see it on a chart */}
+## Cách Xác định một BOS trên Biểu đồ (Từng bước)
+
+Để giữ cho biểu đồ của bạn rõ ràng và khách quan, hãy làm theo quy trình xác định này:
+
+1. **Xác định các Swing Chính:** Sử dụng [Quy tắc 3 Nến](/key-levels/swing-high-low), xác định Swing High và Swing Low hợp lệ gần nhất trên khung thời gian bạn đã chọn.
+2. **Vẽ Rào cản:** Vẽ một tia (đường thẳng) ngang bắt nguồn từ điểm tận cùng của râu nến của Swing High (nếu trong xu hướng tăng) hoặc Swing Low (nếu trong xu hướng giảm).
+3. **Chờ đợi Sự Tương tác:** Theo dõi giá khi nó tiếp cận tia ngang.
+4. **Đánh giá Giá Đóng cửa:** Khi một cây nến tương tác với đường thẳng, hãy chờ cây nến đó đóng cửa. 
+   - Nếu cây nến chỉ quét râu qua đường thẳng nhưng thân nến đóng cửa bên dưới nó, đừng dán nhãn nó là một BOS. Đánh dấu nó bằng chữ 'X' hoặc một Sweep (Quét).
+   - Nếu thân nến đóng cửa rõ ràng qua đường thẳng, hãy dán nhãn nó là **BOS**.
+5. **Thiết lập lại:** Khi một BOS được xác nhận, điểm thấp nhất của đợt pullback dẫn đến BOS đó trở thành Swing Low được bảo vệ (protected Swing Low) mới của bạn. Xu hướng tiếp diễn.
+
+{/* 6. Worked Examples */}
+## Các Ví dụ Thực tế
+
+Hãy xem xét việc tuân thủ nghiêm ngặt quy tắc thân nến đóng cửa giúp ngăn chặn các giao dịch tồi tệ như thế nào.
+
+### Ví dụ 1: Sự Tiếp diễn Thực sự (Lý tưởng hóa)
+
+**Kịch bản:** AAPL đang trong xu hướng tăng hàng ngày (daily). Swing High gần nhất chính xác là $150.00. Swing Low gần đây là $142.00.
+1. Giá phục hồi từ $142.00 và chạm mốc $150.00.
+2. Cây nến ngày đẩy lên $152.00. 
+3. Vào cuối ngày, cây nến đóng cửa ở mức $151.50. 
+4. Thân của cây nến đã đóng cửa hoàn toàn trên mức $150.00.
+
+**Hướng dẫn:**
+Đây là một BOS được xác nhận. Thị trường đã chấp nhận mức giá trên đỉnh trước đó. Xu hướng tăng được xác nhận. Swing Low tại $142.00 hiện đang được "bảo vệ" (nếu giá phá vỡ xuống dưới $142.00, xu hướng sẽ kết thúc). Các nhà giao dịch hiện có thể tìm cách mua vào đợt pullback tiếp theo.
+
+### Ví dụ 2: Breakout Thất bại / Sweep (Thực tế)
+
+**Kịch bản:** EUR/USD đang trong một xu hướng tăng 1 Giờ (1-Hour). Swing High trước đó là 1.0850.
+1. Giá tăng mạnh mẽ về phía 1.0850.
+2. Một cây nến xanh lớn đẩy thẳng qua mức này, chạm 1.0865. Các nhà giao dịch breakout nhỏ lẻ đổ xô vào.
+3. Trong 45 phút tiếp theo, áp lực bán ồ ạt tiến vào thị trường. 
+4. Cây nến 1 Giờ đóng cửa như một pin-bar giảm giá. Thân của cây nến đóng cửa ở mức 1.0840 (dưới đường 1.0850).
+
+**Hướng dẫn:**
+Các nhà giao dịch nhỏ lẻ đã mua ngay thời điểm giá vượt qua 1.0850 cho rằng một BOS đang xảy ra. Tuy nhiên, vì thân nến không thể đóng cửa trên đường này, BOS là không hợp lệ. Đây là một Liquidity Sweep. Các tổ chức đã sử dụng những người mua breakout làm thanh khoản (Liquidity) để khớp các lệnh bán (short). Giá sau đó sụp đổ. Chờ đợi nến đóng cửa là bộ lọc tối thượng.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Cạm bẫy Phá vỡ Cấu trúc Phụ">
+  Một cạm bẫy phổ biến là xác định một BOS trên một đỉnh phụ (internal) và cho rằng xu hướng vĩ mô đã tiếp diễn. Nếu thị trường hình thành một Swing High lớn, kéo ngược (pullback) sâu, hình thành một "cú nảy" nhỏ trên đường đi xuống, và sau đó phá vỡ cú nảy đó, đó KHÔNG phải là một BOS chính (major BOS). Nó chỉ đơn thuần là cấu trúc bên trong thay đổi. Chỉ có sự phá vỡ của điểm khởi đầu (Swing High chính) mới cấu thành một BOS vĩ mô thực sự.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Bản dịch Khuôn khổ Hiện đại
+
+- **SMC/ICT:** Thuật ngữ BOS được sử dụng phổ biến trong SMC để biểu thị sự tiếp diễn xu hướng. Nó trái ngược trực tiếp với một [CHoCH (Change of Character)](/price-action/choch), biểu thị sự *đảo chiều* xu hướng.
+- **Lý thuyết Dow:** Charles Dow gọi điều này đơn giản là sự xác nhận của một xu hướng (các đỉnh cao hơn xác nhận các đáy cao hơn). Nguyên lý cốt lõi rằng "một xu hướng được cho là đang có hiệu lực cho đến khi nó đưa ra tín hiệu đảo chiều dứt khoát" hoàn toàn dựa vào sự hình thành BOS liên tiếp.
+- **Giao dịch Breakout Cổ điển:** Các nhà giao dịch truyền thống gọi BOS là "Breakout". Tuy nhiên, các nhà giao dịch theo hành động giá thuần túy phân biệt giữa BOS (về mặt cấu trúc) và Breakout (có thể xảy ra từ các đường xu hướng chéo hoặc các mô hình biểu đồ tùy ý).
+
+{/* 9. FAQ */}
+## Các Câu hỏi Thường gặp
+
+**H: Tôi có cần toàn bộ thân nến đóng cửa trên đường thẳng hay chỉ cần giá đóng cửa?**
+Đ: Chỉ cần giá đóng cửa của cây nến nằm trên đường ngang. Tuy nhiên, một BOS được coi là "mạnh hơn" nhiều và xác suất cao hơn nếu toàn bộ thân nến (hoặc một phần lớn của nó) đóng cửa trên đường thẳng, cho thấy sự dịch chuyển (displacement) mạnh mẽ.
+
+**H: Nếu cây nến 1 Giờ quét qua đỉnh, nhưng cây nến 15 Phút lại đóng cửa bên trên nó, thì đó có phải là một BOS không?**
+Đ: Điều này hoàn toàn phụ thuộc vào khung thời gian bạn đang phân tích. Nếu bạn đang xác định cấu trúc 1 Giờ, bạn *phải* đợi nến 1 Giờ đóng cửa. Việc đóng cửa của nến 15 Phút không liên quan đến cấu trúc 1 Giờ. Trộn lẫn các khung thời gian giữa chừng trong lúc phân tích là công thức của thảm họa. 
+
+**H: Tôi cần bao nhiêu BOS để xác nhận một xu hướng?**
+Đ: Tối thiểu là hai. Một lần phá vỡ đỉnh có thể chỉ là một đợt chạy thanh khoản (liquidity run) sâu. Hai lần phá vỡ cấu trúc liên tiếp (tạo ra chuỗi HH, HL, HH) xác nhận dứt khoát rằng xu hướng đã được thiết lập.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Một BOS (Break of Structure) xác nhận sự tiếp diễn của xu hướng hiện tại.",
+  "Để hợp lệ, THÂN của cây nến phải đóng cửa vượt qua điểm cực trị cấu trúc trước đó. Râu nến không được tính.",
+  "Một râu nến phá vỡ một mức và đóng cửa trở lại bên trong là một Liquidity Sweep, không phải là một BOS.",
+  "Luôn xác định BOS trên các Swing High và Swing Low chính, bỏ qua nhiễu bên trong (internal).",
+  "Đợi cây nến đóng cửa trên khung thời gian mỏ neo (anchor timeframe) của bạn trước khi xác nhận BOS."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Các nguyên tắc phân tích kỹ thuật tiêu chuẩn bắt nguồn từ Lý thuyết Dow. Thuật ngữ hiện đại được phổ biến bởi cộng đồng Smart Money Concepts.

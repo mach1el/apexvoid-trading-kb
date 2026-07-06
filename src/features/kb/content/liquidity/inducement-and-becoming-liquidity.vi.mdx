@@ -1,0 +1,51 @@
+export const frontmatter = { 
+  title: 'Inducement & Trở thành Liquidity', 
+  description: 'Cách thị trường thao túng các nhà giao dịch nhỏ lẻ để cung cấp liquidity cần thiết.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Inducement & Trở thành Liquidity
+
+Trong bối cảnh cấu trúc thị trường, **inducement** (sự dụ dỗ) là một cái bẫy có chủ ý do thị trường thiết lập. Nó là một mức cấu trúc nhỏ hoặc một đường hỗ trợ/kháng cự "sạch" rõ ràng được thiết kế đặc biệt để dụ dỗ (thuyết phục) các nhà giao dịch nhỏ lẻ vào lệnh sớm và đặt Stop Loss của họ ở một vị trí dễ bị tổn thương.
+
+## Cách Inducement hoạt động
+
+Hãy tưởng tượng thị trường đang trong một xu hướng giảm tổng thể, và smart money muốn bán ở một mức giá cao (premium price - tại một Order Block hoặc FVG chính ở phía trên).
+
+Để làm điều này, họ cần các nhà giao dịch nhỏ lẻ mua vào, cung cấp BSL cần thiết để smart money có thể bán.
+1. Thị trường tạo ra một cú pullback nhỏ và hình thành một mức "kháng cự" rất rõ ràng ngay *phía dưới* mục tiêu thực sự (Order Block).
+2. Các nhà giao dịch nhỏ lẻ nhìn thấy mức kháng cự này và cho rằng cú pullback đã kết thúc. Họ bị **dụ dỗ (induced)** vào lệnh short sớm.
+3. Họ đặt Stop Loss của họ (các lệnh buy) ngay phía trên mức kháng cự nhỏ này.
+4. Thị trường sau đó tăng vọt lên, quét (sweep) những stop này. Một loạt các lệnh buy cho phép smart money short mạnh tại Order Block thực sự.
+
+Mức kháng cự nhỏ đó hoàn toàn là inducement.
+
+<AnnotatedChart chartData={chartRegistry.INDUCEMENT} />
+
+## Quy tắc vàng về Liquidity
+
+Bài học quan trọng nhất trong toàn bộ cơ sở kiến thức này là: **Đừng đặt Stop Loss của bạn ở nơi mà những người khác đều đặt.**
+
+Nếu bạn đang mua ở một mức hỗ trợ đã được chạm 4 lần và trông hoàn toàn sạch đẹp, và bạn đặt Stop Loss của mình dưới đường đó 5 pip, bạn đang làm chính xác những gì thuật toán muốn bạn làm. Bạn không đang giao dịch thị trường; bạn đang cung cấp liquidity cho người khác giao dịch thị trường.
+
+<Callout type="warn" title="Trở thành Liquidity">
+Nếu bạn vào một lệnh và không thể xác định rõ vùng liquidity mà thị trường đang nhắm mục tiêu, **bạn chính là vùng liquidity đó.**
+</Callout>
+
+Làm thế nào để tránh trở thành liquidity?
+1. **Chờ đợi cú sweep (quét thanh khoản):** Hãy để mức giá rõ ràng bị quét, đợi sự đảo chiều (CHoCH), và vào lệnh *sau khi* sự thao túng đã xảy ra.
+2. **Ẩn stop của bạn:** Đặt Stop Loss của bạn phía sau một điểm cấu trúc chính *đã* quét một vùng liquidity.
+
+<KeyTakeaways 
+  points={[
+    "Inducement là một cái bẫy được thiết kế để khiến các nhà giao dịch nhỏ lẻ vào lệnh sớm.",
+    "Các mức hỗ trợ/kháng cự nhỏ lẻ rõ ràng thường là inducement.",
+    "Nếu bạn không thể nhìn thấy vùng liquidity, bạn chính là vùng liquidity đó.",
+    "Vào lệnh SAU KHI inducement đã bị quét, không phải trước đó."
+  ]} 
+/>

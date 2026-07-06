@@ -1,0 +1,49 @@
+export const frontmatter = { title: 'Giao dịch Quanh Tin tức', description: 'Chiến lược và quy tắc quản lý rủi ro cho các sự kiện vĩ mô tác động cao.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { NewsWindowPlanner } from '../../components/NewsWindowPlanner';
+
+# Giao dịch Quanh Tin tức
+
+Giao dịch trực tiếp trong thời gian phát hành tin tức Cấp 1 (Tier 1) tương tự như đánh bạc. Trượt giá (slippage), chênh lệch giá (spreads) mở rộng và hành động giá thất thường làm cho phân tích kỹ thuật tạm thời vô dụng. Các nhà giao dịch chuyên nghiệp xây dựng các quy tắc để giao dịch *xung quanh* tin tức chứ không phải *xuyên suốt* tin tức.
+
+## Mối đe dọa Trượt giá (Slippage)
+
+Trong các sự kiện như CPI hay NFP, các nhà cung cấp thanh khoản (liquidity providers) rút các lệnh giới hạn (limit orders) của họ khỏi sổ lệnh để tự bảo vệ. Điều này tạo ra một khoảng trống thanh khoản. Nếu stop loss của bạn bị kích hoạt trong khoảng trống này, nhà môi giới của bạn sẽ khớp lệnh thị trường của bạn ở mức giá có sẵn tiếp theo—có thể cách stop loss dự kiến của bạn từ 50 đến 100 pips.
+
+<ConceptCard title="Khung thời gian Cấm vận (Embargo Window)">
+  Thực hiện một khoảng thời gian "không giao dịch" nghiêm ngặt xung quanh các đợt phát hành tin tức lớn.
+  - **Đóng hoặc đưa về risk-free** tất cả các giao dịch trong ngày đang mở 15-30 phút trước sự kiện.
+  - **Chờ đợi** 15-30 phút sau khi phát hành trước khi vào các vị thế mới để cho phép chênh lệch giá bình thường hóa và một cấu trúc rõ ràng hình thành.
+</ConceptCard>
+
+## Công cụ Lập kế hoạch Khung thời gian Tin tức
+
+Sử dụng công cụ bên dưới để hình dung các khung thời gian cấm vận lý tưởng cho các sự kiện sắp tới.
+
+<NewsWindowPlanner />
+
+## Các Chiến lược Sau Tin tức
+
+Những cơ hội tốt nhất thường xuất hiện sau khi bụi đã lắng xuống.
+
+1. **Giao dịch ngược đợt Quét Thanh khoản (The Liquidity Sweep Fade)**: Nếu tin tức đẩy giá vượt qua một mức đỉnh chính (major high) nhưng ngay lập tức đóng cửa dưới mức đó dưới dạng một nến pin bar mạnh trên khung 15 phút, nó thường báo hiệu một đợt quét thanh khoản (liquidity grab) và một sự đảo chiều.
+2. **Pullback Tiếp diễn (The Continuation Pullback)**: Nếu tin tức phá vỡ cấu trúc thị trường một cách rõ ràng, hãy chờ đợi một nhịp pullback ở khung thời gian nhỏ hơn vào một fair value gap hoặc order block mới hình thành để tham gia vào xu hướng mới.
+
+<AnnotatedChart chartData={chartRegistry.NEWS} />
+
+<Callout type="warning">
+  Không bao giờ cố gắng dự đoán kết quả của một sự kiện tin tức bằng cách đặt các lệnh giới hạn (limit orders) từ trước. Rủi ro trượt giá tàn khốc lớn hơn nhiều so với phần thưởng tiềm năng.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Trượt giá trong thời gian có tin tức có thể làm cho các mức stop loss tiêu chuẩn hoàn toàn vô hiệu.",
+    "Thực hiện một khung thời gian cấm vận nghiêm ngặt xung quanh các đợt phát hành Cấp 1.",
+    "Chờ đợi sự biến động ban đầu lắng xuống và giao dịch theo cấu trúc thị trường hình thành sau đó."
+  ]}
+/>

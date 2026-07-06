@@ -1,0 +1,125 @@
+export const frontmatter = {
+  title: 'Giảm Thiểu (Mitigation) & Kiểm Tra Lại (Retest)',
+  description: 'Khoảnh khắc của sự thật. Cách thực thi giao dịch khi giá cuối cùng cũng quay trở lại một Order Block chưa bị giảm thiểu.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { OBRetestSim } from '../../components/OBRetestSim';
+
+{/* 1. Hook */}
+Phát hiện ra một Order Block khổng lồ của tổ chức là vô dụng nếu bạn không biết cách giao dịch với nó. Giao dịch không diễn ra khi Order Block được hình thành; giao dịch diễn ra nhiều giờ, nhiều ngày, hoặc thậm chí nhiều tuần sau đó khi giá chắc chắn quay trở lại "hiện trường vụ án". Sự quay trở lại này chính là sự Giảm Thiểu (Mitigation).
+
+{/* 2. Definition */}
+**Mitigation (hoặc Retest - Kiểm tra lại)** là quá trình mà giá quay trở lại một Order Block chưa từng được kiểm tra trước đó. Mục đích của sự quay trở lại này là để các tổ chức lớn đóng các vị thế đang bị "drawdown" (thua lỗ tạm thời) mà họ đã khởi xướng để thao túng thị trường trước khi xảy ra sự dịch chuyển ban đầu.
+
+{/* 3. Deep Explanation */}
+## Cơ Chế Của Mitigation
+
+Như đã được thiết lập trong bài [Order Block là gì](/order-block/what-is-ob), các ngân hàng thường phải bán vào thị trường để tạo ra đủ thanh khoản nhằm thực thi các lệnh mua khổng lồ của họ.
+
+Khi giá tăng vọt lên (sự dịch chuyển - displacement), những lệnh bán ban đầu đó bị bỏ lại trong trạng thái âm nặng (drawdown). Một ngân hàng trung ương không đơn giản là chấp nhận một khoản lỗ khổng lồ cho những lệnh bán khống đó. Các thuật toán của họ được thiết kế để từ từ kéo giá trở lại điểm xuất phát chính xác đó.
+
+Khi giá chạm vào Bullish Order Block, ngân hàng đóng các vị thế bán khống của họ ở mức hòa vốn (breakeven).
+Để đóng một vị thế bán khống, bạn phải *mua* tài sản đó.
+
+Làn sóng áp lực mua khổng lồ này (từ việc ngân hàng mua lại để bù đắp các lệnh bán khống của họ, cộng với các lệnh mua mới được thêm vào) là nguyên nhân khiến giá bật lên dữ dội khỏi Order Block. Một khi các lệnh được đóng, block đó được coi là **Đã bị giảm thiểu (Mitigated)**, và mục tiêu của tổ chức đã hoàn thành. Xu hướng vĩ mô thực sự bây giờ có thể tiếp tục.
+
+### Quy Tắc Chạm Lần Đầu (The First Touch Rule)
+Bởi vì mitigation là hành động tiêu thụ các lệnh đang chờ, nên một Order Block là một nguồn tài nguyên hữu hạn.
+- **Chạm Lần Đầu (Chưa bị giảm thiểu - Unmitigated):** Xác suất cao. Các lệnh của tổ chức đang nằm chờ ở đó, chờ được kích hoạt.
+- **Chạm Lần Hai (Đã bị giảm thiểu - Mitigated):** Xác suất thấp. Hầu hết các lệnh đã bị tiêu thụ trong lần chạm đầu tiên. Mức này bây giờ đã yếu.
+- **Chạm Lần Ba:** Rất có khả năng thất bại. Giá có khả năng sẽ cắt ngang qua nó để tìm kiếm thanh khoản ở mức thấp hơn.
+
+{/* 4. Visuals */}
+## Tương Tác: Trình Giả Lập Mitigation
+
+Xem dòng thời gian của một thiết lập tổ chức diễn ra. Chú ý cách các nhà giao dịch bán lẻ hiểu cú pullback (kéo ngược) là một "xu hướng giảm", trong khi dòng tiền thông minh chỉ đơn giản là chờ đợi cú chạm mitigation để tiếp tục xu hướng vĩ mô.
+
+<OBRetestSim />
+
+{/* 5. How to see it on a chart */}
+## Cách Thực Thi Cú Retest (Từng bước)
+
+Có hai cách chính để vào lệnh trong giai đoạn mitigation:
+
+### Phương Pháp 1: Vào Lệnh Giới Hạn (Aggressive - Chủ Động)
+1. Xác định một HTF Order Block chưa bị giảm thiểu.
+2. Đặt một lệnh Buy Limit chính xác tại cạnh trên (đường gần nhất - proximal line) của hộp OB.
+3. Đặt Stop Loss của bạn ngay bên dưới cạnh dưới (đường xa nhất - distal line) của hộp OB.
+4. **Ưu điểm:** Bạn sẽ không bao giờ bỏ lỡ giao dịch.
+5. **Nhược điểm:** Nếu bạn sai về bối cảnh, bạn sẽ chịu toàn bộ khoản lỗ khi giá xuyên thủng qua.
+
+### Phương Pháp 2: Vào Lệnh Xác Nhận (Conservative - An Toàn)
+1. Xác định một HTF Order Block chưa bị giảm thiểu.
+2. Đặt cảnh báo giá tại cạnh trên của hộp. Không đặt lệnh limit.
+3. Khi cảnh báo kích hoạt, hãy chuyển xuống Khung thời gian nhỏ hơn (ví dụ: 5 Phút).
+4. Quan sát giá chạm vào HTF OB. Đợi biểu đồ 5 Phút in ra một [Sự Thay Đổi Tính Chất (CHoCH)](/price-action/choch) hướng lên trên.
+5. Vào lệnh ở cú hồi (pullback) của CHoCH 5 Phút đó.
+6. **Ưu điểm:** Tỷ lệ thắng cực kỳ cao, vì bạn chờ đợi bằng chứng cấu trúc cho thấy các ngân hàng đang bảo vệ mức giá đó.
+7. **Nhược điểm:** Bạn có thể bỏ lỡ giao dịch nếu giá chạm vào OB và ngay lập tức tăng vọt mà không cung cấp cú pullback trên LTF.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: Khớp Lệnh Limit Hoàn Hảo (Lý tưởng)
+
+**Kịch Bản:** USD/JPY in ra một Bullish Order Block 1 Giờ giữa 145.00 và 144.80.
+1. Bạn đặt một lệnh Buy Limit ở 145.00.
+2. Bạn đặt Stop Loss ở 144.75 (5 pip bên dưới block).
+3. Trong ba giờ tiếp theo, giá từ từ giảm xuống.
+4. Lúc 8:30 Sáng (mở cửa phiên New York), giá giảm nhanh chóng, chạm hoàn hảo vào 145.00.
+5. Lệnh giới hạn của bạn được kích hoạt.
+6. Ngay lập tức, khối lượng lớn đổ vào thị trường. Nến 15 Phút đóng cửa thành một cây nến búa (hammer) tăng giá khổng lồ. Giá không bao giờ ngoái lại, tăng 100 pip lên 146.00.
+
+**Phân Tích:**
+Đây là mitigation sách giáo khoa. Ngân hàng đã quay trở lại 145.00 để đóng các lệnh bán khống đang thua lỗ của họ và ngay lập tức đạp ga. Điểm vào lệnh giới hạn của bạn đã bắt được chính xác đáy của nhịp di chuyển với mức drawdown bằng không.
+
+### Ví Dụ 2: Sự Thất Bại Của Mitigation (Thực tế)
+
+**Kịch Bản:** Vàng in ra một Bullish OB 4 Giờ.
+1. Giá quay trở lại vùng này hai ngày sau đó.
+2. Bạn sử dụng Phương Pháp An Toàn (Conservative Method). Bạn chuyển xuống biểu đồ 15 Phút và chờ đợi CHoCH.
+3. Giá chạm vào OB 4 Giờ, nhưng biểu đồ 15 Phút tiếp tục in ra Đỉnh thấp hơn (Lower Highs) và Đáy thấp hơn (Lower Lows).
+4. Nó không bao giờ in ra CHoCH. Thay vào đó, nó cắt thẳng qua đáy của OB 4 Giờ.
+5. Bạn không bao giờ vào lệnh.
+
+**Phân Tích:**
+Đây là lý do tại sao Điểm Vào Lệnh Xác Nhận lại mạnh mẽ đến vậy. Tại sao OB lại thất bại? Có lẽ tin tức vĩ mô đã thay đổi định kiến của ngân hàng, hoặc có lẽ OB này chỉ là một cạm bẫy dụ dỗ (inducement trap, điều mà chúng ta sẽ đề cập tiếp theo trong bài [OB Thực vs Giả](/order-block/real-vs-fake)). Bởi vì bạn chờ đợi sự xác nhận LTF nhưng nó không bao giờ đến, bạn đã tự cứu mình khỏi một giao dịch thua lỗ.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Ảo Ảnh Về Sự Giảm Thiểu (Hỗ Trợ Bán Lẻ)">
+  Các nhà giao dịch bán lẻ được dạy rằng nếu một mức giữ vững dưới dạng hỗ trợ ba lần, nó là một mức "mạnh". Các nhà giao dịch tổ chức biết điều ngược lại mới đúng. Nếu giá bật khỏi một Order Block ba lần, block đó thực tế đã trống rỗng. Các tổ chức đã giảm thiểu (mitigated) hoàn toàn các vị thế của họ. Lần chạm thứ tư sẽ đập vỡ sàn, thanh lý tất cả các nhà giao dịch bán lẻ đã mua ở mức "hỗ trợ mạnh".
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **SMC / ICT:** ICT giảng dạy rõ ràng khái niệm "Return to Origin" (RTO) hay block giảm thiểu (mitigation block). Quy tắc cơ bản rằng "Order Blocks chỉ dùng một lần" là một giáo lý cốt lõi của SMC.
+- **Wyckoff:** Giai đoạn mitigation phản chiếu hoàn hảo giai đoạn "Test" của một sơ đồ Wyckoff, nơi giá nhúng trở lại phạm vi tích lũy để đảm bảo nguồn cung đã cạn kiệt trước khi giai đoạn tăng giá (markup) bắt đầu.
+- **Phân Tích Kỹ Thuật (TA) Cổ Điển:** Biểu đồ cổ điển gọi đây là "Throwback" (trong xu hướng tăng) hoặc "Pullback" (trong xu hướng giảm) về một vùng kháng cự đã bị phá vỡ chuyển thành hỗ trợ. Tuy nhiên, TA cổ điển thường khuyến nghị mua ở lần chạm thứ 3 hoặc thứ 4, điều này mâu thuẫn với logic dòng lệnh tổ chức.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Một Order Block có thể duy trì trạng thái chưa bị giảm thiểu (unmitigated) trong bao lâu?**
+Đ: Nhiều ngày, nhiều tuần, hoặc thậm chí nhiều năm. Trên biểu đồ Tháng, một Order Block bị bỏ lại vào năm 2018 có thể không bị giảm thiểu cho đến năm 2024. Các lệnh tổ chức (hoặc bộ nhớ thuật toán) vẫn ở đó cho đến khi giá cuối cùng quay trở lại.
+
+**H: Điều gì xảy ra nếu giá bỏ lỡ lệnh giới hạn của tôi chỉ 1 pip và chạy mất?**
+Đ: Điều này vẫn xảy ra. Các thuật toán tổ chức không hoàn hảo, và đôi khi chúng đi trước các mức giá của chính chúng nếu thanh khoản mỏng. Đây là chi phí của việc kinh doanh. Đừng rượt đuổi theo giao dịch nếu nó bỏ lỡ điểm vào lệnh của bạn và phóng đi.
+
+**H: Tôi có nên giao dịch mitigation trong các sự kiện tin tức lớn (như NFP hoặc CPI) không?**
+Đ: Không. Các sự kiện tin tức lớn thường được các thuật toán sử dụng như một cái cớ để hoàn toàn đập tan các Order Block rõ ràng nhằm chiếm lấy thanh khoản sâu hơn. Nó rất thất thường và không thể đoán trước.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Mitigation là quá trình giá quay trở lại một Order Block để đóng các vị thế đang bị drawdown của tổ chức.",
+  "Một Order Block là một nguồn tài nguyên hữu hạn. Lần chạm đầu tiên (chưa bị giảm thiểu) có xác suất cao; các lần chạm sau rất nguy hiểm.",
+  "Bạn có thể thực thi chủ động bằng Lệnh Giới Hạn (Limit Order), hoặc an toàn bằng cách đợi sự thay đổi cấu trúc LTF (CHoCH) bên trong vùng giá.",
+  "Nếu giá cắt ngang hoàn toàn qua một Order Block và đóng cửa vượt qua nó, thiết lập bị vô hiệu.",
+  "Đừng bao giờ cho rằng một mức là 'mạnh' chỉ vì nó đã được kiểm tra nhiều lần. Trong dòng lệnh (order flow), việc kiểm tra nhiều lần đồng nghĩa với sự yếu kém."
+]} />
+
+---
+*Tham khảo:*
+Động lực dòng lệnh và cơ chế tích lũy/phân phối của tổ chức. Các thuật ngữ được phổ biến bởi cộng đồng Smart Money Concepts.

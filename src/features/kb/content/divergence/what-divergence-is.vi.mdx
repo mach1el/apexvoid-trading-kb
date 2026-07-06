@@ -1,0 +1,37 @@
+export const frontmatter = { 
+  title: 'Phân kỳ (Divergence) là gì?', 
+  description: 'Hiểu về khái niệm phân kỳ giữa giá và các chỉ báo dao động.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# Phân kỳ là gì?
+
+<ConceptCard title="Phân kỳ (Divergence)">
+Phân kỳ xảy ra khi giá của một tài sản di chuyển theo hướng ngược lại với một chỉ báo kỹ thuật, thường là một chỉ báo dao động như RSI hoặc MACD. Nó hoạt động như một dấu hiệu cảnh báo rằng xu hướng hiện tại có thể đang suy yếu hoặc mất đi động lượng.
+</ConceptCard>
+
+Khi giao dịch, động lượng quan trọng không kém gì hành động giá (price action). Trong khi giá quyết định giá trị hiện tại, các chỉ báo động lượng cho bạn biết có bao nhiêu lực đằng sau chuyển động đó. Phân kỳ là sự bất đồng giữa hai yếu tố này.
+
+## Cơ chế của Phân kỳ
+
+Trong một xu hướng lành mạnh, giá và động lượng nên đồng thuận với nhau. Nếu giá tạo một mức cao mới, chỉ báo cũng nên tạo một mức cao mới. Khi chúng không đồng thuận, bạn có sự phân kỳ.
+
+<AnnotatedChart chartData={chartRegistry.DIV} />
+
+<Callout type="warning">
+Phân kỳ không phải là một tín hiệu độc lập. Nó chỉ đơn giản chỉ ra sự mất đi động lượng, chứ không phải là sự đảo chiều ngay lập tức. Luôn tìm kiếm sự phá vỡ cấu trúc giá (như Change of Character - CHoCH) để xác nhận sự đảo chiều.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Phân kỳ là sự bất đồng giữa giá và một chỉ báo động lượng.",
+    "Nó báo hiệu rằng xu hướng hiện tại đang suy yếu.",
+    "Nó là một chỉ báo dẫn dắt (leading indicator), thường xuất hiện trước khi hành động giá đảo chiều.",
+    "Không sử dụng phân kỳ một cách đơn lẻ; hãy kết hợp nó với cấu trúc thị trường."
+  ]}
+/>

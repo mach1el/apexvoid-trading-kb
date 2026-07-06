@@ -1,0 +1,47 @@
+export const frontmatter = { title: 'Pullback theo Xu hướng (Trend-Following Pullback)', description: 'Cách tham gia vào các xu hướng đã được thiết lập với rủi ro tối thiểu và xác suất cao.' };
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { StrategyPicker } from '../../components/StrategyPicker';
+
+# Pullback theo Xu hướng (Trend-Following Pullback)
+
+<AnnotatedChart chartData={chartRegistry.PB} />
+Chiến lược pullback theo xu hướng là nguồn sống (bread and butter) của giao dịch theo hướng. Nó dựa trên một tiền đề đơn giản: trong một thị trường có xu hướng mạnh, các động thái ngược xu hướng (pullbacks) thường chỉ là sự cạn kiệt tạm thời hoặc chốt lời, mang lại một điểm vào lệnh rủi ro thấp để hòa mình vào xu hướng chủ đạo.
+
+## Kế hoạch Chiến lược
+
+**Chế độ Yêu cầu:** Thị trường Có xu hướng Rõ ràng (Đỉnh cao hơn / Đáy cao hơn đối với Xu hướng Tăng)
+
+<Callout type="warning" title="Chế độ Thất bại">
+Chiến lược này thất bại thảm hại trong các môi trường choppy hoặc đi ngang. Nếu bạn đang mua các cú pullback trong một phạm vi (range), bạn đang cung cấp thanh khoản (mua vào) ngay tại mức kháng cự.
+</Callout>
+
+### 1. Thiết lập (The Setup)
+- Xác định một xu hướng rõ ràng, không thể chối cãi (giá đang tôn trọng các đường trung bình động, tạo ra cấu trúc rõ ràng).
+- Chờ đợi một sự thoái lui (retracement) vào một vùng giá trị cao (ví dụ: kháng cự trước đó biến thành hỗ trợ, đường EMA 20, hoặc dải VWAP).
+- Quan sát sự sụt giảm khối lượng trong quá trình pullback, cho thấy sự thiếu xác tín (conviction) của phe ngược xu hướng.
+
+### 2. Tín hiệu Kích hoạt (Entry Trigger)
+Không đặt các lệnh limit (giới hạn) một cách mù quáng tại mức hỗ trợ. Hãy chờ đợi một phản ứng. Vào lệnh khi giá in ra một cây nến đảo chiều (chẳng hạn như nến búa - hammer hoặc nến nhấn chìm - engulfing) tại mức hỗ trợ, báo hiệu người mua đang quay trở lại.
+
+### 3. Đặt Stop Loss và Quản lý Lệnh
+- **Stop Loss Ban đầu:** Đặt nghiêm ngặt dưới đáy xoay chiều (pivot low) của cú pullback. Nếu mức này bị phá vỡ, cấu trúc xu hướng đã bị tổn hại, và tiền đề bị vô hiệu hóa.
+- **Quản lý Giao dịch:** Chốt lời (Scale out) 50% tại đỉnh xoay chiều (swing high) trước đó (khu vực logic nhất để giá bị chững lại). Di chuyển (Trail) phần Stop Loss còn lại theo phía sau các đáy xoay chiều mới để bắt được một nhịp chạy mở rộng.
+
+<StrategyPicker 
+  scenario="Tài sản đã tạo ra các đỉnh cao hơn trong suốt buổi sáng. Nó đột ngột giảm 2% với khối lượng rất thấp và chạm vào đường EMA 20, in ra một cây nến pin bar tăng giá. Chiến lược phù hợp là gì?"
+  options={[
+    { id: 'a', text: 'Đánh ngược (Fade) Mean-Reversion', isCorrect: false, feedback: 'Không chính xác. Đánh ngược một xu hướng mạnh là rất nguy hiểm.' },
+    { id: 'b', text: 'Pullback theo Xu hướng', isCorrect: true, feedback: 'Chính xác! Tài sản đang có xu hướng, pullback với khối lượng thấp về một mức hỗ trợ động và hiển thị một tín hiệu đảo chiều.' },
+    { id: 'c', text: 'Giao thức Chờ đợi (The Wait Protocol)', isCorrect: false, feedback: 'Không chính xác. Các điều kiện cho một sự tiếp diễn xu hướng xác suất cao đã được đáp ứng.' }
+  ]}
+/>
+
+<KeyTakeaways takeaways={[
+  "Chỉ giao dịch pullback trong các xu hướng rõ ràng, đã được thiết lập.",
+  "Yêu cầu bằng chứng về sự hiện diện của người mua (tín hiệu vào lệnh) trước khi dốc vốn.",
+  "Cấu trúc Stop Loss của bạn nằm dưới điểm vô hiệu hóa của xu hướng."
+]} />

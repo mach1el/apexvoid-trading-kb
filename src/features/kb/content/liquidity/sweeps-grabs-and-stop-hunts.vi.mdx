@@ -1,0 +1,48 @@
+export const frontmatter = { 
+  title: 'Sweeps, Grabs & Stop Hunts', 
+  description: 'Cách smart money thiết kế các cú phá vỡ giả để tiếp cận liquidity trước khi đảo chiều.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+import { SweepSpotter } from '../../components/SweepSpotter';
+
+# Sweeps, Grabs và Stop Hunts
+
+Một cú **liquidity sweep** (cũng được biết đến như liquidity grab hoặc stop hunt) xảy ra khi giá cố ý vượt qua một mức cấu trúc chính (như swing high hoặc low) để kích hoạt các lệnh chờ, sau đó ngay lập tức đảo chiều hướng đi.
+
+Đây là cơ chế chính xác mà qua đó smart money khớp các lệnh khổng lồ của họ với liquidity của các nhà giao dịch nhỏ lẻ. Nó là mô hình đảo chiều có xác suất cao nhất trong giao dịch hiện đại.
+
+## Cấu trúc của một cú Sweep
+
+Một cú liquidity sweep thực sự được đặc trưng bởi **sự từ chối (rejection)**.
+
+Khi giá chạm vào một vùng Buy-side Liquidity (BSL) phía trên đỉnh swing high, nó kích hoạt một lượng lớn các lệnh buy tràn vào. Smart money ngay lập tức hấp thụ tất cả các lệnh buy này bằng cách bán cho họ.
+
+Bởi vì smart money đang bán ra khối lượng lớn, động lực tăng giá ngay lập tức bị đè bẹp. Cây nến sẽ đẩy lên trên đỉnh đó, nhưng vào thời điểm nến đóng cửa, áp lực bán nặng nề buộc giá đóng cửa quay trở lại bên trong vùng phạm vi (range) đó.
+
+**Đặc điểm nhận dạng trực quan của một cú sweep là một bóng nến dài đâm xuyên qua mức cấu trúc, với thân nến đóng cửa ngược lại vào bên trong vùng giá.**
+
+<SweepSpotter />
+
+## Mối liên hệ với Spring trong Wyckoff
+
+Nếu bạn đã nghiên cứu lý thuyết Wyckoff cổ điển, liquidity sweep không phải là một khái niệm mới. Một cú sweep Sell-side Liquidity (SSL) ở dưới cùng của một vùng đi ngang (trading range) chính xác là những gì Richard Wyckoff gọi là **Spring** (hoặc Shakeout) gần một thế kỷ trước.
+
+Một cú sweep Buy-side Liquidity (BSL) ở trên cùng của vùng đi ngang là những gì Wyckoff gọi là **Upthrust** (UT) hoặc Upthrust After Distribution (UTAD). Thuật ngữ thay đổi, nhưng cơ chế thị trường cơ bản—quét các lệnh stop để khớp khối lượng lớn của tổ chức trước khi đẩy giá lên (markup) hoặc đạp giá xuống (markdown)—vẫn hoàn toàn giống nhau.
+
+<Callout type="note" title="Khung thời gian rất quan trọng">
+Một cú sweep trên biểu đồ 15 phút sẽ trông giống như một bóng nến dài. Tuy nhiên, nếu bạn phóng to vào biểu đồ 1 phút, cú sweep đó có thể trông giống như một xu hướng với nhiều thân nến đóng phía trên mức cấu trúc trước khi đảo chiều. Luôn xác nhận các cú sweep trên khung thời gian mà bạn đã xác định vùng liquidity.
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "Một cú sweep là một động thái có chủ ý nhằm kích hoạt các lệnh chờ và hấp thụ liquidity.",
+    "Đặc điểm nhận dạng của một cú sweep là một bóng nến dài từ chối một mức giá quan trọng.",
+    "Một cú sweep của SSL là thuật ngữ hiện đại cho Wyckoff Spring.",
+    "Một cú sweep của BSL là thuật ngữ hiện đại cho Wyckoff Upthrust."
+  ]} 
+/>

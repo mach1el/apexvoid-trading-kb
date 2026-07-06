@@ -1,0 +1,128 @@
+export const frontmatter = {
+  title: 'Displacement & Imbalance',
+  description: 'Cách nhận biết dấu chân không thể chối cãi của khối lượng tổ chức (institutional volume) và những vùng kém hiệu quả (Fair Value Gaps) mà chúng để lại.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { DisplacementSpotter } from '../../components/DisplacementSpotter';
+
+{/* 1. Hook */}
+Các nhà giao dịch nhỏ lẻ (retail traders) làm thị trường dịch chuyển từng chút một; các tổ chức tài chính làm nó dịch chuyển hàng dặm. Nếu bạn muốn giao dịch cùng với "Dòng tiền lớn" (Smart Money), bạn phải học cách nhận biết khoảnh khắc chính xác họ tham gia vào thị trường với khối lượng khổng lồ. Dấu chân đó được gọi là Displacement (Sự dịch chuyển mạnh).
+
+{/* 2. Definition */}
+**Displacement** là một sự dịch chuyển giá đột ngột, quyết liệt được đặc trưng bởi các cây nến lớn, biên độ rộng và đóng cửa gần mức giá cực đại của chúng. Chuyển động dữ dội này thường để lại một **Imbalance (Fair Value Gap - Khoảng trống giá hợp lý)**, đóng vai trò như một thỏi nam châm thu hút hành động giá (price action) trong tương lai.
+
+{/* 3. Deep Explanation */}
+## Cơ chế của Khối lượng Tổ chức (Institutional Volume)
+
+Khi một tổ chức tài chính khổng lồ cần mua 100.000 hợp đồng của một tài sản, họ không thể đơn giản là nhấp "Mua giá thị trường" (Market Buy). Không có đủ thanh khoản (Liquidity) ở mức giá hiện tại để khớp lệnh đó, vì vậy lệnh mua của họ sẽ càn quét toàn bộ sổ lệnh (order book), đẩy giá tăng vọt lên trên.
+
+Khi bạn thấy một cây nến xanh khổng lồ, thân đặc (hoặc một chuỗi các cây nến như vậy) đột nhiên xuất hiện trên biểu đồ, bạn đang chứng kiến chính hiện tượng này. Đây là **Displacement**. Nó là dấu chân không thể chối cãi cho thấy Smart Money đã bước vào thị trường.
+
+### Imbalance (FVG) là gì?
+
+Bởi vì Displacement xảy ra quá dữ dội và nhanh chóng, thị trường không có cơ hội để khớp người mua và người bán một cách hiệu quả. Nó tạo ra một khoảng không hoặc một khoảng trống trong quá trình phân phối giá.
+
+Trong một thị trường hiệu quả hoàn hảo, râu của các cây nến liên tiếp sẽ chồng lên nhau một chút, đảm bảo mọi mức giá đều được giao dịch bởi cả người mua và người bán. Khi Displacement xảy ra, một chuỗi ba nến sẽ thường xuyên xuất hiện trong đó râu của Nến 1 và râu của Nến 3 không chạm nhau, để lại một khoảng trống xuyên qua thân của Nến 2.
+
+Khoảng trống này là một **Imbalance**, ngày nay được biết đến phổ biến nhất với tên gọi **Fair Value Gap (FVG)**.
+
+### Tại sao Giá quay trở lại FVG
+
+Các mô hình định giá thuật toán (algorithmic pricing models) được sử dụng bởi các ngân hàng trung ương và các tổ chức lớn được thiết kế để duy trì tính hiệu quả của thị trường. Khi một FVG lớn bị bỏ lại, nó đại diện cho một sự kém hiệu quả.
+
+Do đó, các thuật toán sẽ chủ động kéo giá quay trở lại khoảng trống đó để "sửa chữa" sự kém hiệu quả, cho phép các nhà giao dịch đã bỏ lỡ nhịp di chuyển ban đầu được giao dịch ở những mức giá bị bỏ qua đó. Một khi khoảng trống được sửa chữa (mitigated), xu hướng ban đầu của tổ chức sẽ tiếp tục.
+
+{/* 4. Visuals */}
+## Tương tác: Nhận diện Dấu chân
+
+Sử dụng tiện ích dưới đây để thực hành phân biệt hành động giá (price action) nhiễu loạn do retail trader thúc đẩy với Displacement thực sự của tổ chức.
+
+<DisplacementSpotter />
+
+Hãy chú ý cách cây nến Displacement làm lu mờ hoàn toàn hành động giá xung quanh nó. Nó là không thể nhầm lẫn.
+
+{/* 5. How to see it on a chart */}
+## Cách Lập bản đồ các Imbalance (Từng bước một)
+
+Để tìm kiếm các điểm vào lệnh (entry) có khả năng thực thi cao, hãy làm theo quy trình sau:
+
+1. **Tìm Displacement:** Tìm kiếm một cây nến khổng lồ, thân đặc phá vỡ một mức cấu trúc (một BOS hoặc CHoCH). Nếu nến nhỏ hoặc có râu rất dài, đó không phải là Displacement.
+2. **Cô lập Cấu trúc 3 Nến:** Nhìn vào cây nến khổng lồ (Nến 2). Bây giờ, hãy nhìn vào cây nến ngay trước nó (Nến 1) và ngay sau nó (Nến 3).
+3. **Vẽ Khoảng trống:** 
+   - *Bullish FVG:* Vẽ một hộp từ Đỉnh (High) của Nến 1 đến Đáy (Low) của Nến 3. 
+   - *Bearish FVG:* Vẽ một hộp từ Đáy (Low) của Nến 1 đến Đỉnh (High) của Nến 3.
+4. **Mở rộng Vùng:** Kéo dài hộp đó sang phải. Đây là vùng Fair Value Gap (Imbalance) của bạn.
+5. **Chờ đợi Retest (Kiểm tra lại):** Đặt cảnh báo ở mép của hộp. Đừng đuổi theo Displacement. Hãy kiên nhẫn chờ đợi giá kéo ngược (pull back) và đi vào trong hộp.
+6. **Thực thi:** Khi giá đi vào FVG, hãy hạ xuống khung thời gian nhỏ hơn (lower timeframe) và tìm kiếm một mô hình đảo chiều (như CHoCH) để vào lệnh theo hướng của Displacement ban đầu.
+
+{/* 6. Worked Examples */}
+## Ví dụ Thực tế
+
+### Ví dụ 1: Sự Mitigation Hoàn hảo (Lý tưởng)
+
+**Kịch bản:** S&P 500 đã đi ngang (chopping sideways) trong nhiều giờ. 
+1. Đột nhiên, một cây nến xanh 15 phút khổng lồ xuất hiện, phá vỡ một mức kháng cự (resistance level) quan trọng. 
+2. Nến 1 có Đỉnh (High) là 4100. Nến 3 có Đáy (Low) là 4110. Nến 2 (cây nến displacement khổng lồ) lấp đầy khoảng trống ở giữa.
+3. Bạn vẽ một hộp giữa 4100 và 4110. Đây là FVG.
+4. Trong giờ tiếp theo, giá từ từ trôi xuống, cuối cùng chạm 4105 (ngay giữa FVG).
+5. Khoảnh khoắc nó chạm vào FVG, nó từ chối một cách mạnh mẽ và tăng vọt lên 4150.
+
+**Phân tích:**
+Đây là chén thánh của Smart Money Concepts. Cây nến khổng lồ ban đầu là lúc các tổ chức ngửa bài (bullish). Sự trôi xuống chậm chạp là do các thuật toán sửa chữa sự kém hiệu quả. Cú chạm vào FVG là cơ hội để Smart Money bổ sung vị thế trước khi đẩy giá lên cao hơn.
+
+### Ví dụ 2: FVG Bị Bỏ Qua (Thực tế)
+
+<AnnotatedChart 
+  title="Khi các Imbalance Thất bại"
+  isBull={false}
+  keyLevelY={40}
+  showFVG={true}
+  showSweep={true}
+/>
+
+**Phân tích:**
+Trong kịch bản này, chúng ta thấy một cây nến displacement đỏ khổng lồ để lại một bearish FVG. Tuy nhiên, nhịp di chuyển này xảy ra *mà không* quét thanh khoản (sweeping Liquidity) hay chạm vào một mức kháng cự Khung thời gian Lớn (Higher Timeframe - HTF). 
+
+Giá kéo ngược (pulls back) vào bearish FVG, nhưng thay vì từ chối, nó đâm xuyên thẳng qua đó, đóng cửa ở phía trên. 
+
+Tại sao nó thất bại? Bởi vì displacement đỏ ban đầu là một cái bẫy. Nó được thiết kế giống như một đợt bán tháo để dụ dỗ các retail trader bán khống (shorts), từ đó xây dựng Liquidity ở phía trên. Ý định thực sự của thị trường là tăng giá (bullish). Đây là lý do tại sao bạn không bao giờ được giao dịch một FVG một cách cô lập; nó phải được hỗ trợ bởi bối cảnh HTF.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Bẫy FVG Trơ trọi (Naked FVG Trap)">
+  Một biểu đồ có rải rác rất nhiều Fair Value Gaps. Nếu bạn nhắm mắt đặt các lệnh limit tại mọi FVG bạn thấy, bạn sẽ cháy tài khoản. FVGs chỉ có xác suất cao khi chúng được tạo ra như là kết quả trực tiếp của việc giá bật lên từ một Mức Quan trọng (Key Level) HTF lớn hoặc quét một bể thanh khoản (Liquidity pool) lớn. Nếu một FVG hình thành ở giữa một vùng giá giao dịch ngẫu nhiên (random trading range), hãy bỏ qua nó.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải thích theo các Hệ thống Hiện đại
+
+- **ICT:** "Displacement" và "Fair Value Gap (FVG)" là các thuật ngữ được đặt ra và phổ biến trực tiếp bởi Inner Circle Trader. Chúng tạo thành cốt lõi tuyệt đối trong phương pháp luận của ông.
+- **Volume Spread Analysis (VSA):** Các nhà giao dịch VSA gọi displacement là nến có "Biên độ Cực Rộng" (Ultra-Wide Spread) đi kèm với khối lượng cao, cho thấy "Smart Money" đã tham gia.
+- **Classic TA (Phân tích Kỹ thuật Cổ điển):** Các nhà giao dịch cổ điển thường chỉ gọi điều này đơn giản là "Động lượng" (Momentum) hoặc "Nhịp Đẩy" (Impulse Leg), và gọi FVG là một "Gap" (mặc dù các gap truyền thống ám chỉ các mức giá đóng cửa cuối tuần, khái niệm về một khoảng không giá là hoàn toàn giống nhau).
+
+{/* 9. FAQ */}
+## Những Câu Hỏi Thường Gặp
+
+**Q: Giá CÓ BẮT BUỘC phải quay trở lại FVG không?**
+A: Không. Trong các xu hướng cực kỳ mạnh mẽ, chạy trốn (như thị trường bò crypto), giá có thể bỏ lại các FVG trong nhiều tuần hoặc nhiều tháng. Tuy nhiên, trong các thị trường bình thường, hai chiều, FVGs thường được lấp đầy trong cùng một phiên hoặc phiên tiếp theo.
+
+**Q: Tôi nên vào lệnh ở phần bắt đầu của FVG, hay ở giữa?**
+A: Điều đó phụ thuộc vào khả năng chịu đựng rủi ro của bạn. Những nhà giao dịch mạo hiểm (Aggressive traders) sẽ vào lệnh ngay khoảnh khắc giá chạm vào mép của FVG. Những nhà giao dịch thận trọng (Conservative traders) sẽ chờ giá chạm đến mức 50% của FVG (được gọi là Consequent Encroachment) để đảm bảo tỷ lệ rủi ro trên lợi nhuận (risk-to-reward ratio) tốt hơn.
+
+**Q: Điều gì xảy ra nếu giá đóng cửa hoàn toàn vượt qua khỏi FVG?**
+A: Nếu một thân nến đóng cửa hoàn toàn bên ngoài FVG, thiết lập giao dịch (setup) đó bị vô hiệu hóa. FVG đã thất bại trong việc giữ vai trò là hỗ trợ/kháng cự (support/resistance), và phe đối lập hiện đang kiểm soát. 
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Displacement là một sự dịch chuyển giá đột ngột, khổng lồ cho thấy sự tham gia của tổ chức.",
+  "Một Imbalance (FVG) là một khoảng trống bị bỏ lại bởi displacement nơi giá được phân phối một cách kém hiệu quả.",
+  "Các thuật toán sẽ tự nhiên kéo giá quay trở lại FVG để sửa chữa sự kém hiệu quả.",
+  "Bạn nhận diện một FVG bằng cách nhìn vào khoảng không gian giữa các râu nến ngay trước và sau cây nến displacement.",
+  "Không bao giờ giao dịch một FVG một cách cô lập. Nó phải phù hợp với cấu trúc và bối cảnh HTF."
+]} />
+
+---
+*Tham khảo:*
+Các khái niệm về tính hiệu quả của thị trường và sự mất cân bằng luồng lệnh (order flow imbalances). Thuật ngữ được phổ biến mạnh mẽ bởi Inner Circle Trader (ICT) và cộng đồng Smart Money Concepts.

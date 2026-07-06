@@ -1,0 +1,44 @@
+export const frontmatter = { title: 'DXY và Lợi suất thực', description: 'Hiểu về mối tương quan nghịch đảo giữa Vàng, Đồng Đô la Mỹ và Lợi suất Trái phiếu Kho bạc.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { GoldVsDXY } from '../../components/GoldVsDXY';
+
+# DXY và Lợi suất thực
+
+Vàng không tồn tại trong chân không. Bởi vì XAUUSD được định giá bằng Đô la Mỹ, việc phân tích chỉ số đồng đô la rộng hơn (DXY) và thị trường Trái phiếu Kho bạc Mỹ là bắt buộc để xác định bối cảnh cho hành động giá của vàng.
+
+## Chỉ số Đồng Đô la Mỹ (DXY)
+
+DXY đo lường giá trị của Đồng Đô la Mỹ so với một rổ các ngoại tệ (chủ yếu là Euro, Yên và Bảng Anh). 
+
+Khi DXY đang trong một xu hướng tăng mạnh, vàng phải đối mặt với những cơn gió ngược về cấu trúc. Nếu đồng đô la đang mạnh lên, sẽ cần ít đô la hơn để mua một ounce vàng, tạo áp lực giảm lên biểu đồ XAUUSD.
+
+<ConceptCard title="Tương quan Nghịch đảo">
+  Mặc dù tương quan âm giữa XAUUSD và DXY rất mạnh, nhưng nó không phải là 1-1. Đôi khi cả hai có thể tăng đồng thời nếu một cú sốc toàn cầu gây ra sự dịch chuyển đến các tài sản an toàn (các nhà đầu tư mua cả tiền mặt USD và Vàng vật chất).
+</ConceptCard>
+
+## Phân tích Tương tác: Vàng vs. DXY
+
+<GoldVsDXY />
+
+## Vai trò của Lợi suất thực
+
+Lợi suất thực (Real yields) được cho là động lực dài hạn mạnh mẽ nhất đối với giá vàng.
+
+*Lợi suất thực = Lợi suất Trái phiếu Kho bạc 10 năm danh nghĩa - Lạm phát kỳ vọng*
+
+Khi lợi suất thực ở mức cao hoặc đang tăng, việc nắm giữ vàng có chi phí cơ hội cao. Dòng vốn luân chuyển khỏi các quỹ ETF vàng và đi vào trái phiếu. Khi lợi suất thực âm hoặc đang giảm (lạm phát vượt quá lãi suất), vàng trở thành kho lưu trữ giá trị ưa thích.
+
+<Callout type="info">
+  Nếu Vàng thất bại trong việc phá vỡ một mức kháng cự (resistance) trong khi DXY đang phá vỡ hỗ trợ (support), Vàng đang thể hiện sự suy yếu tương đối. Sự phân kỳ này thường là điềm báo cho một đợt bán tháo mạnh của Vàng một khi DXY ổn định.
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "XAUUSD nhìn chung di chuyển ngược chiều với DXY.",
+    "Lợi suất thực tăng tạo ra một môi trường bất lợi cho vàng.",
+    "Sự phân kỳ giữa hành động giá DXY và hành động giá Vàng cung cấp các tín hiệu giao dịch xác suất cao."
+  ]}
+/>

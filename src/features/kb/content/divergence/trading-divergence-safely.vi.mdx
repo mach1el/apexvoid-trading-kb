@@ -1,0 +1,43 @@
+export const frontmatter = { 
+  title: 'Giao dịch Phân kỳ một cách An toàn', 
+  description: 'Cách kết hợp phân kỳ với Change of Character (CHoCH) cho các setup xác suất cao.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { DivergenceSpotter } from '../../components/DivergenceSpotter';
+
+# Giao dịch Phân kỳ một cách An toàn
+
+Bản thân phân kỳ là một tín hiệu yếu. Một tài sản có động lượng mạnh có thể tạo phân kỳ trên một chỉ báo dao động trong một thời gian dài trước khi thực sự đảo chiều. Để giao dịch phân kỳ an toàn, bạn phải kết hợp nó với sự thay đổi trong cấu trúc thị trường, cụ thể là Change of Character (CHoCH).
+
+## Setup Phân kỳ + CHoCH
+
+Change of Character xảy ra khi giá phá vỡ điểm cấu trúc tạo ra cực trị gần nhất (đỉnh hoặc đáy). Khi phân kỳ xuất hiện, chúng ta chờ đợi một CHoCH để xác nhận rằng xu hướng thực sự đã đảo chiều.
+
+1.  **Nhận diện Phân kỳ:** Phát hiện phân kỳ thường giữa giá và chỉ báo dao động của bạn.
+2.  **Chờ đợi Phá vỡ cấu trúc:** Chờ đợi giá phá vỡ đỉnh thấp hơn (lower high) gần nhất (đối với đảo chiều tăng) hoặc đáy cao hơn (higher low) gần nhất (đối với đảo chiều giảm).
+3.  **Vào lệnh tại nhịp Retest:** Khi CHoCH xảy ra, chờ đợi giá retest một vùng cung hoặc cầu (supply or demand zone) mới được hình thành.
+
+<AnnotatedChart chartData={chartRegistry.DIVC} />
+
+<Callout type="tip">
+Các setup phân kỳ đáng tin cậy nhất xảy ra tại các Điểm quan tâm (Points of Interest - POI) ở khung thời gian lớn, chẳng hạn như các vùng support/resistance ngày hoặc tuần.
+</Callout>
+
+### Thực hành: Nhận diện Phân kỳ
+
+Sử dụng thành phần tương tác bên dưới để thực hành nhận diện các setup phân kỳ hợp lệ.
+
+<DivergenceSpotter />
+
+<KeyTakeaways 
+  items={[
+    "Không bao giờ giao dịch phân kỳ một cách mù quáng; hãy chờ đợi sự xác nhận từ cấu trúc.",
+    "Change of Character (CHoCH) xác nhận sự thay đổi động lượng được chỉ ra bởi phân kỳ.",
+    "Vào lệnh tại nhịp retest sau một CHoCH cung cấp một tỷ lệ risk-to-reward tốt hơn."
+  ]}
+/>

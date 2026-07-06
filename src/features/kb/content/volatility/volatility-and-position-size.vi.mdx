@@ -1,0 +1,41 @@
+export const frontmatter = { title: 'Biến động và Định cỡ Vị thế (Position Sizing)', description: 'Bình thường hóa rủi ro qua các chế độ biến động khác nhau bằng cách linh hoạt điều chỉnh quy mô vị thế.' };
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { ATRStopSizer } from '../../components/ATRStopSizer';
+
+# Biến động (Volatility) và Định cỡ Vị thế (Position Sizing)
+
+Việc định cỡ khối lượng cố định (giao dịch cùng một kích thước lot trên mọi setup) bỏ qua môi trường rủi ro luôn thay đổi. Khi biến động (volatility) mở rộng, các kích thước lot cố định khiến tài khoản đối mặt với rủi ro theo số tiền (dollar risk) cao hơn theo cấp số nhân trên mỗi giao dịch.
+
+## Bình thường hóa Rủi ro (Risk Normalization)
+
+Mục tiêu của việc định cỡ vị thế động là bình thường hóa rủi ro: đảm bảo rằng số tiền gặp rủi ro trên bất kỳ giao dịch cụ thể nào luôn không đổi so với vốn tài khoản (account equity), bất kể Stop Loss cần đặt rộng đến mức nào.
+
+<ConceptCard title="Công thức Định cỡ">
+  `Quy mô Vị thế = (Vốn Tài khoản * % Rủi ro) / Khoảng cách Stop Loss`
+  
+  Nếu khoảng cách Stop Loss được xác định bởi ATR (VD: 2x ATR), thì khi ATR tăng lên, Quy mô Vị thế (Position Size) phải giảm xuống để duy trì cùng một mức rủi ro tiền tệ.
+</ConceptCard>
+
+## Công cụ tính Size ATR Tương tác
+
+<ATRStopSizer />
+
+## Lợi ích Tâm lý
+
+Điều chỉnh quy mô vị thế dựa trên biến động giúp bảo vệ vốn trong các thị trường hỗn loạn. Nó cũng loại bỏ áp lực tâm lý khi đối mặt với những biến động PnL khổng lồ trong các sự kiện biến động cao. Một Stop Loss 50 pip với 1 lot mang sức nặng tài chính hoàn toàn giống hệt một Stop Loss 25 pip với 2 lot.
+
+<Callout type="warning">
+  Việc không giảm quy mô vị thế khi ATR tăng gấp đôi đồng nghĩa với việc bạn đang nhân đôi hồ sơ rủi ro (risk profile) một cách không có ý thức. Đây là nguyên nhân chính dẫn đến cháy tài khoản trong các giai đoạn chuyển giao chế độ (regime shifts).
+</Callout>
+
+<KeyTakeaways 
+  items={[
+    "Quy mô vị thế phải tỷ lệ nghịch với khoảng cách Stop Loss bắt buộc.",
+    "Bình thường hóa rủi ro đảm bảo đường cong vốn (equity curves) nhất quán.",
+    "Biến động cao hơn bắt buộc phải có quy mô vị thế nhỏ hơn về mặt khối lượng (volume)."
+  ]}
+/>

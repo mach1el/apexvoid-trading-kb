@@ -1,0 +1,51 @@
+export const frontmatter = { title: 'Hoàn nguyên về Mức trung bình (Mean-Reversion)', description: 'Đánh ngược các vùng cực hạn khi thị trường bị mắc kẹt trong một phạm vi.' };
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { StrategyPicker } from '../../components/StrategyPicker';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+# Hoàn nguyên về Mức trung bình (Mean-Reversion)
+
+<AnnotatedChart chartData={chartRegistry.MR} />
+
+Khi thị trường đang trong chế độ đi ngang (ranging), các chiến lược theo xu hướng (trend-following) sẽ làm hao mòn tài khoản của bạn qua hàng ngàn vết cắt nhỏ. Trong một phạm vi, các cú phá vỡ (breakouts) sẽ thất bại, và giá liên tục bật trở lại mức trung bình (the mean).
+
+Giao dịch Mean-reversion là nghệ thuật bán tại kháng cự và mua tại hỗ trợ, với kỳ vọng rằng các ranh giới sẽ được giữ vững.
+
+## Cấu phẫu của một Phạm vi (Range)
+
+Phạm vi xảy ra khi người mua và người bán đạt đến một trạng thái cân bằng tạm thời.
+- **Kháng cự (Resistance):** Trần nhà nơi người bán liên tục tham gia.
+- **Hỗ trợ (Support):** Sàn nhà nơi người mua liên tục tham gia.
+- **Mức trung bình (The Mean):** Điểm giữa của phạm vi, thường hoạt động như một thỏi nam châm hút giá.
+
+<Callout type="info" title="Hiệu ứng Dây thun">
+Hãy coi giá trong một phạm vi giống như một dải dây thun. Càng bị kéo dãn xa khỏi mức trung bình về phía các vùng cực hạn (hỗ trợ hoặc kháng cự), lực bật ngược trở lại tâm càng mạnh.
+</Callout>
+
+## Kế hoạch Chiến lược
+
+1. **Xác định Chế độ:** Xác nhận thị trường đang đi ngang. Bạn cần ít nhất hai lần chạm đỉnh và hai lần chạm đáy để xác định một phạm vi hợp lệ.
+2. **Thiết lập (The Setup):** Chờ giá tiếp cận các ranh giới cực hạn. Không giao dịch ở giữa phạm vi (vùng chop zone).
+3. **Tín hiệu Kích hoạt (The Trigger):** Tìm kiếm sự cạn kiệt tại các vùng cực hạn. Điều này thường trông giống như một râu nến dài đâm xuyên qua ranh giới và ngay lập tức thất bại (một sự sai lệch - deviation hoặc quét thanh khoản - liquidity sweep).
+4. **Thực thi (Execution):** Vào lệnh short tại kháng cự hoặc long tại hỗ trợ *sau khi* cây nến cạn kiệt đóng cửa.
+5. **Mục tiêu (Targets):** 
+   - Mục tiêu 1 (Hung hăng - Aggressive): Điểm giữa (mức trung bình) của phạm vi.
+   - Mục tiêu 2 (Chạy dài - Runner): Điểm cực hạn đối diện của phạm vi.
+6. **Dừng lỗ (Stop Loss):** Đặt Stop Loss ngay bên ngoài ranh giới cực hạn. Nếu phạm vi bị phá vỡ, bạn phải thoát lệnh ngay lập tức.
+
+<StrategyPicker 
+  scenario="Giá đã dao động giữa $100 và $120 trong ba tuần. Nó vừa tăng vọt lên $121 khi có tin tức, nhưng ngay lập tức bị đập mạnh xuống đóng cửa giờ ở mức $119, để lại một râu nến trên khổng lồ. Bạn sẽ làm gì?"
+  options={[
+    { id: 'a', text: 'Vào lệnh Long (Breakout)', isCorrect: false, feedback: 'Không chính xác. Cú breakout đã thất bại, cho thấy người bán đang bảo vệ phạm vi.' },
+    { id: 'b', text: 'Vào lệnh Short (Mean Reversion)', isCorrect: true, feedback: 'Chính xác! Đây là một cú quét thanh khoản kinh điển và thất bại tại kháng cự của phạm vi. Xác suất ủng hộ một bước di chuyển quay trở lại mức trung bình.' }
+  ]}
+/>
+
+<KeyTakeaways takeaways={[
+  "Chỉ triển khai chiến lược này trong các thị trường đi ngang đã được xác lập.",
+  "Không bao giờ khởi xướng giao dịch ở giữa phạm vi.",
+  "Một cú quét ranh giới theo sau là một sự từ chối nhanh chóng là tín hiệu vào lệnh mạnh mẽ nhất."
+]} />

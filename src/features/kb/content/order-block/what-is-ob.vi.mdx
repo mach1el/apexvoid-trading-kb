@@ -1,0 +1,114 @@
+export const frontmatter = {
+  title: 'Order Block (Khối Lệnh) Là Gì?',
+  description: 'Logic đằng sau sự tích lũy của tổ chức. Cách xác định chính xác những cây nến nơi các ngân hàng để lại dấu chân của họ trước khi đẩy giá đi xa.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+{/* 1. Hook */}
+Các nhà giao dịch bán lẻ mua và bán theo giá thị trường, thực thi ngay lập tức. Một ngân hàng trung ương hoặc một quỹ phòng hộ khổng lồ không thể làm điều này. Nếu họ cần tích lũy một vị thế tỷ đô, họ phải làm như vậy một cách có chiến lược, che giấu ý định của mình, và xây dựng vị thế theo thời gian. "Order Block" (Khối lệnh) là dấu chân cuối cùng họ để lại trước khi họ hoàn tất vị thế và sẵn sàng làm cho giá bay bổng.
+
+{/* 2. Definition */}
+Một **Order Block (OB)** thường được định nghĩa là cây nến đối lập cuối cùng (hoặc một chuỗi các nến) trước một nhịp chuyển động đẩy mạnh mẽ (Displacement - Sự dịch chuyển) dẫn đến sự Phá vỡ Cấu trúc (Break of Structure).
+- Một **Bullish OB (Khối Cầu - Demand)** là cây nến giảm cuối cùng trước một nhịp tăng giá khổng lồ.
+- Một **Bearish OB (Khối Cung - Supply)** là cây nến tăng cuối cùng trước một nhịp giảm giá khổng lồ.
+
+{/* 3. Deep Explanation */}
+## Logic Của Tổ Chức
+
+Để hiểu *tại sao* một Order Block lại hoạt động, bạn phải hiểu dòng lệnh của tổ chức (institutional order flow).
+
+Hãy tưởng tượng một ngân hàng lớn muốn mua EUR/USD. Nếu họ mua tất cả cùng một lúc, họ sẽ gây ra trượt giá (slippage) cực lớn, làm hỏng mức giá vào lệnh trung bình của họ. Thay vào đó, họ phải dàn xếp thanh khoản.
+
+Đầu tiên, họ bán khống *nặng tay* vào thị trường. Điều này đẩy giá xuống, kích hoạt Stop Loss của những nhà giao dịch bán lẻ và dụ dỗ những nhà giao dịch breakout bán khống. Bằng cách buộc mọi người khác phải bán, ngân hàng đã tạo ra một bể khổng lồ những người sẵn sàng bán. Ngân hàng sau đó sử dụng tất cả các lệnh bán bán lẻ đó để khớp các lệnh *mua* khổng lồ của chính họ mà không làm trượt giá.
+
+Một khi các lệnh mua của họ được khớp, họ ngừng bán. Áp lực mua khổng lồ chiếm lấy thị trường, dẫn đến một đợt tăng giá mạnh mẽ, bạo lực hướng lên trên (Sự dịch chuyển - Displacement).
+
+### Dấu Chân Để Lại
+Nhịp di chuyển ban đầu xuống dưới đó—việc bán mà họ phải làm để tích lũy các lệnh mua của mình—chính là **Bullish Order Block**.
+
+Bởi vì họ đã phải bán để thao túng giá, về mặt kỹ thuật, họ đang "thua lỗ tạm thời" (drawdown) trên các vị thế bán ban đầu đó khi giá tăng vọt lên trên. Là những thực thể rất ngại rủi ro, họ cuối cùng sẽ điều hướng giá quay trở lại chính khu vực đó để đóng các vị thế bán của họ ở mức hòa vốn (breakeven). Khi họ đóng những lệnh bán khống đó (mua để đóng lệnh - buying to cover), nó bổ sung thêm áp lực mua vào thị trường, khiến giá nảy lên một cách hoàn hảo khỏi Order Block.
+
+{/* 4. Visuals */}
+## Cấu Phẫu Của Một Order Block
+
+<AnnotatedChart chartData={chartRegistry.OB} />
+
+*Trong biểu đồ trên, hãy chú ý cây nến đỏ cuối cùng trước sự dịch chuyển xanh khổng lồ. Cây nến đỏ đó đại diện cho việc bán của tổ chức cần thiết để thu thập thanh khoản. Sự Phá vỡ Cấu trúc (BOS) tiếp theo xác nhận nó là một Order Block thực sự.*
+
+{/* 5. How to see it on a chart */}
+## 3 Trụ Cột Của Một Order Block Hợp Lệ
+
+Một cây nến giảm ngẫu nhiên trước một cây nến tăng KHÔNG PHẢI là một Order Block. Để hợp lệ, nó phải đáp ứng ba tiêu chí nghiêm ngặt:
+
+1. **Nó Phải Có Sự Dịch Chuyển (Displace):** Nhịp di chuyển bắt nguồn từ OB phải bạo lực. Nó sẽ để lại một [Fair Value Gap (FVG)](/price-action/displacement-imbalance). Nếu giá từ từ nhích ra khỏi cây nến, đó không phải là một OB tổ chức.
+2. **Nó Phải Phá Vỡ Cấu Trúc (Break Structure):** Sự dịch chuyển phải đạt được điều gì đó. Nó phải dẫn đến một [BOS](/price-action/bos) hoặc [CHoCH](/price-action/choch) hợp lệ. Một OB thất bại trong việc phá vỡ cấu trúc là một OB yếu.
+3. **Nó Phải Chưa Bị Giảm Thiểu (Unmitigated):** Giá chưa được quay trở lại OB đó. Một khi giá chạm vào OB và nảy lên, các lệnh của tổ chức đã được khớp, và OB đó được coi là "đã bị giảm thiểu" (mitigated) hay đã sử dụng hết.
+
+{/* 6. Worked Examples */}
+## Các Ví Dụ Thực Tế
+
+### Ví Dụ 1: Khối Cầu Nguyên Sơ (Lý tưởng)
+
+**Kịch Bản:** Cổ phiếu Apple (AAPL) đang trong xu hướng tăng trên biểu đồ Daily.
+1. Giá kéo ngược lại (pullback) trong ba ngày, tạo ra một chuỗi các nến đỏ.
+2. Vào thứ Năm, một nến xanh khổng lồ xuất hiện, phá vỡ qua Swing High trước đó (BOS).
+3. Cây nến xanh này rất lớn và để lại một Fair Value Gap phía sau nó.
+4. Cây nến đỏ cuối cùng vào thứ Tư chính là Bullish Order Block của chúng ta.
+5. Chúng ta vẽ một cái hộp từ đỉnh của ngày thứ Tư xuống đáy của ngày thứ Tư và kéo dài nó về bên phải.
+6. Hai tuần sau, giá rớt vào hộp đó, chạm cạnh trên của nó, và ngay lập tức tăng vọt lên đỉnh cao mọi thời đại mới.
+
+**Phân Tích:**
+Đây là một thiết lập sách giáo khoa. Sự dịch chuyển đã chứng minh ý định của tổ chức. BOS đã xác nhận mức giá đó. Và bởi vì nó chưa từng được kiểm tra (tested), chúng ta biết nó chưa bị giảm thiểu (unmitigated). Lần trở lại OB đã mang lại một điểm vào lệnh rủi ro thấp, lợi nhuận cao.
+
+### Ví Dụ 2: Khối "Block" Bị Hỏng (Thực tế)
+
+**Kịch Bản:** EUR/USD đang đi ngang trong một phạm vi hẹp 20 pip trên biểu đồ 15 Phút.
+1. Giá giảm nhẹ, in ra một cây nến đỏ.
+2. Nến tiếp theo màu xanh, nhưng nó nhỏ. Nó hầu như không đẩy qua khỏi nến đỏ trước đó.
+3. Nó không phá vỡ bất kỳ swing highs chính nào. Nó không để lại FVG nào.
+4. Một nhà giao dịch bán lẻ đánh dấu cây nến đỏ đó là một Order Block và đặt một lệnh giới hạn mua lên nó.
+5. Một giờ sau, giá dễ dàng cắt thẳng qua chiếc hộp, làm nhà giao dịch bị Stop Loss.
+
+**Phân Tích:**
+Tại sao nó thất bại? Bởi vì nó thiếu các trụ cột. Không có sự dịch chuyển, và không có sự phá vỡ cấu trúc. Một cây nến giảm trong một thị trường đi ngang, biến động là tín hiệu nhiễu (noise). Một Order Block cần có bằng chứng về sự bảo trợ của tổ chức (tốc độ bạo lực và sự thay đổi cấu trúc).
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Lầm Tưởng Về Mitigation">
+  Nhiều nhà giao dịch tin rằng một Order Block càng bị chạm nhiều lần thì nó càng trở nên mạnh hơn. Đây là logic Hỗ trợ/Kháng cự cổ điển, và nó SAI 100% đối với Order Block. Order Block là khu vực của các lệnh chờ từ tổ chức. Mỗi khi giá chạm vào OB, các lệnh sẽ bị tiêu thụ. Lần chạm đầu tiên có xác suất cao. Lần chạm thứ hai rất nguy hiểm. Lần chạm thứ ba gần như chắc chắn sẽ phá vỡ qua.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Giải Thích Theo Khung Lý Thuyết Hiện Đại
+
+- **SMC / ICT:** Thuật ngữ "Order Block" là nền tảng của phương pháp ICT. ICT đặc biệt định nghĩa một OB tăng giá là cây nến có giá đóng cửa thấp nhất với khoảng cách lớn nhất giữa mở cửa và đóng cửa, nằm gần một vùng hỗ trợ.
+- **Giao Dịch Cung & Cầu (Supply & Demand - Sam Seiden):** Các nhà giao dịch S&D gọi Order Blocks là các vùng "Drop-Base-Rally" (Cầu) hoặc "Rally-Base-Drop" (Cung). Logic cơ bản về sự mất cân bằng của tổ chức là hoàn toàn giống nhau.
+- **Wyckoff:** Trong thuật ngữ Wyckoff, một Bullish Order Block thường trùng khớp với giai đoạn "Spring" hoặc "Test" trong sơ đồ Tích lũy (Accumulation schematic).
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp (FAQ)
+
+**H: Tôi vẽ hộp OB chỉ sử dụng thân nến, hay bao gồm cả râu nến?**
+Đ: Những người theo trường phái tổ chức thuần túy vẽ hộp bao quanh toàn bộ cây nến (từ đỉnh đến đáy, bao gồm cả râu nến). Tuy nhiên, nếu râu nến dài bất thường (làm cho rủi ro quá rộng), nhiều nhà giao dịch tinh chỉnh vùng bằng cách chỉ vẽ trên thân nến (từ mở cửa đến đóng cửa), hoặc chuyển xuống khung thời gian thấp hơn. Chúng ta sẽ đề cập đến điều này trong bài [Tinh Chỉnh OBs](/order-block/identify-manually).
+
+**H: Điều gì xảy ra nếu có ba cây nến đỏ liên tiếp trước sự dịch chuyển xanh khổng lồ? Cây nến nào là OB?**
+Đ: Cả ba! Khi bạn có một chuỗi các nến đóng cửa giảm liên tiếp trước sự dịch chuyển, toàn bộ chuỗi được coi là một Order Block vĩ mô. Bạn vẽ vùng của mình từ đỉnh cao nhất của chuỗi xuống đáy thấp nhất của chuỗi.
+
+**H: Tôi có thể giao dịch Order Block ngược xu hướng không?**
+Đ: Có thể, nhưng xác suất thành công thấp hơn nhiều. Một Bullish Order Block hình thành trong xu hướng giảm vĩ mô thường chỉ là một điểm dừng tạm thời trước khi giá chạy qua nó. Luôn giao dịch các OB đồng điệu với xu hướng Khung Thời Gian Lớn (Higher Timeframe trend).
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Một Order Block là cây nến đối lập cuối cùng trước một sự dịch chuyển khổng lồ phá vỡ cấu trúc.",
+  "Chúng đại diện cho những khu vực mà các tổ chức cố tình tạo ra thanh khoản để tích lũy các vị thế khổng lồ.",
+  "Một OB hợp lệ PHẢI gây ra Sự Phá Vỡ Cấu Trúc (BOS) hoặc Thay Đổi Tính Chất (CHoCH).",
+  "Một OB hợp lệ PHẢI để lại một Fair Value Gap (FVG) cho thấy sự dịch chuyển.",
+  "Không giống như Hỗ trợ/Kháng cự của bán lẻ, một OB yếu đi sau mỗi lần chạm. Bạn chỉ muốn giao dịch lần mitigation đầu tiên."
+]} />
+
+---
+*Tham khảo:*
+Các khái niệm được phổ biến mạnh mẽ bởi cộng đồng Smart Money Concepts và Inner Circle Trader. Bắt nguồn từ lý thuyết vùng Cung và Cầu truyền thống.

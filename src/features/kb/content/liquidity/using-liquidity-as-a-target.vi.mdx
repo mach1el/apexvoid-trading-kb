@@ -1,0 +1,47 @@
+export const frontmatter = { 
+  title: 'Sử dụng Liquidity làm Mục tiêu (Target)', 
+  description: 'Cách tận dụng các vùng liquidity để làm các mức chốt lời (take-profit) xác suất cao.' 
+};
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { chartRegistry } from '../chartRegistry';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { Callout } from '../../../../shared/components/Callout';
+
+# Sử dụng Liquidity làm Mục tiêu (Target)
+
+Chúng ta đã tập trung rất nhiều vào cách tránh bị sập bẫy bởi các cú quét thanh khoản (liquidity sweeps). Nhưng liquidity có một chức năng thứ hai, quan trọng không kém trong một kế hoạch giao dịch: **nó là mục tiêu chốt lời tối thượng.**
+
+Bởi vì giá bị hút vào các vùng liquidity như nam châm, việc nhắm mục tiêu vào các vùng này cung cấp cho bạn một điểm đến có xác suất cao cho các giao dịch của bạn.
+
+## Lực hút về phía Liquidity (Draw on Liquidity - DOL)
+
+**Draw on Liquidity (DOL)** là một khái niệm đặt câu hỏi: *Hiện tại giá đang bị hút về đâu?*
+
+Khi thị trường đảo chiều (ví dụ: sau khi quét SSL và tạo ra một cấu trúc CHoCH tăng giá), nó không chỉ đi lang thang một cách ngẫu nhiên. Nó di chuyển có mục đích hướng tới vùng liquidity đối lập lớn nhất, gần nhất (BSL).
+
+Nếu bạn đang long, mục tiêu chính của bạn là xác định vùng BSL đang chờ rõ ràng nhất phía trên bạn. Đó là mục tiêu của bạn.
+
+<AnnotatedChart chartData={chartRegistry.TARGETLIQ} />
+
+## Tại sao lại nhắm mục tiêu vào Liquidity?
+
+Tại sao một vùng liquidity lại là một mục tiêu tốt hơn một tỷ lệ Risk:Reward cố định (như 1:3 cứng nhắc) hoặc một mức mở rộng Fibonacci ngẫu nhiên?
+
+Bởi vì khi lệnh chốt lời của bạn (là một lệnh sell nếu bạn đang long) được kích hoạt tại vùng BSL, nó sẽ khớp hoàn hảo với làn sóng các lệnh buy (lệnh stop của vị thế short) đang được kích hoạt trong vùng đó.
+
+Nếu bạn nhắm mục tiêu vào các mức tùy ý ở giữa một phạm vi (range), không có gì đảm bảo rằng có đủ khối lượng tồn tại ở đó để khớp lệnh của bạn trước khi giá đảo chiều đi ngược lại bạn. Việc nhắm mục tiêu vào liquidity đảm bảo rằng điểm thoát lệnh của bạn phù hợp với cơ chế phân phối khối lượng tự nhiên của thị trường.
+
+<Callout type="tip" title="Nhắm mục tiêu Internal vs External">
+Nếu thị trường vừa quét một vùng External liquidity chính (ví dụ: Daily Low), lực hút liquidity ngay lập tức thường là Internal (ví dụ: một FVG chưa được giảm thiểu bên trong range). Một khi internal liquidity được cân bằng lại, lực hút sẽ chuyển sang vùng External đối lập (ví dụ: Daily High).
+</Callout>
+
+<KeyTakeaways 
+  points={[
+    "Các vùng liquidity là mục tiêu chốt lời có xác suất cao nhất.",
+    "'Draw on Liquidity' là lực hút từ tính về phía vùng thanh khoản tiếp theo.",
+    "Khi long, nhắm mục tiêu vào BSL rõ ràng. Khi short, nhắm mục tiêu vào SSL rõ ràng.",
+    "Nhắm mục tiêu vào liquidity giúp các điểm thoát lệnh của bạn phù hợp với phân phối khối lượng của thị trường."
+  ]} 
+/>
