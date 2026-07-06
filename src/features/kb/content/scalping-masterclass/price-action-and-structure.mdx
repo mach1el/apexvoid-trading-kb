@@ -1,51 +1,84 @@
-export const frontmatter = { title: 'Price Action & Market Structure', description: 'Reading the narrative behind the candlesticks and understanding structural shifts.' };
+export const frontmatter = { 
+  title: 'Price Action & Market Structure', 
+  description: 'Reading the deep narrative behind M1/M5 candlesticks and understanding granular structural shifts to dominate the micro-timeframes.' 
+};
 
 import { ConceptCard } from '../../../../shared/components/ConceptCard';
 import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
 import { Callout } from '../../../../shared/components/Callout';
 import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
 
 # Price Action & Market Structure
 
-Price action is the purest form of market data. By reading the narrative behind the candlesticks and mapping the structural shifts, a scalper can determine who is in control of the market at any given moment.
+Price action is the purest, most unfiltered form of market data available. Before indicators print a signal, before moving averages cross, the price has already moved. For a scalper operating on the 1-minute (M1) and 5-minute (M5) timeframes, mastering price action and market structure is not optional—it is the absolute foundation of your edge. 
 
-## The Battle Within the Candlestick
+By reading the narrative behind every candlestick and meticulously mapping out the micro-structural shifts, a scalper can determine precisely who is in control of the market, where the liquidity lies, and when a reversal is statistically probable.
 
-Every candlestick represents a struggle between buyers (bulls) and sellers (bears) over a specific time period. The anatomy of a candle—its body, upper wick, and lower wick—tells a story of rejection, continuation, or indecision.
+## The Micro-Battle Within the Candlestick
 
-<ConceptCard title="Key Reversal & Momentum Candles">
-  - **Hammer (Pin Bar):** A small body with a long lower wick. It indicates that sellers pushed the price down, but buyers overwhelmed them to close near the open. A strong sign of bullish rejection at support.
-  - **Shooting Star:** The bearish counterpart to the hammer. A small body with a long upper wick, showing that buyers were rejected at resistance.
-  - **Engulfing:** A strong momentum candle where the body completely eclipses the previous candle. A Bullish Engulfing signifies a sudden shift in power to the buyers, while a Bearish Engulfing shows sellers taking aggressive control.
+Every single candlestick on a chart represents a violent, real-time struggle between buyers (bulls) and sellers (bears) over a specific time period. On an M1 chart, this battle occurs in 60-second intervals. The anatomy of a candle—its body, its upper wick, its lower wick, and where it opens and closes—tells a detailed story of rejection, continuation, exhaustion, or indecision.
+
+Understanding candlestick anatomy goes beyond memorizing names like "Doji" or "Hammer." It requires you to visualize the order flow that created the candle.
+
+- **The Body:** The distance between the open and close. A large, full body indicates strong conviction and momentum from one side. If an M5 candle opens at 1.1000 and closes at 1.1020 with almost no wicks, it means buyers were in absolute, uncontested control for those 5 minutes.
+- **The Wicks:** The wicks represent the extremes of the battle. A long wick indicates a price level that was tested but ultimately rejected. This is a footprint of trapped traders. 
+
+<ConceptCard title="Key Reversal & Momentum Candles for Scalping">
+  - **The Pin Bar (Hammer / Shooting Star):** A candle with a small body and an exceptionally long wick on one side. Imagine the price drops rapidly, triggering sell orders and inducing shorts, only for institutional buyers to aggressively step in, absorbing all the selling pressure and pushing the price back up to close near the open. This creates a long lower wick (Hammer) and is a massive sign of bullish rejection. The inverse is a Shooting Star.
+  - **The Engulfing Candle:** A powerful momentum shift. If a small M1 bearish candle is immediately followed by a massive M1 bullish candle that completely eclipses the previous one, it signifies a sudden, violent transfer of power to the buyers.
+  - **The Indecision Doji:** A candle where the open and close are virtually identical, with wicks on both sides. On an M1 chart, this often precedes an explosive breakout, as both sides have exhausted themselves fighting to a draw, and the market is waiting for a new influx of volume.
 </ConceptCard>
 
 ## Sóng (Market Swings): Impulse vs. Correction
 
-The market does not move in straight lines; it moves in waves or swings (Sóng). Understanding the nature of these swings is critical for timing entries.
+The market never moves in a perfectly straight line, not even on the micro-timeframes. It breathes. It moves in waves or swings (Sóng). Understanding the alternating nature of these swings is critical for timing your entries with millimeter precision.
 
-- **Impulse Swings:** Strong, aggressive moves in the direction of the underlying trend. These consist of large momentum candles.
-- **Correction (Pullback) Swings:** Slower, weaker moves against the trend. They typically feature smaller candles and overlapping price action as the market catches its breath.
+### 1. Impulse Swings
+Impulse swings are the strong, aggressive, violent moves in the direction of the underlying trend. They are characterized by large momentum candles, very little overlapping price action, and a rapid change in price. This is when institutional volume is actively driving the market.
+*Example:* Price explodes from $100.00 to $105.00 in just three consecutive 5-minute bullish candles. This is a massive display of buyer dominance.
 
-Scalpers aim to enter at the end of a correction to catch the next impulse swing.
+### 2. Correction (Pullback) Swings
+Correction swings are the slow, sluggish, weak moves against the primary trend. They represent profit-taking from the impulse move and a lack of conviction from the counter-trend participants. Corrections typically feature smaller, choppy candles, wicks in both directions, and heavy overlapping price action as the market grinds slowly back to a value area.
+*Example:* Following the impulse to $105.00, the price takes 12 separate 5-minute candles to slowly bleed back down to $102.50. The fact that it took 15 minutes to go up $5, but 60 minutes to go down $2.50, tells you that the bears have no real power. The underlying trend remains bullish.
 
-## Identifying Market Structure
+Scalpers do not trade the middle of an impulse; they wait for the sluggish correction to exhaust itself at a logical support level, and they enter just as the next violent impulse swing begins.
 
-Market structure is defined by the sequence of swing highs and swing lows.
+## Mapping Market Structure
 
-<AnnotatedChart showSwingHL={true} />
+Market structure is the framework that gives context to candlestick patterns. It is defined by the ongoing sequence of swing highs and swing lows. If you cannot correctly map market structure, you are trading blind.
 
-- **Uptrend (Bullish Structure):** Characterized by Higher Highs (HH) and Higher Lows (HL). As long as the most recent HL holds, the buyers remain in control.
-- **Downtrend (Bearish Structure):** Characterized by Lower Lows (LL) and Lower Highs (LH). As long as the most recent LH is not broken, sellers maintain dominance.
-- **Structure Shift:** A trend reversal occurs when the sequence is broken (e.g., a LH is broken in a downtrend, creating a new HH, often referred to as a Break of Structure or BOS).
+- **Uptrend (Bullish Structure):** The market is making a staircase pattern upwards, characterized by Higher Highs (HH) and Higher Lows (HL). The rule of an uptrend is simple: As long as the most recent Higher Low (HL) remains unbroken, the buyers are completely in control. You should only be looking for long setups at pullback areas.
+- **Downtrend (Bearish Structure):** The market is stair-stepping downwards, characterized by Lower Lows (LL) and Lower Highs (LH). As long as the most recent Lower High (LH) is defended, sellers dominate the tape. You should only be looking to short rallies.
+
+<AnnotatedChart 
+  title="Mapping M5 Market Structure"
+  description="Notice the clear sequence of Higher Highs and Higher Lows. The uptrend remains valid until the final Higher Low is breached by a decisive candle body close."
+  showSwingHL={true} 
+/>
+
+## True Structure Breaks (BOS) vs. Liquidity Sweeps
+
+This is perhaps the most crucial distinction a scalper must master. On the M1 and M5 timeframes, the market will constantly attempt to trick you into believing the structure has shifted.
+
+A **Break of Structure (BOS)** occurs when the market genuinely shifts its trend. For example, in an uptrend, the price drops and completely violates the last Higher Low (HL). However, to be a true BOS, you must see a strong, decisive candle *body close* below the level. This indicates that participants have accepted the new lower pricing.
+
+A **Liquidity Sweep (Fake-out)** occurs when the price temporarily drops below the last Higher Low (HL) merely to trigger stop losses, but it immediately rejects and closes back above the level, leaving behind a long wick. 
+
+*Step-by-Step Scenario:*
+1. The market is in an M5 uptrend. The last Higher Low is at 4500.00.
+2. Price pulls back aggressively to 4498.00. Retail traders panic, assume the trend is over, and sell. Breakout traders see support broken and initiate shorts.
+3. Within the exact same 5-minute candle, institutional buyers absorb all that selling, and the candle closes back up at 4502.00.
+4. The result? A long lower wick piercing 4500.00. The structure did not break; it was a liquidity sweep. The uptrend is fully intact, and this sweep provides the perfect, high-probability entry for a scalper to go long.
 
 <Callout type="info" title="Context is King">
-  A single candlestick pattern (like a Hammer) is meaningless on its own. It must be traded in the context of market structure—for example, a Hammer forming at a Higher Low (HL) in an established uptrend.
+  A single candlestick pattern, no matter how perfect it looks, is utterly meaningless in isolation. A beautiful Bullish Hammer means nothing if it forms randomly in the middle of a consolidation. It must be traded in the context of market structure—for example, a Bullish Hammer forming immediately after a Liquidity Sweep of a Higher Low (HL) in an established, strong uptrend.
 </Callout>
 
 <KeyTakeaways items={[
-  "Read candlesticks as a narrative of the battle between buyers and sellers.",
-  "Look for key reversal candles (Hammers, Shooting Stars) and momentum shifts (Engulfing).",
-  "Distinguish between strong Impulse swings and weak Correction swings.",
-  "Map the market using HH/HL for uptrends and LH/LL for downtrends.",
-  "Wait for structural shifts to confirm trend reversals before taking counter-trend scalps."
+  "Analyze every candlestick to determine the real-time balance of power between buyers and sellers.",
+  "Differentiate between aggressive, rapid Impulse swings and slow, choppy Correction swings.",
+  "Map the market meticulously using HH/HL for uptrends and LH/LL for downtrends.",
+  "Require a decisive candle body close to confirm a true Break of Structure (BOS).",
+  "Treat wicks that pierce structural levels but close back inside as Liquidity Sweeps—prime scalping opportunities."
 ]} />
