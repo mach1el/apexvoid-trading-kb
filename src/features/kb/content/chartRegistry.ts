@@ -542,6 +542,25 @@ const CH: ChartData[] = [
   ]
  },
  {
+  id:"ECON", title:"Economic Calendar — trade the deviation", sub:"gold · events / calendar",
+  def:"The calendar matters because data releases inject liquidity and set direction. Markets price the consensus in advance; the move comes from the actual number's deviation from that consensus. Price coils pre-release (institutions sidelined, stops pooling at the range edges), then the surprise drives a directional expansion.",
+  read:[
+    "Pre-release, price <b>coils</b> into a tight range — consensus is already priced in, capital sidelined.",
+    "Equal highs and lows build <b>liquidity pools</b>: resting stops just above and below the range.",
+    "The move is the <b>deviation</b>: a hawkish beat versus consensus drives gold down (strong data = lower gold).",
+    "The first spike is often a <b>liquidity grab</b> — the real trend is the follow-through, not the 1-minute candle."
+  ],
+  trap:"Trading the <b>absolute number</b> instead of the deviation. A 'good' figure can still rally gold if the market expected 'great' — direction follows the surprise relative to consensus, not the headline itself.",
+  pMin:2312,pMax:2344,
+  c:[[2338,2340,2337,2339],[2339,2340,2337,2338],[2338,2340,2337,2339],[2339,2340,2337,2338],[2338,2340,2337,2339],[2339,2340,2331,2332],[2332,2333,2324,2325],[2325,2327,2320,2321],[2321,2323,2317,2318],[2318,2320,2315,2319],[2319,2321,2316,2317]],
+  a:[
+    {t:"level",p:2340,dash:1,color:"muted",label:"equal highs — liquidity"},
+    {t:"bracket",i1:0,i2:4,label:"pre-news coil (consensus in)"},
+    {t:"arrow",i:5,p1:2339,p2:2331,color:"bear",label:"hawkish beat → deviation"},
+    {t:"swing",i:8,p:2317,dir:"down",label:"true trend, not the 1st candle"}
+  ]
+ },
+ {
   id:"GYLD", title:"Gold vs Real Yields (opportunity cost)", sub:"gold · macro drivers",
   def:"Gold pays no yield, so its biggest structural driver is the real interest rate — the opportunity cost of holding it. Here gold rallies on low real yields, then rolls over as real yields climb (lower panel), even while inflation stays high. The dollar and safe-haven demand layer on top.",
   read:[
