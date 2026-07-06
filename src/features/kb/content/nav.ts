@@ -231,6 +231,17 @@ export const navigation: NavSection[] = [
       { label: 'Glossary', slug: 'glossary', path: '/together/glossary' },
     ],
   },
+  {
+    label: 'Scalping Masterclass',
+    prefix: '/scalping-masterclass',
+    icon: '⚡',
+    items: [
+      { label: 'The Scalper Mindset', slug: 'the-scalper-mindset', path: '/scalping-masterclass/the-scalper-mindset' },
+      { label: 'Price Action & Structure', slug: 'price-action-and-structure', path: '/scalping-masterclass/price-action-and-structure' },
+      { label: 'Chart Patterns', slug: 'chart-patterns-for-scalping', path: '/scalping-masterclass/chart-patterns-for-scalping' },
+      { label: 'Indicator Confluence', slug: 'indicator-confluence-system', path: '/scalping-masterclass/indicator-confluence-system' },
+    ],
+  },
 ];
 
 /** Flat list of all routes for search indexing and route generation */

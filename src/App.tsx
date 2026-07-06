@@ -139,6 +139,12 @@ const TradingAroundNews = () => <MdxPage loader={() => import('./features/kb/con
 const DxyAndRealYields = () => <MdxPage loader={() => import('./features/kb/content/gold-context/dxy-and-real-yields.mdx')} />;
 const RiskOnRiskOff = () => <MdxPage loader={() => import('./features/kb/content/gold-context/risk-on-risk-off.mdx')} />;
 
+// Scalping Masterclass
+const TheScalperMindset = () => <MdxPage loader={() => import('./features/kb/content/scalping-masterclass/the-scalper-mindset.mdx')} />;
+const PriceActionAndStructure = () => <MdxPage loader={() => import('./features/kb/content/scalping-masterclass/price-action-and-structure.mdx')} />;
+const ChartPatternsForScalping = () => <MdxPage loader={() => import('./features/kb/content/scalping-masterclass/chart-patterns-for-scalping.mdx')} />;
+const IndicatorConfluenceSystem = () => <MdxPage loader={() => import('./features/kb/content/scalping-masterclass/indicator-confluence-system.mdx')} />;
+
 export function App() {
   return (
     <AppShell>
@@ -264,6 +270,12 @@ export function App() {
         <Route path="/gold-context/trading-around-news" element={<TradingAroundNews />} />
         <Route path="/gold-context/dxy-and-real-yields" element={<DxyAndRealYields />} />
         <Route path="/gold-context/risk-on-risk-off" element={<RiskOnRiskOff />} />
+
+        {/* Scalping Masterclass */}
+        <Route path="/scalping-masterclass/the-scalper-mindset" element={<TheScalperMindset />} />
+        <Route path="/scalping-masterclass/price-action-and-structure" element={<PriceActionAndStructure />} />
+        <Route path="/scalping-masterclass/chart-patterns-for-scalping" element={<ChartPatternsForScalping />} />
+        <Route path="/scalping-masterclass/indicator-confluence-system" element={<IndicatorConfluenceSystem />} />
 
         {/* 404 */}
         <Route path="*" element={

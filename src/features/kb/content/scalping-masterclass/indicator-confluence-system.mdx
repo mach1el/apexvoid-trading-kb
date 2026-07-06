@@ -1,0 +1,51 @@
+export const frontmatter = { title: 'The RSI, MACD & EMA Confluence System', description: 'A systematic approach to combining indicators to filter noise and find high-probability entries.' };
+
+import { ConceptCard } from '../../../../shared/components/ConceptCard';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+
+# The RSI, MACD & EMA Confluence System
+
+Indicators should never be used as standalone buy or sell signals. Instead, they serve as tools to measure momentum, identify dynamic zones, and provide confluence. The combination of EMA, RSI, and MACD creates a robust filtering system for high-probability scalps.
+
+## 1. Exponential Moving Averages (EMA)
+EMAs give more weight to recent price data, making them highly responsive for short-term trading. We use a three-EMA stack to gauge trend and identify dynamic support/resistance.
+
+- **EMA 20:** Short-term momentum. Price riding above the 20 EMA indicates strong immediate bullish pressure.
+- **EMA 50:** Medium-term trend. Often acts as the primary pullback zone in a healthy trend.
+- **EMA 200:** Long-term macro trend direction.
+
+When the EMAs are fanned out and sloping in the same direction, the trend is strong. 
+
+## 2. Relative Strength Index (RSI)
+Retail traders often use RSI simply to buy when it's "oversold" (below 30) and sell when "overbought" (above 70). This is a trap in trending markets.
+
+Instead, use RSI to identify momentum and **Divergence**. Divergence occurs when price makes a Higher High, but the RSI makes a Lower High (Bearish Divergence), indicating that the upward momentum is exhausting.
+
+## 3. MACD (Moving Average Convergence Divergence)
+The MACD is used to confirm momentum shifts. Focus heavily on the **Histogram**.
+
+- Expansion (bars getting longer) shows momentum is accelerating.
+- Contraction (bars getting shorter and changing color) indicates momentum is fading.
+A MACD line crossover combined with histogram contraction provides a strong secondary confirmation for an entry.
+
+<ConceptCard title="The High-Probability Setup">
+  To execute a valid trade, we look for alignment across multiple factors:
+  1. **Location:** Price pulls back to a Key Level or a major EMA (like the 50 EMA).
+  2. **RSI Divergence:** RSI shows exhaustion (e.g., bullish divergence on a pullback).
+  3. **MACD Confirmation:** MACD histogram shows fading counter-trend momentum followed by a cross in the direction of the main trend.
+  4. **Trigger:** A bullish/bearish reversal candlestick prints at the zone.
+</ConceptCard>
+
+<Callout type="danger" title="The Indicator Trap">
+  Trading indicators in isolation, without regard for Market Structure, is a guaranteed way to lose money. Indicators lag price. Always prioritize Price Action and Structure (HH/HL, LH/LL) first. Use indicators only to confirm what price is already telling you.
+</Callout>
+
+<KeyTakeaways items={[
+  "Use the 20, 50, and 200 EMAs to determine trend direction and dynamic pullback zones.",
+  "Look beyond overbought/oversold; use RSI primarily to spot momentum divergence.",
+  "Use MACD histogram contraction and line crosses to confirm shifts in momentum.",
+  "Combine location (EMA/Key Level), divergence, and MACD confirmation for the best setups.",
+  "Never trade indicators blindly; always align them with the underlying market structure."
+]} />
