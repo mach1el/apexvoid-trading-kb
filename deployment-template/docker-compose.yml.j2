@@ -1,0 +1,16 @@
+{# Rendered on the VPS by ansible (deploy_image role). Do not edit on the host. #}
+{# Vars come from ansible-library: image_tag, registry_namespace #}
+services:
+  apexvoid-trading-frontend:
+    image: "{{ registry_namespace }}/apexvoid-trading-frontend:{{ image_tag }}"
+    container_name: apexvoid-trading-frontend
+    expose:
+      - "80"
+    restart: unless-stopped
+    networks:
+      - routing
+
+networks:
+  routing:
+    name: "{{ routing_network | default('routing') }}"
+    external: true
