@@ -1,0 +1,51 @@
+export const frontmatter = { 
+  title: 'Rủi Ro Cháy Tài Khoản & Chuỗi Thua', 
+  description: 'Hiểu sự chắc chắn về mặt toán học của các chuỗi thua và cách cấu trúc rủi ro của bạn để sống sót qua chúng.' 
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Rủi Ro Cháy Tài Khoản & Chuỗi Thua
+
+Rủi ro cháy tài khoản (risk of ruin) là xác suất toán học rằng một tài khoản sẽ cạn kiệt đến mức không thể tiếp tục giao dịch (thường được định nghĩa là sụt giảm 50% hoặc 100%).
+
+Các trader rủi ro 5% đến 10% mỗi lệnh không cháy vì họ nhất thiết phân tích kém; họ cháy vì họ hiểu sai về căn bản phương sai (variance) và tính tất yếu của các chuỗi thua.
+
+<Callout type="warning" title="Quy Luật Số Lớn">
+Nếu bạn vào đủ nhiều lệnh, một chuỗi thua 5, 10, hay thậm chí 15 lệnh liên tiếp không chỉ khả dĩ—mà là điều chắc chắn về mặt toán học. Rủi ro mỗi lệnh của bạn BẮT BUỘC phải được định kích thước để sống sót qua chuỗi này mà không gây thiệt hại tâm lý hay tài chính thảm khốc.
+</Callout>
+
+## Xác Suất Của Các Chuỗi
+
+Giả sử bạn có một chiến lược với tỷ lệ thắng 50%. Nhiều trader nghĩ điều này nghĩa là họ sẽ thắng một, thua một, thắng một, thua một.
+
+Trong thực tế, tỷ lệ thắng 50% qua 100 lệnh có xác suất gần như 100% trải qua ít nhất một chuỗi 5 hoặc 6 lần thua liên tiếp.
+
+<CompareTable 
+  title="Sụt Giảm Tài Khoản Sau 10 Lần Thua Liên Tiếp"
+  headers={['Rủi Ro Mỗi Lệnh', 'Sụt Giảm (Cố Định)', 'Sụt Giảm (Lãi Kép)']}
+  rows={[
+    ['1%', '-10.0%', '-9.5%'],
+    ['2%', '-20.0%', '-18.3%'],
+    ['5%', '-50.0%', '-40.1%'],
+    ['10%', '-100.0% (Cháy)', '-65.1%']
+  ]}
+/>
+
+*Lưu ý: Sụt giảm lãi kép giả định bạn rủi ro đúng X% của số dư MỚI trên mỗi lệnh, điều này làm chậm sự đi xuống nhưng vẫn gây thiệt hại thảm khốc ở mức rủi ro cao.*
+
+## Quản Lý Chuỗi Thua
+
+Khi (chứ không phải nếu) bạn gặp một chuỗi thua, tâm lý của bạn sẽ bị thử thách.
+
+Nếu bạn rủi ro 1%, một chuỗi 10 lần thua khiến bạn lỗ ~10%. Điều này khó chịu, nhưng có thể phục hồi. Tư duy của bạn vẫn tương đối tỉnh táo. Bạn có thể xem lại các lệnh một cách khách quan và xác định liệu điều kiện thị trường có thay đổi hay bạn đã mắc lỗi.
+
+Nếu bạn rủi ro 5%, một chuỗi 10 lần thua khiến bạn lỗ ~40-50%. Ở sụt giảm 50%, bạn cần **lợi nhuận 100%** chỉ để hòa vốn. Áp lực "gỡ lại" thường buộc trader tăng rủi ro hoặc vào những setup dưới chuẩn, làm tăng tốc vòng xoáy tử thần.
+
+<KeyTakeaways items={[
+  "Các chuỗi thua 5-10 lệnh là tất yếu về mặt toán học, bất kể lợi thế của bạn.",
+  "Rủi ro 1-2% mỗi lệnh đảm bảo các chuỗi thua tất yếu chỉ để lại một vết lõm có thể quản lý, không phải sự cháy tài khoản.",
+  "Ở sụt giảm 50%, bạn cần lợi nhuận 100% chỉ để về hòa vốn."
+]} />

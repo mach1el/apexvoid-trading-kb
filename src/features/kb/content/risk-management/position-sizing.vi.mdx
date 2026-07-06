@@ -1,0 +1,110 @@
+export const frontmatter = {
+  title: 'Kích Thước Vị Thế (Rủi Ro Cố Định Theo Tỷ Lệ)',
+  description: 'Cách tính chính xác khối lượng lệnh dựa trên một tỷ lệ phần trăm cố định của tài khoản, tách rủi ro tài chính của bạn khỏi khoảng cách giá của thị trường.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { PositionSizer } from '../../components/PositionSizer';
+
+{/* 1. Hook */}
+Hầu hết trader mới nhìn vào một setup, cảm thấy "tự tin" về nó, rồi tùy tiện quyết định vào 1.0 lot. Họ đặt stop loss cách 50 pip vì đó là nơi cấu trúc nằm. Nếu lệnh thua, họ vừa mất $500. Họ đã hoàn toàn giao quyền kiểm soát rủi ro cho thị trường. Trader chuyên nghiệp không bao giờ để thị trường quyết định mức rủi ro của họ. Họ quyết định chính xác số tiền sẵn sàng mất *trước tiên*, rồi mới tính khối lượng lot cần thiết để bài toán khớp.
+
+{/* 2. Definition */}
+**Kích Thước Vị Thế (Position Sizing)** là quy trình toán học xác định bạn nên mua hoặc bán bao nhiêu đơn vị (hay lot) của một tài sản.
+Tiêu chuẩn vàng cho giao dịch tổ chức và prop-firm là mô hình **Rủi Ro Cố Định Theo Tỷ Lệ (Fixed Fractional Risk)**. Trong mô hình này, bạn rủi ro một tỷ lệ phần trăm cố định trên tổng vốn tài khoản (ví dụ 1%) cho mỗi lệnh, bất kể stop loss rộng hay hẹp.
+
+{/* 3. Deep Explanation */}
+## Toán Học Của Việc Định Kích Thước
+
+Để định kích thước vị thế đúng cách, bạn cần ba biến số:
+1. **Số Dư Tài Khoản:** Tổng vốn giao dịch của bạn (ví dụ $10,000).
+2. **Tỷ Lệ Rủi Ro:** Phần trăm nghiêm ngặt của tài khoản bạn sẵn sàng mất nếu lệnh chạm stop loss (ví dụ 1% = $100).
+3. **Rủi Ro Giá (Price Risk):** Khoảng cách vật lý giữa Giá Vào Lệnh và Giá Stop Loss của bạn.
+
+### Công Thức
+Công thức tính kích thước vị thế là:
+`Kích Thước Vị Thế = Số Tiền Rủi Ro / (Rủi Ro Giá × Giá Trị Hợp Đồng)`
+
+Nếu bạn giao dịch Forex (với 1 standard lot = $10 mỗi pip), và stop loss của bạn là 20 pip, thì Rủi Ro Giá × Giá Trị Hợp Đồng là $200 mỗi lot. Nếu bạn chỉ muốn rủi ro $100, bạn phải vào 0.5 lot.
+Nếu lệnh tiếp theo có stop loss 40 pip, Rủi Ro Giá × Giá Trị Hợp Đồng là $400 mỗi lot. Để giữ rủi ro đúng $100, bạn phải vào 0.25 lot.
+
+Khi stop loss càng rộng, kích thước vị thế càng nhỏ. **Rủi ro tính bằng đô-la của bạn luôn giữ nguyên chính xác.**
+
+{/* 4. Visuals */}
+## Tương Tác: Máy Tính Kích Thước Vị Thế
+
+Dùng máy tính bên dưới để luyện tập định kích thước. Thử đổi giá Stop-loss và quan sát Kích Thước Vị Thế tự điều chỉnh động để đảm bảo "Số tiền rủi ro" không bao giờ vượt quá Tỷ Lệ Rủi Ro chính xác của bạn.
+
+<PositionSizer />
+
+{/* 5. How to see it on a chart */}
+## Quy Trình Thực Thi
+
+Đừng bao giờ đoán khối lượng lot. Khi bạn phát hiện một setup trên biểu đồ, tuân thủ quy trình cơ học nghiêm ngặt này:
+
+1. **Tìm Điểm Vào & Stop:** Dùng phân tích kỹ thuật của bạn (ví dụ mitigation một [Order Block](/order-block/what-is-ob)) để xác định chính xác nơi bạn sẽ vào lệnh, và chính xác nơi stop loss phải đặt để vô hiệu hóa setup.
+2. **Xác Định Rủi Ro Giá:** Tính khoảng cách giữa hai điểm đó.
+3. **Nhập Vào Máy Tính:** Đưa Số Dư Tài Khoản, % Rủi Ro, Điểm Vào và Stop vào máy tính kích thước.
+4. **Thực Thi:** Máy tính sẽ cho ra một khối lượng lot cụ thể (ví dụ 0.33 lot). Vào sàn/nền tảng và nhập chính xác 0.33 lot.
+
+{/* 6. Worked Examples */}
+## Ví Dụ Thực Hành
+
+### Ví Dụ 1: Stop Hẹp (Tăng Khối Lượng)
+
+**Kịch bản:** Bạn có tài khoản funded $100,000. Quy tắc nghiêm ngặt của bạn là rủi ro 1% mỗi lệnh ($1,000).
+1. Bạn phát hiện một [Optimal Trade Entry](/ict/ote) hoàn hảo trên EUR/USD ở khung 5 phút.
+2. Setup cho phép một stop loss cực chính xác, chỉ 10 pip.
+3. Bạn đưa vào công thức: $1,000 / (10 pip × $10/pip) = **10.0 Lot**.
+4. Bạn thực thi 10.0 lot. Nếu chạm stop, bạn mất đúng $1,000.
+
+**Diễn giải:**
+Vì phân tích kỹ thuật của bạn cho ra một stop loss hẹp, toán học cho phép bạn đòn bẩy lên tới vị thế 10.0 lot khổng lồ mà vẫn tuân thủ nghiêm ngặt giới hạn rủi ro 1%.
+
+### Ví Dụ 2: Stop Rộng (Giảm Khối Lượng)
+
+**Kịch bản:** Bạn có cùng tài khoản $100,000, rủi ro 1% ($1,000).
+1. Bạn phát hiện một lệnh swing vĩ mô trên khung 4 giờ.
+2. Vì là khung thời gian lớn hơn, stop loss theo cấu trúc phải đặt cách 100 pip để an toàn khỏi nhiễu trong phiên.
+3. Bạn đưa vào công thức: $1,000 / (100 pip × $10/pip) = **1.0 Lot**.
+4. Bạn thực thi 1.0 lot. Nếu chạm stop, bạn mất đúng $1,000.
+
+**Diễn giải:**
+Thị trường đòi hỏi một stop rộng hơn, nên toán học buộc kích thước vị thế co lại từ 10.0 lot xuống 1.0 lot. Rủi ro đô-la ($1,000) giống hệt Ví Dụ 1. Đây là cách bạn sống sót qua mọi môi trường thị trường.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Bẫy Lot Cố Định">
+  Cách nhanh nhất để cháy tài khoản là giao dịch một khối lượng lot cố định (ví dụ luôn vào 1.0 lot) bất kể khoảng cách stop loss. Nếu bạn luôn vào 1.0 lot, một lệnh với stop 15 pip rủi ro $150, nhưng một lệnh với stop 60 pip rủi ro $600. Rủi ro của bạn hoàn toàn hỗn loạn và bị chi phối toàn bộ bởi biến động của thị trường, chứ không phải bởi việc quản lý vốn của bạn.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Diễn Giải Theo Các Framework Hiện Đại
+
+- **Prop Firms (FTMO, Topstep):** Định kích thước cố định theo tỷ lệ là nền tảng bắt buộc tuyệt đối để sống sót qua các bài đánh giá prop firm. Vì họ áp giới hạn drawdown hàng ngày nghiêm ngặt (ví dụ 5%), rủi ro hơn 0.5% hay 1.0% mỗi lệnh về mặt toán học đảm bảo bạn sẽ trượt thử thách trong một chuỗi thua thống kê bình thường.
+- **Tiêu Chuẩn Kelly (Kelly Criterion):** Một mô hình định kích thước động, nâng cao hơn, từ toán học/cờ bạc. Dù tối ưu về mặt toán học để tối đa hóa tăng trưởng, Kelly Criterion thường đề nghị rủi ro 10-20% mỗi lệnh, dẫn tới các drawdown tàn phá tâm lý con người. Cố định theo tỷ lệ (1-2%) là tiêu chuẩn ngành thực dụng.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp
+
+**Hỏi: Vì sao tính rủi ro theo phần trăm thay vì một số tiền cố định (ví dụ luôn $100)?**
+Đáp: Lãi kép. Nếu bạn rủi ro cố định $100 trên tài khoản $10,000, bạn đang rủi ro 1%. Nhưng nếu tài khoản tăng lên $20,000, thì $100 đó giờ chỉ còn 0.5% rủi ro. Bạn đang bóp nghẹt sức mạnh lãi kép. Ngược lại, nếu tài khoản giảm xuống $5,000, thì $100 đó giờ là 2% rủi ro. Một số tiền cố định buộc bạn rủi ro *nhiều hơn* tài khoản khi bạn thua, làm tăng tốc sự sụp đổ. Một tỷ lệ phần trăm cố định tự nhiên co giãn tăng khi bạn thắng và giảm khi bạn thua.
+
+**Hỏi: 1% có phải là quy tắc cho mọi thứ?**
+Đáp: 1% là tiêu chuẩn cho vốn cá nhân. Tuy nhiên, nếu bạn giao dịch một tài khoản prop firm funded với drawdown tối đa 10%, thực ra bạn chỉ đang giao dịch một bộ đệm $10,000 trên một "tài khoản $100k". Trong prop firm, trader chuyên nghiệp thường rủi ro 0.25% đến 0.50% mỗi lệnh để sống sót qua các quy tắc drawdown chặt.
+
+**Hỏi: Nếu tôi không dùng stop loss thì sao?**
+Đáp: Thì việc định kích thước vị thế là bất khả thi, vì Rủi Ro Giá của bạn về mặt kỹ thuật là vô hạn (tài sản về không). Giao dịch không có stop loss không phải là giao dịch; đó là cờ bạc.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Đừng bao giờ giao dịch với khối lượng lot cố định. Luôn để khoảng cách stop loss quyết định khối lượng lot.",
+  "Rủi Ro Cố Định Theo Tỷ Lệ nghĩa là rủi ro một phần trăm nghiêm ngặt của số dư tài khoản hiện tại (ví dụ 1%).",
+  "Khi stop loss càng rộng, kích thước vị thế phải càng nhỏ.",
+  "Rủi ro đô-la của bạn phải giống hệt nhau trên mỗi lệnh, bất kể khung thời gian hay công cụ.",
+  "Cách tiếp cận toán học này bảo vệ vốn của bạn trong các chuỗi thua bằng cách tự động thu nhỏ kích thước cược."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Các framework quản lý rủi ro tổ chức tiêu chuẩn. Công thức định kích thước vị thế và mô hình rủi ro cố định theo tỷ lệ.

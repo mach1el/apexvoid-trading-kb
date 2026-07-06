@@ -1,0 +1,50 @@
+export const frontmatter = { 
+  title: 'Vào Lệnh Từng Phần Trong Một Vùng (Zone DCA)', 
+  description: 'Cách rải các điểm vào lệnh theo bậc thang vào một Điểm Quan Tâm mà không phá vỡ ngân sách rủi ro của bạn.' 
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { chartRegistry } from '../chartRegistry';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+import { ScaleInPlanner } from '../../components/ScaleInPlanner';
+import { AnnotatedChart } from '../../../../shared/components/AnnotatedChart';
+
+# Vào Lệnh Từng Phần Trong Một Vùng
+
+<AnnotatedChart chartData={chartRegistry.SCALE} />
+
+Giao dịch hiếm khi là chuyện bắt đúng đỉnh hay đáy tới từng pip. Thường thì giá sẽ phản ứng đâu đó bên trong một vùng cấu trúc—như một Fair Value Gap (FVG) hay một Order Block (OB).
+
+Vì bạn không biết chính xác *ở đâu* trong vùng giá sẽ đảo chiều, bạn có thể **vào lệnh từng phần (scale in)** bằng cách đặt một bậc thang các lệnh chờ (limit order) trải khắp vùng. Đây gọi là Zone DCA (Bình Quân Giá).
+
+<Callout type="info" title="Vì Sao Vào Lệnh Từng Phần?">
+Thay vì đặt một lệnh lớn ở đầu vùng (có stop rộng hơn và kích thước vị thế nhỏ hơn), hay một lệnh lớn ở cuối vùng (thường bị bỏ lỡ), vào lệnh từng phần cho bạn một hỗn hợp: một điểm vào được đảm bảo nếu chạm đầu vùng, và một giá trung bình tốt hơn nếu vùng bị test toàn bộ.
+</Callout>
+
+## Zone DCA và Martingale
+
+Điều tối quan trọng là phân biệt giữa vào lệnh từng phần có kế hoạch (Zone DCA) và bình quân giá xuống độc hại (Martingale).
+
+<CompareTable 
+  title="Vào Lệnh Từng Phần Có Kế Hoạch và Bình Quân Giá Độc Hại"
+  headers={['Zone DCA', 'Martingale (Độc Hại)']}
+  rows={[
+    ['Lên kế hoạch trước khi vào lệnh', 'Phản ứng, do hoảng loạn hay hy vọng'],
+    ['Tổng rủi ro bị chặn cứng (ví dụ 1%)', 'Rủi ro nở ra vô hạn'],
+    ['Stop loss cố định và được tôn trọng', 'Stop loss bị dời hoặc không tồn tại'],
+    ['Điểm vào đặt tại các mức cấu trúc', 'Điểm vào ngẫu nhiên ("nó phải bật lại sớm thôi")']
+  ]}
+/>
+
+## Trình Lập Kế Hoạch Vào Lệnh Từng Phần
+
+Dùng công cụ bên dưới để lên kế hoạch các điểm vào theo bậc thang. Quy tắc quan trọng nhất là **stop loss của bạn phải được đặt hoàn toàn bên ngoài vùng**. Nếu stop nằm bên trong vùng, setup không hợp lệ.
+
+<ScaleInPlanner />
+
+<KeyTakeaways items={[
+  "Vào lệnh từng phần cho phép bạn bắt lệnh ở đầu vùng đồng thời cải thiện giá vào trung bình nếu vùng bị test sâu.",
+  "Tổng rủi ro phải luôn được tính và chặn TRƯỚC khi đặt bậc thang lệnh.",
+  "Đừng bao giờ dời stop loss hay thêm khối lượng vượt kế hoạch ban đầu. Đó là Martingale, không phải vào lệnh từng phần."
+]} />

@@ -1,0 +1,58 @@
+export const frontmatter = { 
+  title: 'Quản Lý Giao Dịch & Dừng Lỗ', 
+  description: 'Cách quản lý rủi ro một cách chủ động khi lệnh đang chạy: đặt stop, cơ chế hòa vốn, và chốt lời từng phần.' 
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Quản Lý Giao Dịch & Dừng Lỗ
+
+Vào lệnh chỉ là 10% công việc. Một khi vị thế đang chạy, trách nhiệm duy nhất của bạn là quản lý rủi ro.
+
+Quản lý giao dịch chủ động quyết định bạn giữ được bao nhiêu lợi nhuận và bảo vệ được bao nhiêu vốn. Quản lý kém biến các lệnh thắng thành lỗ và để các lệnh thua chảy máu.
+
+<Callout type="info" title="Quy Tắc Vàng Về Stop">
+Stop loss ban đầu của bạn phải được đặt tại một mức mà luận điểm của lệnh bị chứng minh sai một cách dứt khoát. Nó không bao giờ nên đặt dựa trên một số tiền đô-la hay số pip tùy tiện.
+</Callout>
+
+## Đặt Stop
+
+Stop loss là lằn ranh tuyệt đối của bạn.
+
+- **Stop Cấu Trúc (Structural Stops):** Đặt trên/dưới swing high/low đã tạo ra setup. Nếu mức này bị phá, cấu trúc đã gãy.
+- **Stop Vô Hiệu Hóa (Invalidation Stops):** Đặt phía sau một Điểm Quan Tâm cụ thể (như một FVG hay Order Block). Nếu giá hoàn toàn phớt lờ POI, ý tưởng giao dịch không hợp lệ.
+
+Đừng bao giờ nới rộng stop một khi lệnh đang chạy. Nếu lệnh đang thất bại, hãy để nó chạm stop. Xóa sạch nhiều ngày tiến bộ vì bạn "chỉ cần cho nó thêm chỗ" là dấu hiệu của một tay nghiệp dư.
+
+## Dời Về Hòa Vốn (Breakeven - BE)
+
+Dời stop về hòa vốn là con dao hai lưỡi. Dời quá sớm dẫn tới bị quét trên một cú hồi trước khi cú đi thật diễn ra. Dời quá muộn có nguy cơ trả lại toàn bộ khoản lỗ 1R trên một lệnh đã lãi sâu.
+
+Một framework tiêu chuẩn để dời về BE:
+1. Chờ giá vượt qua một pool thanh khoản đối lập lớn hoặc điểm cấu trúc nội bộ.
+2. Chỉ dời stop về BE một khi giá đã thiết lập một swing cấu trúc mới bảo vệ điểm vào của bạn.
+
+<CompareTable 
+  title="Các Cách Tiếp Cận Hòa Vốn"
+  headers={['Cách Tiếp Cận', 'Ưu Điểm', 'Nhược Điểm']}
+  rows={[
+    ['BE Sớm (ví dụ tại 1R)', 'Thoải mái tâm lý cao, ngăn ngày đỏ.', 'Thường xuyên bị quét sớm. Bỏ lỡ các cú chạy.'],
+    ['BE Cấu Trúc', 'Cho lệnh thở qua các cú hồi tự nhiên.', 'Lệnh có thể hồi đáng kể trước khi chạm stop gốc.'],
+    ['Không bao giờ dời về BE', 'Tối đa hóa tỷ lệ chạm mục tiêu đầy đủ.', 'Căng thẳng khi nhìn lãi nổi biến thành lỗ toàn phần.']
+  ]}
+/>
+
+## Chốt Lời Từng Phần
+
+Chốt lời từng phần (scaling out) bảo toàn vốn và giảm căng thẳng, nhưng làm giảm kỳ vọng toán học tổng thể (vì bạn đang giảm khối lượng trên các lệnh thắng trong khi vẫn giữ khối lượng đầy đủ trên các lệnh thua).
+
+Nếu bạn vật lộn với việc giữ lệnh tới mục tiêu, chốt 20-30% tại mức đối lập lớn đầu tiên có thể mang lại tấm đệm tâm lý cần thiết để giữ phần còn lại.
+
+<KeyTakeaways items={[
+  "Đặt stop nơi luận điểm lệnh bị vô hiệu hóa, không phải ở một khoảng cách tùy tiện.",
+  "Đừng bao giờ nới rộng stop loss. Chấp nhận rủi ro đã định trước.",
+  "Chỉ dời stop về hòa vốn khi các cột mốc cấu trúc bị vượt qua, không chỉ vì bạn đang lãi 1R.",
+  "Chốt lời từng phần giảm lo âu nhưng làm giảm kỳ vọng tuyệt đối. Dùng nó một cách chiến lược."
+]} />

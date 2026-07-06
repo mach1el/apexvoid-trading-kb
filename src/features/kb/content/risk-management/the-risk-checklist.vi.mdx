@@ -1,0 +1,50 @@
+export const frontmatter = { 
+  title: 'Danh Sách Kiểm Tra Rủi Ro', 
+  description: 'Cánh cổng cuối cùng trước khi thực thi. Nếu không qua được danh sách kiểm tra, nó không được giao dịch.' 
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { CompareTable } from '../../../../shared/components/CompareTable';
+
+# Danh Sách Kiểm Tra Rủi Ro
+
+Phi công chuyên nghiệp không dựa vào trí nhớ trước khi cất cánh; họ dùng một danh sách kiểm tra. Trader cũng phải làm vậy. Trong lúc căng thẳng, bộ não sẽ biện minh cho những setup chất lượng thấp vì nó muốn hành động. Danh sách kiểm tra là bộ lọc khách quan lấn át xung động cảm xúc.
+
+<Callout type="info" title="Giao Thức WAIT">
+Trước khi nhìn vào danh sách kiểm tra, hãy tự hỏi: **WAIT** (Why Am I Trading? — Vì sao tôi đang giao dịch?). Bạn đang giao dịch vì lợi thế của bạn hiện diện, hay vì bạn chán, tức giận, hay đang cố gỡ lại một khoản thua gần đây? Nếu câu trả lời là bất cứ điều gì khác ngoài "lợi thế của tôi hiện diện", hãy đóng biểu đồ lại.
+</Callout>
+
+## Cổng Trước Khi Giao Dịch
+
+Đừng thực thi lệnh trừ khi mọi ô đều được đánh dấu.
+
+1. **Setup đã hình thành đúng theo kế hoạch giao dịch đã viết của tôi chưa?**
+   - Không đoán mò, không "gần đúng". Nó phải khớp bản thiết kế.
+2. **Stop loss đã đặt tại một điểm vô hiệu hóa cấu trúc chưa?**
+   - Stop đặt nơi ý tưởng bị chứng minh sai, không dựa trên đô-la hay pip tùy tiện.
+3. **Tổng rủi ro có đúng bằng hoặc dưới mức chặn tối đa của tôi (ví dụ 1%) không?**
+   - Kích thước vị thế đã được tính toán học dựa trên khoảng cách stop.
+4. **Tỷ lệ reward-to-risk có ít nhất 1:2 tới mục tiêu hợp lý *đầu tiên* không?**
+   - Nếu bạn phải hy vọng giá phá kháng cự lớn chỉ để đạt 1:2, đó là một lệnh tồi.
+5. **Tôi có trung tính về cảm xúc không?**
+   - Nếu tim bạn đập nhanh trước cả khi nhấn mua, kích thước vị thế của bạn quá lớn hoặc bạn đang bị tổn hại cảm xúc.
+
+## Cái Giá Của Việc Phá Luật
+
+Khi bạn bỏ qua danh sách kiểm tra, bạn chuyển từ hoạt động như một sòng bạc sang hoạt động như một con bạc.
+
+<CompareTable 
+  title="Kết Quả Của Việc Tuân Thủ Danh Sách Kiểm Tra"
+  headers={['Hành Động', 'Kết Quả (Nếu Thắng)', 'Kết Quả (Nếu Thua)']}
+  rows={[
+    ['Tuân Theo Danh Sách', 'Củng cố kỷ luật và lợi thế.', 'Khoản thua có kiểm soát. Lợi thế nguyên vẹn.'],
+    ['Bỏ Qua Danh Sách', 'Củng cố thói quen xấu (nguy hiểm).', 'Sụt giảm quá mức, tilt tâm lý.']
+  ]}
+/>
+
+<KeyTakeaways items={[
+  "Dùng một danh sách kiểm tra cứng để loại bỏ sự bốc đồng cảm xúc trước khi thực thi.",
+  "Kiểm tra kích thước vị thế, đặt stop cấu trúc, và R:R kỳ vọng.",
+  "Thắng một lệnh mà bạn phá luật còn tệ hơn nhận một khoản thua có kỷ luật."
+]} />

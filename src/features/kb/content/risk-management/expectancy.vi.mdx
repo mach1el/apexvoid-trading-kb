@@ -1,0 +1,115 @@
+export const frontmatter = {
+  title: 'Kỳ Vọng & R-Multiples',
+  description: 'Cách chứng minh về mặt toán học liệu chiến lược của bạn có thực sự hiệu quả. Rời khỏi đô-la và pip để đo lợi thế thống kê thực sự của bạn.'
+};
+
+import { Callout } from '../../../../shared/components/Callout';
+import { KeyTakeaways } from '../../../../shared/components/KeyTakeaways';
+import { ExpectancyLab } from '../../components/ExpectancyLab';
+
+{/* 1. Hook */}
+Trader A kiếm $500 trên một lệnh. Trader B kiếm $5,000 trên một lệnh. Ai là trader giỏi hơn? Người nghiệp dư cho rằng Trader B giỏi hơn vì số tiền lớn hơn. Nhưng nếu Trader B rủi ro $20,000 để kiếm $5,000 đó (một lợi nhuận tệ 0.25:1), trong khi Trader A chỉ rủi ro $100 để kiếm $500 (một lợi nhuận xuất sắc 5:1) thì sao? Số tiền không nói lên điều gì về kỹ năng của một trader hay tính khả thi của hệ thống. Để đánh giá hiệu suất thực sự, chuyên gia đo mọi thứ bằng "R".
+
+{/* 2. Definition */}
+**R (Risk)** là đơn vị đo lường cơ bản trong giao dịch. Nó đại diện cho lượng vốn chính xác bạn đã rủi ro trên một lệnh. Nếu bạn rủi ro $100, thì 1R = $100. Nếu bạn kiếm $300 trên lệnh đó, bạn đã kiếm +3R.
+
+**Kỳ Vọng (Expectancy)** là một phép tính thống kê cho bạn biết chính xác chiến lược của bạn được kỳ vọng tạo ra bao nhiêu tiền (đo bằng R) trung bình mỗi lệnh, tính cả tỷ lệ thắng và các lệnh thắng/thua trung bình.
+
+{/* 3. Deep Explanation */}
+## Công Thức Kỳ Vọng
+
+Để biết bạn có lợi thế toán học hay không, bạn tính Kỳ Vọng mỗi lệnh.
+Công thức là:
+`Kỳ Vọng = (Tỷ lệ Thắng × Lãi Trung Bình theo R) − (Tỷ lệ Thua × Lỗ Trung Bình theo R)`
+
+### Ví Dụ Tính Toán
+Giả sử nhật ký giao dịch của bạn cho thấy như sau qua 100 lệnh gần nhất:
+- **Tỷ Lệ Thắng:** 40% (Bạn thắng 40 lệnh, thua 60 lệnh).
+- **Lãi Trung Bình:** +2.5R (Khi thắng, bạn kiếm gấp 2.5 lần rủi ro).
+- **Lỗ Trung Bình:** -1.0R (Khi thua, bạn mất đúng 1R).
+
+Đưa vào công thức:
+- Phần Thắng: (0.40 × 2.5R) = +1.0R
+- Phần Thua: (0.60 × 1.0R) = -0.6R
+- **Tổng Kỳ Vọng:** 1.0R - 0.6R = **+0.4R**
+
+Điều này nghĩa là *trung bình*, mỗi lần bạn nhấn nút "Mua" hay "Bán", bạn đang kiếm +0.4R. Nếu rủi ro chuẩn của bạn là $100 mỗi lệnh, mỗi cú nhấp chuột đáng giá $40, ngay cả khi lệnh cụ thể đó thua.
+
+Nếu Kỳ Vọng của bạn là số dương, bạn có lợi thế toán học. Bạn chỉ cần thực thi hệ thống một cách hoàn hảo qua một mẫu đủ lớn. Nếu Kỳ Vọng âm, bạn đang chầm chậm chảy máu đến chết, bất kể bạn "cảm thấy" tốt về biểu đồ tới đâu.
+
+{/* 4. Visuals */}
+## Tương Tác: Phòng Thí Nghiệm Kỳ Vọng
+
+Dùng các thanh trượt bên dưới để điều chỉnh Tỷ Lệ Thắng, Lãi Trung Bình và Lỗ Trung Bình. Máy tính sẽ xác định Kỳ Vọng mỗi lệnh của bạn, và biểu đồ sẽ dự phóng đường đi trung bình mượt mà của đường cong vốn qua 100 lệnh.
+
+<ExpectancyLab />
+
+{/* 5. How to see it on a chart */}
+## Tư Duy Theo Xác Suất
+
+Một khi bạn biết hệ thống của mình có kỳ vọng dương (ví dụ +0.35R), giao dịch biến từ một tàu lượn cảm xúc căng thẳng thành một hoạt động sòng bạc thống kê nhàm chán.
+
+1. **Tư Duy Sòng Bạc:** Một sòng bạc không quan tâm nếu người chơi tiếp theo trúng jackpot ở máy đánh bạc. Họ biết cỗ máy được lập trình với kỳ vọng dương cho nhà cái qua 10,000 lượt quay. Bạn phải nhìn các lệnh của mình theo cùng cách đó.
+2. **Vi Mô và Vĩ Mô:** Ở mức vi mô (một lệnh đơn), kết quả hoàn toàn ngẫu nhiên. Nó có thể thắng, có thể thua. Nhưng ở mức vĩ mô (một chuỗi 100 lệnh), kết quả chắc chắn về mặt toán học, do Kỳ Vọng của bạn quyết định.
+3. **Thực Thi Là Tất Cả:** Kỳ Vọng chỉ hiệu quả nếu bạn thực thi hệ thống một cách nhất quán. Nếu bạn tùy tiện dời stop loss hay chốt lời sớm, bạn phá vỡ phép tính. Bạn không còn giao dịch một hệ thống nữa; bạn đang cờ bạc.
+
+{/* 6. Worked Examples */}
+## Ví Dụ Thực Hành
+
+### Ví Dụ 1: Con Rùa (Tỷ Lệ Thắng Thấp, R Cao)
+
+**Kịch bản:** Một trader theo xu hướng bắt các cú lớn nhưng thường bị chặt tơi tả.
+- Tỷ Lệ Thắng: 25%
+- Lãi TB: +4.0R
+- Lỗ TB: -1.0R
+- Kỳ Vọng = (0.25 × 4.0) - (0.75 × 1.0) = 1.0 - 0.75 = **+0.25R**
+
+**Diễn giải:**
+Trader này thua 3 trên mỗi 4 lệnh. Về mặt tâm lý, điều này rất khổ. Tuy nhiên, vì các lệnh thắng khổng lồ (4R), họ có kỳ vọng dương cực kỳ có lãi là +0.25R mỗi lệnh. Qua 100 lệnh, họ sẽ ròng +25R.
+
+### Ví Dụ 2: Scalper (Tỷ Lệ Thắng Cao, R Thấp)
+
+**Kịch bản:** Một scalper chốt lời nhỏ, nhanh nhưng thỉnh thoảng để lệnh thua chạy.
+- Tỷ Lệ Thắng: 70%
+- Lãi TB: +0.5R
+- Lỗ TB: -1.5R
+- Kỳ Vọng = (0.70 × 0.5) - (0.30 × 1.5) = 0.35 - 0.45 = **-0.10R**
+
+**Diễn giải:**
+Trader này thắng liên tục. Họ cảm thấy tuyệt vời 70% thời gian. Nhưng về mặt toán học, kỳ vọng của họ âm (-0.10R mỗi lệnh). Họ chắc chắn sẽ cháy tài khoản qua một mẫu đủ lớn. Họ không có lợi thế; họ có một ảo ảnh.
+
+{/* 7. Trap Callout */}
+<Callout type="trap" title="Bẫy Phương Sai (Đường Đi Gồ Ghề)">
+  Biểu đồ Phòng Thí Nghiệm Kỳ Vọng cho thấy một đường thẳng mượt mà dự phóng lợi nhuận của bạn qua 100 lệnh. **Giao dịch thật không bao giờ trông như thế.** Trong thực tế, đường cong vốn của bạn sẽ cực kỳ gồ ghề. Bạn có thể thua 8 lệnh liên tiếp (một sụt giảm khó chịu) trước khi chạm một chuỗi thắng. Kỳ Vọng là kết quả *trung bình* qua một mẫu lớn. Bạn phải dùng toán học [Bất Đối Xứng Sụt Giảm](/risk-management/drawdown-recovery) để đảm bảo rủi ro của bạn đủ nhỏ để sống sót qua những thung lũng gồ ghề không thể tránh khỏi.
+</Callout>
+
+{/* 8. Modern Restatements / Cross-links */}
+## Diễn Giải Theo Các Framework Hiện Đại
+
+- **Tiến Sĩ Van Tharp:** Khái niệm đo hiệu suất theo "R-multiples" được nhà tâm lý học giao dịch Tiến sĩ Van Tharp phổ biến mạnh mẽ. Nó cách mạng hóa giao dịch bán lẻ bằng cách loại bỏ số tiền đô-la và tập trung hoàn toàn vào thực thi thống kê.
+- **SMC / ICT:** Các mô hình smart money vốn được thiết kế để tạo ra các lệnh R-multiple cao. Bằng cách dùng [các mảng Premium/Discount](/ict/pd-arrays) và vào lệnh trên các thay đổi cấu trúc khung nhỏ, các trader SMC có thể chốt stop loss 10 pip với mục tiêu 50 pip (một lệnh 5R), tăng mạnh kỳ vọng dương của họ.
+
+{/* 9. FAQ */}
+## Câu Hỏi Thường Gặp
+
+**Hỏi: Tôi cần bao nhiêu lệnh để tính Kỳ Vọng thực sự của mình?**
+Đáp: Tối thiểu 30-50 lệnh thực thi cùng một setup y hệt. Ít hơn thế là nhiễu không có ý nghĩa thống kê. 100 lệnh là tiêu chuẩn vàng để chứng minh một lợi thế.
+
+**Hỏi: Lỗ trung bình của tôi đúng -1.0R. Vì sao nó lại có thể khác?**
+Đáp: Nếu bạn luôn tôn trọng stop loss, lỗ trung bình của bạn nên rất gần -1.0R. Tuy nhiên, trượt giá (trong các sự kiện tin tức) có thể gây lỗ -1.1R. Ngược lại, nếu bạn chủ động quản lý lệnh và cắt lỗ sớm khi cấu trúc gãy trước khi stop bị chạm, lỗ trung bình của bạn có thể là -0.6R, cải thiện đáng kể kỳ vọng.
+
+**Hỏi: Tôi có nên nhắm kỳ vọng cao nhất có thể không?**
+Đáp: Có, nhưng thực tế, bất kỳ hệ thống nào tạo kỳ vọng trên **+0.20R** đều xuất sắc. Nếu bạn tạo +0.50R trở lên, bạn đang in tiền.
+
+{/* 10. Key Takeaways */}
+<KeyTakeaways points={[
+  "Ngừng tư duy theo đô-la hay pip. Đo mọi rủi ro và phần thưởng theo bội số của 'R'.",
+  "Kỳ Vọng là công thức toán học chứng minh liệu chiến lược của bạn có lợi thế thực sự hay không.",
+  "Kỳ vọng dương nghĩa là bạn sẽ kiếm tiền qua một mẫu lớn, bất kể kết quả từng lệnh.",
+  "Bạn không thể đánh giá kỳ vọng dựa trên 3 lệnh. Bạn phải theo dõi qua 50-100 lệnh.",
+  "Một khi bạn chứng minh được kỳ vọng, việc duy nhất của bạn là thực thi cơ học hoàn hảo."
+]} />
+
+---
+*Tài liệu tham khảo:*
+Lý thuyết R-Multiple và toán học Kỳ Vọng, được Tiến sĩ Van Tharp phổ biến trong *Trade Your Way to Financial Freedom*.
