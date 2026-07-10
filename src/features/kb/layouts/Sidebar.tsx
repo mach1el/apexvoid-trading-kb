@@ -113,17 +113,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Footer */}
         <div className="px-5 py-4 border-t border-border mt-4">
           <div className="flex items-center gap-4 mb-4">
-            {/* Telegram Owner QR */}
-            <div className="relative group">
-              <button className="text-text-muted hover:text-[#0088cc] transition-colors flex items-center justify-center cursor-pointer" aria-label="Telegram Owner" title="Owner QR">
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.6l3.15-2.88c.14-.13.25-.42-.25-.09l-3.9 2.45c-.48.33-1.05.5-1.64.35-.49-.12-1.36-.29-2.01-.5-.81-.26-.77-.85-.14-1.1 3.25-1.42 5.42-2.36 6.51-2.81 3.09-1.29 3.73-1.51 4.15-1.51.09 0 .29.02.43.13.11.09.15.22.16.34.02.16.02.32.01.44z"/></svg>
-              </button>
-              <div className="absolute bottom-full left-0 mb-3 hidden group-hover:block z-50 origin-bottom-left animate-in fade-in zoom-in duration-200">
-                <div className="bg-bg-elevated border border-border p-2 rounded-xl shadow-2xl">
-                  <img src="/telegram-qr.png" alt="Telegram Owner QR" className="w-40 h-40 object-cover rounded-lg" />
-                </div>
-              </div>
-            </div>
+            {/* Telegram Owner */}
+            <a href="https://t.me/ST_MICH43L" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-[#0088cc] transition-colors flex items-center justify-center cursor-pointer" aria-label="Telegram Owner" title="Owner @ST_MICH43L">
+              <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.6l3.15-2.88c.14-.13.25-.42-.25-.09l-3.9 2.45c-.48.33-1.05.5-1.64.35-.49-.12-1.36-.29-2.01-.5-.81-.26-.77-.85-.14-1.1 3.25-1.42 5.42-2.36 6.51-2.81 3.09-1.29 3.73-1.51 4.15-1.51.09 0 .29.02.43.13.11.09.15.22.16.34.02.16.02.32.01.44z"/></svg>
+            </a>
             
             {/* Telegram Channel */}
             <a href="https://t.me/apexvoidtrading" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-[#0088cc] transition-colors flex items-center justify-center cursor-pointer" aria-label="Telegram Channel" title="Channel @apexvoidtrading">
