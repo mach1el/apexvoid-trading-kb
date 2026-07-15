@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { SearchDialog } from './SearchDialog';
+import { DonateDialog } from './DonateDialog';
 import { useLanguage } from '../../../shared/contexts/LanguageContext';
 
 interface AppShellProps {
@@ -9,12 +10,14 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [donateOpen, setDonateOpen] = useState(false);
   const { lang, toggleLang } = useLanguage();
 
   return (
     <div className="min-h-screen flex">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <SearchDialog />
+      <DonateDialog isOpen={donateOpen} onClose={() => setDonateOpen(false)} />
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
@@ -42,6 +45,18 @@ export function AppShell({ children }: AppShellProps) {
                 <span className={lang === 'en' ? 'text-accent' : 'text-text-muted'}>EN</span>
                 <span className="text-border">/</span>
                 <span className={lang === 'vi' ? 'text-accent' : 'text-text-muted'}>VI</span>
+              </button>
+
+              {/* Support Button */}
+              <button
+                onClick={() => setDonateOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-text bg-bg-elevated border border-border rounded-lg hover:border-red-500/50 hover:bg-red-500/10 transition-all cursor-pointer"
+                title="Support My Work"
+              >
+                <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span className="hidden sm:inline">Support</span>
               </button>
 
               {/* Search trigger */}
